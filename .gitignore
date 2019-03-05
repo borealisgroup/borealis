@@ -46,10 +46,13 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.cache
 
 # Dependency directories
 node_modules/
 jspm_packages/
+/packages/*/node_modules
+/packages/*/LICENSE
 
 # Optional npm cache directory
 .npm
