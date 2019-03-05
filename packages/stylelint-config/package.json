@@ -26,5 +26,6 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.5.2"
-  }
+  },
+  "gitHead": "078bafd3eb3c0c05bf529f21a71edadb6ac50e5b"
 }
