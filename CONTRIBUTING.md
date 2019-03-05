@@ -29,7 +29,7 @@ lerna create <name> [loc]
 
 ## Commits
 
-[Semantic commit messages](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
+[Semantic commit messages](https://electronjs.org/docs/development/pull-requests#commit-message-guidelines)
 
 Common prefixes:
 
@@ -43,6 +43,7 @@ Common prefixes:
 - refactor: A code change that neither fixes a bug nor adds a feature
 - style: Changes that do not affect the meaning of the code (linting)
 - vendor: Bumping a dependency like libchromiumcontent or node
+- chore: Changes to the build process or auxiliary tools and libraries such as documentation generation; no production code change; nothing that an external user would see
 
 ## Pull Request Process
 
