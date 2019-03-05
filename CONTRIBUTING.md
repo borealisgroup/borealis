@@ -27,6 +27,23 @@ Use [lerna](https://github.com/lerna/lerna/tree/master/commands/create#readme) C
 lerna create <name> [loc]
 ```
 
+## Commits
+
+[Semantic commit messages](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
+
+Common prefixes:
+
+- fix: A bug fix
+- feat: A new feature
+- docs: Documentation changes
+- test: Adding missing tests or correcting existing tests
+- build: Changes that affect the build system
+- ci: Changes to our CI configuration files and scripts
+- perf: A code change that improves performance
+- refactor: A code change that neither fixes a bug nor adds a feature
+- style: Changes that do not affect the meaning of the code (linting)
+- vendor: Bumping a dependency like libchromiumcontent or node
+
 ## Pull Request Process
 
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a
