@@ -21,11 +21,36 @@ lerna bootstrap --hoist
 
 ### Create a new package
 
-Use [lerna](https://github.com/lerna/lerna/tree/master/commands/create#readme) CLI:
+Use our plop generator:
 
 ```bash
-lerna create <name> [loc]
+npm run generate package
 ```
+
+Once ready to be published:
+
+```bash
+cd /packages/<name>
+npm publish --access public
+```
+
+### Testing locally
+
+In the project you want to test the package, run:
+
+```
+npm install /absolute/path/to/package
+```
+
+and that yields this in your `package.json`:
+
+```json
+"dependencies": {
+  "viking": "file:../borealis-js/packages/<name>",
+},
+```
+
+Don't forget to update the dependency once you publish the package.
 
 ## Commits
 
@@ -56,7 +81,7 @@ Common prefixes:
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
-## Publish packages
+## Publish existing packages
 
 Use [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI:
 
