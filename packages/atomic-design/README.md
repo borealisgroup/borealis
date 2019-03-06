@@ -6,11 +6,7 @@ Complete Atomic Design example for a React app.
 
 ## Usage
 
-```
-const atomicDesign = require('atomic-design');
-
-// TODO: DEMONSTRATE API
-```
+See the [example](example)
 
 ## Why
 
