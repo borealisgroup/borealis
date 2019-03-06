@@ -1,7 +1,11 @@
 {
-  "name": "root",
-  "private": true,
+  "name": "borealis-js",
+  "scripts": {
+    "generate": "plop --plopfile ./scripts/generators/index.js"
+  },
   "devDependencies": {
-    "lerna": "^3.13.1"
-  }
+    "lerna": "^3.13.1",
+    "plop": "^2.3.0"
+  },
+  "dependencies": {}
 }

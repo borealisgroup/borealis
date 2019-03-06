@@ -1,0 +1,17 @@
+{
+  "name": "@borealisgroup/dynamic-export",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/dynamic-export#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/dynamic-export"
+  },
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis-js/issues"
+  },
+  "dependencies": {}
+}

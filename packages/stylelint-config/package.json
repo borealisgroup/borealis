@@ -6,6 +6,7 @@
     "stylelint",
     "stylelint-config"
   ],
+  "author": "zbeyens <ziad.beyens@borealisgroup.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/stylelint-config"
@@ -15,7 +16,6 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "license": "MIT",
-  "author": "@borealisgroup",
   "files": [
     "index.js",
     "stylelint.config.js"
