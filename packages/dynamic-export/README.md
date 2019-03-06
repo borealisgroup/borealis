@@ -26,8 +26,9 @@ Object.assign(module.exports, getModules(require.context('.', true, /\.jsx$/)));
 
 For example, in a React app, it's useful to have this `index.js` in the `components` and `containers` directories, by taking all the `.jsx` files. 
 
-Then, you can import the modules like this:
+Then, you can import the modules:
 
+<!-- TODO - in example -->
 ```js
 import {
   Header,
