@@ -6,7 +6,7 @@ Complete Atomic Design example for a React app.
 
 ## Usage
 
-<!-- TODO - example  -->
+<!-- TODO - example -->
 See the [example](example)
 
 ## Why
