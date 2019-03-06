@@ -2,13 +2,7 @@
 
 ESLint config for JS linting.
 
-## Getting Started
-
-### Documentation Shareable Configs
-
-- [ESLint shareable config](https://eslint.org/docs/developer-guide/shareable-configs)
-
-### Prerequisites
+## Prerequisites
 
 - React or Node environment
 - Usage of jest as the test-suite
@@ -18,13 +12,15 @@ ESLint config for JS linting.
 
 Note: you can still overwrite the `env`, `globals` and `parser` in your local `.eslintrc.js`.
 
-### Install
+## Install
 
 Using npm:
 
 ```
 npm install --save-dev @borealisgroup/eslint-config
 ```
+
+## Usage
 
 Create a file `.eslintrc.js` at the root of your project:
 

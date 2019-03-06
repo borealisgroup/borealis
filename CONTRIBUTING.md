@@ -58,17 +58,17 @@ Don't forget to update the dependency once you publish the package.
 
 Common prefixes:
 
-- fix: A bug fix
-- feat: A new feature
-- docs: Documentation changes
-- test: Adding missing tests or correcting existing tests
-- build: Changes that affect the build system
-- ci: Changes to our CI configuration files and scripts
-- perf: A code change that improves performance
-- refactor: A code change that neither fixes a bug nor adds a feature
-- style: Changes that do not affect the meaning of the code (linting)
-- vendor: Bumping a dependency like libchromiumcontent or node
-- chore: Changes to the build process or auxiliary tools and libraries such as documentation generation; no production code change; nothing that an external user would see
+- `fix:` A bug fix
+- `feat:` A new feature
+- `docs:` Documentation changes
+- `test:` Adding missing tests or correcting existing tests
+- `build:` Changes that affect the build system
+- `ci:` Changes to our CI configuration files and scripts
+- `perf:` A code change that improves performance
+- `refactor:` A code change that neither fixes a bug nor adds a feature
+- `style:` Changes that do not affect the meaning of the code (linting)
+- `vendor:` Bumping a dependency like libchromiumcontent or node
+- `chore:` Changes to the build process or auxiliary tools and libraries such as documentation generation; no production code change; nothing that an external user would see
 
 ## Pull Request Process
 

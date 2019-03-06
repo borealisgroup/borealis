@@ -1,0 +1,16 @@
+{
+  "name": "@borealisgroup/atomic-design",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/atomic-design#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+		"type": "git",
+    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/atomic-design"
+  },
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis-js/issues"
+  }
+}

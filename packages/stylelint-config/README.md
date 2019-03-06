@@ -2,14 +2,12 @@
 
 Stylelint config for CSS linting.
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
-
-- React environment
+- React
 - styled-components
 
-### Install
+## Install
 
 Using npm:
 
@@ -17,10 +15,12 @@ Using npm:
 npm install --save-dev @borealisgroup/stylelint-config
 ```
 
+## Usage
+
 Create a file `stylelint.config.js` at the root of your project:
 
 ```js
-module.exports = require("@borealisgroup/stylelint-config");
+module.exports = require('@borealisgroup/stylelint-config');
 ```
 
 ## Stylelint
