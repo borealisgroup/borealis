@@ -4,6 +4,8 @@ Complete Atomic Design example for a React app.
 
 ## Prerequisites
 
+- react
+
 ## Usage
 
 <!-- TODO - example -->

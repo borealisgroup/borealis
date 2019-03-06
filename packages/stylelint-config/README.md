@@ -4,7 +4,7 @@ Stylelint config for CSS linting.
 
 ## Prerequisites
 
-- React
+- react
 - styled-components
 
 ## Install

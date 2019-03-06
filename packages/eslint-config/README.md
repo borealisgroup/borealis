@@ -4,11 +4,11 @@ ESLint config for JS linting.
 
 ## Prerequisites
 
-- React or Node environment
-- Usage of jest as the test-suite
+- react or node environment
+- usage of jest as the test-suite (if any)
 - `env`: Browser and Node environment
 - `parser`: usage of babel (babel-eslint parser)
-- If you don't use `create-react-app`, you have to install `eslint`
+- if you don't use `create-react-app`, you have to install `eslint`
 
 Note: you can still overwrite the `env`, `globals` and `parser` in your local `.eslintrc.js`.
 
