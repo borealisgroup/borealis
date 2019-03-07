@@ -19,7 +19,7 @@ cd borealis-js
 lerna bootstrap --hoist
 ```
 
-### Create a new package
+### Add a new package
 
 Use our plop generator:
 
@@ -51,6 +51,14 @@ and that yields this in your `package.json`:
 ```
 
 Don't forget to update the dependency once you publish the package.
+
+### Add a new pattern
+
+Using plop:
+
+```bash
+npm run generate pattern
+```
 
 ## Commits
 
