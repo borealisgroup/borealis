@@ -59,3 +59,68 @@ When running your app in watch mode, considering that the file is located in `in
   - you may have to restart the app in that case
 
 As a result, it improves the development flow and reduces a lot of boilerplate.
+
+Now, let's compare the re-exporting cases
+
+### re-export default import as named import (dynamic)
+
+Advised for large and very active directories. See [Why](Why).
+
+### re-export default import as named import (static)
+
+Advised for small directories. It is redundant to manually add/modify/delete an export.
+```js
+export { default as App } from './App';
+export { default as Header } from './Header';
+```
+
+### re-export all named imports (static)
+
+Generally advised. This is quite good if you want to centralize (in `index.js`) the (unique) named exports from multiple files. 
+
+```js
+export * from './A';
+export * from './B';
+```
+
+### re-export default import as default export (static)
+Discouraged. See [Caveats](Caveats) and [why we should prefer named exports over default export](https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad). Default export should be mostly used for classes (i.e. React component). 
+
+```js
+export { default } from './config';
+```
+
+## Conclusion
+
+Although **dynamic re-export** has a productivity boost, it has counterparts showing that it should not be used in every `index.js` files.
+
+Also, we discourage using **default export of non-class objects** when possible. 
+
+The reason is that in these cases, we can't use these development features, which are also a huge productivity boost:
+
+### ❌ VSCode: Auto Import - ES6, TS, JSX, TSX (extension)
+
+> Automatically finds, parses and provides code actions and code completion for all available imports.
+
+### ❌ VSCode: Refactoring - updateImportsOnFileMove
+
+> VS Code can automatically update import paths when a JavaScript file is moved or renamed
+
+### ❌ ESLint: import/named
+
+> Verifies that all named imports are part of the set of named exports in the referenced module.
+>
+> For export, verifies that all named exports exist in the referenced module.
+
+
+### ❌ Webpack: [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
+
+> Tree shaking is a term commonly used in the JavaScript context for dead-code elimination
+
+> Sometimes you can be tempted to export one huge object with many properties as default export. This is an anti-pattern and prohibits proper tree shaking.
+> 
+> Using named exports can reduce your bundle size when you don’t use all exported values (especially useful while building libs).
+
+
+
+
