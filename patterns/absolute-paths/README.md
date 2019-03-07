@@ -1,6 +1,6 @@
 # @borealisgroup/absolute-paths
 
-Absolute paths
+Absolute paths for imports
 
 ## Prerequisites
 
