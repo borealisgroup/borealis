@@ -64,7 +64,7 @@ Now, let's compare the re-exporting cases
 
 ### re-export default import as named import (dynamic)
 
-Advised for large and very active directories. See [Why](Why).
+Advised for large and very active directories. See [Why](#Why).
 
 ### re-export default import as named import (static)
 
@@ -84,7 +84,7 @@ export * from './B';
 ```
 
 ### re-export default import as default export (static)
-Discouraged. See [Caveats](Caveats) and [why we should prefer named exports over default export](https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad). Default export should be mostly used for classes (i.e. React component). 
+Discouraged. See [Conclusion](#Conclusion). Default export should be mostly used for classes (i.e. React component). 
 
 ```js
 export { default } from './config';
