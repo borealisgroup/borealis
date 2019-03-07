@@ -60,6 +60,12 @@ From [awesome-eslint](https://github.com/dustinspecker/awesome-eslint):
 
 This ESLint configuration can work together with prettier, thanks to `eslint-plugin-prettier`
 
+## Why
+
+[Why do we need a shared coding style accross the company?](https://medium.com/@natterstefan/how-to-create-your-own-shared-eslint-prettier-and-stylelint-configuration-3930dd764de3)
+
+TL;DR - For **consistency**, **productivity** and **happiness**.
+
 ## Contributing
 
 If you want to modify plugins or rules in your project, please submit a pull request instead of overwriting your local config.

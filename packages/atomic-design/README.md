@@ -19,7 +19,30 @@ Large applications can quickly become very painful to maintain. Therefore it is 
 
 ### Project Structure
 
-This is a classical atomic design application:
+```bash
+├── components
+│   ├── atoms
+│   │   ├── */*.jsx
+│   ├── molecules
+│   │   ├── common
+│   │   │   ├── */*.jsx
+│   │   ├── <route>
+│   │   │   ├── */*.jsx
+│   ├── organisms
+│   │   ├── common
+│   │   │   ├── */*.jsx
+│   │   ├── <route>
+│   │   │   ├── */*.jsx
+│   ├── templates
+│   │   ├── */*.jsx
+│   ├── pages
+│   │   ├── */*.jsx
+│   ├── App.jsx
+│   └── index.js
+```
+
+The classical atomic design application:
+
 - `/atoms` -  composed of a single HTML tag or third-party component. Should be reused at least once, to avoid redundancy.
 
 - `/molecules` - composed of atoms

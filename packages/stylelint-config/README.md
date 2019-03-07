@@ -36,6 +36,12 @@ module.exports = require('@borealisgroup/stylelint-config');
 
 - `'block-no-empty': null` - accept styled components with no style, i.e. when we just want to use named components for readability.
 
+## Why
+
+[Why do we need a shared coding style accross the company?](https://medium.com/@natterstefan/how-to-create-your-own-shared-eslint-prettier-and-stylelint-configuration-3930dd764de3)
+
+TL;DR - For **consistency**, **productivity** and **happiness**.
+
 ## Contributing
 
 If you want to modify plugins or rules in your project, please submit a pull request instead of overwriting your local config.

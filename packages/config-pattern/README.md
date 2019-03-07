@@ -12,7 +12,9 @@ See [dynamic-export](../dynamic-export/README.md#Why).
 
 It's generally a bad practice to define constants in your business logic. All constants should be stored in a `config` folder.
 
-```
+### Project Structure
+
+```bash
 ├── config
 │   ├── index.js
 │   ├── config.js
