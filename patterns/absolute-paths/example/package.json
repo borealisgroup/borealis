@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "test": "react-scripts test --env=jsdom --modulePaths=src"
+  }
+}
