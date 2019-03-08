@@ -6,6 +6,17 @@ Configuration pattern
 
 See the [example](example)
 
+As there is a conflict with ESLint `import/named` rule, update your `.eslintrc`:
+
+```js
+module.exports = {
+  extends: '@borealisgroup',
+  settings: {
+    'import/ignore': ['config'],
+  },
+};
+```  
+
 ## Why
 
 See [dynamic-export](../dynamic-export/README.md#Why).
