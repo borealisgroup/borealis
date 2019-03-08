@@ -26,13 +26,13 @@ To recap, a duck:
 
 Here's how a **duck** folder would look like:
 ```
-feature/
-├── feature.controllers.js
-├── feature.duck.js
-├── feature.selectors.js
-├── feature.services.js
+duck/
+├── duck.controllers.js
+├── duck.duck.js
+├── duck.selectors.js
+├── duck.services.js
 ```
-NOTE: Each concept (feature) from your app will have a similar folder.
+NOTE: Each duck represents a concept, feature of your app.
 
 ### General rules for a duck folder
 
@@ -202,7 +202,7 @@ Not yet used as VSCode's auto import feature is not working well when re-exporti
 
 ### Tests
 
-You can add `concept.tests.js` for testing.
+You can add `duck.tests.js` for testing.
 
 See [re-ducks](https://github.com/alexnm/re-ducks) for more information.
 
