@@ -122,7 +122,7 @@ Avoid nesting state by [normalizing state shape](https://redux.js.org/recipes/st
 
 All the async calls (CRUD operations). 
 
-They can be called only by the actions and controllers (never by a component!).
+They should be called by the controllers (never by a component!).
 
 ```js
 export const getTasks = () => {
@@ -209,8 +209,8 @@ See [re-ducks](https://github.com/alexnm/re-ducks) for more information.
 ## Thanks to
 
 - [re-ducks](https://github.com/alexnm/re-ducks)
-- https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be
-- https://blog.bitsrc.io/using-redux-actions-why-and-how-fd5834f13e31
+- [Scaling your Redux App with ducks](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
+- [Using Redux-Actions — Why and How?](https://blog.bitsrc.io/using-redux-actions-why-and-how-fd5834f13e31)
 - [Redux Best Practices](https://codeburst.io/redux-actions-through-example-part-1-f5b2dc71de06)
 - [Refactoring to redux-actions](https://codeburst.io/redux-actions-through-example-part-1-f5b2dc71de06)
-- [Controllers](https://www.caffeinecoding.com/better-express-routing-for-nodejs)
+- [Better Express Routing & Architecture for NodeJS](https://www.caffeinecoding.com/better-express-routing-for-nodejs)
