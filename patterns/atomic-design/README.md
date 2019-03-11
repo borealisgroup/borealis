@@ -17,7 +17,7 @@ Large applications can quickly become very painful to maintain. Therefore it is 
 ### Overview
 ![images](docs/images/Atomic&#32;Design.png)
 
-### Project Structure
+### Components
 
 ```bash
 ├── components
@@ -68,8 +68,38 @@ If one folder (i.e. `/common`) gets large, you can one more time **structure by 
 
 This pattern works very good with [dynamic-export](https://github.com/borealisgroup/borealis-js/tree/master/packages/dynamic-export), as you can move the files as many times as you want without any modification in the code. 
 
+### Containers
+
+For separation of concerns, a stateful component should be split into a (stateful) **container component** wrapping a (stateless) **presentational component**.
+
+The container can handle its state, connect to the store and pass down the state and props.
+
+For simplicity, we respect this naming convention:
+
+- container: `FormButton.container.jsx`
+- component: `FormButton.jsx`
+
+Where `FormButton.container` is just a wrapper of `FormButton`:
+
+```js
+render() {
+  return (
+    <FormButton {...this.state} {...this.props} />
+  )
+}
+```
+
+Then, you can import the container:
+```js
+// if stateless:
+import { FormButton } from 'components';
+
+// if stateful:
+import { FormButton } from 'containers';
+```
+
 ## Thanks to
 
 - https://github.com/diegohaz/arc/wiki/Atomic-Design
-
 - https://blog.usejournal.com/thinking-about-react-atomically-608c865d2262
+- https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
