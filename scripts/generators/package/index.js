@@ -2,43 +2,65 @@
  * Container Generator
  */
 
+const add = {
+  type: "add",
+  abortOnFail: true,
+};
+
 module.exports = {
-  description: 'Generate a package',
+  description: "Generate a package",
   prompts: [
     {
-      type: 'input',
-      name: 'name',
-      message: 'package name:',
+      type: "input",
+      name: "name",
+      message: "package name:",
       validate: value => {
-        if (/.+/.test(value.trim())) return true;
-        return 'required';
+        if (/.+/.test(value.trim()))
+          return true;
+        return "required";
       },
     },
     {
-      type: 'confirm',
-      name: 'dev',
-      message: '--save-dev?',
+      type: "confirm",
+      name: "dev",
+      message: "--save-dev?",
     },
   ],
   actions: data => {
     // Generate
     const actions = [
       {
-        type: 'add',
-        path: '../../packages/{{name}}/README.md',
-        templateFile: './package/README.md.hbs',
-        abortOnFail: true,
+        ...add,
+        path:
+          "../../packages/{{name}}/README.md",
+        templateFile:
+          "./package/README.md.hbs",
       },
       {
-        type: 'add',
-        path: '../../packages/{{name}}/package.json',
-        templateFile: './package/package.json.hbs',
-        abortOnFail: true,
+        ...add,
+        path:
+          "../../packages/{{name}}/package.json",
+        templateFile:
+          "./package/package.json.hbs",
       },
       {
-        type: 'add',
-        path: '../../packages/{{name}}/index.js',
-        abortOnFail: true,
+        ...add,
+        path:
+          "../../packages/{{name}}/src/index.js",
+      },
+      {
+        ...add,
+        path:
+          "../../packages/{{name}}/package.json",
+        templateFile:
+          "./package/package.json.hbs",
+      },
+      {
+        ...add,
+        path:
+          "../../packages/{{name}}/.babelrc",
+        templateFile:
+          "./package/.babelrc.hbs",
       },
     ];
 

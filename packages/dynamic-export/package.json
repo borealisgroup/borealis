@@ -5,7 +5,10 @@
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/dynamic-export#readme",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/dynamic-export"
@@ -14,6 +17,6 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "scripts": {
-    "build": "babel src --out-dir lib --copy-files --ignore spec.js,spec.jsx"
+    "build": "babel --root-mode upward src -d lib"
   }
 }

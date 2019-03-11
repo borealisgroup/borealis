@@ -16,11 +16,13 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "license": "MIT",
+  "main": "lib/index.js",
   "files": [
-    "index.js",
-    "stylelint.config.js"
+    "lib"
   ],
-  "main": "index.js",
+  "scripts": {
+    "build": "babel --root-mode upward src -d lib"
+  },
   "dependencies": {
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",

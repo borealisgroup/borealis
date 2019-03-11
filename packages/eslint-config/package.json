@@ -18,11 +18,13 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "license": "MIT",
+  "main": "lib/index.js",
   "files": [
-    "index.js",
-    "prettier.config.js"
+    "lib"
   ],
-  "main": "index.js",
+  "scripts": {
+    "build": "babel --root-mode upward src -d lib"
+  },
   "peerDependencies": {
     "eslint": ">= 5.12.0"
   },
