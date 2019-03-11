@@ -27,7 +27,7 @@ Use our plop generator:
 npm run generate package
 ```
 
-Once ready to be published:
+Once ready to be published for the first time:
 
 ```bash
 cd /packages/<name>
@@ -94,6 +94,7 @@ Common prefixes:
 Use [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI:
 
 ```
+lerna run prepublish
 lerna publish              # publish packages that have changed since the last release
 ```
 
