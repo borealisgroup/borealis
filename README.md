@@ -1,6 +1,6 @@
 # borealis-js
 
-A collection of patterns, libraries and boilerplates in Borealis Digital Studio.
+A collection of patterns, libraries and boilerplates used in Borealis Digital Studio.
 
 ## Libraries
 
