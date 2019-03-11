@@ -1,10 +1,7 @@
 {
   "name": "borealis-js",
   "scripts": {
-    "lint": "eslint **/src/*.js",
-    "generate": "plop --plopfile ./scripts/generators/index.js",
-    "prepublish": "npm run lint && lerna run build",
-    "publish": "npm run prepublish && lerna publish"
+    "generate": "plop --plopfile ./scripts/generators/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

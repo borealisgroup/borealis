@@ -3,27 +3,26 @@
  */
 
 const add = {
-  type: "add",
+  type: 'add',
   abortOnFail: true,
 };
 
 module.exports = {
-  description: "Generate a package",
+  description: 'Generate a package',
   prompts: [
     {
-      type: "input",
-      name: "name",
-      message: "package name:",
+      type: 'input',
+      name: 'name',
+      message: 'package name:',
       validate: value => {
-        if (/.+/.test(value.trim()))
-          return true;
-        return "required";
+        if (/.+/.test(value.trim())) return true;
+        return 'required';
       },
     },
     {
-      type: "confirm",
-      name: "dev",
-      message: "--save-dev?",
+      type: 'confirm',
+      name: 'dev',
+      message: '--save-dev?',
     },
   ],
   actions: data => {
@@ -31,36 +30,26 @@ module.exports = {
     const actions = [
       {
         ...add,
-        path:
-          "../../packages/{{name}}/README.md",
-        templateFile:
-          "./package/README.md.hbs",
+        path: '../../packages/{{name}}/README.md',
+        templateFile: './package/README.md.hbs',
       },
       {
         ...add,
-        path:
-          "../../packages/{{name}}/package.json",
-        templateFile:
-          "./package/package.json.hbs",
+        path: '../../packages/{{name}}/package.json',
+        templateFile: './package/package.json.hbs',
       },
       {
         ...add,
-        path:
-          "../../packages/{{name}}/src/index.js",
+        path: '../../packages/{{name}}/src/index.js',
       },
       {
         ...add,
-        path:
-          "../../packages/{{name}}/package.json",
-        templateFile:
-          "./package/package.json.hbs",
+        path: '../../packages/{{name}}/test/index.js',
       },
       {
         ...add,
-        path:
-          "../../packages/{{name}}/.babelrc",
-        templateFile:
-          "./package/.babelrc.hbs",
+        path: '../../packages/{{name}}/package.json',
+        templateFile: './package/package.json.hbs',
       },
     ];
 
