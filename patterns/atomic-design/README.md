@@ -70,9 +70,10 @@ This pattern works very good with [dynamic-export](https://github.com/borealisgr
 
 ### Containers
 
-For separation of concerns, a stateful component should be split into a (stateful) **container component** wrapping a (stateless) **presentational component**.
+We use a very straight forward approach to Redux: all components should be as pure as possible and should be placed in the `components` folder.
 
-The container can handle its state, connect to the store and pass down the state and props.
+If, for some reason, you need to connect a component to the store, just create a container with the same name, import the pure component and connect it. Thus having a nice separation of concerns. Do not add any extra styles or another presentational logic on containers.
+
 
 For simplicity, we respect this naming convention:
 
@@ -93,10 +94,11 @@ Then, you can import the container:
 ```js
 // if stateless:
 import { FormButton } from 'components';
-
 // if stateful:
 import { FormButton } from 'containers';
 ```
+
+This approach makes it easier to transform any pure component into a container at any time.
 
 ## Thanks to
 

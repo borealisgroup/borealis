@@ -85,6 +85,19 @@ export const {
 
 NOTE: you have to use the same name for action (`CONSTANT` case) and action creators (`camelCase`)
 
+Actions and action creators don't perform any change by themselves. Therefore, it doesn't make sense to name them imperatively like updateResource. If it was the case, it would be more descriptive to name it like createResourceUpdateAction.
+
+That said, to make things simpler, but stay descriptive, we follow these naming conventions:
+
+- Action types should be named as `MODULE_ACTION`. e.g. `RESOURCE_UPDATE`, `RESOURCE_UPDATE_REQUEST`;
+- Action creators should have the same name as their action type, but camelCased. e.g. `resourceUpdate`, `resourceUpdateRequest`.
+
+This way, we can read it like "_store dispatches a resource update request on resource 1 changing its title to 'Hi'_"!
+
+```js
+store.dispatch(resourceUpdateRequest(1, { title: 'Hi!' }))
+```
+
 ### Duck Reducers
 
 #### handleActions
@@ -169,7 +182,12 @@ export const fetchTasks = () => {
 ```
 
 ### Selectors
-As your state shape quickly gets complex, you need selectors in order to map parts of the `state` to your `props` or in order to derive some data for your components from the current state.
+
+If `actions` are the entry points, selectors are the exit. 
+After `dispatch`ing an action, the application can use selectors to get the resulting data from the store after reducers have done something with it.
+
+Basically, you can use selectors to get some part of the current state.
+You can also use selectors to derive some data for your components from the current state.
 
 These are the functions like: `getVisibleTasks`, `isUserAuthenticated`, etc. that take the current app state and return some derived data.
 
@@ -214,3 +232,4 @@ See [re-ducks](https://github.com/alexnm/re-ducks) for more information.
 - [Redux Best Practices](https://codeburst.io/redux-actions-through-example-part-1-f5b2dc71de06)
 - [Refactoring to redux-actions](https://codeburst.io/redux-actions-through-example-part-1-f5b2dc71de06)
 - [Better Express Routing & Architecture for NodeJS](https://www.caffeinecoding.com/better-express-routing-for-nodejs)
+- [ARc](https://github.com/diegohaz/arc/wiki/Actions)
