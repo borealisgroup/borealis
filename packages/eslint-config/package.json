@@ -43,6 +43,5 @@
     "eslint-plugin-react-hooks": "1.3.0",
     "prettier": "1.16.4",
     "prettier-eslint-cli": "^4.7.1"
-  },
-  "gitHead": "e9d214ecafbdafebfe72869501890b321511d644"
+  }
 }
