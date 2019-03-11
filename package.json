@@ -4,6 +4,8 @@
     "generate": "plop --plopfile ./scripts/generators/index.js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
     "lerna": "^3.13.1",
     "plop": "^2.3.0"
   },

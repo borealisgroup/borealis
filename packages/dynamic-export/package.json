@@ -12,5 +12,8 @@
   },
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis-js/issues"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --copy-files --ignore spec.js,spec.jsx"
   }
 }
