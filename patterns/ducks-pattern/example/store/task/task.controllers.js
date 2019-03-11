@@ -1,36 +1,36 @@
 import {
-  showLoader,
-  loadTasks,
-  hideLoader,
-  addTask,
-  replaceTask,
-  removeTask,
+  taskShowLoader,
+  taskLoad,
+  taskHideLoader,
+  taskAdd,
+  taskReplace,
+  taskRemove,
 } from './task.duck';
 import { getTasks, postTask, putTask, deleteTask } from './task.services';
 
-export const fetchTasks = () => {
+export const taskFetch = () => {
   return dispatch => {
-    dispatch(showLoader());
+    dispatch(taskShowLoader());
     getTasks().then(tasks => {
-      dispatch(loadTasks(tasks));
-      dispatch(hideLoader());
+      dispatch(taskLoad(tasks));
+      dispatch(taskHideLoader());
     });
   };
 };
 
-export const saveTask = name => {
+export const taskSave = name => {
   return dispatch => {
-    dispatch(showLoader());
+    dispatch(taskShowLoader());
     postTask(name).then(res => {
-      dispatch(addTask(res));
-      dispatch(hideLoader());
+      dispatch(taskAdd(res));
+      dispatch(taskHideLoader());
     });
   };
 };
 
-export const toggleTask = id => {
+export const taskToggle = id => {
   return (dispatch, getState) => {
-    dispatch(showLoader());
+    dispatch(taskShowLoader());
     const { tasks } = getState();
     const task = tasks.find(t => t.id === id);
     const toggled = {
@@ -38,18 +38,18 @@ export const toggleTask = id => {
       isComplete: !task.isComplete,
     };
     putTask(toggled).then(res => {
-      dispatch(replaceTask(res));
-      dispatch(hideLoader());
+      dispatch(taskReplace(res));
+      dispatch(taskHideLoader());
     });
   };
 };
 
-export const destroyTask = id => {
+export const taskDelete = id => {
   return dispatch => {
-    dispatch(showLoader());
+    dispatch(taskShowLoader());
     deleteTask(id).then(() => {
-      dispatch(removeTask(id));
-      dispatch(hideLoader());
+      dispatch(taskRemove(id));
+      dispatch(taskHideLoader());
     });
   };
 };

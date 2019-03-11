@@ -13,56 +13,56 @@ const capitalize = text => {
   }, '');
 };
 
-const UPDATE_CURRENT = 'UPDATE_CURRENT';
-const ADD_TASK = 'ADD_TASK';
-const LOAD_TASKS = 'LOAD_TASKS';
-const REPLACE_TASK = 'REPLACE_TASK';
-const REMOVE_TASK = 'REMOVE_TASK';
-const SHOW_LOADER = 'SHOW_LOADER';
-const HIDE_LOADER = 'HIDE_LOADER';
+const TASK_UPDATE_CURRENT = 'TASK_UPDATE_CURRENT';
+const TASK_ADD = 'TASK_ADD';
+const TASK_LOAD = 'TASK_LOAD';
+const TASK_REPLACE = 'TASK_REPLACE';
+const TASK_REMOVE = 'TASK_REMOVE';
+const TASK_SHOW_LOADER = 'TASK_SHOW_LOADER';
+const TASK_HIDE_LOADER = 'TASK_HIDE_LOADER';
 
 export const {
-  updateCurrent,
-  loadTasks,
-  addTask,
-  replaceTask,
-  removeTask,
-  showLoader,
-  hideLoader,
+  taskUpdateCurrent,
+  taskLoad,
+  taskAdd,
+  taskReplace,
+  taskRemove,
+  taskShowLoader,
+  taskHideLoader,
 } = createActions(
   {
-    [UPDATE_CURRENT]: capitalize,
-    [SHOW_LOADER]: () => true,
-    [HIDE_LOADER]: () => false,
+    [TASK_UPDATE_CURRENT]: capitalize,
+    [TASK_SHOW_LOADER]: () => true,
+    [TASK_HIDE_LOADER]: () => false,
   },
-  LOAD_TASKS,
-  ADD_TASK,
-  REPLACE_TASK,
-  REMOVE_TASK
+  TASK_LOAD,
+  TASK_ADD,
+  TASK_REPLACE,
+  TASK_REMOVE
 );
 
 export default handleActions(
   {
-    ADD_TASK: (state, action) => {
+    TASK_ADD: (state, action) => {
       return {
         ...state,
         currentTask: '',
         tasks: state.tasks.concat(action.payload),
       };
     },
-    LOAD_TASKS: (state, action) => {
+    TASK_LOAD: (state, action) => {
       return {
         ...state,
         tasks: action.payload,
       };
     },
-    UPDATE_CURRENT: (state, action) => {
+    TASK_UPDATE_CURRENT: (state, action) => {
       return {
         ...state,
         currentTask: action.payload,
       };
     },
-    REPLACE_TASK: (state, action) => {
+    TASK_REPLACE: (state, action) => {
       return {
         ...state,
         tasks: state.tasks.map(t =>
@@ -70,13 +70,13 @@ export default handleActions(
         ),
       };
     },
-    REMOVE_TASK: (state, action) => {
+    TASK_REMOVE: (state, action) => {
       return {
         ...state,
         tasks: state.tasks.filter(t => t.id !== action.payload),
       };
     },
-    [combineActions(SHOW_LOADER, HIDE_LOADER)]: (state, action) => {
+    [combineActions(TASK_SHOW_LOADER, TASK_HIDE_LOADER)]: (state, action) => {
       return {
         ...state,
         isLoading: action.payload,

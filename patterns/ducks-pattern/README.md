@@ -48,10 +48,10 @@ Let's start by defining the constants we will use as redux action types.
 
 Our examples will model a real duck.
 ```javascript
-const UPDATE_CURRENT = 'UPDATE_CURRENT';
-const ADD_TASK = 'ADD_TASK';
-const SHOW_LOADER = 'SHOW_LOADER';
-const HIDE_LOADER = 'HIDE_LOADER';
+const TASK_UPDATE_CURRENT = 'TASK_UPDATE_CURRENT';
+const TASK_ADD = 'TASK_ADD';
+const TASK_SHOW_LOADER = 'TASK_SHOW_LOADER';
+const TASK_HIDE_LOADER = 'TASK_HIDE_LOADER';
 ```
 
 NOTE: you can export an action if it is needed by another duck.
@@ -69,21 +69,19 @@ That's why we use redux-actions.
  
 ```js
 export const {
-  addTask,
-  updateCurrent,
-  showLoader,
-  hideLoader
+  taskAdd,
+  taskUpdateCurrent,
+  taskShowLoader,
+  taskHideLoader
 } = createActions(
   {
-    UPDATE_CURRENT: capitalize,
-    SHOW_LOADER: () => true,
-    HIDE_LOADER: () => false
+    TASK_UPDATE_CURRENT: capitalize,
+    TASK_SHOW_LOADER: () => true,
+    TASK_HIDE_LOADER: () => false
   },
-  ADD_TASK,
+  TASK_ADD,
 )
 ```
-
-NOTE: you have to use the same name for action (`CONSTANT` case) and action creators (`camelCase`)
 
 Actions and action creators don't perform any change by themselves. Therefore, it doesn't make sense to name them imperatively like updateResource. If it was the case, it would be more descriptive to name it like createResourceUpdateAction.
 
@@ -106,14 +104,14 @@ store.dispatch(resourceUpdateRequest(1, { title: 'Hi!' }))
 ```javascript
 export default handleActions(
   {
-    ADD_TASK: (state, action) => {
+    TASK_ADD: (state, action) => {
       return {
         ...state,
         currentTask: '',
         tasks: state.tasks.concat(action.payload),
       };
     },
-    [combineActions(SHOW_LOADER, HIDE_LOADER)]: (state, action) => {
+    [combineActions(TASK_SHOW_LOADER, TASK_HIDE_LOADER)]: (state, action) => {
       return {
         ...state,
         isLoading: action.payload,
@@ -128,7 +126,7 @@ export default handleActions(
 > We can use multiple actions to update the app’s state using the same function. combineActions function is given to us by redux-actions to handle related actions in a single action handler.
 
 #### Normalizing
-In case the state shape is more complex, you should break the reducers into multiple smaller functions that deal with a slice of the state, then combine them at the end.
+In case the state shape gets complex, you should split the reducers into multiple smaller functions that deal with a slice of the state, then combine them at the end.
 Avoid nesting state by [normalizing state shape](https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape).
 
 ### Services
@@ -161,21 +159,21 @@ The `controllers` file define the `interface` for our duck. You can reason about
 
 ```javascript
 import {
-  showLoader,
-  loadTasks,
-  hideLoader,
-  addTask,
-  replaceTask,
-  removeTask,
+  taskShowLoader,
+  taskLoad,
+  taskHideLoader,
+  taskAdd,
+  taskReplace,
+  taskRemove,
 } from './task.duck';
 import { getTasks, postTask, putTask, deleteTask } from './task.services';
 
-export const fetchTasks = () => {
+export const taskFetch = () => {
   return dispatch => {
-    dispatch(showLoader());
+    dispatch(taskShowLoader());
     getTasks().then(tasks => {
-      dispatch(loadTasks(tasks));
-      dispatch(hideLoader());
+      dispatch(taskLoad(tasks));
+      dispatch(taskHideLoader());
     });
   };
 };

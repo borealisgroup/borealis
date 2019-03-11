@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { LoginButton } from 'components';
+import { LoginButton } from 'containers';
 
 const Wrapper = styled.header`
   display: flex;
