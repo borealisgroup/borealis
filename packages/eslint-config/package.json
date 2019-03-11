@@ -18,14 +18,7 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "license": "MIT",
-  "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "build": "babel --root-mode upward src -d lib",
-    "lint": "eslint src test"
-  },
+  "main": "index.js",
   "peerDependencies": {
     "eslint": ">= 5.12.0"
   },
