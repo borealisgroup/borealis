@@ -17,8 +17,9 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "scripts": {
-    "build": "babel --root-mode upward src -d lib",
-    "lint": "eslint src test",
+    "build": "npx babel --root-mode upward src -d lib",
+    "lint": "npx eslint src test",
     "prepublish": "npm run lint && npm run build"
-  }
+  },
+  "gitHead": "afadfd48fbcaba6038c6e23b65ea11ed0a7193e9"
 }
