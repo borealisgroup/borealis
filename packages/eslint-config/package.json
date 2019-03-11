@@ -23,8 +23,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "npx babel --root-mode upward src -d lib",
-    "lint": "npx eslint src test",
+    "build": "babel --root-mode upward src -d lib",
+    "lint": "eslint src test",
     "prepublish": "npm run lint && npm run build"
   },
   "peerDependencies": {
@@ -44,5 +44,5 @@
     "prettier": "1.16.4",
     "prettier-eslint-cli": "^4.7.1"
   },
-  "gitHead": "afadfd48fbcaba6038c6e23b65ea11ed0a7193e9"
+  "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
 }
