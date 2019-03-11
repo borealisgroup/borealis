@@ -91,10 +91,10 @@ Common prefixes:
 
 ## Publish existing packages
 
-Use [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI:
+Use eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI:
 
 ```
-lerna publish              # publish packages that have changed since the last release
+npm run release           # lint, build and publish packages that have changed since the last release
 ```
 
 ## More

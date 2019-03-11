@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = {
   parser: 'babel-eslint',
   extends: ['airbnb', 'plugin:prettier/recommended', 'plugin:promise/recommended', 'prettier/react'],
@@ -21,14 +23,15 @@ module.exports = {
         moduleDirectory: ['node_modules', 'src']
       }
     },
-    react: { version: 'latest' }
+    react: {
+      version: 'latest'
+    }
   },
   rules: {
     'prettier/prettier': ['error', {
       trailingComma: 'es5',
       singleQuote: true
     }],
-
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'import/no-extraneous-dependencies': 'off',
@@ -51,15 +54,21 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'no-return-assign': 'off',
     'no-underscore-dangle': 'off',
-    'no-unused-vars': [1, { args: 'none' }],
+    'no-unused-vars': [1, {
+      args: 'none'
+    }],
     'prefer-promise-reject-errors': 'off',
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react/button-has-type': ['error', { reset: true }],
+    'react/button-has-type': ['error', {
+      reset: true
+    }],
     'react/destructuring-assignment': 'off',
     'react/forbid-prop-types': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, {
+      extensions: ['.js', '.jsx']
+    }],
     'react/no-array-index-key': 'off',
     'react/no-did-update-set-state': 'off',
     'react/no-string-refs': 'off',

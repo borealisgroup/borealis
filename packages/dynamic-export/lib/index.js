@@ -1,3 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getModules = void 0;
+
 /**
  * Get the context of all files with the same extension
  * For each file:
@@ -6,12 +13,14 @@
  * 	- name = remove the extension part (everything after the first '.')
  * 	- export the file with this name
  */
-export const getModules = req => {
-  const modules = {};
-  req.keys().forEach(key => {
-    let name = key.replace(/.*\//, '');
+var getModules = function getModules(req) {
+  var modules = {};
+  req.keys().forEach(function (key) {
+    var name = key.replace(/.*\//, '');
     name = name.replace(/\.(.*)$/, '');
     modules[name] = req(key).default;
   });
   return modules;
 };
+
+exports.getModules = getModules;

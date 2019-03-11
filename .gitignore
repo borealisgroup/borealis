@@ -5,7 +5,6 @@
 /tmp
 /out-tsc
 /build
-lib
 
 # Runtime data
 pids
@@ -54,6 +53,7 @@ node_modules/
 jspm_packages/
 /packages/*/node_modules
 /packages/*/LICENSE
+/packages/*/lib
 
 # Optional npm cache directory
 .npm
