@@ -43,45 +43,35 @@ export const {
 
 export default handleActions(
   {
-    TASK_ADD: (state, action) => {
-      return {
-        ...state,
-        currentTask: '',
-        tasks: state.tasks.concat(action.payload),
-      };
-    },
-    TASK_LOAD: (state, action) => {
-      return {
-        ...state,
-        tasks: action.payload,
-      };
-    },
-    TASK_UPDATE_CURRENT: (state, action) => {
+    [TASK_ADD]: (state, action) => ({
+      ...state,
+      currentTask: '',
+      tasks: state.tasks.concat(action.payload),
+    }),
+    [TASK_LOAD]: (state, action) => ({
+      ...state,
+      tasks: action.payload,
+    }),
+    [TASK_UPDATE_CURRENT]: (state, action) => {
       return {
         ...state,
         currentTask: action.payload,
       };
     },
-    TASK_REPLACE: (state, action) => {
-      return {
-        ...state,
-        tasks: state.tasks.map(t =>
-          t.id === action.payload.id ? action.payload : t
-        ),
-      };
-    },
-    TASK_REMOVE: (state, action) => {
-      return {
-        ...state,
-        tasks: state.tasks.filter(t => t.id !== action.payload),
-      };
-    },
-    [combineActions(TASK_SHOW_LOADER, TASK_HIDE_LOADER)]: (state, action) => {
-      return {
-        ...state,
-        isLoading: action.payload,
-      };
-    },
+    [TASK_REPLACE]: (state, action) => ({
+      ...state,
+      tasks: state.tasks.map(t =>
+        t.id === action.payload.id ? action.payload : t
+      ),
+    }),
+    [TASK_REMOVE]: (state, action) => ({
+      ...state,
+      tasks: state.tasks.filter(t => t.id !== action.payload),
+    }),
+    [combineActions(TASK_SHOW_LOADER, TASK_HIDE_LOADER)]: (state, action) => ({
+      ...state,
+      isLoading: action.payload,
+    }),
   },
   initialState
 );

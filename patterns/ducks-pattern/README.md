@@ -104,19 +104,15 @@ store.dispatch(resourceUpdateRequest(1, { title: 'Hi!' }))
 ```javascript
 export default handleActions(
   {
-    TASK_ADD: (state, action) => {
-      return {
-        ...state,
-        currentTask: '',
-        tasks: state.tasks.concat(action.payload),
-      };
-    },
-    [combineActions(TASK_SHOW_LOADER, TASK_HIDE_LOADER)]: (state, action) => {
-      return {
-        ...state,
-        isLoading: action.payload,
-      };
-    },
+    TASK_ADD: (state, action) => ({
+      ...state,
+      currentTask: '',
+      tasks: state.tasks.concat(action.payload),
+    }),
+    [combineActions(TASK_SHOW_LOADER, TASK_HIDE_LOADER)]: (state, action) => ({
+      ...state,
+      isLoading: action.payload,
+    }),
   },
   initialState
 );
