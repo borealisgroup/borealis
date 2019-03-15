@@ -69,15 +69,18 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
-    'react/button-has-type': ['error', { reset: true }],
-    'react/destructuring-assignment': 'off',
-    'react/forbid-prop-types': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'react/no-array-index-key': 'off',
-    'react/no-did-update-set-state': 'off',
-    'react/no-string-refs': 'off',
-    'react/prefer-stateless-function': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
+
+    // to consider:
+    'react/no-array-index-key': 'off',
+    'react/no-string-refs': 'off',
+
+    // to remove:
+    'react/forbid-prop-types': 'off',
+    'react/no-did-update-set-state': 'off',
+    'react/button-has-type': ['error', { reset: true }],
+    'react/prefer-stateless-function': 'off',
   },
 };
