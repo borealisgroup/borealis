@@ -37,6 +37,9 @@ module.exports = {
       },
     ],
 
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'import/no-extraneous-dependencies': 'off',
@@ -66,7 +69,6 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
-    'react-hooks/rules-of-hooks': 'error',
     'react/button-has-type': ['error', { reset: true }],
     'react/destructuring-assignment': 'off',
     'react/forbid-prop-types': 'off',
