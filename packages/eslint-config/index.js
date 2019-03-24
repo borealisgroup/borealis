@@ -91,6 +91,12 @@ module.exports = {
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
 
+    'react/button-has-type': [
+      'error',
+      {
+        reset: true,
+      },
+    ],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
