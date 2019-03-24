@@ -227,3 +227,4 @@ See [re-ducks](https://github.com/alexnm/re-ducks) for more information.
 - [Refactoring to redux-actions](https://codeburst.io/redux-actions-through-example-part-1-f5b2dc71de06)
 - [Better Express Routing & Architecture for NodeJS](https://www.caffeinecoding.com/better-express-routing-for-nodejs)
 - [ARc](https://github.com/diegohaz/arc/wiki/Actions)
+- [Redux containers: mapDispatchToProps](https://gist.github.com/heygrady/c6c17fc7cbdd978f93a746056f618552)
