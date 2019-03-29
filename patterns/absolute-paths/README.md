@@ -5,11 +5,15 @@ Absolute paths for imports
 ## Prerequisites
 
 - create-react-app
-- cross-env
 
 ## Usage
 
-### react-scripts
+### cross-env
+Install `cross-env` as a dev dependency
+
+```
+npm install --save-dev cross-env
+```
 
 Add `cross-env NODE_PATH=src` in your `package.json`.
 
