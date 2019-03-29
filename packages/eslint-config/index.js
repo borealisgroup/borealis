@@ -30,12 +30,12 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': [
-      'error',
+      1,
       {
         trailingComma: 'es5',
         singleQuote: true,
       },
-    ],
+    ], // warn - just format
 
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -55,11 +55,11 @@ module.exports = {
 
     'linebreak-style': 'off',
     'no-console': [
-      'error',
+      1,
       {
         allow: ['info', 'warn', 'error'],
       },
-    ],
+    ], // warn - not for production
     'no-nested-ternary': 'off', // short
     'no-new': 'off', // exceptions
     'no-param-reassign': 'off',
@@ -82,10 +82,13 @@ module.exports = {
         message:
           '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
       },
-    ], // for..of OK
+    ], // for..of OK (break)
     'no-return-assign': 'off', // short
     'no-underscore-dangle': 'off',
-    'no-unused-vars': [1, { args: 'none' }],
+    'no-unused-vars': [
+      1,
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
+    ], // warn
     'prefer-promise-reject-errors': 'off',
 
     'promise/catch-or-return': 'off',
@@ -97,7 +100,7 @@ module.exports = {
         reset: true,
       },
     ],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
