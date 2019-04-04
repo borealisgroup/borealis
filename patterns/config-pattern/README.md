@@ -17,7 +17,7 @@ It's generally a bad practice to define constants in your business logic. For mo
 
 ```bash
 ├── config
-│   └── form.config.js              # constants used store/form and components/Form
+│   └── form.config.js              # constants used by store/form and components/Form
 |   store
 |   └── userForm/form.selectors.js
 |   └── userForm/form.config.js     # constants used only by store/form files
