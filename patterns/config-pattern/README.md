@@ -4,40 +4,38 @@ Configuration pattern
 
 ## Usage
 
-See the [example](example)
-
-As there is a conflict with ESLint `import/named` rule, update your `.eslintrc`:
-
-```js
-module.exports = {
-  extends: '@borealisgroup',
-  settings: {
-    'import/ignore': ['config'],
-  },
-};
-```  
+See the [example](example) (TODO: to update)
 
 ## Why
 
-See [dynamic-export](../dynamic-export/README.md#Why).
+It's generally a bad practice to define constants in your business logic. For more flexibility, config files can be used to export all the constants:
 
-It's generally a bad practice to define constants in your business logic. All constants should be stored in a `config` folder.
+- shared constants: used by multiple modules, it should be stored in the `config` folder.
+- local constants: used by only one module, it should be stored in the module using it `moduleName/moduleName.config.js`.
 
 ### Project Structure
 
 ```bash
 ├── config
-│   ├── index.js
-│   ├── config.js
-│   ├── config.development.js
-│   ├── config.production.js
-│   └── slice.config.js
+│   └── form.config.js              # constants used store/form and components/Form
+|   store
+|   └── userForm/form.selectors.js
+|   └── userForm/form.config.js     # constants used only by store/form files
+|   components
+|   └── Form
+|   |   └── Form.config.js          # constants used only by components/Form files
 ```
 
-- `index.js` - re-export all named export from `config.js`.
-- `config.js` - global configuration, re-export dynamically all properties of its `config` object.
-- `slice.config.js` - slice of configuration following the separation of concern principle. All slices of configuration are merged in `config.js`.
-- `config.development.js` - dev-only configuration, merged in `config.js` if `NODE_ENV === development`.
-- `config.production.js` - prod-only configuration, merged in `config.js` if `NODE_ENV === production`.
+Note that the constants should be stored in multiple config files following the separation of concern principle.
 
-Note that `config.development.js` is overwriting `config.js`, useful for testing purpose.
+### Development
+
+You can also choose to export different constant values depending on the environment (development, testing or production):
+
+```js
+export let WELCOME_MESSAGE = 'Welcome';
+
+if (process.env.NODE_ENV === 'development') {
+  WELCOME_MESSAGE = 'Test'
+}
+```
