@@ -54,7 +54,6 @@ From [awesome-eslint](https://github.com/dustinspecker/awesome-eslint):
 - [GraphQL](https://github.com/apollographql/eslint-plugin-graphql) - Check your GraphQL query strings against a schema.
 - [SQL](https://github.com/gajus/eslint-plugin-sql) - SQL linting rules for ESLint.
 - [HTML](https://github.com/BenoitZugmeyer/eslint-plugin-html) - Linting for JavaScript inside of HTML script tags.
-- [JSON](https://github.com/azeemba/eslint-plugin-json) - Lint your JSON files.
 
 ## Prettier
 
