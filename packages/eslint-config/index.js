@@ -4,6 +4,7 @@ module.exports = {
     'airbnb',
     'plugin:prettier/recommended',
     'plugin:promise/recommended',
+    'plugin:jest/recommended',
     'prettier/react',
   ],
   parserOptions: {
@@ -19,7 +20,7 @@ module.exports = {
     jest: true,
     webextensions: false,
   },
-  plugins: ['react', 'react-hooks', 'promise', 'prettier'],
+  plugins: ['react', 'react-hooks', 'promise', 'jest', 'prettier'],
   settings: {
     'import/resolver': {
       node: {
@@ -55,11 +56,11 @@ module.exports = {
 
     'linebreak-style': 'off',
     'no-console': [
-      1,
+      'error',
       {
         allow: ['info', 'warn', 'error'],
       },
-    ], // warn - not for production
+    ],
     'no-nested-ternary': 'off', // short
     'no-new': 'off', // exceptions
     'no-param-reassign': 'off',
@@ -86,9 +87,9 @@ module.exports = {
     'no-return-assign': 'off', // short
     'no-underscore-dangle': 'off',
     'no-unused-vars': [
-      1,
+      'error',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
-    ], // warn
+    ],
     'prefer-promise-reject-errors': 'off',
 
     'promise/catch-or-return': 'off',

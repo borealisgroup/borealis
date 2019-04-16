@@ -6,5 +6,5 @@
 /tmp/**
 /lib/util/unicode/is-combining-character.js
 test.js
-examples/
+# examples/
 lib/

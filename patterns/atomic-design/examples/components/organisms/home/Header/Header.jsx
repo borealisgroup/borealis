@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { LoginButton } from 'containers';
+import { LoginButton } from 'components/molecules/home/LoginButton';
 
 const Wrapper = styled.header`
   display: flex;

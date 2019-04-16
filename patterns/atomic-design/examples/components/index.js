@@ -1,3 +1,2 @@
-const { getModules } = require('@borealisgroup/dynamic-export');
-
-Object.assign(module.exports, getModules(require.context('.', true, /\.jsx$/)));
+export { Button } from './atoms/Button';
+export { Label } from './atoms/Label';

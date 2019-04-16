@@ -6,6 +6,12 @@ Configuration pattern
 
 See the [example](example) (TODO: to update)
 
+You can choose to export different constant values depending on the environment (development, test or production):
+
+```js
+export const USER_NAME = dev ? 'developer' : 'visitor';
+```
+
 ## Why
 
 It's generally a bad practice to define constants in your business logic. For more flexibility, config files can be used to export all the constants:
@@ -27,15 +33,3 @@ It's generally a bad practice to define constants in your business logic. For mo
 ```
 
 Note that the constants should be stored in multiple config files following the separation of concern principle.
-
-### Development
-
-You can also choose to export different constant values depending on the environment (development, testing or production):
-
-```js
-export let WELCOME_MESSAGE = 'Welcome';
-
-if (process.env.NODE_ENV === 'development') {
-  WELCOME_MESSAGE = 'Test'
-}
-```

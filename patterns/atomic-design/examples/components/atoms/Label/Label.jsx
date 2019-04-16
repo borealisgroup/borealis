@@ -5,7 +5,7 @@ const StyledLabel = styled.span`
   font-size: 14px;
 `;
 
-const Label = ({ text, ...props }) => <StyledLabel>{text}</StyledLabel>;
+const Label = ({ text }) => <StyledLabel>{text}</StyledLabel>;
 
 Label.propTypes = {};
 

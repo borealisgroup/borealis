@@ -18,7 +18,7 @@ const StyledButton = styled.input`
   }
 `;
 
-const Button = ({ children, ...props }) => (
+const Button = ({ children }) => (
   <StyledButton type="button">{children}</StyledButton>
 );
 
