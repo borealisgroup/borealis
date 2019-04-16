@@ -1,5 +1,7 @@
 # @borealisgroup/dynamic-export
 
+> This is no longer supported, please consider using static exports in `index.js` instead. The problem is that the script file doing the dynamic export should be executed before the files using the components. And it's something we can't control. The [Conclusion](#Conclusion) is still interesting to read.
+
 Utility to dynamically export all files matching a regular expression.
 
 ## Prerequisites
@@ -68,7 +70,7 @@ Advised for large and very active directories. See [Why](#Why).
 
 ### re-export default import as named import (static)
 
-Advised for small directories. It is redundant to manually add/modify/delete an export.
+Advised.
 ```js
 export { default as App } from './App';
 export { default as Header } from './Header';
@@ -76,7 +78,7 @@ export { default as Header } from './Header';
 
 ### re-export all named imports (static)
 
-Generally advised. This is quite good if you want to centralize (in `index.js`) the (unique) named exports from multiple files. 
+Advised. This is quite good if you want to centralize (in `index.js`) the (unique) named exports from multiple files. 
 
 ```js
 export * from './A';
