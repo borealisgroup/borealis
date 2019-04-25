@@ -26,7 +26,7 @@ import { ThemeProvider } from 'styled-components';
 import { borealis } from @borealisgroup/theme; //following imports also work: lat, ecoplast, mtmPlastics, rosier
 ...
 <ThemeProvider theme={borealis}>
-  // Any child components here has access to the theme
+  {/* Any child components here has access to the theme */}
 </ThemeProvider>
 ...
 ```
