@@ -41,7 +41,8 @@ const Link = styled.a`
 `;
 ```
 
-### properties
+### Properties
+
 The borealis brand has the following theme properties.
 ```JSON
 {
@@ -115,4 +116,4 @@ The borealis brand has the following theme properties.
   }
 }
 ```
-The other brands have the same values with the exception of colors and fonts.
+The other brands have the same values with the exception of colors, fonts and gradients.
