@@ -1,4 +1,3 @@
-
 const unit = 'px';
 
 const defaultColors = {
@@ -102,8 +101,10 @@ const borealis = {
     secondary: 'Roboto',
   },
   gradients: {
-    blueToWhite: 'linear-gradient(96deg, rgb(0, 93, 154) 25%, rgb(0, 163, 210) 45%, rgb(91, 197, 241) 55%, rgb(255, 255, 255) 75%);',
-    blue: 'linear-gradient(96deg, rgb(0, 45, 90) 0%, rgb(0, 93, 154) 25%, rgb(0, 153, 210) 60%, rgb(130, 207, 245) 100%);',
+    blueToWhite:
+      'linear-gradient(96deg, rgb(0, 93, 154) 25%, rgb(0, 163, 210) 45%, rgb(91, 197, 241) 55%, rgb(255, 255, 255) 75%);',
+    blue:
+      'linear-gradient(96deg, rgb(0, 45, 90) 0%, rgb(0, 93, 154) 25%, rgb(0, 153, 210) 60%, rgb(130, 207, 245) 100%);',
   },
   ...defaultValues,
 };
@@ -165,6 +166,4 @@ const rosier = {
   ...defaultValues,
 };
 
-export {
-  borealis, ecoplast, lat, mtmPlastics, rosier,
-};
+export { borealis, ecoplast, lat, mtmPlastics, rosier };
