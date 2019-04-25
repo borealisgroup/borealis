@@ -11,82 +11,69 @@ const defaultColors = {
 };
 
 const baseBorderRadius = 2;
-const defaultBorderRadiuses = {
-  xs: `${baseBorderRadius * 1}${unit}`,
-  md: `${baseBorderRadius * 2}${unit}`,
-  xl: `${baseBorderRadius * 4}${unit}`,
-  circle: '50%',
-};
+const borderRadiuses = [
+  `${baseBorderRadius * 1}${unit}`,
+  `${baseBorderRadius * 2}${unit}`,
+  `${baseBorderRadius * 4}${unit}`,
+  '50%',
+];
 
 const baseFontSize = 16;
-const defaultFontSize = {
-  xss: `${baseFontSize * 0.8}${unit}`,
-  xs: `${baseFontSize * 1}${unit}`,
-  sm: `${baseFontSize * 1.25}${unit}`,
-  md: `${baseFontSize * 1.6}${unit}`,
-  lg: `${baseFontSize * 2.4}${unit}`,
-  xl: `${baseFontSize * 3}${unit}`,
-  xll: `${baseFontSize * 6}${unit}`,
-};
+const fontSizes = [
+  `${baseFontSize * 0.8}${unit}`,
+  `${baseFontSize * 1}${unit}`,
+  `${baseFontSize * 1.25}${unit}`,
+  `${baseFontSize * 1.6}${unit}`,
+  `${baseFontSize * 2.4}${unit}`,
+  `${baseFontSize * 3}${unit}`,
+  `${baseFontSize * 6}${unit}`,
+];
 
 const baseLineHeight = 18;
-const defaultLineHeights = {
-  xss: `${baseLineHeight * 0.8}${unit}`,
-  xs: `${baseLineHeight * 1}${unit}`,
-  sm: `${baseLineHeight * 1.25}${unit}`,
-  md: `${baseLineHeight * 1.6}${unit}`,
-  lg: `${baseLineHeight * 2.4}${unit}`,
-  xl: `${baseLineHeight * 3}${unit}`,
-  xll: `${baseLineHeight * 6}${unit}`,
-};
+const lineHeights = [
+  `${baseLineHeight * 0.8}${unit}`,
+  `${baseLineHeight * 1}${unit}`,
+  `${baseLineHeight * 1.25}${unit}`,
+  `${baseLineHeight * 1.6}${unit}`,
+  `${baseLineHeight * 2.4}${unit}`,
+  `${baseLineHeight * 3}${unit}`,
+  `${baseLineHeight * 6}${unit}`,
+];
 
 const baseSpacing = 8;
-const defaultSpacing = {
-  xss: `${baseSpacing * 0.8}${unit}`,
-  xs: `${baseSpacing * 1}${unit}`,
-  sm: `${baseSpacing * 1.25}${unit}`,
-  md: `${baseSpacing * 1.6}${unit}`,
-  lg: `${baseSpacing * 2.4}${unit}`,
-  xl: `${baseSpacing * 3}${unit}`,
-  xll: `${baseSpacing * 6}${unit}`,
-};
+const spacings = [
+  `${baseSpacing * 0.8}${unit}`,
+  `${baseSpacing * 1}${unit}`,
+  `${baseSpacing * 1.25}${unit}`,
+  `${baseSpacing * 1.6}${unit}`,
+  `${baseSpacing * 2.4}${unit}`,
+  `${baseSpacing * 3}${unit}`,
+  `${baseSpacing * 6}${unit}`,
+];
 
-const defaultShadows = {
-  level1: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-  level2: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-  level3: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
-  level4: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-  glow: '0px 0px 10px 2px',
-};
+const shadows = [
+  '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+  '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+  '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+  '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+];
 
-const defaultBreakPoints = {
-  xss: `426${unit}`,
-  xs: `600${unit}`,
-  sm: `768${unit}`,
-  md: `992${unit}`,
-  lg: `1280${unit}`,
-  xl: `1600${unit}`,
-};
+const breakPoints = [
+  `426${unit}`,
+  `600${unit}`,
+  `768${unit}`,
+  `992${unit}`,
+  `1280${unit}`,
+  `1600${unit}`,
+];
 
 const defaultValues = {
-  borderRadiuses: {
-    ...defaultBorderRadiuses,
-  },
-  breakPoints: {
-    ...defaultBreakPoints,
-  },
-  fontSizes: {
-    ...defaultFontSize,
-  },
-  lineHeights: {
-    ...defaultLineHeights,
-  },
-  spacings: {
-    ...defaultSpacing,
-  },
-  shadows: {
-    ...defaultShadows,
-  },
+  borderRadiuses,
+  breakPoints,
+  fontSizes,
+  lineHeights,
+  spacings,
+  shadows,
 };
 
 const borealis = {

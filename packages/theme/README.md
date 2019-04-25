@@ -66,54 +66,53 @@ The borealis brand has the following theme properties.
     "blueToWhite": "linear-gradient(96deg, rgb(0, 93, 154) 25%, rgb(0, 163, 210) 45%, rgb(91, 197, 241) 55%, rgb(255, 255, 255) 75%);",
     "blue": "linear-gradient(96deg, rgb(0, 45, 90) 0%, rgb(0, 93, 154) 25%, rgb(0, 153, 210) 60%, rgb(130, 207, 245) 100%);"
   },
-  "borderRadiuses": {
-    "xs": "2px",
-    "md": "4px",
-    "xl": "8px",
-    "circle": "50%"
-  },
-  "breakPoints": {
-    "xss": "426px",
-    "xs": "600px",
-    "sm": "768px",
-    "md": "992px",
-    "lg": "1280px",
-    "xl": "1600px"
-  },
-  "fontSizes": {
-    "xss": "12.8px",
-    "xs": "16px",
-    "sm": "20px",
-    "md": "25.6px",
-    "lg": "38.4px",
-    "xl": "48px",
-    "xll": "96px"
-  },
-  "lineHeights": {
-    "xss": "14.4px",
-    "xs": "18px",
-    "sm": "22.5px",
-    "md": "28.8px",
-    "lg": "43.199999999999996px",
-    "xl": "54px",
-    "xll": "108px"
-  },
-  "spacings": {
-    "xss": "6.4px",
-    "xs": "8px",
-    "sm": "10px",
-    "md": "12.8px",
-    "lg": "19.2px",
-    "xl": "24px",
-    "xll": "48px"
-  },
-  "shadows": {
-    "level1": "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-    "level2": "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
-    "level3": "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-    "level4": "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
-    "glow": "0px 0px 10px 2px"
-  }
+  "borderRadiuses": [
+    "2px",
+    "4px",
+    "8px",
+    "50%"
+  ],
+  "breakPoints": [
+    "426px",
+    "600px",
+    "768px",
+    "992px",
+    "1280px",
+    "1600px"
+  ],
+  "fontSizes": [
+    "12.8px",
+    "16px",
+    "20px",
+    "25.6px",
+    "38.4px",
+    "48px",
+    "96px"
+  ],
+  "lineHeights": [
+    "14.4px",
+    "18px",
+    "22.5px",
+    "28.8px",
+    "43.199999999999996px",
+    "54px",
+    "108px"
+  ],
+  "spacings": [
+    "6.4px",
+    "8px",
+    "10px",
+    "12.8px",
+    "19.2px",
+    "24px",
+    "48px"
+  ],
+  "shadows": [
+    "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+    "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+    "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
+    "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"
+  ]
 }
 ```
 The other brands have the same values with the exception of colors, fonts and gradients.
