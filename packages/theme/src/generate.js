@@ -13,10 +13,10 @@ const borderRadiuses = [
   '50%',
 ];
 const getNumberSequence = n => Array.from(Array(n).keys());
-const spacings = getNumberSequence(8).map(base => {
+const space = getNumberSequence(8).map(base => {
   let result = base;
   if (base) result = 2 ** base;
-  return `${result}${PX}`;
+  return result;
 });
 
 const shadows = [
@@ -60,7 +60,7 @@ const defaultValues = {
   breakPoints,
   fontSizes,
   lineHeights,
-  spacings,
+  space,
   shadows,
 };
 
