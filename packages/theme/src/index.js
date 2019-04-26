@@ -18,17 +18,6 @@ const borderRadiuses = [
   '50%',
 ];
 
-const baseLineHeight = 18;
-const lineHeights = [
-  `${baseLineHeight * 0.8}${unit}`,
-  `${baseLineHeight * 1}${unit}`,
-  `${baseLineHeight * 1.25}${unit}`,
-  `${baseLineHeight * 1.6}${unit}`,
-  `${baseLineHeight * 2.4}${unit}`,
-  `${baseLineHeight * 3}${unit}`,
-  `${baseLineHeight * 6}${unit}`,
-];
-
 const baseSpacing = 8;
 const spacings = [
   `${baseSpacing * 0.8}${unit}`,
@@ -59,8 +48,7 @@ const breakPoints = [
 const getOnlyNumbers = string => string.replace(/\D/g, '');
 const roundTwoDecimals = number => Math.round(number * 100) / 100;
 
-const getResponsiveFontSize = minFactor => {
-  const minBase = 16;
+const getResponsiveSize = (minFactor, minBase) => {
   const minSize = roundTwoDecimals(minBase * minFactor);
   const maxFactor = 1.4;
   const maxSize = roundTwoDecimals(minSize * maxFactor);
@@ -70,7 +58,11 @@ const getResponsiveFontSize = minFactor => {
   return `calc(${minSize}px + (${maxSize} - ${minSize}) * ((100vw - ${minViewPortWidth}px) / (${maxViewPortWidth} - ${minViewPortWidth})))`; // https://css-tricks.com/books/volume-i/scale-typography-screen-size/
 };
 const fontSizes = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
-  getResponsiveFontSize(minFactor)
+  getResponsiveSize(minFactor, 16)
+);
+
+const lineHeights = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+  getResponsiveSize(minFactor, 19)
 );
 
 const defaultValues = {
