@@ -36,8 +36,8 @@ Any child styled component of the theme provider now has access to the theme pro
 import styled from 'styled-components';
 const Link = styled.a`
   color: ${({ theme }) => theme.colors.secondary};
-  line-height: ${({ theme }) => theme.lineHeights.lg};
-  font-size: ${({ theme }) => theme.fontSizes.lg};
+  line-height: ${({ theme }) => theme.lineHeights[2]};
+  font-size: ${({ theme }) => theme.fontSizes[2]};
 `;
 ```
 
