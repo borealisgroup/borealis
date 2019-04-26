@@ -18,17 +18,6 @@ const borderRadiuses = [
   '50%',
 ];
 
-const baseFontSize = 16;
-const fontSizes = [
-  `${baseFontSize * 0.8}${unit}`,
-  `${baseFontSize * 1}${unit}`,
-  `${baseFontSize * 1.25}${unit}`,
-  `${baseFontSize * 1.6}${unit}`,
-  `${baseFontSize * 2.4}${unit}`,
-  `${baseFontSize * 3}${unit}`,
-  `${baseFontSize * 6}${unit}`,
-];
-
 const baseLineHeight = 18;
 const lineHeights = [
   `${baseLineHeight * 0.8}${unit}`,
@@ -66,6 +55,23 @@ const breakPoints = [
   `1280${unit}`,
   `1600${unit}`,
 ];
+
+const getOnlyNumbers = string => string.replace(/\D/g, '');
+const roundTwoDecimals = number => Math.round(number * 100) / 100;
+
+const getResponsiveFontSize = minFactor => {
+  const minBase = 16;
+  const minSize = roundTwoDecimals(minBase * minFactor);
+  const maxFactor = 1.4;
+  const maxSize = roundTwoDecimals(minSize * maxFactor);
+  const minViewPortWidth = getOnlyNumbers(breakPoints[0]);
+  const maxViewPortWidth = getOnlyNumbers(breakPoints[breakPoints.length - 1]);
+
+  return `calc(${minSize}px + (${maxSize} - ${minSize}) * ((100vw - ${minViewPortWidth}px) / (${maxViewPortWidth} - ${minViewPortWidth})))`; // https://css-tricks.com/books/volume-i/scale-typography-screen-size/
+};
+const fontSizes = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+  getResponsiveFontSize(minFactor)
+);
 
 const defaultValues = {
   borderRadiuses,
