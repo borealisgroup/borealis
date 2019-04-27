@@ -13,16 +13,6 @@ const borderRadiuses = [
   '50%',
 ];
 
-const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128];
-
-const shadows = [
-  '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-  '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-  '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
-  '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-  '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)',
-];
-
 const breakPoints = [
   `426${PX}`,
   `600${PX}`,
@@ -56,9 +46,20 @@ const defaultValues = {
   borderRadiuses,
   breakPoints,
   fontSizes,
+  fontWeights: {
+    light: 300,
+    normal: 400,
+    bold: 600,
+  },
   lineHeights,
-  space,
-  shadows,
+  space: [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128],
+  shadows: [
+    '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+    '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+    '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+    '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+    '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)',
+  ],
 };
 
 const defaultColors = {
@@ -139,15 +140,15 @@ const borealis = {
     secondary: borealisPalette.blue[5],
     tertiary: borealisPalette.lightblue[5],
   },
-  fonts: {
-    primary: 'Arial',
-    secondary: 'Roboto',
-  },
   gradients: {
     blueToWhite:
       'linear-gradient(96deg, rgb(0, 93, 154) 25%, rgb(0, 163, 210) 45%, rgb(91, 197, 241) 55%, rgb(255, 255, 255) 75%);',
     blue:
       'linear-gradient(96deg, rgb(0, 45, 90) 0%, rgb(0, 93, 154) 25%, rgb(0, 153, 210) 60%, rgb(130, 207, 245) 100%);',
+  },
+  fonts: {
+    primary: 'Arial',
+    secondary: 'Roboto',
   },
   ...defaultValues,
 };
