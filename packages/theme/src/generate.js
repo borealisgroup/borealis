@@ -91,8 +91,10 @@ const borealisPalette = {
   lightblue: generate('#0099d2'),
   red: generate('#d10000'),
   orange: generate('#ee7e1a'),
+  lightorange: generate('#fab900'),
   yellow: generate('#ffe100'),
   green: generate('#91b119'),
+  lightgreen: generate('#d2d232'),
   gray: generate('#bfbfbf'),
 };
 
@@ -139,6 +141,7 @@ const borealis = {
     primary: borealisPalette.darkblue[5],
     secondary: borealisPalette.blue[5],
     tertiary: borealisPalette.lightblue[5],
+    bodytext: borealisPalette.darkblue[5],
   },
   gradients: {
     blueToWhite:
