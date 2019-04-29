@@ -1,5 +1,6 @@
 const antDesignColors = require('@ant-design/colors');
 const fs = require('fs');
+const { getResponsiveSize } = require('./font-size-resp');
 
 const { generate } = antDesignColors;
 
@@ -22,36 +23,25 @@ const breakPoints = [
   `1600${PX}`,
 ];
 
-const getOnlyNumbers = string => string.replace(/\D/g, '');
-const roundTwoDecimals = number => Math.round(number * 100) / 100;
-
-const getResponsiveSize = (minFactor, minBase) => {
-  const minSize = roundTwoDecimals(minBase * minFactor);
-  const maxFactor = 1.4;
-  const maxSize = roundTwoDecimals(minSize * maxFactor);
-  const minViewPortWidth = getOnlyNumbers(breakPoints[0]);
-  const maxViewPortWidth = getOnlyNumbers(breakPoints[breakPoints.length - 1]);
-
-  return `calc(${minSize}px + (${maxSize} - ${minSize}) * ((100vw - ${minViewPortWidth}px) / (${maxViewPortWidth} - ${minViewPortWidth})))`; // https://css-tricks.com/books/volume-i/scale-typography-screen-size/
-};
-const fontSizes = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
-  getResponsiveSize(minFactor, 16)
+const fontSizesResp = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+  getResponsiveSize(breakPoints, minFactor, 16)
 );
 
 const lineHeights = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
-  getResponsiveSize(minFactor, 19)
+  getResponsiveSize(breakPoints, minFactor, 19)
 );
 
 const defaultValues = {
   borderRadiuses,
   breakPoints,
-  fontSizes,
+  fontSizesResp,
+  lineHeights,
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48],
   fontWeights: {
     light: 300,
     normal: 400,
     bold: 600,
   },
-  lineHeights,
   space: [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128],
   shadows: [
     '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
@@ -63,7 +53,19 @@ const defaultValues = {
 };
 
 const defaultColors = {
-  blackfade: [
+  black: '#000',
+  white: '#fff',
+  transparent: 'transparent',
+  borders: [
+    0,
+    '1px solid',
+    '2px solid',
+    '4px solid',
+    '8px solid',
+    '16px solid',
+    '32px solid',
+  ],
+  blacks: [
     'rgba(0, 0, 0, 0.80)',
     'rgba(0, 0, 0, 0.65)',
     'rgba(0, 0, 0, 0.50)',
@@ -73,7 +75,7 @@ const defaultColors = {
     'rgba(0, 0, 0, 0.04)',
     'rgba(0, 0, 0, 0.02)',
   ],
-  whitefade: [
+  whites: [
     'rgba(255, 255, 255, 1)',
     'rgba(255, 255, 255, 0.8)',
     'rgba(255, 255, 255, 0.65)',
