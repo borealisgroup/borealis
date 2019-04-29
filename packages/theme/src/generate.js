@@ -23,6 +23,16 @@ const breakPoints = [
   `1600${PX}`,
 ];
 
+const borders = [
+  0,
+  `1${PX} solid`,
+  `2${PX} solid`,
+  `4${PX} solid`,
+  `8${PX} solid`,
+  `16${PX} solid`,
+  `32${PX} solid`,
+];
+
 const fontSizesFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
   getResponsiveSize(breakPoints, minFactor, 16)
 );
@@ -32,6 +42,7 @@ const lineHeights = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
 );
 
 const defaultValues = {
+  borders,
   borderRadiuses,
   breakPoints,
   fontSizesFluid,
@@ -56,15 +67,6 @@ const defaultColors = {
   black: '#000',
   white: '#fff',
   transparent: 'transparent',
-  borders: [
-    0,
-    '1px solid',
-    '2px solid',
-    '4px solid',
-    '8px solid',
-    '16px solid',
-    '32px solid',
-  ],
   blacks: [
     'rgba(0, 0, 0, 0.80)',
     'rgba(0, 0, 0, 0.65)',
