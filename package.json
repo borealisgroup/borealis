@@ -1,6 +1,8 @@
 {
   "name": "borealis-js",
   "scripts": {
+    "storybook": "start-storybook -p 6007",
+    "build-storybook": "build-storybook",
     "generate": "plop --plopfile ./scripts/generators/index.js",
     "release": "lerna run lint && lerna run build && lerna publish"
   },
@@ -10,6 +12,11 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/preset-env": "^7.3.4",
     "@borealisgroup/eslint-config": "file:packages/eslint-config",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "babel-plugin-inline-json-import": "^0.3.2",
     "cross-env": "^5.2.0",
     "eslint": "^5.15.1",
     "lerna": "^3.13.1",
