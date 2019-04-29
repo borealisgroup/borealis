@@ -23,7 +23,7 @@ const breakPoints = [
   `1600${PX}`,
 ];
 
-const fontSizesResp = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+const fontSizesFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
   getResponsiveSize(breakPoints, minFactor, 16)
 );
 
@@ -34,7 +34,7 @@ const lineHeights = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
 const defaultValues = {
   borderRadiuses,
   breakPoints,
-  fontSizesResp,
+  fontSizesFluid,
   lineHeights,
   fontSizes: [12, 14, 16, 20, 24, 32, 40, 48],
   fontWeights: {
