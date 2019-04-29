@@ -1,5 +1,6 @@
 const antDesignColors = require('@ant-design/colors');
 const fs = require('fs');
+const { getResponsiveSize } = require('./font-size-resp');
 
 const { generate } = antDesignColors;
 
@@ -12,19 +13,6 @@ const borderRadiuses = [
   `${baseBorderRadius * 4}${PX}`,
   '50%',
 ];
-const getNumberSequence = n => Array.from(Array(n).keys());
-const spacings = getNumberSequence(8).map(base => {
-  let result = base;
-  if (base) result = 2 ** base;
-  return `${result}${PX}`;
-});
-
-const shadows = [
-  '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-  '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
-  '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
-  '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
-];
 
 const breakPoints = [
   `426${PX}`,
@@ -35,37 +23,49 @@ const breakPoints = [
   `1600${PX}`,
 ];
 
-const getOnlyNumbers = string => string.replace(/\D/g, '');
-const roundTwoDecimals = number => Math.round(number * 100) / 100;
-
-const getResponsiveSize = (minFactor, minBase) => {
-  const minSize = roundTwoDecimals(minBase * minFactor);
-  const maxFactor = 1.4;
-  const maxSize = roundTwoDecimals(minSize * maxFactor);
-  const minViewPortWidth = getOnlyNumbers(breakPoints[0]);
-  const maxViewPortWidth = getOnlyNumbers(breakPoints[breakPoints.length - 1]);
-
-  return `calc(${minSize}px + (${maxSize} - ${minSize}) * ((100vw - ${minViewPortWidth}px) / (${maxViewPortWidth} - ${minViewPortWidth})))`; // https://css-tricks.com/books/volume-i/scale-typography-screen-size/
-};
-const fontSizes = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
-  getResponsiveSize(minFactor, 16)
+const fontSizesFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+  getResponsiveSize(breakPoints, minFactor, 16)
 );
 
 const lineHeights = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
-  getResponsiveSize(minFactor, 19)
+  getResponsiveSize(breakPoints, minFactor, 19)
 );
 
 const defaultValues = {
   borderRadiuses,
   breakPoints,
-  fontSizes,
+  fontSizesFluid,
   lineHeights,
-  spacings,
-  shadows,
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48],
+  fontWeights: {
+    light: 300,
+    normal: 400,
+    bold: 600,
+  },
+  space: [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128],
+  shadows: [
+    '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
+    '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+    '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+    '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+    '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)',
+  ],
 };
 
 const defaultColors = {
-  blackfade: [
+  black: '#000',
+  white: '#fff',
+  transparent: 'transparent',
+  borders: [
+    0,
+    '1px solid',
+    '2px solid',
+    '4px solid',
+    '8px solid',
+    '16px solid',
+    '32px solid',
+  ],
+  blacks: [
     'rgba(0, 0, 0, 0.80)',
     'rgba(0, 0, 0, 0.65)',
     'rgba(0, 0, 0, 0.50)',
@@ -75,7 +75,7 @@ const defaultColors = {
     'rgba(0, 0, 0, 0.04)',
     'rgba(0, 0, 0, 0.02)',
   ],
-  whitefade: [
+  whites: [
     'rgba(255, 255, 255, 1)',
     'rgba(255, 255, 255, 0.8)',
     'rgba(255, 255, 255, 0.65)',
@@ -93,8 +93,10 @@ const borealisPalette = {
   lightblue: generate('#0099d2'),
   red: generate('#d10000'),
   orange: generate('#ee7e1a'),
+  lightorange: generate('#fab900'),
   yellow: generate('#ffe100'),
   green: generate('#91b119'),
+  lightgreen: generate('#d2d232'),
   gray: generate('#bfbfbf'),
 };
 
@@ -141,16 +143,17 @@ const borealis = {
     primary: borealisPalette.darkblue[5],
     secondary: borealisPalette.blue[5],
     tertiary: borealisPalette.lightblue[5],
-  },
-  fonts: {
-    primary: 'Arial',
-    secondary: 'Roboto',
+    bodytext: borealisPalette.darkblue[5],
   },
   gradients: {
     blueToWhite:
       'linear-gradient(96deg, rgb(0, 93, 154) 25%, rgb(0, 163, 210) 45%, rgb(91, 197, 241) 55%, rgb(255, 255, 255) 75%);',
     blue:
       'linear-gradient(96deg, rgb(0, 45, 90) 0%, rgb(0, 93, 154) 25%, rgb(0, 153, 210) 60%, rgb(130, 207, 245) 100%);',
+  },
+  fonts: {
+    primary: 'Arial',
+    secondary: 'Roboto',
   },
   ...defaultValues,
 };
