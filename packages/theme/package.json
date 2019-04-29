@@ -18,7 +18,7 @@
   },
   "scripts": {
     "generate": "node src/generate.js",
-    "build": "npm run generate && babel --root-mode upward src -d lib --copy-files && rm lib/generate.js",
+    "build": "npm run generate && babel --root-mode upward src -d lib --ignore 'src/generate.js,**/*.stories.js'",
     "lint": "eslint src test"
   },
   "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a",
