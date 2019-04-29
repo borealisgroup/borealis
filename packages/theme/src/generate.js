@@ -37,17 +37,22 @@ const fontSizesFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
   getResponsiveSize(breakPoints, minFactor, 16)
 );
 
-const lineHeights = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+const lineHeightsFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
   getResponsiveSize(breakPoints, minFactor, 19)
 );
+
+const fontSizes = [12, 14, 16, 20, 24, 32, 40, 48];
+
+const lineHeights = fontSizes.map(fontSize => fontSize * 1.5);
 
 const defaultValues = {
   borders,
   borderRadiuses,
   breakPoints,
   fontSizesFluid,
+  lineHeightsFluid,
   lineHeights,
-  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48],
+  fontSizes,
   fontWeights: {
     light: 300,
     normal: 400,
