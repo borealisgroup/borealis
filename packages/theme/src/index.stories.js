@@ -169,6 +169,7 @@ const getColors = colors => {
         );
       }
     }
+    return null;
   });
 
   return WrappingDocumentation(

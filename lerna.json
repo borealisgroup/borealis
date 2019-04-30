@@ -2,7 +2,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "1.6.3",
+  "version": "1.7.2",
   "changelog": {
     "repo": "borealisgroup/borealis-js",
     "cacheDir": ".changelog",
