@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 
 import { Borealis, Ecoplast, LAT, MtmPlastics, Rosier } from './logos';
 
-const stories = storiesOf('components', module);
+const stories = storiesOf('components/logos', module);
 
 stories.addDecorator(withInfo);
 
