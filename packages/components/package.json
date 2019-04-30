@@ -1,9 +1,9 @@
 {
-  "name": "@borealisgroup/logo",
+  "name": "@borealisgroup/components",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/logo#readme",
+  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/components#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
@@ -11,7 +11,7 @@
   ],
   "repository": {
 		"type": "git",
-    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/logo"
+    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/components"
   },
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis-js/issues"

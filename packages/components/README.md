@@ -1,4 +1,4 @@
-# @borealisgroup/logo
+# @borealisgroup/components
 
 [Description]
 
@@ -9,7 +9,7 @@
 Using npm:
 
 ```
-npm install --save @borealisgroup/logo
+npm install --save @borealisgroup/components
 ```
 
 ## Usage

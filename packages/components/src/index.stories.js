@@ -3,9 +3,9 @@ import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 import { storiesOf } from '@storybook/react';
 
-import { Borealis, Ecoplast, LAT, MtmPlastics, Rosier } from './brands';
+import { Borealis, Ecoplast, LAT, MtmPlastics, Rosier } from './logos';
 
-const stories = storiesOf('Logo', module);
+const stories = storiesOf('components', module);
 
 stories.addDecorator(withInfo);
 
