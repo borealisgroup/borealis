@@ -12,7 +12,7 @@ stories.addDecorator(withInfo);
 stories.addDecorator(withKnobs);
 
 const howToImportCodeInfo = nameComponent => ({
-  info: `\`import { ${nameComponent} } from '@borealisgroup/logo';\``,
+  info: `\`import { ${nameComponent} } from '@borealisgroup/components';\``,
 });
 
 stories.add(
