@@ -10,14 +10,14 @@
     "lib"
   ],
   "repository": {
-		"type": "git",
+    "type": "git",
     "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/components"
   },
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "scripts": {
-    "build": "babel --root-mode upward src -d lib",
+    "build": "babel --root-mode upward src -d lib --ignore '**/*.stories.js'",
     "lint": "eslint src test"
   }
 }
