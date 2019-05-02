@@ -17,7 +17,6 @@
     "url": "https://github.com/borealisgroup/borealis-js/issues"
   },
   "scripts": {
-    "build": "babel --root-mode upward src -d lib --ignore '**/*.stories.js'",
-    "lint": "eslint src test"
+    "build": "babel --root-mode upward src -d lib --ignore '**/*.stories.js'"
   }
 }
