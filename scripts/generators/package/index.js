@@ -25,7 +25,7 @@ module.exports = {
       message: '--save-dev?',
     },
   ],
-  actions: data => {
+  actions: () => {
     // Generate
     const actions = [
       {
@@ -44,7 +44,7 @@ module.exports = {
       },
       {
         ...add,
-        path: '../../packages/{{name}}/test/index.js',
+        path: '../../packages/{{name}}/__tests__/index.js',
       },
       {
         ...add,

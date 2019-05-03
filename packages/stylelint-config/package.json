@@ -17,12 +17,11 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "files": [
     "lib"
   ],
-  "scripts": {
-    "build": "babel --root-mode upward src -d lib"
-  },
   "dependencies": {
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0",

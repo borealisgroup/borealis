@@ -6,6 +6,8 @@
   "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/theme#readme",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "files": [
     "lib"
   ],
@@ -18,7 +20,7 @@
   },
   "scripts": {
     "generate": "node src/generate.js",
-    "build": "npm run generate && babel --root-mode upward src -d lib --ignore 'src/generate.js,**/*.stories.js'"
+    "build": "npm run generate && rollup -c=../../rollup.config.js"
   },
   "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a",
   "devDependencies": {

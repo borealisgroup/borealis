@@ -6,6 +6,8 @@
   "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/components#readme",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "files": [
     "lib"
   ],
@@ -15,8 +17,5 @@
   },
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis-js/issues"
-  },
-  "scripts": {
-    "build": "babel --root-mode upward src -d lib --ignore '**/*.stories.js'"
   }
 }
