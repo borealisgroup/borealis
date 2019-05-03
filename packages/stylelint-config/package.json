@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/stylelint-config",
-  "version": "1.2.4",
+  "version": "1.7.3",
   "description": "Stylelint config for CSS linting.",
   "keywords": [
     "stylelint",
@@ -17,18 +17,16 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "files": [
     "lib"
   ],
-  "scripts": {
-    "build": "babel --root-mode upward src -d lib",
-    "lint": "eslint src test"
-  },
   "dependencies": {
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.2.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.5.2"
+    "stylelint-processor-styled-components": "^1.6.0"
   },
   "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
 }

@@ -13,11 +13,21 @@ npm install lerna -g
 
 ### Setup
 
+Clone the repository.
+
 ```bash
 git clone https://github.com/borealisgroup/borealis-js
 cd borealis-js
-lerna bootstrap --hoist
 ```
+
+Bootstrap the packages: it installs the dependencies of the packages and links any cross-dependencies
+
+```bash
+npm run bootstrap
+```
+
+[Hoisting](https://github.com/lerna/lerna/blob/master/doc/hoist.md) is basically doing that:
+> Common dependencies will be installed only to the top-level node_modules, and omitted from individual package node_modules.
 
 ### Add a new package
 
@@ -38,7 +48,7 @@ npm publish --access public
 
 In the project you want to test the package, run:
 
-```
+```bash
 npm install /absolute/path/to/package
 ```
 
@@ -76,25 +86,25 @@ Common prefixes:
 - `refactor:` A code change that neither fixes a bug nor adds a feature
 - `style:` Changes that do not affect the meaning of the code (linting)
 - `vendor:` Bumping a dependency like libchromiumcontent or node
-- `chore:` Changes to the build process or auxiliary tools and libraries such as documentation generation; no production code change; nothing that an external user would see
 
 ## Pull Request Process
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a
+1. The prefix of the branch should be the name of the package or pattern to update.
+2. Ensure any install or build dependencies are removed before the end of the layer when doing a
    build.
-2. Update the README.md with details of changes to the interface, this includes new environment
+3. Update the README.md with details of changes to the interface, this includes new environment
    variables, exposed ports, useful file locations and container parameters.
-3. Increase the version numbers in any examples files and the README.md to the new version that this
+4. Increase the version numbers in any examples files and the README.md to the new version that this
    Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
+5. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ## Publish existing packages
 
-Use eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI:
+Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, this command will lint, build and publish packages that have changed since the last release:
 
-```
-npm run release           # lint, build and publish packages that have changed since the last release
+```bash
+npm run release
 ```
 
 ## More

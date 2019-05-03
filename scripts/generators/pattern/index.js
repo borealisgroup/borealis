@@ -15,7 +15,7 @@ module.exports = {
       },
     },
   ],
-  actions: data => {
+  actions: () => {
     // Generate
     const actions = [
       {

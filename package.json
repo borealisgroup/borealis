@@ -1,16 +1,23 @@
 {
   "name": "borealis-js",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "scripts": {
-    "storybook": "start-storybook -p 6007",
+    "bootstrap": "lerna bootstrap --hoist",
     "build-storybook": "build-storybook",
+    "build": "lerna run build && lerna exec --parallel --since --ignore **/theme --ignore **/eslint-config -- rollup -c=../../rollup.config.js",
+    "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
-    "release": "lerna run lint && lerna run build && lerna publish"
+    "lint": "lerna exec --parallel --since -- eslint . --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx",
+    "release": "npm run lint && npm run build && lerna publish",
+    "storybook": "start-storybook -p 6007"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@borealisgroup/eslint-config": "file:packages/eslint-config",
     "@storybook/addon-actions": "^5.0.11",
@@ -23,13 +30,17 @@
     "color": "^3.1.1",
     "copy-text-to-clipboard": "^2.1.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.15.1",
-    "lerna": "^3.13.1",
+    "eslint": "^5.16.0",
+    "lerna": "^3.13.4",
     "npm-run-all": "^4.1.5",
     "plop": "^2.3.0",
     "prop-types": "^15.7.2",
     "react-notifications": "^1.4.3",
+    "rollup": "^1.11.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-includepaths": "^0.2.3",
+    "rollup-plugin-node-resolve": "^4.2.3",
     "styled-components": "^4.2.0"
-  },
-  "dependencies": {}
+  }
 }
