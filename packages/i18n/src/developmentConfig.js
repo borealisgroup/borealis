@@ -3,7 +3,7 @@ import LastUsed from 'locize-lastused';
 import Editor from 'locize-editor';
 import i18n from './sharedConfig';
 
-export const buildDevelopmentConfig = (projectId, apiKey) => {
+const buildDevelopmentConfig = (projectId, apiKey) => {
   const locizeOptions = {
     projectId,
     apiKey,
@@ -30,4 +30,7 @@ export const buildDevelopmentConfig = (projectId, apiKey) => {
         bindI18n: 'languageChanged editorSaved',
       },
     });
+  return i18n;
 };
+
+export default buildDevelopmentConfig;
