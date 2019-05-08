@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/theme",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "A default theme for every Borealis brand to use within styled components",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/theme#readme",
