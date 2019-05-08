@@ -6,7 +6,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
     "build-storybook": "build-storybook",
-    "build": "lerna run build && lerna exec --parallel --since --ignore **/theme --ignore **/eslint-config -- rollup -c=../../rollup.config.js",
+    "build": "lerna run build --since && lerna exec --parallel --since --ignore **/theme --ignore **/eslint-config -- rollup -c=../../rollup.config.js",
     "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
     "lint": "lerna exec --parallel --since -- eslint . --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx",
