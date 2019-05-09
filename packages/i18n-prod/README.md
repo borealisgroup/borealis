@@ -1,4 +1,4 @@
-# @borealisgroup/i18n
+# @borealisgroup/i18n-prod
 
 [Description]
 
@@ -9,7 +9,7 @@
 Using npm:
 
 ```
-npm install --save @borealisgroup/i18n
+npm install --save @borealisgroup/i18n-prod
 ```
 
 ## Usage

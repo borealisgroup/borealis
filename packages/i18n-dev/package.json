@@ -1,9 +1,9 @@
 {
-  "name": "@borealisgroup/i18n",
+  "name": "@borealisgroup/i18n-dev",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n#readme",
+  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n-dev#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n"
+    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n-dev"
   },
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis-js/issues"
@@ -22,9 +22,7 @@
     "i18next": "^15.1.0",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-locize-backend": "^1.9.0",
-    "i18next-xhr-backend": "^2.0.1",
     "locize-editor": "^1.7.0",
-    "locize-lastused": "^1.1.0",
-    "react-i18next": "^10.9.0"
+    "locize-lastused": "^1.1.0"
   }
 }

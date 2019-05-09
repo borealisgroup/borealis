@@ -1,7 +1,8 @@
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-locize-backend';
 import LastUsed from 'locize-lastused';
 import Editor from 'locize-editor';
-import i18n from './sharedConfig';
 
 const buildDevelopmentConfig = (projectId, apiKey) => {
   const locizeOptions = {
@@ -11,6 +12,7 @@ const buildDevelopmentConfig = (projectId, apiKey) => {
   };
 
   i18n
+    .use(LanguageDetector)
     .use(Backend)
     .use(LastUsed)
     .use(Editor)
@@ -19,6 +21,10 @@ const buildDevelopmentConfig = (projectId, apiKey) => {
       saveMissing: true,
       backend: locizeOptions,
       locizeLastUsed: locizeOptions,
+      fallbackLng: 'en',
+      interpolation: {
+        escapeValue: false,
+      },
       editor: {
         ...locizeOptions,
         onEditorSaved: async (lng, ns) => {
