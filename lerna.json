@@ -2,11 +2,12 @@
   "packages": [
     "packages/*"
   ],
-  "version": "1.7.5",
+  "version": "independent",
   "ignoreChanges": [
     "**/__fixtures__/**",
     "**/__tests__/**",
-    "**/*.md"
+    "**/*.md",
+    "**/package-lock.json"
   ],
   "changelog": {
     "repo": "borealisgroup/borealis-js",
