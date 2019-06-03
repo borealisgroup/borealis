@@ -125,7 +125,6 @@ const ColorDocumentation = (value, name, index) => {
   const css = `\${({ theme }) => theme.colors.${name}${
     index !== '' ? `[${index}]` : ''
   }};`;
-
   return (
     <Background backgroundColor={value}>
       <div>
@@ -134,7 +133,7 @@ const ColorDocumentation = (value, name, index) => {
           <Button>Copy code</Button>
         </Form>
         <Form display="block" onSubmit={event => copyToClipBoard(value, event)}>
-          <Button>Copy value</Button>
+          <Button>{value}</Button>
         </Form>
       </div>
     </Background>
