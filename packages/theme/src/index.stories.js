@@ -124,7 +124,7 @@ const ColorDocumentation = (value, name, index) => {
   `;
   const css = `\${({ theme }) => theme.colors.${name}${
     index !== '' ? `[${index}]` : ''
-  }};`;
+    }};`;
   return (
     <Background backgroundColor={value}>
       <div>
@@ -286,7 +286,7 @@ const getTypographic = (data, property, name, extra, cssName) => {
 };
 
 const getTypographicObject = (data, property, name, extra, cssName) => {
-  const documentation = Object.keys(data).map((key, index) =>
+  const documentation = Object.keys(data).map(key =>
     VisualDocumentation(
       <Box
         {...boxDefaultProps}
@@ -295,7 +295,7 @@ const getTypographicObject = (data, property, name, extra, cssName) => {
       >
         {lorem}
       </Box>,
-      `${cssName}: \${({ theme }) => theme.${name}[${index}]};${extra}`,
+      `${cssName}: \${({ theme }) => theme.${name}.${key}};${extra}`,
       data[key]
     )
   );
