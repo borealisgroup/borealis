@@ -1,6 +1,7 @@
 import React from 'react';
+import { ChangeColor } from './utils';
 
-const Rosier = props => (
+const Rosier = ({ color, ...props }) => (
   <svg
     id="prefix__Layer_1"
     x={0}
@@ -9,6 +10,8 @@ const Rosier = props => (
     xmlSpace="preserve"
     {...props}
   >
+    <title>Rosier Logo</title>
+    <ChangeColor color={color} />
     <style>{'.prefix__st0{fill:#00adee}'}</style>
     <path
       className="prefix__st0"

@@ -1,7 +1,10 @@
 import React from 'react';
+import { ChangeColor } from './utils';
 
-const SvgComponent = props => (
+const Ecoplast = ({ color, ...props }) => (
   <svg viewBox="0 0 676 137" {...props}>
+    <title>Ecoplast Logo</title>
+    <ChangeColor color={color} />
     <text
       transform="translate(139.547 108.512)"
       fontSize={144.029}
@@ -14,4 +17,4 @@ const SvgComponent = props => (
   </svg>
 );
 
-export default SvgComponent;
+export default Ecoplast;

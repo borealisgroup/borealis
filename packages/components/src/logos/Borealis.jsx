@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { showComponent } from './utils';
+import { showComponent, ChangeColor } from './utils';
 
 const shapePath = (
   <>
@@ -41,8 +41,10 @@ const getViewBox = (shape, name, tagline) => {
   return defaultViewBox;
 };
 
-const Borealis = ({ shape, name, tagline, ...props }) => (
+const Borealis = ({ shape, name, tagline, color, ...props }) => (
   <svg viewBox={getViewBox(shape, name, tagline)} {...props}>
+    <title>Borealis Logo</title>
+    <ChangeColor color={color} />
     {showComponent(shapePath, shape)}
     {showComponent(namePath, name)}
     {showComponent(taglinePath, tagline)}
@@ -53,12 +55,14 @@ Borealis.defaultProps = {
   tagline: true,
   shape: true,
   name: true,
+  color: null,
 };
 
 Borealis.propTypes = {
   tagline: PropTypes.bool,
   shape: PropTypes.bool,
   name: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 export default Borealis;

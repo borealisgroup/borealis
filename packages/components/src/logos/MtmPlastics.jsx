@@ -1,19 +1,22 @@
 import React from 'react';
+import { ChangeColor } from './utils';
 
-const MtmPlastics = props => (
+const MtmPlastics = ({ color, ...props }) => (
   <svg
     id="prefix__Layer_1"
     x={0}
     y={0}
-    viewBox="0 0 750 195"
+    viewBox="0 0 753 195"
     xmlSpace="preserve"
     {...props}
   >
+    <title>mtm plastics Logo</title>
     <style>
       {
         '.prefix__st0{opacity:.33;enable-background:new}.prefix__st0,.prefix__st1{fill:#007858}.prefix__st3{font-size:90.5798px}'
       }
     </style>
+    <ChangeColor color={color} />
     <circle className="prefix__st0" cx={117.43} cy={104.29} r={87.2} />
     <circle className="prefix__st0" cx={174.6} cy={58.33} r={57.17} />
     <circle className="prefix__st0" cx={150.51} cy={108.75} r={35.17} />
