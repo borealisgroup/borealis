@@ -13,6 +13,7 @@ import {
   NutriGuide,
   MyBorealis,
   UltraPolymers,
+  BorealisDigitalStudio,
 } from '.';
 
 const stories = storiesOf('components/logos', module);
@@ -54,6 +55,9 @@ const Logos = [
   },
   {
     Source: UltraPolymers,
+  },
+  {
+    Source: BorealisDigitalStudio,
   },
 ];
 
