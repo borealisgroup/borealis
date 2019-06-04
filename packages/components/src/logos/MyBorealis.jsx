@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { ChangeColor } from './utils';
 
 const MyBorealis = ({ color, ...props }) => (
-  <svg viewBox="0 0 726 106.5" {...props}>
+  <svg className="change_color" viewBox="0 0 726 106.5" {...props}>
     <title>MyBorealis Logo</title>
     <ChangeColor color={color} />
     <defs>
@@ -46,5 +48,13 @@ const MyBorealis = ({ color, ...props }) => (
     </g>
   </svg>
 );
+
+MyBorealis.defaultProps = {
+  color: null,
+};
+
+MyBorealis.propTypes = {
+  color: PropTypes.string,
+};
 
 export default MyBorealis;

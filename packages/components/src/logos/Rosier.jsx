@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ChangeColor } from './utils';
 
 const Rosier = ({ color, ...props }) => (
   <svg
+    className="change_color"
     id="prefix__Layer_1"
     x={0}
     y={0}
@@ -27,5 +29,13 @@ const Rosier = ({ color, ...props }) => (
     />
   </svg>
 );
+
+Rosier.defaultProps = {
+  color: null,
+};
+
+Rosier.propTypes = {
+  color: PropTypes.string,
+};
 
 export default Rosier;

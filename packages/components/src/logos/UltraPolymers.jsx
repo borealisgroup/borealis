@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ChangeColor } from './utils';
 
 const UltraPolymers = ({ color, ...props }) => (
-  <svg viewBox="0 0 413.2 75.8" {...props}>
+  <svg className="change_color" viewBox="0 0 413.2 75.8" {...props}>
     <title>Ultra Polymers Logo</title>
     <ChangeColor color={color} />
     <path
@@ -28,5 +29,13 @@ const UltraPolymers = ({ color, ...props }) => (
     </text>
   </svg>
 );
+
+UltraPolymers.defaultProps = {
+  color: null,
+};
+
+UltraPolymers.propTypes = {
+  color: PropTypes.string,
+};
 
 export default UltraPolymers;

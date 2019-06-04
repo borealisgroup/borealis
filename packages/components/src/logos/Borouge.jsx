@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ChangeColor } from './utils';
 
 const Borouge = ({ color, ...props }) => (
-  <svg viewBox="0 0 590.8 258.7" {...props}>
+  <svg className="change_color" viewBox="0 0 590.8 258.7" {...props}>
     <title>Borouge Logo</title>
     <ChangeColor color={color} />
     <path
@@ -43,5 +44,13 @@ const Borouge = ({ color, ...props }) => (
     />
   </svg>
 );
+
+Borouge.defaultProps = {
+  color: null,
+};
+
+Borouge.propTypes = {
+  color: PropTypes.string,
+};
 
 export default Borouge;

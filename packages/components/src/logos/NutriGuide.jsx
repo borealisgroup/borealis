@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { showComponent, ChangeColor } from './utils';
 
 const taglinePath = (
@@ -17,7 +19,7 @@ const getViewBox = tagline => {
 };
 
 const NutriGuide = ({ tagline, color, ...props }) => (
-  <svg viewBox={getViewBox(tagline)} {...props}>
+  <svg className="change_color" viewBox={getViewBox(tagline)} {...props}>
     <title>Nutriguide Logo</title>
     <ChangeColor color={color} />
     {showComponent(taglinePath, tagline)}
@@ -58,6 +60,12 @@ const NutriGuide = ({ tagline, color, ...props }) => (
 
 NutriGuide.defaultProps = {
   tagline: true,
+  color: null,
+};
+
+NutriGuide.propTypes = {
+  tagline: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 export default NutriGuide;

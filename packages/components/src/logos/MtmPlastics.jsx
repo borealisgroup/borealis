@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ChangeColor } from './utils';
 
 const MtmPlastics = ({ color, ...props }) => (
   <svg
+    className="change_color"
     id="prefix__Layer_1"
     x={0}
     y={0}
@@ -51,5 +53,13 @@ const MtmPlastics = ({ color, ...props }) => (
     </text>
   </svg>
 );
+
+MtmPlastics.defaultProps = {
+  color: null,
+};
+
+MtmPlastics.propTypes = {
+  color: PropTypes.string,
+};
 
 export default MtmPlastics;

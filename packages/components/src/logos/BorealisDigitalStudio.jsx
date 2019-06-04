@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ChangeColor } from './utils';
 
 const BorealisDigitalStudio = ({ color, ...props }) => (
-  <svg viewBox="0 0 141.73 75.23" {...props}>
+  <svg className="change_color" viewBox="0 0 141.73 75.23" {...props}>
     <defs>
       <style>
         {'.prefix__cls-1{fill:#005d9a}.prefix__cls-2{fill:#002d5a}'}
@@ -54,5 +55,13 @@ const BorealisDigitalStudio = ({ color, ...props }) => (
     </g>
   </svg>
 );
+
+BorealisDigitalStudio.defaultProps = {
+  color: null,
+};
+
+BorealisDigitalStudio.propTypes = {
+  color: PropTypes.string,
+};
 
 export default BorealisDigitalStudio;

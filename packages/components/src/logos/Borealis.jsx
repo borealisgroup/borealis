@@ -42,7 +42,11 @@ const getViewBox = (shape, name, tagline) => {
 };
 
 const Borealis = ({ shape, name, tagline, color, ...props }) => (
-  <svg viewBox={getViewBox(shape, name, tagline)} {...props}>
+  <svg
+    className="change_color"
+    viewBox={getViewBox(shape, name, tagline)}
+    {...props}
+  >
     <title>Borealis Logo</title>
     <ChangeColor color={color} />
     {showComponent(shapePath, shape)}

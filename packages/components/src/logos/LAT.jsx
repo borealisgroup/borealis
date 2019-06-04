@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ChangeColor } from './utils';
 
 const LAT = ({ color, ...props }) => (
-  <svg viewBox="0 0 273.9 91" {...props}>
+  <svg className="change_color" viewBox="0 0 273.9 91" {...props}>
     <title>LAT Logo</title>
     <ChangeColor color={color} />
     <path
@@ -112,5 +113,13 @@ const LAT = ({ color, ...props }) => (
     </g>
   </svg>
 );
+
+LAT.defaultProps = {
+  color: null,
+};
+
+LAT.propTypes = {
+  color: PropTypes.string,
+};
 
 export default LAT;
