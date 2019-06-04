@@ -23,7 +23,7 @@ Import a borealis brand from this package and pass it to the theme provider of s
 ```JS
 // App.jsx
 import { ThemeProvider } from 'styled-components';
-import { borealis } from @borealisgroup/theme; //following imports also work: lat, ecoplast, mtmPlastics, rosier
+import { borealis } from '@borealisgroup/theme'; //following imports also work: lat, ecoplast, mtmPlastics, rosier
 ...
 <ThemeProvider theme={borealis}>
   {/* Any child components here has access to the theme */}
