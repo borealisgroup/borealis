@@ -3,7 +3,7 @@
 Contributions are always welcome, no matter how large or small. Before contributing, please read the please read the
 [code of conduct](https://github.com/borealisgroup/borealis-js/master/CODE_OF_CONDUCT.md).
 
-## Developing
+## Packages
 
 Make sure that [lerna](https://github.com/lerna/lerna) is installed globally:
 
@@ -44,6 +44,16 @@ cd /packages/<name>
 npm publish --access public
 ```
 
+### devDependencies
+
+devDependencies should be added to the root `package.json`
+
+devDependencies can always be pulled up to the root of a Lerna repo with
+
+```bash
+lerna link convert
+```
+
 ### Testing locally
 
 In the project you want to test the package, run:
@@ -60,7 +70,15 @@ and that yields this in your `package.json`:
 },
 ```
 
-Don't forget to update the dependency once you publish the package.
+### Publish existing packages
+
+Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, this command will lint, build and publish packages that have changed since the last release:
+
+```bash
+npm run release
+```
+
+## Patterns
 
 ### Add a new pattern
 
@@ -98,14 +116,6 @@ Common prefixes:
    Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
 5. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
-
-## Publish existing packages
-
-Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, this command will lint, build and publish packages that have changed since the last release:
-
-```bash
-npm run release
-```
 
 ## More
 

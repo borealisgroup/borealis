@@ -9,11 +9,13 @@
     "build": "lerna run build --since && lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
     "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
+    "install-link": "npm i && lerna exec -- npm i && lerna link",
     "lint": "lerna exec --parallel --since -- eslint . --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx",
     "release": "npm run lint && npm run build && lerna publish",
     "storybook": "start-storybook -p 6007"
   },
   "devDependencies": {
+    "@ant-design/colors": "^3.0.1",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -32,6 +34,7 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "lerna": "^3.13.4",
+    "lerna-update-wizard": "^0.14.0",
     "npm-run-all": "^4.1.5",
     "plop": "^2.3.0",
     "prop-types": "^15.7.2",
@@ -42,5 +45,14 @@
     "rollup-plugin-includepaths": "^0.2.3",
     "rollup-plugin-node-resolve": "^4.2.3",
     "styled-components": "^4.2.0"
+  },
+  "dependencies": {
+    "@borealisgroup/components": "file:packages\\components",
+    "@borealisgroup/dynamic-export": "file:packages\\dynamic-export",
+    "@borealisgroup/eslint-config": "file:packages\\eslint-config",
+    "@borealisgroup/i18n-dev": "file:packages\\i18n-dev",
+    "@borealisgroup/i18n-prod": "file:packages\\i18n-prod",
+    "@borealisgroup/stylelint-config": "file:packages\\stylelint-config",
+    "@borealisgroup/theme": "file:packages\\theme"
   }
 }

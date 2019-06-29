@@ -22,8 +22,5 @@
     "generate": "node src/generate.js",
     "build": "npm run generate && rollup -c=../../rollup.config.js"
   },
-  "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a",
-  "devDependencies": {
-    "@ant-design/colors": "^3.0.1"
-  }
+  "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
 }
