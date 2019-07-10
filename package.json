@@ -9,7 +9,6 @@
     "build": "lerna run build --since && lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
     "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
-    "install-link": "npm i && lerna exec -- npm i && lerna link",
     "lint": "lerna exec --parallel --since -- eslint . --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx",
     "release": "npm run lint && npm run build && lerna publish",
     "storybook": "start-storybook -p 6007"
@@ -45,14 +44,5 @@
     "rollup-plugin-includepaths": "^0.2.3",
     "rollup-plugin-node-resolve": "^4.2.3",
     "styled-components": "^4.2.0"
-  },
-  "dependencies": {
-    "@borealisgroup/components": "file:packages\\components",
-    "@borealisgroup/dynamic-export": "file:packages\\dynamic-export",
-    "@borealisgroup/eslint-config": "file:packages\\eslint-config",
-    "@borealisgroup/i18n-dev": "file:packages\\i18n-dev",
-    "@borealisgroup/i18n-prod": "file:packages\\i18n-prod",
-    "@borealisgroup/stylelint-config": "file:packages\\stylelint-config",
-    "@borealisgroup/theme": "file:packages\\theme"
   }
 }
