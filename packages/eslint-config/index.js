@@ -36,29 +36,7 @@ module.exports = {
         trailingComma: 'es5',
         singleQuote: true,
       },
-    ], // warn - just format
-
-    'lines-between-class-members': [
-      'error',
-      'always',
-      { exceptAfterSingleLine: true },
     ],
-
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-
-    'class-methods-use-this': 'off',
-    'consistent-return': 'off',
-
-    'import/no-extraneous-dependencies': 'off',
-    'import/prefer-default-export': 'off',
-
-    'jsx-a11y/anchor-is-valid': 'off',
-    'jsx-a11y/click-events-have-key-events': 'off',
-    'jsx-a11y/label-has-associated-control': 'off',
-    'jsx-a11y/label-has-for': 'off',
-    'jsx-a11y/no-autofocus': 'off',
-    'jsx-a11y/no-static-element-interactions': 'off',
 
     'linebreak-style': 'off',
     'no-console': [
@@ -97,6 +75,36 @@ module.exports = {
       { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
     ],
     'prefer-promise-reject-errors': 'off',
+    'lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterSingleLine: true },
+    ],
+    'class-methods-use-this': 'off',
+    'consistent-return': 'off',
+
+    'import/no-extraneous-dependencies': 'off',
+    'import/prefer-default-export': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+      },
+    ],
+
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/label-has-for': 'off',
+    'jsx-a11y/no-autofocus': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
 
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
@@ -111,5 +119,7 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };
