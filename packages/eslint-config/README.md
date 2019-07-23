@@ -16,7 +16,7 @@ Note: you can still overwrite the `env`, `globals` and `parser` in your local `.
 
 Using npm:
 
-```
+```bash
 npm install --save-dev @borealisgroup/eslint-config
 ```
 
@@ -35,7 +35,7 @@ If not already done, in your editor (e.g. VSCode):
 - [x] Enable ESLint: Run the linter on type
 - [x] Enable Editor: Format on save (Prettier)
 - [x] Enable Prettier: ESLint Integration
-- [ ] Disable ESLint: Auto Fix on save
+- [x] Enable ESLint: Auto Fix on save
 
 ## ESLint
 
