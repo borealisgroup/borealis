@@ -2,13 +2,13 @@ module.exports = {
   parser: 'babel-eslint',
   extends: [
     'airbnb',
-    'plugin:prettier/recommended',
     'plugin:promise/recommended',
     'plugin:jest/recommended',
+    'plugin:prettier/recommended',
     'prettier/react',
   ],
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true,
     },
@@ -27,7 +27,7 @@ module.exports = {
         moduleDirectory: ['node_modules', 'src'],
       },
     },
-    react: { version: 'latest' },
+    react: { version: 'detect' },
   },
   rules: {
     'prettier/prettier': [
@@ -116,6 +116,7 @@ module.exports = {
       },
     ],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
