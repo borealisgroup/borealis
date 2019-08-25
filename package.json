@@ -10,7 +10,7 @@
     "build:storybook": "build-storybook",
     "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
-    "graduate": "lerna publish --conventional-graduate",
+    "graduate": "yarn release --conventional-graduate",
     "lint": "yarn lint:js .",
     "lint:js": "lerna exec --parallel --since -- eslint --ext .js,.jsx,.ts,.tsx,.mjs --ignore-pattern examples --ignore-pattern lib",
     "pre-release": "yarn release --conventional-prerelease",
