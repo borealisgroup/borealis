@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/stylelint-config",
-  "version": "1.7.8",
+  "version": "1.7.9-alpha.0",
   "description": "Stylelint config for CSS linting.",
   "keywords": [
     "stylelint",
