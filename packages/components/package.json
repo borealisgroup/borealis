@@ -3,7 +3,7 @@
   "version": "1.7.7",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/components#readme",
+  "homepage": "https://github.com/borealisgroup/create-bor-app/tree/master/packages/components#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -13,9 +13,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/components"
+    "url": "https://github.com/borealisgroup/create-bor-app/tree/master/packages/components"
   },
   "bugs": {
-    "url": "https://github.com/borealisgroup/borealis-js/issues"
+    "url": "https://github.com/borealisgroup/create-bor-app/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

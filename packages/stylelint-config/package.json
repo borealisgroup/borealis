@@ -9,11 +9,11 @@
   "author": "zbeyens <ziad.beyens@borealisgroup.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/borealisgroup/borealis-js/tree/master/packages/stylelint-config"
+    "url": "https://github.com/borealisgroup/create-bor-app/tree/master/packages/stylelint-config"
   },
-  "homepage": "https://github.com/borealisgroup/borealis-js/tree/master/packages/stylelint-config#readme",
+  "homepage": "https://github.com/borealisgroup/create-bor-app/tree/master/packages/stylelint-config#readme",
   "bugs": {
-    "url": "https://github.com/borealisgroup/borealis-js/issues"
+    "url": "https://github.com/borealisgroup/create-bor-app/issues"
   },
   "license": "MIT",
   "main": "lib/index.js",
@@ -27,6 +27,9 @@
     "stylelint-config-standard": "^18.3.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
 }

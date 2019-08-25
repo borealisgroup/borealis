@@ -1,48 +1,60 @@
 {
-  "name": "borealis-js",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
     "build-storybook": "build-storybook",
     "build": "lerna run build --since && lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
     "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
-    "lint": "lerna exec --parallel --since -- eslint . --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx",
-    "release": "npm run lint && npm run build && lerna publish",
+    "lint": "yarn lint:js .",
+    "lint:js": "lerna exec --parallel --since -- eslint --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx,.ts,.tsx,.mjs",
+    "release": "npm run lint && npm run build && lerna publish --conventional-commits",
     "storybook": "start-storybook -p 6007"
   },
   "devDependencies": {
-    "@ant-design/colors": "^3.0.1",
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@ant-design/colors": "^3.1.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@borealisgroup/eslint-config": "file:packages/eslint-config",
-    "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-info": "^5.1.9",
-    "@storybook/addon-knobs": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11",
-    "@storybook/addons": "^5.0.11",
-    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-info": "^5.1.11",
+    "@storybook/addon-knobs": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react": "^5.1.11",
     "babel-plugin-inline-json-import": "^0.3.2",
-    "color": "^3.1.1",
+    "color": "^3.1.2",
     "copy-text-to-clipboard": "^2.1.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.16.0",
-    "lerna": "^3.15.0",
-    "lerna-update-wizard": "^0.14.0",
+    "env-cmd": "^9.0.3",
+    "eslint": "^6.2.2",
+    "lerna": "^3.16.4",
+    "lerna-changelog": "^0.8.2",
     "npm-run-all": "^4.1.5",
-    "plop": "^2.3.0",
+    "plop": "^2.4.0",
     "prop-types": "^15.7.2",
     "react-notifications": "^1.4.3",
-    "rollup": "^1.11.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup": "^1.20.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
     "rollup-plugin-includepaths": "^0.2.3",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "styled-components": "^4.2.0"
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "styled-components": "^4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint",
+      "git add"
+    ]
   }
 }
