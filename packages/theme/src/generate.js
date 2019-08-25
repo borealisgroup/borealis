@@ -1,5 +1,5 @@
-const antDesignColors = require('@ant-design/colors');
 const fs = require('fs');
+const antDesignColors = require('@ant-design/colors');
 const { getResponsiveSize } = require('./font-size-resp');
 
 const { generate } = antDesignColors;
