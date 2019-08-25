@@ -85,20 +85,26 @@ npm run generate pattern
 
 ### Commits
 
-[Semantic commit messages](https://electronjs.org/docs/development/pull-requests#commit-message-guidelines)
+[Semantic commit messages](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
 
-Common prefixes:
+The following commits will automatically generate CHANGELOGs, to communicate intent to the consumers of your library:
 
-- `fix:` A bug fix
-- `feat:` A new feature
-- `docs:` Documentation changes
-- `test:` Adding missing tests or correcting existing tests
-- `build:` Changes that affect the build system
-- `ci:` Changes to our CI configuration files and scripts
-- `perf:` A code change that improves performance
-- `refactor:` A code change that neither fixes a bug nor adds a feature
-- `style:` Changes that do not affect the meaning of the code (linting)
-- `vendor:` Bumping a dependency like libchromiumcontent or node
+- `fix:` patches a bug
+- `feat:` introduces a new feature
+- `BREAKING CHANGE:` introduces a breaking API change
+
+Other commit types not mandated by the conventional commits specification, and have no implicit effect in semantic versioning, unless they include a BREAKING CHANGE:
+
+- `improvement:` improve a current implementation without adding a new feature or fixing a bug
+- `perf:` improves performance
+- `refactor:` refactoring
+- `style:` linting
+- `docs:` documentation changes
+- `vendor:` bumping a dependency
+- `test:` adding missing tests or correcting existing tests
+- `build:` changes that affect the build system
+- `ci:` changes to our CI configuration files and scripts
+- `chore:` for all the remaining cases: e.g. updating configuration; no production code change
 
 ### PRs
 
@@ -154,7 +160,7 @@ npx lerna changed
 npx lerna diff
 
 # Bump version of packages changed since the last release
-# use the Conventional Commits Specification to determine the version bump and 
+# use the Conventional Commits Specification to determine the version bump and
 # generate CHANGELOG.md files.
 npx lerna version --conventional-commits
 
