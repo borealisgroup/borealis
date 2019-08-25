@@ -8,9 +8,12 @@
     "build": "lerna run build --since && lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
     "clean": "rm -rf node_modules",
     "generate": "plop --plopfile ./scripts/generators/index.js",
+    "graduate": "lerna publish --conventional-commits --conventional-graduate",
     "lint": "yarn lint:js .",
     "lint:js": "lerna exec --parallel --since -- eslint --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx,.ts,.tsx,.mjs",
-    "release": "npm run lint && npm run build && lerna publish --conventional-commits",
+    "prerelease": "yarn release:pre && lerna publish --conventional-commits --conventional-prerelease",
+    "release": "yarn release:pre && lerna publish --conventional-commits",
+    "release:pre": "yarn lint && yarn build",
     "storybook": "start-storybook -p 6007"
   },
   "devDependencies": {
@@ -29,6 +32,7 @@
     "@storybook/react": "^5.1.11",
     "babel-plugin-inline-json-import": "^0.3.2",
     "color": "^3.1.2",
+    "conventional-changelog-cli": "^2.0.23",
     "copy-text-to-clipboard": "^2.1.0",
     "cross-env": "^5.2.0",
     "env-cmd": "^9.0.3",
