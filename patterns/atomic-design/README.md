@@ -66,7 +66,7 @@ Note that `/atoms` is not structured by route as atoms **should** be reused at l
 
 If one folder (i.e. `/common`) gets large, you can one more time **structure by feature** (i.e. `/common/modals`).
 
-This pattern works very good with [dynamic-export](https://github.com/borealisgroup/borealis-js/tree/master/packages/dynamic-export), as you can move the files as many times as you want without any modification in the code. 
+This pattern works very good with [dynamic-export](https://github.com/borealisgroup/create-bor-app/tree/master/packages/dynamic-export), as you can move the files as many times as you want without any modification in the code. 
 
 ### Containers
 

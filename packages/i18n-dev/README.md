@@ -5,7 +5,7 @@
 The purpose of this package is an attempt to make the implementation of localization as easy as possible. It exports a config that connects [react-i18next](https://github.com/i18next/react-i18next) with [locize](https://www.locize.io/). The big benefit is that your language keys are automatically uploaded to locize whenever you add or change them in your code editor.
 
 The localization files will come from the cloud, this is something we don't want in production since it will create a single point of failure if we use this package across multiple project so 
-**Don't use this package in production mode. Use then the [i18n-prod](https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n-prod) package**
+**Don't use this package in production mode. Use then the [i18n-prod](https://github.com/borealisgroup/create-bor-app/tree/master/packages/i18n-prod) package**
 
 This package is just a config file so read the [i18next react](https://react.i18next.com/) and [i18n next](https://www.i18next.com/) docs to know all the posibilities
 

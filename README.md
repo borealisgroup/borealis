@@ -1,36 +1,60 @@
-# borealis-js
+# create-bor-app
 
-A collection of JavaScript patterns and packages that we reuse across projects.
+This is a polyglot monorepo containing reusable packages, apps and patterns.
 
-## Packages
+## 🚀 Included
 
-> There is no straight answer for React. You need to collect blocks by yourself. There are many ways you can build an app, but it’s you who needs to decide what to use.
+- 🐉 Lerna — The Monorepo manager
+- 📦 Yarn Workspaces — Sane multi-package management
+- 🐠 Babel — Compiles next-gen JavaScript
+- 🛠 Rollup — Next-generation ES module bundler
 
-Why React chose to be a library instead of a framework? It goes with its own philosophy of how to build apps. In one word: **flexibility**. The Javascript ecosystem is rapidly evolving and we want to be part of this journey by experimenting the latest trends.
+## 🚄 Monorepo
 
-In order to improve our development practices and standards we released various packages. If you find any of the packages usefull you can easily import them via Node Package Manager (npm).
+[Lerna](https://lerna.js.org) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) give us the ability to build libraries and apps in a single repo (a.k.a. Monorepo) without forcing us to publish to NPM until we are ready. This makes it faster to iterate locally when building components that depend on each other.
 
-## Patterns
+Lerna also provides high-level commands to optimize the management of multiple packages. For example, with one Lerna command, you can iterate through all the packages, running a series of operations (such as linting, testing, and building) on each package.
 
-We provide a list of patterns including examples. Following React's philosophy, there is a clear separation of concerns to make multiple patterns usable altogether.
 
-## Monorepo
+## 📦 Packages
 
-We're using [lerna](https://github.com/lerna/lerna) to share everything in a monorepo.
+In order to improve our development practices and standards we released various packages. If you find any of the packages useful you can easily import them via Node Package Manager (npm).
 
-**Pros:**
+## 📚 Patterns
 
-- Single lint, build, test and release process.
-- Easy to coordinate changes across modules.
-- Single place to report issues.
-- Easier to setup a development environment.
-- Tests across modules are run together which finds bugs that touch multiple modules easier.
-- Sharing modules easily.
+We provide a list of patterns including examples. There is a clear separation of concerns to make multiple patterns usable altogether.
 
-**Cons:**
 
-- Codebase looks more intimidating.
-- Repo is bigger in size.
+- ⚛️ React — JavaScript library for user interfaces
+- 💅 styled-components — CSS in JS elegance
+- 📖 Storybook — UI Component Environment
+- 🃏 Jest — Unit/Snapshot Testing
+
+## 👏 Contributing
+
+We welcome contributions to this repository!
+
+- 📥 Pull requests and 🌟 Stars are always welcome.
+- Read our [contributing guide](CONTRIBUTING) to get started.
+
+### Development scripts
+
+Useful scripts include:
+
+#### `yarn install`
+
+> Installs package dependencies and links packages together - using lerna
+
+#### `yarn lint`
+
+> boolean check if code conforms to linting rules - uses remark & eslint
+
+- `yarn lint:js` - will check js
+- `yarn lint:js --fix` - will automatically fix js
+
+#### `yarn run release`
+
+> Push a release to git and npm will ask for version in interactive mode - using lerna.
 
 ## License
 

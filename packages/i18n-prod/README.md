@@ -1,6 +1,6 @@
 # @borealisgroup/i18n-prod
 
-This package is related to [i18n-dev](https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n-dev), it does the same except that it will use local localization files and it is not auto uploading missing keys. It also has a smaller bundle size so it's adviced to use this package for production.
+This package is related to [i18n-dev](https://github.com/borealisgroup/create-bor-app/tree/master/packages/i18n-dev), it does the same except that it will use local localization files and it is not auto uploading missing keys. It also has a smaller bundle size so it's adviced to use this package for production.
 
 ## Prerequisites
 
@@ -8,7 +8,7 @@ This package is related to [i18n-dev](https://github.com/borealisgroup/borealis-
 
 ## Setup
 
-- Use [i18n-dev](https://github.com/borealisgroup/borealis-js/tree/master/packages/i18n-dev) for development purposes, this setup assumes that you already did the setup steps of i18n-dev.
+- Use [i18n-dev](https://github.com/borealisgroup/create-bor-app/tree/master/packages/i18n-dev) for development purposes, this setup assumes that you already did the setup steps of i18n-dev.
 - Install this package: `npm install @borealisgroup/i18n-prod`
 - Install locize-cli as a dev dependency `npm install locize-cli -D`
 - Add the following command to the script tag in your `package.json`

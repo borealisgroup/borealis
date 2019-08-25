@@ -1,57 +1,59 @@
 # Contributing
 
+- [Contributing](#contributing)
+  - [Development Guide](#development-guide)
+    - [Prerequisites](#prerequisites)
+    - [Initial Setup](#initial-setup)
+    - [Add dependencies to existing packages](#add-dependencies-to-existing-packages)
+    - [Add a new package](#add-a-new-package)
+    - [Testing locally](#testing-locally)
+  - [Patterns](#patterns)
+    - [Add a new pattern](#add-a-new-pattern)
+  - [Pull Requests](#pull-requests)
+    - [Commits](#commits)
+    - [PRs](#prs)
+  - [Release Guide](#release-guide)
+
 Contributions are always welcome, no matter how large or small. Before contributing, please read the please read the
-[code of conduct](https://github.com/borealisgroup/borealis-js/master/CODE_OF_CONDUCT.md).
+[code of conduct](https://github.com/borealisgroup/create-bor-app/master/CODE_OF_CONDUCT.md).
 
-## Packages
+## Development Guide
 
-Make sure that [lerna](https://github.com/lerna/lerna) is installed globally:
+### Prerequisites
 
-```bash
-npm install lerna -g
-```
+Please have the latest stable versions of the following on your machine:
 
-### Setup
+- node
+- yarn
 
-Clone the repository.
-
-```bash
-git clone https://github.com/borealisgroup/borealis-js
-cd borealis-js
-```
-
-Bootstrap the packages: it installs the dependencies of the packages and links any cross-dependencies
+### Initial Setup
 
 ```bash
-npm run bootstrap
+git clone https://github.com/borealisgroup/create-bor-app.git
+cd create-bor-app
+yarn
 ```
 
-[Hoisting](https://github.com/lerna/lerna/blob/master/doc/hoist.md) is basically doing that:
-> Common dependencies will be installed only to the top-level node_modules, and omitted from individual package node_modules.
+### Add dependencies to existing packages
+
+Use `-W` to install for the **entire workspace**:
+
+```bash
+yarn add -D -W package1 package2
+```
+
+NOTE: devDependencies can always be pulled up to the root of a Lerna repo with
+
+```bash
+lerna link convert
+```
 
 ### Add a new package
 
 Use our plop generator:
 
 ```bash
-npm run generate package
-```
-
-Once ready to be published for the first time:
-
-```bash
-cd /packages/<name>
-npm publish --access public
-```
-
-### devDependencies
-
-devDependencies should be added to the root `package.json`
-
-devDependencies can always be pulled up to the root of a Lerna repo with
-
-```bash
-lerna link convert
+yarn generate package
 ```
 
 ### Testing locally
@@ -59,36 +61,28 @@ lerna link convert
 In the project you want to test the package, run:
 
 ```bash
-npm install /absolute/path/to/package
+yarn install /absolute/path/to/package
 ```
 
 and that yields this in your `package.json`:
 
 ```json
 "dependencies": {
-  "viking": "file:../borealis-js/packages/<name>",
+  "viking": "file:../create-bor-app/packages/<name>",
 },
-```
-
-### Publish existing packages
-
-Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, this command will lint, build and publish packages that have changed since the last release:
-
-```bash
-npm run release
 ```
 
 ## Patterns
 
 ### Add a new pattern
 
-Using plop:
-
 ```bash
 npm run generate pattern
 ```
 
-## Commits
+## Pull Requests
+
+### Commits
 
 [Semantic commit messages](https://electronjs.org/docs/development/pull-requests#commit-message-guidelines)
 
@@ -105,7 +99,7 @@ Common prefixes:
 - `style:` Changes that do not affect the meaning of the code (linting)
 - `vendor:` Bumping a dependency like libchromiumcontent or node
 
-## Pull Request Process
+### PRs
 
 1. The prefix of the branch should be the name of the package or pattern to update.
 2. Ensure any install or build dependencies are removed before the end of the layer when doing a
@@ -117,6 +111,34 @@ Common prefixes:
 5. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
-## More
+## Release Guide
 
-[Lerna commands](https://github.com/lerna/lerna)
+NOTE: The very first time you publish a scoped package you need to make sure that it's package.json contains the following:
+
+```json
+"publishConfig": {
+  "access": "public"
+}
+```
+
+Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, each release will lint, build and publish packages that have changed since the last release:
+
+**Prerelease**:
+
+```bash
+# make sure you current with origin/next.
+git checkout next
+
+# publish and tag the release
+yarn run publish:next
+```
+
+**Release**:
+
+```bash
+# make sure you current with origin/master.
+git checkout master
+
+# publish and tag the release
+yarn run publish
+```
