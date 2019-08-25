@@ -13,6 +13,7 @@
     - [Commits](#commits)
     - [PRs](#prs)
   - [Release Guide](#release-guide)
+  - [More](#more)
 
 Contributions are always welcome, no matter how large or small. Before contributing, please read the please read the
 [code of conduct](https://github.com/borealisgroup/create-bor-app/master/CODE_OF_CONDUCT.md).
@@ -45,7 +46,7 @@ yarn add -D -W package1 package2
 NOTE: devDependencies can always be pulled up to the root of a Lerna repo with
 
 ```bash
-lerna link convert
+npx lerna link convert
 ```
 
 ### Add a new package
@@ -141,4 +142,28 @@ git checkout master
 
 # publish and tag the release
 yarn run publish
+```
+
+## More
+
+```bash
+# see which packages have changed
+npx lerna changed
+
+# see specifically what lines changed
+npx lerna diff
+
+# Bump version of packages changed since the last release
+# use the Conventional Commits Specification to determine the version bump and 
+# generate CHANGELOG.md files.
+npx lerna version --conventional-commits
+
+# prerelease changed packages
+npx lerna version --conventional-commits --conventional-prerelease
+
+# graduate prerelease packages
+# "Graduating" a package means bumping to the non-prerelease variant of a prerelease version
+# eg. package-1@1.0.0-alpha.0 => package-1@1.0.0.
+npx lerna version --conventional-commits --conventional-graduate
+
 ```
