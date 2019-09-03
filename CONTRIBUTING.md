@@ -4,19 +4,20 @@
   - [Development Guide](#development-guide)
     - [Prerequisites](#prerequisites)
     - [Initial Setup](#initial-setup)
-    - [Add dependencies to existing packages](#add-dependencies-to-existing-packages)
-    - [Add a new package](#add-a-new-package)
-    - [Testing locally](#testing-locally)
+    - [Installing Dependencies](#installing-dependencies)
+    - [Remove Dependencies](#remove-dependencies)
+    - [Linking Sibling Packages](#linking-sibling-packages)
+    - [Create a new package](#create-a-new-package)
   - [Patterns](#patterns)
-    - [Add a new pattern](#add-a-new-pattern)
+    - [Create a new pattern](#create-a-new-pattern)
   - [Pull Requests](#pull-requests)
     - [Commits](#commits)
     - [PRs](#prs)
   - [Release Guide](#release-guide)
-  - [More](#more)
+  - [Lerna](#lerna)
 
 Contributions are always welcome, no matter how large or small. Before contributing, please read the please read the
-[code of conduct](https://github.com/borealisgroup/create-bor-app/master/CODE_OF_CONDUCT.md).
+[code of conduct](https://github.com/borealisgroup/borealis/master/CODE_OF_CONDUCT.md).
 
 ## Development Guide
 
@@ -30,12 +31,16 @@ Please have the latest stable versions of the following on your machine:
 ### Initial Setup
 
 ```bash
-git clone https://github.com/borealisgroup/create-bor-app.git
-cd create-bor-app
+git clone https://github.com/borealisgroup/borealis.git
+cd borealis
 yarn
 ```
 
-### Add dependencies to existing packages
+### Installing Dependencies
+
+```bash
+yarn workspace package1 add package2
+```
 
 Use `-W` to install for the **entire workspace**:
 
@@ -49,7 +54,21 @@ NOTE: devDependencies can always be pulled up to the root of a Lerna repo with
 npx lerna link convert
 ```
 
-### Add a new package
+### Remove Dependencies
+
+```bash
+yarn workspace package1 remove package2
+```
+
+### Linking Sibling Packages
+
+By specifying the version here, Yarn will install the local dependency that hasn’t been published to npm yet.
+
+```bash
+yarn workspace package1 add package2@0.1.0
+```
+
+### Create a new package
 
 Use our plop generator:
 
@@ -57,25 +76,9 @@ Use our plop generator:
 yarn generate package
 ```
 
-### Testing locally
-
-In the project you want to test the package, run:
-
-```bash
-yarn install /absolute/path/to/package
-```
-
-and that yields this in your `package.json`:
-
-```json
-"dependencies": {
-  "viking": "file:../create-bor-app/packages/<name>",
-},
-```
-
 ## Patterns
 
-### Add a new pattern
+### Create a new pattern
 
 ```bash
 npm run generate pattern
@@ -133,43 +136,25 @@ Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/comma
 **Prerelease**:
 
 ```bash
-# make sure you current with origin/next.
-git checkout next
-
-# publish and tag the release
-yarn run publish:next
+yarn pre-release
 ```
 
 **Release**:
 
 ```bash
-# make sure you current with origin/master.
-git checkout master
-
-# publish and tag the release
-yarn run publish
+yarn release
 ```
 
-## More
+**Graduate**:
+
+"Graduating" a package means bumping to the non-prerelease variant of a prerelease version
+eg. package-1@1.0.0-alpha.0 => package-1@0.1.0
 
 ```bash
-# see which packages have changed
-npx lerna changed
-
-# see specifically what lines changed
-npx lerna diff
-
-# Bump version of packages changed since the last release
-# use the Conventional Commits Specification to determine the version bump and
-# generate CHANGELOG.md files.
-npx lerna version --conventional-commits
-
-# prerelease changed packages
-npx lerna version --conventional-commits --conventional-prerelease
-
-# graduate prerelease packages
-# "Graduating" a package means bumping to the non-prerelease variant of a prerelease version
-# eg. package-1@1.0.0-alpha.0 => package-1@1.0.0.
-npx lerna version --conventional-commits --conventional-graduate
-
+yarn graduate
 ```
+
+## Lerna
+
+- `lerna changed` - Show which packages have changed.
+- `lerna diff` - Show specifically what files have cause the packages to change.
