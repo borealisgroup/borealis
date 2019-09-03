@@ -8,7 +8,7 @@
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
-      <li><a href="https://www.npmjs.com/package/@borealisgroup%2Fcli-plugin-babel" target="_blank" rel="noopener">@borealisgroup/cli-plugin-babel</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/@borealisgroup/cli-plugin-babel#readme" target="_blank" rel="noopener">@borealisgroup/cli-plugin-babel</a></li>
       <li><a href="https://www.npmjs.com/package/C:\GitHub\borealis\packages\@borealisgroup\cli\__tests__\mock-preset-with-template" target="_blank" rel="noopener">C:\GitHub\borealis\packages\@borealisgroup\cli\__tests__\mock-preset-with-template</a></li>
     </ul>
     <h3>Essential Links</h3>
