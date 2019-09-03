@@ -10,7 +10,7 @@
     "**/package-lock.json"
   ],
   "changelog": {
-    "repo": "borealisgroup/create-bor-app",
+    "repo": "borealisgroup/borealis",
     "labels": {
       "tag: new feature": ":rocket: New Feature",
       "tag: breaking change": ":boom: Breaking Change",
