@@ -5,6 +5,6 @@
 /tests/performance/**
 /tmp/**
 /lib/util/unicode/is-combining-character.js
-test.js
+# test.js
 # examples/
-lib/
+# lib/
