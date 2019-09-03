@@ -1,0 +1,29 @@
+{
+  "name": "@borealisgroup/i18n-prod",
+  "version": "1.7.9-alpha.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/i18n-prod#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/i18n-prod"
+  },
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "dependencies": {
+    "i18next": "^15.1.0",
+    "i18next-browser-languagedetector": "^3.0.1",
+    "i18next-xhr-backend": "^2.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

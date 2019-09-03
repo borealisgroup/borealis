@@ -1,0 +1,27 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "bor-cli-service serve",
+    "build": "bor-cli-service build"
+  },
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@borealisgroup/cli-plugin-babel": "latest",
+    "@borealisgroup/cli-service": "latest",
+    "@vue/cli-plugin-eslint": "^0.1.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

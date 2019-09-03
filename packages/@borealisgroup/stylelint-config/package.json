@@ -1,0 +1,35 @@
+{
+  "name": "@borealisgroup/stylelint-config",
+  "version": "1.7.9-alpha.0",
+  "description": "Stylelint config for CSS linting.",
+  "keywords": [
+    "stylelint",
+    "stylelint-config"
+  ],
+  "author": "zbeyens <ziad.beyens@borealisgroup.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/stylelint-config"
+  },
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/stylelint-config#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
+}

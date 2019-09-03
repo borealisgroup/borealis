@@ -1,0 +1,24 @@
+{
+  "name": "@borealisgroup/components",
+  "version": "1.7.8-alpha.1",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/components#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/components"
+  },
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
