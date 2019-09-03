@@ -70,16 +70,15 @@
     ]
   },
   "jest": {
-    "testEnvironment": "node",
     "setupFiles": [
       "<rootDir>/scripts/testSetup.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.js"
     ],
     "modulePathIgnorePatterns": [
       "invoke",
       "Upgrader"
     ]
-  },
-  "dependencies": {
-    "@borealisgroup/cli-test-utils": "0.1.0"
   }
 }
