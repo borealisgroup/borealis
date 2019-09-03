@@ -1,21 +1,24 @@
 {
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/@borealisgroup/*"
   ],
   "scripts": {
     "build": "yarn build:lerna && yarn build:rollup",
     "build:lerna": "lerna run build --since",
     "build:rollup": "lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
     "build:storybook": "build-storybook",
-    "clean": "rm -rf node_modules",
+    "clean": "rimraf packages/test/* packages/**/temp/*",
     "generate": "plop --plopfile ./scripts/generators/index.js",
     "graduate": "yarn release --conventional-graduate",
     "lint": "yarn lint:js .",
     "lint:js": "lerna exec --parallel --since -- eslint --ext .js,.jsx,.ts,.tsx,.mjs --ignore-pattern examples --ignore-pattern lib",
     "pre-release": "yarn release --conventional-prerelease",
     "release": "yarn lint && yarn build && lerna publish --conventional-commits",
-    "storybook": "start-storybook -p 6007"
+    "start:cli": "node ./packages/@borealisgroup/cli/bin/cli.js create pok",
+    "storybook": "start-storybook -p 6007",
+    "test": "node scripts/test.js",
+    "test:pre": "yarn clean"
   },
   "devDependencies": {
     "@ant-design/colors": "^3.1.0",
@@ -24,26 +27,30 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@borealisgroup/eslint-config": "file:packages/eslint-config",
+    "@borealisgroup/eslint-config": "file:packages/@borealisgroup/eslint-config",
     "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-info": "^5.1.11",
     "@storybook/addon-knobs": "^5.1.11",
     "@storybook/addon-links": "^5.1.11",
     "@storybook/addons": "^5.1.11",
     "@storybook/react": "^5.1.11",
+    "babel-jest": "^24.9.0",
     "babel-plugin-inline-json-import": "^0.3.2",
     "color": "^3.1.2",
     "conventional-changelog-cli": "^2.0.23",
     "copy-text-to-clipboard": "^2.1.0",
     "cross-env": "^5.2.0",
     "env-cmd": "^9.0.3",
-    "eslint": "^6.2.2",
+    "eslint": "^5.16.0",
+    "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "lerna-changelog": "^0.8.2",
+    "memfs": "^2.15.5",
     "npm-run-all": "^4.1.5",
     "plop": "^2.4.0",
     "prop-types": "^15.7.2",
     "react-notifications": "^1.4.3",
+    "rimraf": "^3.0.0",
     "rollup": "^1.20.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.2",
@@ -61,5 +68,18 @@
       "eslint",
       "git add"
     ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/scripts/testSetup.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "invoke",
+      "Upgrader"
+    ]
+  },
+  "dependencies": {
+    "@borealisgroup/cli-test-utils": "0.1.0"
   }
 }
