@@ -1,110 +1,116 @@
-const stripAnsi = require('strip-ansi')
-const launchPuppeteer = require('./launchPuppeteer')
+const stripAnsi = require('strip-ansi');
+const launchPuppeteer = require('./launchPuppeteer');
 
-module.exports = async function serveWithPuppeteer (serve, test, noPuppeteer) {
-  let activeBrowser
-  let activeChild
+function createHelpers(page) {
+  return {
+    getText: selector =>
+      page.evaluate(sel => {
+        return document.querySelector(sel).textContent;
+      }, selector),
 
-  let notifyUpdate
+    hasElement: selector =>
+      page.evaluate(sel => {
+        return !!document.querySelector(sel);
+      }, selector),
+
+    hasClass: (selector, cls) =>
+      page.evaluate(
+        (sel, cl) => {
+          const el = document.querySelector(sel);
+          return el && el.classList.contains(cl);
+        },
+        selector,
+        cls
+      ),
+  };
+}
+
+module.exports = async function serveWithPuppeteer(serve, test, noPuppeteer) {
+  let activeBrowser;
+  let activeChild;
+
+  let notifyUpdate;
   const nextUpdate = () => {
     return new Promise(resolve => {
-      notifyUpdate = resolve
-    })
-  }
+      notifyUpdate = resolve;
+    });
+  };
 
   await new Promise((resolve, reject) => {
-    const child = activeChild = serve()
+    const child = (activeChild = serve());
 
-    const exit = async (err) => {
+    let log = '';
+
+    const exit = async err => {
       if (activeBrowser) {
-        await activeBrowser.close()
-        activeBrowser = null
+        await activeBrowser.close();
+        activeBrowser = null;
       }
       if (activeChild) {
-        activeChild.stdin.write('close')
-        activeBrowser = null
+        activeChild.stdin.write('close');
+        activeBrowser = null;
       }
-      console.log(log)
-      reject(err)
-    }
+      console.info(log);
+      reject(err);
+    };
 
-    let isFirstMatch = true
-    let log = ''
-    child.stdout.on('data', async (data) => {
-      data = data.toString()
-      log += data
+    let isFirstMatch = true;
+    child.stdout.on('data', async data => {
+      data = data.toString();
+      log += data;
       try {
-        const urlMatch = data.match(/http:\/\/[^/]+\//)
+        const urlMatch = data.match(/http:\/\/[^/]+\//);
         if (urlMatch && isFirstMatch) {
-          isFirstMatch = false
-          let url = urlMatch[0]
+          isFirstMatch = false;
+          let url = urlMatch[0];
 
           // fix "Protocol error (Page.navigate): Cannot navigate to invalid URL undefined" error
           // when running test in vscode terminal(zsh)
-          url = stripAnsi(url)
+          url = stripAnsi(url);
 
           if (noPuppeteer) {
-            await test({ url })
+            await test({ url });
           } else {
             // start browser
-            const { page, browser } = await launchPuppeteer(url)
-            activeBrowser = browser
+            const { page, browser } = await launchPuppeteer(url);
+            activeBrowser = browser;
 
-            const helpers = createHelpers(page)
+            const helpers = createHelpers(page);
 
             await test({
               browser,
               page,
               url,
               nextUpdate,
-              helpers
-            })
+              helpers,
+            });
 
-            await browser.close()
-            activeBrowser = null
+            await browser.close();
+            activeBrowser = null;
           }
 
           // on appveyor, the spawned server process doesn't exit
           // and causes the build to hang.
-          child.stdin.write('close')
-          activeChild = null
-          resolve()
+          child.stdin.write('close');
+          activeChild = null;
+          resolve();
         } else if (data.match(/App updated/)) {
           if (notifyUpdate) {
-            notifyUpdate(data)
+            notifyUpdate(data);
           }
         } else if (data.match(/Failed to compile/)) {
-          exit(data)
+          exit(data);
         }
       } catch (err) {
-        exit(err)
+        exit(err);
       }
-    })
+    });
 
     child.on('exit', code => {
-      activeChild = null
+      activeChild = null;
       if (code !== 0) {
-        exit(`serve exited with code ${code}`)
+        exit(`serve exited with code ${code}`);
       }
-    })
-  })
-}
-
-/* eslint-disable no-shadow */
-function createHelpers (page) {
-  return {
-    getText: selector => page.evaluate(selector => {
-      return document.querySelector(selector).textContent
-    }, selector),
-
-    hasElement: selector => page.evaluate(selector => {
-      return !!document.querySelector(selector)
-    }, selector),
-
-    hasClass: (selector, cls) => page.evaluate((selector, cls) => {
-      const el = document.querySelector(selector)
-      return el && el.classList.contains(cls)
-    }, selector, cls)
-  }
-}
-/* eslint-enable no-shadow */
+    });
+  });
+};

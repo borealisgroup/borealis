@@ -2,7 +2,9 @@ jest.setTimeout(30000);
 
 const path = require('path');
 const fs = require('fs-extra');
-const { defaultPreset } = require('@vue/cli/lib/options');
+const {
+  defaultPreset,
+} = require('@borealisgroup/cli/lib/config/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
 
 let project;

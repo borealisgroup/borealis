@@ -44,7 +44,7 @@ module.exports = function createTestProject(name, preset, cwd, initGit = true) {
     return execa(command, args, { cwd: projectRoot });
   };
 
-  const cliBinPath = require.resolve('@borealisgroup/cli/bin/vue');
+  const cliBinPath = require.resolve('@borealisgroup/cli/bin/cli');
 
   const args = [
     'create',

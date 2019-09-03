@@ -1,7 +1,9 @@
 jest.setTimeout(40000);
 
-const { defaultPreset } = require('@vue/cli/lib/options');
-const create = require('@vue/cli-test-utils/createTestProject');
+const {
+  defaultPreset,
+} = require('@borealisgroup/cli/lib/config/defaultPresets');
+const create = require('@borealisgroup/cli-test-utils/createTestProject');
 
 let project;
 

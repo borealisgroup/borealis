@@ -2,9 +2,11 @@ jest.setTimeout(60000);
 
 const path = require('path');
 const fs = require('fs-extra');
-const { defaultPreset } = require('@vue/cli/lib/options');
-const create = require('@vue/cli-test-utils/createTestProject');
-const serve = require('@vue/cli-test-utils/serveWithPuppeteer');
+const {
+  defaultPreset,
+} = require('@borealisgroup/cli/lib/config/defaultPresets');
+const create = require('@borealisgroup/cli-test-utils/createTestProject');
+const serve = require('@borealisgroup/cli-test-utils/serveWithPuppeteer');
 
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 

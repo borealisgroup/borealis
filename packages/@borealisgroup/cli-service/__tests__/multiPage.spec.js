@@ -2,11 +2,13 @@ jest.setTimeout(80000);
 
 const path = require('path');
 const portfinder = require('portfinder');
-const createServer = require('@vue/cli-test-utils/createServer');
-const { defaultPreset } = require('@vue/cli/lib/options');
-const create = require('@vue/cli-test-utils/createTestProject');
-const serve = require('@vue/cli-test-utils/serveWithPuppeteer');
-const launchPuppeteer = require('@vue/cli-test-utils/launchPuppeteer');
+const createServer = require('@borealisgroup/cli-test-utils/createServer');
+const {
+  defaultPreset,
+} = require('@borealisgroup/cli/lib/config/defaultPresets');
+const create = require('@borealisgroup/cli-test-utils/createTestProject');
+const serve = require('@borealisgroup/cli-test-utils/serveWithPuppeteer');
+const launchPuppeteer = require('@borealisgroup/cli-test-utils/launchPuppeteer');
 
 async function makeProjectMultiPage(project) {
   await project.write(

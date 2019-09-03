@@ -91,7 +91,10 @@ module.exports = class Creator extends EventEmitter {
     // clone before mutating
     preset = cloneDeep(preset);
     // inject core service
-    preset.plugins['@borealisgroup/cli-service'] = { projectName: name, ...preset };
+    preset.plugins['@borealisgroup/cli-service'] = {
+      projectName: name,
+      ...preset,
+    };
 
     if (cliOptions.bare) {
       preset.plugins['@borealisgroup/cli-service'].bare = true;

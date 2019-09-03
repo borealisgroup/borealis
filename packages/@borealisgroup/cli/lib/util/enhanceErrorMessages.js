@@ -1,14 +1,16 @@
-const program = require('commander')
-const chalk = require('chalk')
+const program = require('commander');
+const chalk = require('chalk');
 
 module.exports = (methodName, log) => {
-  program.Command.prototype[methodName] = function (...args) {
+  program.Command.prototype[methodName] = function enhanceErrorMessages(
+    ...args
+  ) {
     if (methodName === 'unknownOption' && this._allowUnknownOption) {
-      return
+      return;
     }
-    this.outputHelp()
-    console.log(`  ` + chalk.red(log(...args)))
-    console.log()
-    process.exit(1)
-  }
-}
+    this.outputHelp();
+    console.info(`  ${chalk.red(log(...args))}`);
+    console.info();
+    process.exit(1);
+  };
+};
