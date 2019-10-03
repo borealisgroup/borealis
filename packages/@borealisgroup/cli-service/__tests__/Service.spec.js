@@ -62,7 +62,7 @@ test('loading plugins from package.json', () => {
   mockPkg({
     devDependencies: {
       bar: '^1.0.0',
-      '@borealisgroup/cli-plugin-babel': '^4.0.0-rc.0',
+      '@borealisgroup/cli-plugin-babel': '^4.0.0-rc.7',
       'vue-cli-plugin-foo': '^1.0.0',
     },
   });
@@ -133,15 +133,14 @@ test('load project options from vue.config.js', () => {
   expect(service.projectOptions.lintOnSave).toBe(false);
 });
 
-test('load project options from vue.config.js', () => {
+test('load project options from vue.config.js bis', () => {
   process.env.VUE_CLI_SERVICE_CONFIG_PATH = `/vue.config.js`;
   fs.writeFileSync('/vue.config.js', ''); // only to ensure fs.existsSync returns true
   jest.mock(
     '/vue.config.js',
-    () =>
-      function() {
-        return { lintOnSave: false };
-      },
+    () => () => {
+      return { lintOnSave: false };
+    },
     { virtual: true }
   );
   mockPkg({
@@ -199,12 +198,12 @@ test('api: --skip-plugins', () => {
       {
         id: 'test-command',
         apply: api => {
-          api.registerCommand('foo', _args => {});
+          api.registerCommand('foo', () => {});
         },
       },
       {
         id: 'vue-cli-plugin-test-plugin',
-        apply: api => {
+        apply: () => {
           untouched = false;
         },
       },
@@ -296,7 +295,7 @@ test('api: configureWebpack returning object', () => {
     {
       id: 'test',
       apply: api => {
-        api.configureWebpack(config => {
+        api.configureWebpack(() => {
           return {
             output: {
               path: 'test-dist-3',

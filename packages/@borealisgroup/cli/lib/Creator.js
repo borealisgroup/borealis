@@ -149,12 +149,13 @@ module.exports = class Creator extends EventEmitter {
         return;
       }
 
-      // Note: the default creator includes no more than `@vue/cli-*` & `@vue/babel-preset-env`,
-      // so it is fine to only test `@vue` prefix.
-      // Other `@vue/*` packages' version may not be in sync with the cli itself.
+      // Note: the default creator includes no more than `@borealisgroup/cli-*` &
+      // `@borealisgroup/babel-preset-env`,
+      // so it is fine to only test `@borealisgroup` prefix.
+      // Other `@borealisgroup/*` packages' version may not be in sync with the cli itself.
       pkg.devDependencies[dep] =
         preset.plugins[dep].version ||
-        (/^@vue/.test(dep) ? `^${latestMinor}` : `latest`);
+        (/^@borealisgroup/.test(dep) ? `^${latestMinor}` : `latest`);
     });
 
     // write package.json
@@ -387,6 +388,9 @@ module.exports = class Creator extends EventEmitter {
     return { ...savedOptions.presets, ...defaults.presets };
   }
 
+  /**
+   * get the list of presets and prompt them
+   */
   resolveIntroPrompts() {
     const presets = this.getPresets();
     const presetChoices = Object.keys(presets).map(name => {

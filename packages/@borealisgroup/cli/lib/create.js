@@ -10,17 +10,9 @@ const { getPromptModules } = require('./util/createTools');
 
 process.env.VUE_CLI_DEBUG = true;
 
-async function create(projectName, options) {
-  if (options.proxy) {
-    process.env.HTTP_PROXY = options.proxy;
-  }
-
-  const cwd = options.cwd || process.cwd();
-  const inCurrent = projectName === '.';
-  const name = inCurrent ? path.relative('../', cwd) : projectName;
-  const targetDir = path.resolve(cwd, projectName || '.');
-
+const handleInvalidProjectName = name => {
   const result = validateProjectName(name);
+
   if (!result.validForNewPackages) {
     console.error(chalk.red(`Invalid project name: "${name}"`));
     if (result.errors)
@@ -33,7 +25,9 @@ async function create(projectName, options) {
       });
     exit(1);
   }
+};
 
+const initTargetDir = async ({ targetDir, options, inCurrent }) => {
   if (fs.existsSync(targetDir)) {
     if (options.force) {
       await fs.remove(targetDir);
@@ -76,9 +70,26 @@ async function create(projectName, options) {
     }
   }
 
+  return true;
+};
+
+const create = async (projectName, options) => {
+  if (options.proxy) {
+    process.env.HTTP_PROXY = options.proxy;
+  }
+
+  const cwd = options.cwd || process.cwd();
+  const inCurrent = projectName === '.';
+  const name = inCurrent ? path.relative('../', cwd) : projectName;
+  const targetDir = path.resolve(cwd, projectName || '.');
+
+  handleInvalidProjectName(name);
+
+  if (!initTargetDir({ targetDir, options, inCurrent })) return;
+
   const creator = new Creator(name, targetDir, getPromptModules());
   await creator.create(options);
-}
+};
 
 module.exports = (...args) => {
   return create(...args).catch(err => {

@@ -19,7 +19,12 @@ async function makeProjectMultiPage(project) {
         index: { entry: 'src/main.js' },
         foo: { entry: 'src/foo.js' },
         bar: { entry: 'src/bar.js' },
-        foobar: { entry: ['src/foobar.js'] }
+        foobar: { entry: ['src/foobar.js'] },
+        baz: {
+          entry: 'src/main.js',
+          template: 'public/baz.html',
+          filename: 'qux.html'
+        }
       },
       chainWebpack: config => {
         const splitOptions = config.optimization.get('splitChunks')
@@ -29,6 +34,10 @@ async function makeProjectMultiPage(project) {
       }
     }
   `
+  );
+  await project.write(
+    'public/baz.html',
+    await project.read('public/index.html')
   );
   await project.write(
     'src/foo.js',
@@ -113,6 +122,11 @@ test('build w/ multi page', async () => {
   expect(project.has('dist/index.html')).toBe(true);
   expect(project.has('dist/foo.html')).toBe(true);
   expect(project.has('dist/bar.html')).toBe(true);
+
+  // should properly ignore the template file
+  expect(project.has('dist/baz.html')).toBe(false);
+  // should respect the `filename` field in a multi-page config
+  expect(project.has('dist/qux.html')).toBe(true);
 
   const assertSharedAssets = file => {
     // should split and preload vendor chunk

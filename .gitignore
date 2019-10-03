@@ -7,8 +7,8 @@ jspm_packages/
 /packages/*/node_modules
 /packages/*/LICENSE
 **/lib
-!**/cli/lib
-/packages/test/*
+!**/cli*/lib
+/packages/test
 
 # compiled output
 /dist

@@ -208,8 +208,8 @@ module.exports = class Generator {
       }
     } else {
       if (!process.env.VUE_CLI_TEST) {
-        // by default, always extract vue.config.js
-        extract('vue');
+        // by default, always extract bor.config.js
+        extract('bor');
       }
       // always extract babel.config.js as this is the only way to apply
       // project-wide configuration even to dependencies.
@@ -225,8 +225,8 @@ module.exports = class Generator {
     this.pkg.scripts = sortObject(this.pkg.scripts, [
       'serve',
       'build',
-      'test',
-      'e2e',
+      'test:unit',
+      'test:e2e',
       'lint',
       'deploy',
     ]);

@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-disabled-tests */
 const stripAnsi = require('strip-ansi');
 const launchPuppeteer = require('./launchPuppeteer');
 
@@ -39,8 +40,6 @@ module.exports = async function serveWithPuppeteer(serve, test, noPuppeteer) {
   await new Promise((resolve, reject) => {
     const child = (activeChild = serve());
 
-    let log = '';
-
     const exit = async err => {
       if (activeBrowser) {
         await activeBrowser.close();
@@ -50,14 +49,12 @@ module.exports = async function serveWithPuppeteer(serve, test, noPuppeteer) {
         activeChild.stdin.write('close');
         activeBrowser = null;
       }
-      console.info(log);
       reject(err);
     };
 
     let isFirstMatch = true;
     child.stdout.on('data', async data => {
       data = data.toString();
-      log += data;
       try {
         const urlMatch = data.match(/http:\/\/[^/]+\//);
         if (urlMatch && isFirstMatch) {

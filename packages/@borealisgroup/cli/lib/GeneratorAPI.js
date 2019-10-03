@@ -98,7 +98,7 @@ class GeneratorAPI {
     if (semver.satisfies(this.cliVersion, range)) return;
 
     throw new Error(
-      `Require global @vue/cli "${range}", but was invoked by "${this.cliVersion}".`
+      `Require global @borealisgroup/cli "${range}", but was invoked by "${this.cliVersion}".`
     );
   }
 
@@ -139,7 +139,7 @@ class GeneratorAPI {
   /**
    * Check if the project has a given plugin.
    *
-   * @param {string} id - Plugin id, can omit the (@vue/|vue-|@scope/vue)-cli-plugin- prefix
+   * @param {string} id - Plugin id, can omit the (@borealisgroup/|bor-|@scope/bor)-cli-plugin- prefix
    * @param {string} version - Plugin version. Defaults to ''
    * @return {boolean}
    */
@@ -337,7 +337,7 @@ class GeneratorAPI {
   }
 
   /**
-   * Run codemod on a script file or the script part of a .vue file
+   * Run codemod on a script file or the script part of a .bor file
    * @param {string} file the path to the file to transform
    * @param {Codemod} codemod the codemod module to run
    * @param {object} options additional options for the codemod

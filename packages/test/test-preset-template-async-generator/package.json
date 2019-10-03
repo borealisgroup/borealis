@@ -12,8 +12,8 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@borealisgroup/cli-plugin-babel": "latest",
-    "@borealisgroup/cli-service": "latest",
+    "@borealisgroup/cli-plugin-babel": "^0.1.0",
+    "@borealisgroup/cli-service": "^0.1.0",
     "vue-cli-plugin-async-generator": "v0.0.1",
     "vue-template-compiler": "^2.6.10"
   },
