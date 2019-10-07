@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const {
   defaultPreset,
-} = require('@borealisgroup/cli/lib/config/defaultPresets');
+} = require('@borealisgroup/cli-config/presets/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
 const serve = require('@borealisgroup/cli-test-utils/serveWithPuppeteer');
 

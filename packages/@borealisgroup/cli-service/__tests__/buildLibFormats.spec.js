@@ -2,7 +2,7 @@ jest.setTimeout(40000);
 
 const {
   defaultPreset,
-} = require('@borealisgroup/cli/lib/config/defaultPresets');
+} = require('@borealisgroup/cli-config/presets/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
 
 let project;

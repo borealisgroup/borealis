@@ -1,6 +1,6 @@
 const { createSchema } = require('@vue/cli-shared-utils/lib/validate');
 
-const vuePreset = {
+exports.defaultPreset = {
   useConfigFiles: false,
   cssPreprocessor: undefined,
   plugins: {
@@ -10,10 +10,6 @@ const vuePreset = {
       lintOn: ['save'],
     },
   },
-};
-
-exports.defaultPreset = {
-  ...vuePreset,
 };
 
 exports.presetSchema = createSchema(joi =>

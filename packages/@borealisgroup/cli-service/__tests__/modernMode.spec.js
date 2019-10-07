@@ -6,7 +6,7 @@ const portfinder = require('portfinder');
 const createServer = require('@borealisgroup/cli-test-utils/createServer');
 const {
   defaultPreset,
-} = require('@borealisgroup/cli/lib/config/defaultPresets');
+} = require('@borealisgroup/cli-config/presets/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
 const launchPuppeteer = require('@borealisgroup/cli-test-utils/launchPuppeteer');
 

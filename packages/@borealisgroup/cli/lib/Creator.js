@@ -59,7 +59,7 @@ module.exports = class Creator extends EventEmitter {
     this.run = this.run.bind(this);
 
     const promptAPI = new PromptModuleAPI(this);
-    promptModules.forEach(m => m(promptAPI));
+    promptModules.forEach(promptModule => promptModule(promptAPI));
   }
 
   async create(cliOptions = {}, preset = null) {

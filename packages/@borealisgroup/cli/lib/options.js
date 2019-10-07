@@ -6,8 +6,11 @@ const {
   createSchema,
   validate,
 } = require('@vue/cli-shared-utils/lib/validate');
+const {
+  defaultPreset,
+  presetSchema,
+} = require('@borealisgroup/cli-config/presets/defaultPresets');
 const { getRcPath } = require('./util/rcPath');
-const { defaultPreset, presetSchema } = require('./config/defaultPresets');
 
 const rcPath = (exports.rcPath = getRcPath('.borrc'));
 

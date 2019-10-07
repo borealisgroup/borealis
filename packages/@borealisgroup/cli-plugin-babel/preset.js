@@ -1,1 +1,1 @@
-module.exports = require('@vue/babel-preset-app')
+module.exports = require('@vue/babel-preset-app');

@@ -4,9 +4,9 @@ const chalk = require('chalk');
 const inquirer = require('inquirer');
 const { error, stopSpinner, exit } = require('@vue/cli-shared-utils');
 const validateProjectName = require('validate-npm-package-name');
+const { getPromptModules } = require('@borealisgroup/cli-config/promptModules');
 const Creator = require('./Creator');
 const { clearConsole } = require('./util/clearConsole');
-const { getPromptModules } = require('./util/createTools');
 
 process.env.VUE_CLI_DEBUG = true;
 
@@ -85,7 +85,8 @@ const create = async (projectName, options) => {
 
   handleInvalidProjectName(name);
 
-  if (!initTargetDir({ targetDir, options, inCurrent })) return;
+  const action = await initTargetDir({ targetDir, options, inCurrent });
+  if (!action) return;
 
   const creator = new Creator(name, targetDir, getPromptModules());
   await creator.create(options);
