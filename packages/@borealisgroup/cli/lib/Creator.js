@@ -58,8 +58,8 @@ module.exports = class Creator extends EventEmitter {
 
     this.run = this.run.bind(this);
 
-    const promptAPI = new PromptModuleAPI(this);
-    promptModules.forEach(promptModule => promptModule(promptAPI));
+    const cli = new PromptModuleAPI(this);
+    promptModules.forEach(promptModule => promptModule(cli));
   }
 
   async create(cliOptions = {}, preset = null) {
@@ -293,7 +293,7 @@ module.exports = class Creator extends EventEmitter {
     }
 
     let preset;
-    if (answers.preset && answers.preset !== '__manual__') {
+    if (answers.preset && !isManualMode(answers)) {
       preset = await this.resolvePreset(answers.preset);
     } else {
       // manual
@@ -306,7 +306,7 @@ module.exports = class Creator extends EventEmitter {
       this.promptCompleteCbs.forEach(cb => cb(answers, preset));
     }
 
-    // validate
+    // validate schema
     validatePreset(preset);
 
     // save preset
