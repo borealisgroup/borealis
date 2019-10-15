@@ -1,5 +1,5 @@
-import ChainableWebpackConfig from 'webpack-chain'
-import { WebpackOptions } from 'webpack/declarations/WebpackOptions'
+import ChainableWebpackConfig from 'webpack-chain';
+import { WebpackOptions } from 'webpack/declarations/WebpackOptions';
 
 type PageEntry = string | string[];
 
@@ -49,7 +49,9 @@ export interface ProjectOptions {
   css?: CSSOptions;
 
   chainWebpack?: (config: ChainableWebpackConfig) => void;
-  configureWebpack?: WebpackOptions | ((config: WebpackOptions) => (WebpackOptions | void));
+  configureWebpack?:
+    | WebpackOptions
+    | ((config: WebpackOptions) => WebpackOptions | void);
 
   lintOnSave?: boolean | 'default' | 'warning' | 'error';
   pwa?: object;
@@ -57,4 +59,4 @@ export interface ProjectOptions {
   pluginOptions?: object;
 }
 
-export type ConfigFunction = () => ProjectOptions
+export type ConfigFunction = () => ProjectOptions;

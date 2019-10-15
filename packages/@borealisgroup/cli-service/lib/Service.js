@@ -11,13 +11,43 @@ const defaultsDeep = require('lodash.defaultsdeep');
 const {
   warn,
   error,
-  isPlugin,
   resolvePluginId,
   loadModule,
 } = require('@vue/cli-shared-utils');
+const { isPlugin } = require('@borealisgroup/cli-shared-utils');
 const PluginAPI = require('./PluginAPI');
 
 const { defaults, validate } = require('./options');
+
+function ensureSlash(config, key) {
+  let val = config[key];
+  if (typeof val === 'string') {
+    if (!/^https?:/.test(val)) {
+      val = val.replace(/^([^/.])/, '/$1');
+    }
+    config[key] = val.replace(/([^/])$/, '$1/');
+  }
+}
+
+function removeSlash(config, key) {
+  if (typeof config[key] === 'string') {
+    config[key] = config[key].replace(/\/$/g, '');
+  }
+}
+
+function cloneRuleNames(to, from) {
+  if (!to || !from) {
+    return;
+  }
+  from.forEach((r, i) => {
+    if (to[i]) {
+      Object.defineProperty(to[i], '__ruleNames', {
+        value: r.__ruleNames,
+      });
+      cloneRuleNames(to[i].oneOf, r.oneOf);
+    }
+  });
+}
 
 module.exports = class Service {
   constructor(context, { plugins, pkg, inlineOptions, useBuiltIn } = {}) {
@@ -414,33 +444,3 @@ module.exports = class Service {
     return resolved;
   }
 };
-
-function ensureSlash(config, key) {
-  let val = config[key];
-  if (typeof val === 'string') {
-    if (!/^https?:/.test(val)) {
-      val = val.replace(/^([^/.])/, '/$1');
-    }
-    config[key] = val.replace(/([^/])$/, '$1/');
-  }
-}
-
-function removeSlash(config, key) {
-  if (typeof config[key] === 'string') {
-    config[key] = config[key].replace(/\/$/g, '');
-  }
-}
-
-function cloneRuleNames(to, from) {
-  if (!to || !from) {
-    return;
-  }
-  from.forEach((r, i) => {
-    if (to[i]) {
-      Object.defineProperty(to[i], '__ruleNames', {
-        value: r.__ruleNames,
-      });
-      cloneRuleNames(to[i].oneOf, r.oneOf);
-    }
-  });
-}
