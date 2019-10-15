@@ -6,10 +6,30 @@
 
 ## Install
 
-```
+```bash
 yarn install --save @borealisgroup/cli
 ```
 
-## Usage
+## Changes
 
-See the [example](example)
+### cli
+
+Removed:
+
+- pnpm
+- taobao
+- vue-cli-version-marker (~300ms slower)
+
+### cli-service
+
+p11n:
+
+- generators
+
+### cli-shared-utils
+
+- `isPlugin` checks vue-cli and bor-cli plugins
+
+### cli-plugin-vue-core
+
+- generators from `vue-cli-service`
