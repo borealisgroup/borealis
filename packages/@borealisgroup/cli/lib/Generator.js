@@ -5,8 +5,8 @@ const {
   toShortPluginId,
   matchesPluginId,
   loadModule,
-  isPlugin,
 } = require('@vue/cli-shared-utils');
+const { isPlugin } = require('@borealisgroup/cli-shared-utils');
 const logger = require('@vue/cli-shared-utils/lib/logger');
 const GeneratorAPI = require('./GeneratorAPI');
 const PackageManager = require('./util/ProjectPackageManager');
