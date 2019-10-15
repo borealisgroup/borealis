@@ -1,27 +1,27 @@
 {
   "name": "@borealisgroup/cli-service",
   "version": "0.1.0",
-  "description": "local service for vue-cli projects",
+  "description": "local service for bor-cli projects",
+  "keywords": [
+    "bor",
+    "cli"
+  ],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-service#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-service"
+  },
+  "license": "MIT",
   "main": "lib/Service.js",
   "typings": "types/index.d.ts",
   "bin": {
     "bor-cli-service": "bin/bor-cli-service.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuejs/vue-cli.git",
-    "directory": "packages/@borealisgroup/cli-service"
-  },
-  "keywords": [
-    "vue",
-    "cli"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vue-cli/issues"
-  },
-  "homepage": "https://cli.vuejs.org/",
   "dependencies": {
+    "@borealisgroup/cli-shared-utils": "0.1.0",
     "@intervolga/optimize-cssnano-plugin": "^1.0.5",
     "@soda/friendly-errors-webpack-plugin": "^1.7.1",
     "@vue/cli-overlay": "^4.0.0-rc.7",
@@ -78,9 +78,6 @@
     "webpack-dev-server": "^3.4.1",
     "webpack-merge": "^4.2.1"
   },
-  "peerDependencies": {
-    "vue-template-compiler": "^2.0.0"
-  },
   "devDependencies": {
     "fibers": ">= 3.1.1 <5.0.0",
     "sass": "^1.19.0",
@@ -90,10 +87,13 @@
     "vue-template-compiler": "^2.6.10",
     "vuex": "^3.0.1"
   },
-  "publishConfig": {
-    "access": "public"
+  "peerDependencies": {
+    "vue-template-compiler": "^2.0.0"
   },
   "engines": {
     "node": ">=8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

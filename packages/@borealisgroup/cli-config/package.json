@@ -2,15 +2,15 @@
   "name": "@borealisgroup/cli-config",
   "version": "0.1.0",
   "description": "config for bor-cli",
-  "license": "MIT",
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-config#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-config"
   },
-  "bugs": {
-    "url": "https://github.com/borealisgroup/borealis/issues"
-  },
-  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-config#readme",
+  "license": "MIT",
   "dependencies": {
     "@vue/cli-shared-utils": "^4.0.0-rc.7"
   },

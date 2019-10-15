@@ -1,0 +1,24 @@
+{
+  "name": "@borealisgroup/cli-plugin-template",
+  "version": "0.1.0",
+  "description": "template plugin for bor-cli projects",
+  "keywords": [
+    "babel",
+    "cli",
+    "bor"
+  ],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-plugin-template#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-plugin-template"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}
