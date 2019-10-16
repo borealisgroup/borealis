@@ -19,6 +19,12 @@ Removed:
 - pnpm
 - taobao
 - vue-cli-version-marker (~300ms slower)
+- `GeneratorAPI.assertCliVersion` for vue-cli compatibility
+- `GeneratorAPI.assertCliServiceVersion` for vue-cli compatibility
+
+Added:
+
+- `bin/cli` - require `dotenv`
 
 ### cli-service
 
