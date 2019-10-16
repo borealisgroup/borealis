@@ -172,6 +172,12 @@ module.exports = class Generator {
     // set package.json
     this.sortPkg();
     this.files['package.json'] = `${JSON.stringify(this.pkg, null, 2)}\n`;
+
+    if (process.env.VUE_CLI_DEBUG) {
+      // set .env
+      this.files['.env'] = `VUE_CLI_DEBUG=true`;
+    }
+
     // write/update file tree to disk
     await writeFileTree(this.context, this.files, initialFiles);
   }

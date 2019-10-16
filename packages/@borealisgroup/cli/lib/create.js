@@ -8,8 +8,6 @@ const { getPromptModules } = require('@borealisgroup/cli-config/promptModules');
 const Creator = require('./Creator');
 const { clearConsole } = require('./util/clearConsole');
 
-process.env.VUE_CLI_DEBUG = true;
-
 const handleInvalidProjectName = name => {
   const result = validateProjectName(name);
 
