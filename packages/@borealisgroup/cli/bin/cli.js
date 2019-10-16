@@ -99,6 +99,25 @@ program
     require('../lib/invoke')(plugin, minimist(process.argv.slice(3)));
   });
 
+program
+  .command('ui')
+  .description('start and open the vue-cli ui')
+  .option(
+    '-H, --host <host>',
+    'Host used for the UI server (default: localhost)'
+  )
+  .option(
+    '-p, --port <port>',
+    'Port used for the UI server (by default search for available port)'
+  )
+  .option('-D, --dev', 'Run in dev mode')
+  .option('--quiet', `Don't output starting messages`)
+  .option('--headless', `Don't open browser on start and output port`)
+  .action(cmd => {
+    checkNodeVersion('>=8.6', 'vue ui');
+    require('../lib/ui')(cleanArgs(cmd));
+  });
+
 //
 // ─── CONFIG ─────────────────────────────────────────────────────────────────────
 //
@@ -113,6 +132,14 @@ program
   .action((value, cmd) => {
     require('../lib/config')(value, cleanArgs(cmd));
   });
+
+//
+// ─── OUTDATED ───────────────────────────────────────────────────────────────────
+//
+
+//
+// ─── UPGRADE ────────────────────────────────────────────────────────────────────
+//
 
 //
 // ─── INFO ───────────────────────────────────────────────────────────────────────
