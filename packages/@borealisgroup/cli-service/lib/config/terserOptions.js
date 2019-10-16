@@ -29,13 +29,14 @@ module.exports = options => ({
       // required features to drop conditional branches
       conditionals: true,
       dead_code: true,
-      evaluate: true
+      evaluate: true,
     },
     mangle: {
-      safari10: true
-    }
+      safari10: true,
+    },
   },
   sourceMap: options.productionSourceMap,
   cache: true,
-  parallel: options.parallel
-})
+  parallel: options.parallel,
+  extractComments: false,
+});

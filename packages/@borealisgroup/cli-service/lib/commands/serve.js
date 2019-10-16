@@ -12,6 +12,44 @@ const defaults = {
   https: false,
 };
 
+function addDevClientToEntry(config, devClient) {
+  const { entry } = config;
+  if (typeof entry === 'object' && !Array.isArray(entry)) {
+    Object.keys(entry).forEach(key => {
+      entry[key] = devClient.concat(entry[key]);
+    });
+  } else if (typeof entry === 'function') {
+    config.entry = entry(devClient);
+  } else {
+    config.entry = devClient.concat(entry);
+  }
+}
+
+// https://stackoverflow.com/a/20012536
+function checkInContainer() {
+  const fs = require('fs');
+  if (fs.existsSync(`/proc/1/cgroup`)) {
+    const content = fs.readFileSync(`/proc/1/cgroup`, 'utf-8');
+    return /:\/(lxc|docker|kubepods)\//.test(content);
+  }
+}
+
+function genHistoryApiFallbackRewrites(baseUrl, pages = {}) {
+  const path = require('path');
+  const multiPageRewrites = Object.keys(pages)
+    // sort by length in reversed order to avoid overrides
+    // eg. 'page11' should appear in front of 'page1'
+    .sort((a, b) => b.length - a.length)
+    .map(name => ({
+      from: new RegExp(`^/${name}`),
+      to: path.posix.join(baseUrl, pages[name].filename || `${name}.html`),
+    }));
+  return [
+    ...multiPageRewrites,
+    { from: /./, to: path.posix.join(baseUrl, 'index.html') },
+  ];
+}
+
 module.exports = (api, options) => {
   api.registerCommand(
     'serve',
@@ -153,13 +191,12 @@ module.exports = (api, options) => {
             // use client-side inference (note this would break with non-root publicPath)
             ``
           : // otherwise infer the url
-            `?` +
-            url.format({
+            `?${url.format({
               protocol,
               port,
               hostname: urls.lanUrlForConfig || 'localhost',
               pathname: '/sockjs-node',
-            });
+            })}`;
         const devClients = [
           // dev server client
           require.resolve(`webpack-dev-server/client`) + sockjsUrl,
@@ -183,56 +220,49 @@ module.exports = (api, options) => {
       const compiler = webpack(webpackConfig);
 
       // create server
-      const server = new WebpackDevServer(
-        compiler,
-        Object.assign(
-          {
-            clientLogLevel: 'silent',
-            historyApiFallback: {
-              disableDotRule: true,
-              rewrites: genHistoryApiFallbackRewrites(
-                options.publicPath,
-                options.pages
-              ),
-            },
-            contentBase: api.resolve('public'),
-            watchContentBase: !isProduction,
-            hot: !isProduction,
-            quiet: true,
-            compress: isProduction,
-            publicPath: options.publicPath,
-            overlay: isProduction // TODO disable this
-              ? false
-              : { warnings: false, errors: true },
-          },
-          projectDevServerOptions,
-          {
-            https: useHttps,
-            proxy: proxySettings,
-            // eslint-disable-next-line no-shadow
-            before(app, server) {
-              // launch editor support.
-              // this works with vue-devtools & @vue/cli-overlay
-              app.use(
-                '/__open-in-editor',
-                launchEditorMiddleware(() =>
-                  console.log(
-                    `To specify an editor, specify the EDITOR env variable or ` +
-                      `add "editor" field to your Vue project config.\n`
-                  )
-                )
-              );
-              // allow other plugins to register middlewares, e.g. PWA
-              api.service.devServerConfigFns.forEach(fn => fn(app, server));
-              // apply in project middlewares
-              projectDevServerOptions.before &&
-                projectDevServerOptions.before(app, server);
-            },
-            // avoid opening browser
-            open: false,
-          }
-        )
-      );
+      const server = new WebpackDevServer(compiler, {
+        logLevel: 'silent',
+        clientLogLevel: 'silent',
+        historyApiFallback: {
+          disableDotRule: true,
+          rewrites: genHistoryApiFallbackRewrites(
+            options.publicPath,
+            options.pages
+          ),
+        },
+        contentBase: api.resolve('public'),
+        watchContentBase: !isProduction,
+        hot: !isProduction,
+        compress: isProduction,
+        publicPath: options.publicPath,
+        overlay: isProduction // TODO disable this
+          ? false
+          : { warnings: false, errors: true },
+        ...projectDevServerOptions,
+        https: useHttps,
+        proxy: proxySettings,
+        // eslint-disable-next-line no-shadow
+        before(app, server) {
+          // launch editor support.
+          // this works with vue-devtools & @vue/cli-overlay
+          app.use(
+            '/__open-in-editor',
+            launchEditorMiddleware(() =>
+              console.log(
+                `To specify an editor, specify the EDITOR env variable or ` +
+                  `add "editor" field to your Vue project config.\n`
+              )
+            )
+          );
+          // allow other plugins to register middlewares, e.g. PWA
+          api.service.devServerConfigFns.forEach(fn => fn(app, server));
+          // apply in project middlewares
+          projectDevServerOptions.before &&
+            projectDevServerOptions.before(app, server);
+        },
+        // avoid opening browser
+        open: false,
+      });
 
       ['SIGINT', 'SIGTERM'].forEach(signal => {
         process.on(signal, () => {
@@ -389,44 +419,6 @@ module.exports = (api, options) => {
     }
   );
 };
-
-function addDevClientToEntry(config, devClient) {
-  const { entry } = config;
-  if (typeof entry === 'object' && !Array.isArray(entry)) {
-    Object.keys(entry).forEach(key => {
-      entry[key] = devClient.concat(entry[key]);
-    });
-  } else if (typeof entry === 'function') {
-    config.entry = entry(devClient);
-  } else {
-    config.entry = devClient.concat(entry);
-  }
-}
-
-// https://stackoverflow.com/a/20012536
-function checkInContainer() {
-  const fs = require('fs');
-  if (fs.existsSync(`/proc/1/cgroup`)) {
-    const content = fs.readFileSync(`/proc/1/cgroup`, 'utf-8');
-    return /:\/(lxc|docker|kubepods)\//.test(content);
-  }
-}
-
-function genHistoryApiFallbackRewrites(baseUrl, pages = {}) {
-  const path = require('path');
-  const multiPageRewrites = Object.keys(pages)
-    // sort by length in reversed order to avoid overrides
-    // eg. 'page11' should appear in front of 'page1'
-    .sort((a, b) => b.length - a.length)
-    .map(name => ({
-      from: new RegExp(`^/${name}`),
-      to: path.posix.join(baseUrl, pages[name].filename || `${name}.html`),
-    }));
-  return [
-    ...multiPageRewrites,
-    { from: /./, to: path.posix.join(baseUrl, 'index.html') },
-  ];
-}
 
 module.exports.defaultModes = {
   serve: 'development',
