@@ -12,9 +12,9 @@ const checkNodeVersion = require('../lib/util/checkNodeVersion');
 const cleanArgs = require('../lib/util/cleanArgs');
 const suggestCommands = require('../lib/util/suggestCommands');
 
-checkNodeVersion(requiredVersion, 'bor-cli');
+checkNodeVersion(requiredVersion, '@borealisgroup/cli');
 
-program.version(version).usage('<command> [options]');
+program.version(`@borealisgroup/cli ${version}`).usage('<command> [options]');
 
 //
 // ─── CREATE ─────────────────────────────────────────────────────────────────────
