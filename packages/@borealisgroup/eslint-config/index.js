@@ -1,17 +1,19 @@
 module.exports = {
-  parser: 'babel-eslint',
   extends: [
     'airbnb',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
+    'plugin:vue/recommended',
     'plugin:prettier/recommended',
     'prettier/react',
+    'prettier/vue',
   ],
   parserOptions: {
     ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true,
     },
+    parser: 'babel-eslint',
   },
   env: {
     browser: true,
@@ -20,7 +22,7 @@ module.exports = {
     jest: true,
     webextensions: false,
   },
-  plugins: ['react', 'react-hooks', 'promise', 'jest', 'prettier'],
+  plugins: ['react', 'react-hooks', 'promise', 'jest', 'graphql', 'prettier'],
   settings: {
     'import/resolver': {
       node: {
@@ -39,6 +41,10 @@ module.exports = {
     ],
 
     'linebreak-style': 'off',
+    'global-require': 'off',
+    'no-multi-assign': 'off',
+    'no-await-in-loop': 'off',
+    'no-empty': 'off',
     'no-console': [
       'error',
       {
@@ -83,6 +89,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
 
+    'import/no-dynamic-require': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'import/order': [

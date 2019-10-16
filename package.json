@@ -20,6 +20,29 @@
     "test": "node scripts/test.js",
     "test:pre": "yarn clean"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint",
+      "git add"
+    ]
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "invoke",
+      "Upgrader"
+    ],
+    "setupFiles": [
+      "<rootDir>/scripts/testSetup.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.js"
+    ]
+  },
   "devDependencies": {
     "@ant-design/colors": "^3.1.0",
     "@babel/cli": "^7.5.5",
@@ -57,28 +80,5 @@
     "rollup-plugin-includepaths": "^0.2.3",
     "rollup-plugin-node-resolve": "^5.2.0",
     "styled-components": "^4.3.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint",
-      "git add"
-    ]
-  },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/scripts/testSetup.js"
-    ],
-    "testMatch": [
-      "**/__tests__/**/*.spec.js"
-    ],
-    "modulePathIgnorePatterns": [
-      "invoke",
-      "Upgrader"
-    ]
   }
 }
