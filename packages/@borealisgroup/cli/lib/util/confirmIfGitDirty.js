@@ -1,32 +1,46 @@
-const execa = require('execa')
-const inquirer = require('inquirer')
+const execa = require('execa');
+const inquirer = require('inquirer');
 
-const { warn, hasProjectGit } = require('@vue/cli-shared-utils')
+const { warn, hasProjectGit } = require('@vue/cli-shared-utils');
 
-module.exports = async function confirmIfGitDirty (context) {
-  if (process.env.VUE_CLI_SKIP_DIRTY_GIT_PROMPT || process.env.VUE_CLI_API_MODE) {
-    return true
+/**
+ *  if the project does not have git, return `true`
+ *  run `git status --porcelain`
+ *  if output empty, return `true`
+ *  warn: `There are uncommited changes in the current repository, it's recommended to commit or stash them first.`
+ *  prompt confirm: `Still proceed?`
+ */
+module.exports = async function confirmIfGitDirty(context) {
+  if (
+    process.env.VUE_CLI_SKIP_DIRTY_GIT_PROMPT ||
+    process.env.VUE_CLI_API_MODE
+  ) {
+    return true;
   }
 
-  process.env.VUE_CLI_SKIP_DIRTY_GIT_PROMPT = true
+  process.env.VUE_CLI_SKIP_DIRTY_GIT_PROMPT = true;
 
   if (!hasProjectGit(context)) {
-    return true
+    return true;
   }
 
-  const { stdout } = await execa('git', ['status', '--porcelain'], { cwd: context })
+  const { stdout } = await execa('git', ['status', '--porcelain'], {
+    cwd: context,
+  });
   if (!stdout) {
-    return true
+    return true;
   }
 
-  warn(`There are uncommited changes in the current repository, it's recommended to commit or stash them first.`)
+  warn(
+    `There are uncommited changes in the current repository, it's recommended to commit or stash them first.`
+  );
   const { ok } = await inquirer.prompt([
     {
       name: 'ok',
       type: 'confirm',
       message: 'Still proceed?',
-      default: false
-    }
-  ])
-  return ok
-}
+      default: false,
+    },
+  ]);
+  return ok;
+};
