@@ -191,9 +191,11 @@ class GeneratorAPI {
   extendPackage(fields, forceNewVersion) {
     const { pkg } = this.generator;
     const toMerge = isFunction(fields) ? fields(pkg) : fields;
-    for (const key in toMerge) {
+
+    for (const key of Object.keys(toMerge)) {
       const value = toMerge[key];
       const existing = pkg[key];
+
       if (
         isObject(value) &&
         (key === 'dependencies' || key === 'devDependencies')
