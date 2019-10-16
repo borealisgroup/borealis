@@ -4,6 +4,7 @@ module.exports = {
     'import/no-dynamic-require': 'off',
     'global-require': 'off',
     'no-multi-assign': 'off',
-    'no-await-in-loop': 'off'
+    'no-await-in-loop': 'off',
+    'no-empty': 'off'
   }
 };
