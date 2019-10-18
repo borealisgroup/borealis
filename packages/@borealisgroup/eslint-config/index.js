@@ -42,6 +42,7 @@ module.exports = {
 
     'linebreak-style': 'off',
     'global-require': 'off',
+    'no-continue': 'off',
     'no-multi-assign': 'off',
     'no-await-in-loop': 'off',
     'no-empty': 'off',
