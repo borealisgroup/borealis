@@ -5,10 +5,9 @@ const {
   resolvePluginId,
   isOfficialPlugin,
 } = require('@borealisgroup/cli-shared-utils');
+const confirmIfGitDirty = require('@vue/cli/lib/util/confirmIfGitDirty');
 const invoke = require('./invoke');
-
 const PackageManager = require('./util/ProjectPackageManager');
-const confirmIfGitDirty = require('./util/confirmIfGitDirty');
 
 const add = async (pluginName, options = {}, context = process.cwd()) => {
   if (!(await confirmIfGitDirty(context))) {

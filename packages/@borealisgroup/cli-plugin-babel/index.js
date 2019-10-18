@@ -1,7 +1,7 @@
 const path = require('path');
 const { isWindows } = require('@vue/cli-shared-utils');
 
-function genTranspileDepRegex(transpileDependencies) {
+const genTranspileDepRegex = transpileDependencies => {
   const deps = transpileDependencies.map(dep => {
     if (typeof dep === 'string') {
       const depPath = path.join('node_modules', dep, '/');
@@ -12,9 +12,10 @@ function genTranspileDepRegex(transpileDependencies) {
     if (dep instanceof RegExp) {
       return dep.source;
     }
+    return null;
   });
   return deps.length ? new RegExp(deps.join('|')) : null;
-}
+};
 
 module.exports = (api, options) => {
   const useThreads =

@@ -1,5 +1,5 @@
 const fs = require('fs-extra');
-const loadPresetFromDir = require('./loadPresetFromDir');
+const loadPresetFromDir = require('@vue/cli/lib/util/loadPresetFromDir');
 
 module.exports = async function fetchRemotePreset(name, clone) {
   const os = require('os');

@@ -6,10 +6,10 @@ module.exports = function (fileInfo, api) {
 
   root
     .find(j.Literal, { value: '@vue/app' })
-    .replaceWith(j.stringLiteral('@vue/cli-plugin-babel/preset'))
+    .replaceWith(j.stringLiteral('@borealisgroup/cli-plugin-babel/preset'))
   root
     .find(j.Literal, { value: '@vue/babel-preset-app' })
-    .replaceWith(j.stringLiteral('@vue/cli-plugin-babel/preset'))
+    .replaceWith(j.stringLiteral('@borealisgroup/cli-plugin-babel/preset'))
 
   const templateLiterals = root
     .find(j.TemplateLiteral, {
@@ -23,7 +23,7 @@ module.exports = function (fileInfo, api) {
       }
     })
     .closest(j.TemplateLiteral)
-    .replaceWith(j.stringLiteral('@vue/cli-plugin-babel/preset'))
+    .replaceWith(j.stringLiteral('@borealisgroup/cli-plugin-babel/preset'))
 
   templateLiterals
     .find(j.TemplateElement, {
@@ -32,7 +32,7 @@ module.exports = function (fileInfo, api) {
       }
     })
     .closest(j.TemplateLiteral)
-    .replaceWith(j.stringLiteral('@vue/cli-plugin-babel/preset'))
+    .replaceWith(j.stringLiteral('@borealisgroup/cli-plugin-babel/preset'))
 
   return root.toSource({
     lineTerminator: '\n',

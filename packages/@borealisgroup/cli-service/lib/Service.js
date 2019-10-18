@@ -8,16 +8,13 @@ const Config = require('webpack-chain');
 const dotenv = require('dotenv');
 const dotenvExpand = require('dotenv-expand');
 const defaultsDeep = require('lodash.defaultsdeep');
+const { warn, error, loadModule } = require('@vue/cli-shared-utils');
 const {
-  warn,
-  error,
+  isPlugin,
   resolvePluginId,
-  loadModule,
-} = require('@vue/cli-shared-utils');
-const { isPlugin } = require('@borealisgroup/cli-shared-utils');
+} = require('@borealisgroup/cli-shared-utils');
+const { defaults, validate } = require('@vue/cli-service/lib/options');
 const PluginAPI = require('./PluginAPI');
-
-const { defaults, validate } = require('./options');
 
 function ensureSlash(config, key) {
   let val = config[key];
@@ -189,15 +186,15 @@ module.exports = class Service {
     let plugins;
 
     const builtInPlugins = [
-      './commands/serve',
-      './commands/build',
-      './commands/inspect',
-      './commands/help',
+      '@vue/cli-service/lib/commands/serve',
+      '@vue/cli-service/lib/commands/build',
+      '@vue/cli-service/lib/commands/inspect',
+      '@vue/cli-service/lib/commands/help',
       // config plugins are order sensitive
-      './config/base',
-      './config/css',
-      './config/prod',
-      './config/app',
+      '@vue/cli-service/lib/config/base',
+      '@vue/cli-service/lib/config/css',
+      '@vue/cli-service/lib/config/prod',
+      '@vue/cli-service/lib/config/app',
     ].map(idToPlugin);
 
     if (inlinePlugins) {

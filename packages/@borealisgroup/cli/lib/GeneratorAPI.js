@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
@@ -10,10 +11,10 @@ const {
   toShortPluginId,
   loadModule,
 } = require('@vue/cli-shared-utils');
-const mergeDeps = require('./util/mergeDeps');
-const runCodemod = require('./util/runCodemod');
-const stringifyJS = require('./util/stringifyJS');
-const ConfigTransform = require('./ConfigTransform');
+const ConfigTransform = require('@vue/cli/lib/ConfigTransform');
+const stringifyJS = require('@vue/cli/lib/util/stringifyJS');
+const mergeDeps = require('@vue/cli/lib/util/mergeDeps');
+const runCodemod = require('@vue/cli/lib/util/runCodemod');
 
 const isString = val => typeof val === 'string';
 const isFunction = val => typeof val === 'function';
@@ -99,14 +100,12 @@ class GeneratorAPI {
     this.options = options;
     this.rootOptions = rootOptions;
 
-    /* eslint-disable no-shadow */
     this.pluginsData = generator.plugins
       .filter(({ id }) => id !== `@borealisgroup/cli-service`)
       .map(({ id }) => ({
         name: toShortPluginId(id),
         link: getPluginLink(id),
       }));
-    /* eslint-enable no-shadow */
 
     this._entryFile = undefined;
   }

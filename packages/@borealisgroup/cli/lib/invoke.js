@@ -12,11 +12,9 @@ const {
   loadModule,
 } = require('@vue/cli-shared-utils');
 const { resolvePluginId } = require('@borealisgroup/cli-shared-utils');
-
+const readFiles = require('@vue/cli/lib/util/readFiles');
+const confirmIfGitDirty = require('@vue/cli/lib/util/confirmIfGitDirty');
 const Generator = require('./Generator');
-
-const confirmIfGitDirty = require('./util/confirmIfGitDirty');
-const readFiles = require('./util/readFiles');
 const PackageManager = require('./util/ProjectPackageManager');
 
 const getPkg = context => {

@@ -1,3 +1,4 @@
+// TODO
 const descriptions = {
   build: 'Compiles and minifies for production',
   serve: 'Compiles and hot-reloads for development',

@@ -26,6 +26,7 @@
   "dependencies": {
     "@borealisgroup/cli-config": "0.1.0",
     "@borealisgroup/cli-shared-utils": "0.1.0",
+    "@vue/cli": "4.0.4",
     "@vue/cli-shared-utils": "^4.0.0",
     "boxen": "^4.1.0",
     "chalk": "^2.4.2",

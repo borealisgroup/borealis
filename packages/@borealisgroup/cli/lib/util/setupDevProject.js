@@ -1,7 +1,7 @@
 // dev only
 
 const path = require('path');
-const { linkBin } = require('./linkBin');
+const { linkBin } = require('@vue/cli/lib/util/linkBin');
 
 module.exports = function setupDevProject(targetDir) {
   return linkBin(

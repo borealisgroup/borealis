@@ -3,12 +3,12 @@ jest.setTimeout(50000);
 const path = require('path');
 const fs = require('fs-extra');
 const portfinder = require('portfinder');
-const createServer = require('@borealisgroup/cli-test-utils/createServer');
+const createServer = require('@vue/cli-test-utils/createServer');
 const {
   defaultPreset,
 } = require('@borealisgroup/cli-config/presets/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
-const launchPuppeteer = require('@borealisgroup/cli-test-utils/launchPuppeteer');
+const launchPuppeteer = require('@vue/cli-test-utils/launchPuppeteer');
 
 let server;
 let browser;
@@ -61,7 +61,9 @@ test('modern mode', async () => {
   expect(index).toMatch(/<script src=\/js\/app-legacy\.\w{8}\.js nomodule>/);
 
   // should inject Safari 10 nomodule fix
-  const { safariFix } = require('../lib/webpack/ModernModePlugin');
+  const {
+    safariFix,
+  } = require('@vue/cli-service/lib/webpack/ModernModePlugin');
   expect(index).toMatch(`<script>${safariFix}</script>`);
 
   // Test crossorigin="use-credentials"

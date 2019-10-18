@@ -2,12 +2,12 @@ jest.setTimeout(15000);
 
 const path = require('path');
 const portfinder = require('portfinder');
-const createServer = require('@borealisgroup/cli-test-utils/createServer');
+const createServer = require('@vue/cli-test-utils/createServer');
 const {
   defaultPreset,
 } = require('@borealisgroup/cli-config/presets/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
-const launchPuppeteer = require('@borealisgroup/cli-test-utils/launchPuppeteer');
+const launchPuppeteer = require('@vue/cli-test-utils/launchPuppeteer');
 
 let server;
 let browser;

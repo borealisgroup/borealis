@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-multi-assign */
 const path = require('path');
 const EventEmitter = require('events');
 const chalk = require('chalk');
@@ -20,15 +18,15 @@ const {
   exit,
   loadModule,
 } = require('@vue/cli-shared-utils');
+const writeFileTree = require('@vue/cli/lib/util/writeFileTree');
+const sortObject = require('@vue/cli/lib/util/sortObject');
+const loadLocalPreset = require('@vue/cli/lib/util/loadLocalPreset');
+const PromptModuleAPI = require('@vue/cli/lib/PromptModuleAPI');
 const Generator = require('./Generator');
-const sortObject = require('./util/sortObject');
 const getVersions = require('./util/getVersions');
 const PackageManager = require('./util/ProjectPackageManager');
 const { clearConsole } = require('./util/clearConsole');
-const PromptModuleAPI = require('./PromptModuleAPI');
-const writeFileTree = require('./util/writeFileTree');
 const { formatFeatures } = require('./util/features');
-const loadLocalPreset = require('./util/loadLocalPreset');
 const loadRemotePreset = require('./util/loadRemotePreset');
 const generateReadme = require('./util/generateReadme');
 const {
@@ -98,20 +96,6 @@ module.exports = class Creator extends EventEmitter {
 
     if (cliOptions.bare) {
       preset.plugins['@borealisgroup/cli-service'].bare = true;
-    }
-
-    // legacy support for router
-    if (preset.router) {
-      preset.plugins['@vue/cli-plugin-router'] = {};
-
-      if (preset.routerHistoryMode) {
-        preset.plugins['@vue/cli-plugin-router'].historyMode = true;
-      }
-    }
-
-    // legacy support for vuex
-    if (preset.vuex) {
-      preset.plugins['@vue/cli-plugin-vuex'] = {};
     }
 
     const packageManager =
@@ -368,8 +352,14 @@ module.exports = class Creator extends EventEmitter {
     rawPlugins = sortObject(rawPlugins, ['@borealisgroup/cli-service'], true);
     const plugins = [];
     for (const id of Object.keys(rawPlugins)) {
-      const apply = loadModule(`${id}/generator`, this.context) || (() => {});
       let options = rawPlugins[id] || {};
+
+      let apply;
+      if (id !== '@borealisgroup/cli-service') {
+        apply = loadModule(`${id}/generator`, this.context) || (() => {});
+      } else {
+        apply = () => {};
+      }
       if (options.prompts) {
         const prompts = loadModule(`${id}/prompts`, this.context);
         if (prompts) {
@@ -378,6 +368,7 @@ module.exports = class Creator extends EventEmitter {
           options = await inquirer.prompt(prompts);
         }
       }
+
       plugins.push({ id, apply, options });
     }
     return plugins;

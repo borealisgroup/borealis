@@ -6,11 +6,12 @@ const chalk = require('chalk');
 const minimist = require('minimist');
 const envinfo = require('envinfo');
 const program = require('commander');
+const enhanceErrorMessages = require('@vue/cli/lib/util/enhanceErrorMessages');
 const { version } = require('../package');
 const requiredVersion = require('../package.json').engines.node;
+const suggestCommands = require('../lib/util/suggestCommands');
 const checkNodeVersion = require('../lib/util/checkNodeVersion');
 const cleanArgs = require('../lib/util/cleanArgs');
-const suggestCommands = require('../lib/util/suggestCommands');
 
 checkNodeVersion(requiredVersion, '@borealisgroup/cli');
 
@@ -195,7 +196,6 @@ program.commands.forEach(c => c.on('--help', () => console.info()));
 //
 // ─── ERROR MESSAGES ──────────────────────────────────────────────
 //
-const enhanceErrorMessages = require('../lib/util/enhanceErrorMessages');
 
 enhanceErrorMessages('missingArgument', argName => {
   return `Missing required argument ${chalk.yellow(`<${argName}>`)}.`;

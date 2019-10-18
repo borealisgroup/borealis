@@ -30,7 +30,7 @@
     "jscodeshift": "^0.6.4"
   },
   "peerDependencies": {
-    "@borealisgroup/cli-service": "^0.1.0"
+    "@borealisgroup/cli-service": "0.1.0"
   },
   "publishConfig": {
     "access": "public"

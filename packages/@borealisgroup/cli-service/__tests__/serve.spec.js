@@ -6,7 +6,7 @@ const {
   defaultPreset,
 } = require('@borealisgroup/cli-config/presets/defaultPresets');
 const create = require('@borealisgroup/cli-test-utils/createTestProject');
-const serve = require('@borealisgroup/cli-test-utils/serveWithPuppeteer');
+const serve = require('@vue/cli-test-utils/serveWithPuppeteer');
 
 test('serve', async () => {
   const project = await create('e2e-serve', defaultPreset);

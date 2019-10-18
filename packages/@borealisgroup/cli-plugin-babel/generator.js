@@ -7,7 +7,7 @@ module.exports = api => {
 
   api.extendPackage({
     babel: {
-      presets: ['@vue/cli-plugin-babel/preset'],
+      presets: ['@borealisgroup/cli-plugin-babel/preset'],
     },
     dependencies: {
       'core-js': '^3.1.2',

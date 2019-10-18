@@ -19,7 +19,7 @@ module.exports = function loadCommand(commandName, moduleName) {
           console.info();
           console.info(
             `  Command ${chalk.cyan(
-              `vue ${commandName}`
+              `bor ${commandName}`
             )} requires a global addon to be installed.\n` +
               `  Please run ${chalk.cyan(
                 `${installCommand} ${moduleName}`

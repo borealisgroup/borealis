@@ -6,17 +6,15 @@ const minimist = require('minimist');
 const semver = require('semver');
 const LRU = require('lru-cache');
 const chalk = require('chalk');
-
 const { hasYarn, hasProjectYarn } = require('@vue/cli-shared-utils/lib/env');
 const {
   isOfficialPlugin,
   resolvePluginId,
 } = require('@vue/cli-shared-utils/lib/pluginResolution');
 const { log, warn } = require('@vue/cli-shared-utils/lib/logger');
-
+const getPackageJson = require('@vue/cli/lib/util/getPackageJson');
+const { executeCommand } = require('@vue/cli/lib/util/executeCommand');
 const { loadOptions } = require('../options');
-const getPackageJson = require('./getPackageJson');
-const { executeCommand } = require('./executeCommand');
 
 const metadataCache = new LRU({
   max: 200,

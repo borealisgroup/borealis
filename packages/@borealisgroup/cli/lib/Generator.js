@@ -8,14 +8,14 @@ const {
 } = require('@vue/cli-shared-utils');
 const { isPlugin } = require('@borealisgroup/cli-shared-utils');
 const logger = require('@vue/cli-shared-utils/lib/logger');
+const ConfigTransform = require('@vue/cli/lib/ConfigTransform');
+const writeFileTree = require('@vue/cli/lib/util/writeFileTree');
+const sortObject = require('@vue/cli/lib/util/sortObject');
+const runCodemod = require('@vue/cli/lib/util/runCodemod');
+const normalizeFilePaths = require('@vue/cli/lib/util/normalizeFilePaths');
+const inferRootOptions = require('@vue/cli/lib/util/inferRootOptions');
 const GeneratorAPI = require('./GeneratorAPI');
 const PackageManager = require('./util/ProjectPackageManager');
-const sortObject = require('./util/sortObject');
-const writeFileTree = require('./util/writeFileTree');
-const inferRootOptions = require('./util/inferRootOptions');
-const normalizeFilePaths = require('./util/normalizeFilePaths');
-const runCodemod = require('./util/runCodemod');
-const ConfigTransform = require('./ConfigTransform');
 
 const logTypes = {
   log: logger.log,
@@ -280,7 +280,7 @@ module.exports = class Generator {
       imports = imports instanceof Set ? Array.from(imports) : imports;
       if (imports && imports.length > 0) {
         files[file] = runCodemod(
-          require('./util/codemods/injectImports'),
+          require('@vue/cli/lib/util/codemods/injectImports'),
           { path: file, source: files[file] },
           { imports }
         );

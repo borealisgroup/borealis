@@ -1,4 +1,4 @@
-const generateWithPlugin = require('@vue/cli-test-utils/generateWithPlugin');
+const generateWithPlugin = require('@borealisgroup/cli-test-utils/generateWithPlugin');
 
 test('sass (default)', async () => {
   const { pkg, files } = await generateWithPlugin([

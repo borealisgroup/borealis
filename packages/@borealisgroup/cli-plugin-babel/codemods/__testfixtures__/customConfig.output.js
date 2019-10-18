@@ -1,6 +1,6 @@
 module.exports = {
   presets: [
-    ['@vue/cli-plugin-babel/preset', {
+    ['@borealisgroup/cli-plugin-babel/preset', {
       polyfills: []
     }]
   ]

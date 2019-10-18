@@ -49,7 +49,7 @@ test('upgrade: plugin-babel v3.5', async () => {
   );
 
   // should have updated the version range in package.json
-  expect(updatedPkg.devDependencies['@vue/cli-plugin-babel']).not.toMatch(
+  expect(updatedPkg.devDependencies['@borealisgroup/cli-plugin-babel']).not.toMatch(
     '3.5.3'
   );
 });

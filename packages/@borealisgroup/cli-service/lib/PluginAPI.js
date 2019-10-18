@@ -1,7 +1,7 @@
 const path = require('path');
 const hash = require('hash-sum');
 const semver = require('semver');
-const { matchesPluginId } = require('@vue/cli-shared-utils');
+const { matchesPluginId } = require('@borealisgroup/cli-shared-utils');
 
 // Note: if a plugin-registered command needs to run in a specific default mode,
 // the plugin needs to expose it via `module.exports.defaultModes` in the form
@@ -11,7 +11,7 @@ const { matchesPluginId } = require('@vue/cli-shared-utils');
 class PluginAPI {
   /**
    * @param {string} id - Id of the plugin.
-   * @param {Service} service - A vue-cli-service instance.
+   * @param {Service} service - A bor-cli-service instance.
    */
   constructor(id, service) {
     this.id = id;
@@ -68,7 +68,7 @@ class PluginAPI {
   }
 
   /**
-   * Register a command that will become available as `vue-cli-service [name]`.
+   * Register a command that will become available as `bor-cli-service [name]`.
    *
    * @param {string} name
    * @param {object} [opts]
