@@ -1,8 +1,5 @@
 <template>
-  <VueDisable
-    :disabled="!prompt.enabled"
-    class="prompt prompt-editor"
-  >
+  <VueDisable :disabled="!prompt.enabled" class="prompt prompt-editor">
     <div class="prompt-content vertical">
       <ListItemInfo
         :name="$t(prompt.message)"
@@ -19,18 +16,18 @@
       </div>
     </div>
 
-    <PromptError :error="prompt.error"/>
+    <PromptError :error="prompt.error" />
   </VueDisable>
 </template>
 
 <script>
-import Prompt from './Prompt'
+import Prompt from './Prompt';
 
 export default {
   extends: Prompt,
 
-  buffer: true
-}
+  buffer: true,
+};
 </script>
 
 <style lang="stylus" scoped>

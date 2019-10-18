@@ -1,112 +1,130 @@
 // From https://github.com/sergeyt/parse-diff
-module.exports = function (input) {
-  if (!input) { return [] }
-  if (input.match(/^\s+$/)) { return [] }
+module.exports = function(input) {
+  if (!input) {
+    return [];
+  }
+  if (input.match(/^\s+$/)) {
+    return [];
+  }
 
-  const lines = input.split('\n')
-  if (lines.length === 0) { return [] }
+  const lines = input.split('\n');
+  if (lines.length === 0) {
+    return [];
+  }
 
-  const files = []
-  let file = null
-  let lnDel = 0
-  let lnAdd = 0
-  let current = null
+  const files = [];
+  let file = null;
+  let lnDel = 0;
+  let lnAdd = 0;
+  let current = null;
 
-  const start = function (line) {
+  const start = function(line) {
     file = {
       chunks: [],
       deletions: 0,
-      additions: 0
-    }
-    files.push(file)
+      additions: 0,
+    };
+    files.push(file);
 
     if (!file.to && !file.from) {
-      const fileNames = parseFile(line)
+      const fileNames = parseFile(line);
 
       if (fileNames) {
-        file.from = fileNames[0]
-        file.to = fileNames[1]
+        file.from = fileNames[0];
+        file.to = fileNames[1];
       }
     }
-  }
+  };
 
-  const restart = function () {
-    if (!file || file.chunks.length) { return start() }
-  }
+  const restart = function() {
+    if (!file || file.chunks.length) {
+      return start();
+    }
+  };
 
-  const newFile = function () {
-    restart()
-    file.new = true
-    file.from = '/dev/null'
-  }
+  const newFile = function() {
+    restart();
+    file.new = true;
+    file.from = '/dev/null';
+  };
 
-  const deletedFile = function () {
-    restart()
-    file.deleted = true
-    file.to = '/dev/null'
-  }
+  const deletedFile = function() {
+    restart();
+    file.deleted = true;
+    file.to = '/dev/null';
+  };
 
-  const index = function (line) {
-    restart()
-    file.index = line.split(' ').slice(1)
-  }
+  const index = function(line) {
+    restart();
+    file.index = line.split(' ').slice(1);
+  };
 
-  const fromFile = function (line) {
-    restart()
-    file.from = parseFileFallback(line)
-  }
+  const fromFile = function(line) {
+    restart();
+    file.from = parseFileFallback(line);
+  };
 
-  const toFile = function (line) {
-    restart()
-    file.to = parseFileFallback(line)
-  }
+  const toFile = function(line) {
+    restart();
+    file.to = parseFileFallback(line);
+  };
 
-  const binary = function (line) {
-    file.binary = true
-  }
+  const binary = function(line) {
+    file.binary = true;
+  };
 
-  const chunk = function (line, match) {
-    let newStart, oldStart
-    lnDel = (oldStart = +match[1])
-    const oldLines = +(match[2] || 0)
-    lnAdd = (newStart = +match[3])
-    const newLines = +(match[4] || 0)
+  const chunk = function(line, match) {
+    let newStart, oldStart;
+    lnDel = oldStart = +match[1];
+    const oldLines = +(match[2] || 0);
+    lnAdd = newStart = +match[3];
+    const newLines = +(match[4] || 0);
     current = {
       content: line,
       changes: [],
       oldStart,
       oldLines,
       newStart,
-      newLines
-    }
-    file.chunks.push(current)
-  }
+      newLines,
+    };
+    file.chunks.push(current);
+  };
 
-  const del = function (line) {
-    if (!current) return
-    current.changes.push({ type: 'del', del: true, ln: lnDel++, content: line })
-    file.deletions++
-  }
+  const del = function(line) {
+    if (!current) return;
+    current.changes.push({
+      type: 'del',
+      del: true,
+      ln: lnDel++,
+      content: line,
+    });
+    file.deletions++;
+  };
 
-  const add = function (line) {
-    if (!current) return
-    current.changes.push({ type: 'add', add: true, ln: lnAdd++, content: line })
-    file.additions++
-  }
+  const add = function(line) {
+    if (!current) return;
+    current.changes.push({
+      type: 'add',
+      add: true,
+      ln: lnAdd++,
+      content: line,
+    });
+    file.additions++;
+  };
 
-  const normal = function (line) {
-    if (!current) return
+  const normal = function(line) {
+    if (!current) return;
     current.changes.push({
       type: 'normal',
       normal: true,
       ln1: lnDel++,
       ln2: lnAdd++,
-      content: line
-    })
-  }
+      content: line,
+    });
+  };
 
-  const eof = function (line) {
-    const recentChange = current.changes[current.changes.length - 1]
+  const eof = function(line) {
+    const recentChange = current.changes[current.changes.length - 1];
 
     return current.changes.push({
       type: recentChange.type,
@@ -114,9 +132,9 @@ module.exports = function (input) {
       ln1: recentChange.ln1,
       ln2: recentChange.ln2,
       ln: recentChange.ln,
-      content: line
-    })
-  }
+      content: line,
+    });
+  };
 
   const schema = [
     // todo beter regexp to avoid detect normal line starting with diff
@@ -131,62 +149,77 @@ module.exports = function (input) {
     [/^@@\s+-(\d+),?(\d+)?\s+\+(\d+),?(\d+)?\s@@/, chunk],
     [/^-/, del],
     [/^\+/, add],
-    [/^\\ No newline at end of file$/, eof]
-  ]
+    [/^\\ No newline at end of file$/, eof],
+  ];
 
-  const parse = function (line) {
+  const parse = function(line) {
     for (let p of schema) {
-      const m = line.match(p[0])
+      const m = line.match(p[0]);
       if (m) {
-        p[1](line, m)
-        return true
+        p[1](line, m);
+        return true;
       }
     }
-    return false
-  }
+    return false;
+  };
 
   for (let line of lines) {
-    parse(line)
+    parse(line);
   }
 
-  return files
-}
+  return files;
+};
 
-function parseFile (s) {
-  if (!s) return
+function parseFile(s) {
+  if (!s) return;
 
-  const result = /\sa\/(.*)\sb\/(.*)/.exec(s)
+  const result = /\sa\/(.*)\sb\/(.*)/.exec(s);
 
-  return [result[1], result[2]]
+  return [result[1], result[2]];
 }
 
 // fallback function to overwrite file.from and file.to if executed
-function parseFileFallback (s) {
-  s = ltrim(s, '-')
-  s = ltrim(s, '+')
-  s = s.trim()
+function parseFileFallback(s) {
+  s = ltrim(s, '-');
+  s = ltrim(s, '+');
+  s = s.trim();
   // ignore possible time stamp
-  const t = (/\t.*|\d{4}-\d\d-\d\d\s\d\d:\d\d:\d\d(.\d+)?\s(\+|-)\d\d\d\d/).exec(s)
-  if (t) { s = s.substring(0, t.index).trim() }
+  const t = /\t.*|\d{4}-\d\d-\d\d\s\d\d:\d\d:\d\d(.\d+)?\s(\+|-)\d\d\d\d/.exec(
+    s
+  );
+  if (t) {
+    s = s.substring(0, t.index).trim();
+  }
   // ignore git prefixes a/ or b/
-  if (s.match((/^(a|b)\//))) { return s.substr(2) } else { return s }
+  if (s.match(/^(a|b)\//)) {
+    return s.substr(2);
+  } else {
+    return s;
+  }
 }
 
-function ltrim (s, chars) {
-  s = makeString(s)
-  if (!chars && trimLeft) { return trimLeft.call(s) }
-  chars = defaultToWhiteSpace(chars)
-  return s.replace(new RegExp(`^${chars}+`), '')
+function ltrim(s, chars) {
+  s = makeString(s);
+  if (!chars && trimLeft) {
+    return trimLeft.call(s);
+  }
+  chars = defaultToWhiteSpace(chars);
+  return s.replace(new RegExp(`^${chars}+`), '');
 }
 
-const makeString = s => s === null ? '' : s + ''
+const makeString = s => (s === null ? '' : s + '');
 
-const { trimLeft } = String.prototype
+const { trimLeft } = String.prototype;
 
-function defaultToWhiteSpace (chars) {
-  if (chars === null) { return '\\s' }
-  if (chars.source) { return chars.source }
-  return `[${escapeRegExp(chars)}]`
+function defaultToWhiteSpace(chars) {
+  if (chars === null) {
+    return '\\s';
+  }
+  if (chars.source) {
+    return chars.source;
+  }
+  return `[${escapeRegExp(chars)}]`;
 }
 
-const escapeRegExp = s => makeString(s).replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1')
+const escapeRegExp = s =>
+  makeString(s).replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1');

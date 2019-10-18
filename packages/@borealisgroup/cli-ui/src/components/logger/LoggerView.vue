@@ -1,9 +1,7 @@
 <template>
   <div class="logger-view">
     <div class="pane-toolbar">
-      <VueIcon
-        icon="dvr"
-      />
+      <VueIcon icon="dvr" />
       <div class="title">
         {{ $t('org.vue.components.logger-view.title') }}
       </div>
@@ -13,10 +11,7 @@
         v-tooltip="$t('org.vue.components.logger-view.buttons.clear')"
         @click="clearLogs()"
       />
-      <VueIcon
-        icon="lens"
-        class="separator"
-      />
+      <VueIcon icon="lens" class="separator" />
       <VueButton
         class="icon-button flat"
         icon-left="subdirectory_arrow_left"
@@ -50,11 +45,8 @@
             pre
           />
 
-          <div
-            v-if="!data.consoleLogs.length"
-            class="vue-ui-empty"
-          >
-            <VueIcon icon="wifi" class="large"/>
+          <div v-if="!data.consoleLogs.length" class="vue-ui-empty">
+            <VueIcon icon="wifi" class="large" />
             <div>{{ $t('org.vue.components.logger-view.empty') }}</div>
           </div>
         </template>
@@ -64,50 +56,50 @@
 </template>
 
 <script>
-import CONSOLE_LOGS from '@/graphql/console-log/consoleLogs.gql'
-import CONSOLE_LOG_LAST from '@/graphql/console-log/consoleLogLast.gql'
-import CONSOLE_LOGS_CLEAR from '@/graphql/console-log/consoleLogsClear.gql'
+import CONSOLE_LOGS from '@/graphql/console-log/consoleLogs.gql';
+import CONSOLE_LOG_LAST from '@/graphql/console-log/consoleLogLast.gql';
+import CONSOLE_LOGS_CLEAR from '@/graphql/console-log/consoleLogsClear.gql';
 
 export default {
   methods: {
-    onConsoleLogAdded (previousResult, { subscriptionData }) {
-      this.scrollToBottom()
+    onConsoleLogAdded(previousResult, { subscriptionData }) {
+      this.scrollToBottom();
       return {
         consoleLogs: [
           ...previousResult.consoleLogs,
-          subscriptionData.data.consoleLogAdded
-        ]
-      }
+          subscriptionData.data.consoleLogAdded,
+        ],
+      };
     },
 
-    async scrollToBottom () {
-      await this.$nextTick()
-      const list = this.$refs.logs.$el
-      list.scrollTop = list.scrollHeight
+    async scrollToBottom() {
+      await this.$nextTick();
+      const list = this.$refs.logs.$el;
+      list.scrollTop = list.scrollHeight;
     },
 
-    async clearLogs () {
+    async clearLogs() {
       await this.$apollo.mutate({
         mutation: CONSOLE_LOGS_CLEAR,
         update: store => {
           store.writeQuery({
             query: CONSOLE_LOGS,
-            data: { consoleLogs: [] }
-          })
+            data: { consoleLogs: [] },
+          });
           store.writeQuery({
             query: CONSOLE_LOG_LAST,
-            data: { consoleLogLast: null }
-          })
-        }
-      })
-      this.close()
+            data: { consoleLogLast: null },
+          });
+        },
+      });
+      this.close();
     },
 
-    close () {
-      this.$emit('close')
-    }
-  }
-}
+    close() {
+      this.$emit('close');
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

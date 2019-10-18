@@ -1,9 +1,9 @@
 export default {
-  bind (el) {
+  bind(el) {
     requestAnimationFrame(() => {
-      const input = el.querySelector('input')
-      if (input) el = input
-      el.focus()
-    })
-  }
-}
+      const input = el.querySelector('input');
+      if (input) el = input;
+      el.focus();
+    });
+  },
+};

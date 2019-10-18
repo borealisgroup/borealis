@@ -2,17 +2,17 @@
   <div
     class="list-item-info"
     :class="{
-      selected
+      selected,
     }"
   >
     <div class="name">
       <slot name="name">
-        <span v-html="ansiColors(name)"/>
+        <span v-html="ansiColors(name)" />
       </slot>
     </div>
     <div v-if="description || link || showDescription" class="description">
       <slot name="description">
-        <span v-html="ansiColors(description)"/>
+        <span v-html="ansiColors(description)" />
       </slot>
       <a
         v-if="link"
@@ -21,7 +21,7 @@
         class="more-info"
         @click.stop="() => {}"
       >
-        <VueIcon icon="open_in_new" class="medium top"/>
+        <VueIcon icon="open_in_new" class="medium top" />
         {{ $t('org.vue.components.list-item-info.more-info') }}
       </a>
     </div>
@@ -33,30 +33,30 @@ export default {
   props: {
     description: {
       type: String,
-      default: ''
+      default: '',
     },
 
     link: {
       type: String,
-      default: null
+      default: null,
     },
 
     name: {
       type: String,
-      default: null
+      default: null,
     },
 
     selected: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     showDescription: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

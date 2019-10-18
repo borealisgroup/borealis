@@ -1,11 +1,11 @@
 exports.getHttpsGitURL = url => {
   if (url.startsWith('http')) {
-    return url.replace('.git', '')
+    return url.replace('.git', '');
   } else if (url.startsWith('git@')) {
     return url
       .replace(':', '/')
       .replace('git@', 'https://')
-      .replace(/.git([^.git]*)$/, '')
+      .replace(/.git([^.git]*)$/, '');
   }
-  return url
-}
+  return url;
+};

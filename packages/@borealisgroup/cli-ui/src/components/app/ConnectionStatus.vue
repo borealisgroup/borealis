@@ -4,19 +4,26 @@
     fetch-policy="cache-only"
     class="connection-status"
   >
-    <template slot-scope="{ result: { data: { connected } } }">
+    <template
+      slot-scope="{
+        result: {
+          data: { connected },
+        },
+      }"
+    >
       <transition duration="1000">
-        <div
-          v-if="!connected"
-          class="banner"
-        >
+        <div v-if="!connected" class="banner">
           <div class="content disconnected">
-            <VueIcon icon="cloud_off" class="medium"/>
-            <span>{{ $t('org.vue.components.connection-status.disconnected') }}</span>
+            <VueIcon icon="cloud_off" class="medium" />
+            <span>{{
+              $t('org.vue.components.connection-status.disconnected')
+            }}</span>
           </div>
           <div class="content connected">
-            <VueIcon icon="wifi" class="medium"/>
-            <span>{{ $t('org.vue.components.connection-status.connected') }}</span>
+            <VueIcon icon="wifi" class="medium" />
+            <span>{{
+              $t('org.vue.components.connection-status.connected')
+            }}</span>
           </div>
         </div>
       </transition>
@@ -26,8 +33,8 @@
 
 <script>
 export default {
-  clientState: true
-}
+  clientState: true,
+};
 </script>
 
 <style lang="stylus" scoped>

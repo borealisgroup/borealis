@@ -1,8 +1,5 @@
 <template>
-  <VueDisable
-    :disabled="!prompt.enabled"
-    class="prompt prompt-checkbox"
-  >
+  <VueDisable :disabled="!prompt.enabled" class="prompt prompt-checkbox">
     <div class="prompt-content">
       <ListItemInfo
         :name="$t(prompt.message)"
@@ -22,40 +19,43 @@
       </VueSwitch>
     </div>
 
-    <PromptError :error="prompt.error"/>
+    <PromptError :error="prompt.error" />
   </VueDisable>
 </template>
 
 <script>
-import Prompt from './Prompt'
+import Prompt from './Prompt';
 
 export default {
   extends: Prompt,
 
   computed: {
-    checkboxValue () {
-      return this.value(this.prompt.value)
-    }
+    checkboxValue() {
+      return this.value(this.prompt.value);
+    },
   },
 
   methods: {
-    isCheckboxSelected (choice) {
-      return this.checkboxValue && this.checkboxValue.includes(this.value(choice.value))
+    isCheckboxSelected(choice) {
+      return (
+        this.checkboxValue &&
+        this.checkboxValue.includes(this.value(choice.value))
+      );
     },
 
-    asnwerCheckbox (choice, value) {
-      let list = this.checkboxValue
-      const choiceValue = this.value(choice.value)
+    asnwerCheckbox(choice, value) {
+      let list = this.checkboxValue;
+      const choiceValue = this.value(choice.value);
       if (value) {
-        list.push(choiceValue)
+        list.push(choiceValue);
       } else {
-        const index = list.indexOf(choiceValue)
-        if (index !== -1) list.splice(index, 1)
+        const index = list.indexOf(choiceValue);
+        if (index !== -1) list.splice(index, 1);
       }
-      this.answer(list)
-    }
-  }
-}
+      this.answer(list);
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

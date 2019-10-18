@@ -8,15 +8,24 @@
       slot="trigger"
       class="menu-trigger"
       :class="bulletClass"
-      v-tooltip="countPerStatus.running ? $t('org.vue.components.project-tasks-dropdown.tooltips.running-tasks', { count: countPerStatus.running }) : $t('org.vue.components.project-tasks-dropdown.tooltips.tasks')"
+      v-tooltip="
+        countPerStatus.running
+          ? $t(
+              'org.vue.components.project-tasks-dropdown.tooltips.running-tasks',
+              { count: countPerStatus.running }
+            )
+          : $t('org.vue.components.project-tasks-dropdown.tooltips.tasks')
+      "
     >
-      <div class="bullet"/>
+      <div class="bullet" />
     </div>
 
     <div class="content">
       <div class="pane-toolbar">
-        <VueIcon icon="assignment"/>
-        <div class="title">{{ $t('org.vue.components.project-tasks-dropdown.tooltips.tasks') }}</div>
+        <VueIcon icon="assignment" />
+        <div class="title">
+          {{ $t('org.vue.components.project-tasks-dropdown.tooltips.tasks') }}
+        </div>
         <VueButton
           class="icon-button flat"
           icon-left="close"
@@ -48,39 +57,36 @@
           />
         </TaskItem>
 
-        <VueLoadingIndicator
-          v-if="loading"
-          class="overlay"
-        />
+        <VueLoadingIndicator v-if="loading" class="overlay" />
       </div>
     </div>
   </VueDropdown>
 </template>
 
 <script>
-import TASK_CHANGED from '@/graphql/task/taskChanged.gql'
-import TASK_RUN from '@/graphql/task/taskRun.gql'
-import TASK_STOP from '@/graphql/task/taskStop.gql'
-import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql'
-import PROJECT_OPEN from '@/graphql/project/projectOpen.gql'
+import TASK_CHANGED from '@/graphql/task/taskChanged.gql';
+import TASK_RUN from '@/graphql/task/taskRun.gql';
+import TASK_STOP from '@/graphql/task/taskStop.gql';
+import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql';
+import PROJECT_OPEN from '@/graphql/project/projectOpen.gql';
 
 export default {
   props: {
     tasks: {
       type: Array,
-      required: true
+      required: true,
     },
 
     tooltip: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
 
-  data () {
+  data() {
     return {
-      loading: false
-    }
+      loading: false,
+    };
   },
 
   apollo: {
@@ -88,70 +94,70 @@ export default {
 
     $subscribe: {
       taskChanged: {
-        query: TASK_CHANGED
-      }
-    }
+        query: TASK_CHANGED,
+      },
+    },
   },
 
   computed: {
-    countPerStatus () {
-      const map = {}
+    countPerStatus() {
+      const map = {};
       for (const task of this.tasks) {
         if (!map[task.status]) {
-          map[task.status] = 1
+          map[task.status] = 1;
         } else {
-          map[task.status]++
+          map[task.status]++;
         }
       }
-      return map
+      return map;
     },
 
-    bulletClass () {
+    bulletClass() {
       if (this.countPerStatus.running) {
-        return 'running'
+        return 'running';
       }
-      return 'idle'
-    }
+      return 'idle';
+    },
   },
 
   methods: {
-    async openTask (task, run = false) {
-      this.loading = true
+    async openTask(task, run = false) {
+      this.loading = true;
 
       if (!this.projectCurrent || task.project.id !== this.projectCurrent.id) {
         await this.$apollo.mutate({
           mutation: PROJECT_OPEN,
           variables: {
-            id: task.project.id
-          }
-        })
+            id: task.project.id,
+          },
+        });
       }
 
       this.$router.push({
         name: 'project-tasks',
-        query: { id: task.id }
-      })
+        query: { id: task.id },
+      });
 
       if (run) {
         await this.$apollo.mutate({
           mutation: TASK_RUN,
           variables: {
-            id: task.id
-          }
-        })
+            id: task.id,
+          },
+        });
       }
     },
 
-    stopTask (task) {
+    stopTask(task) {
       this.$apollo.mutate({
         mutation: TASK_STOP,
         variables: {
-          id: task.id
-        }
-      })
-    }
-  }
-}
+          id: task.id,
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -1,33 +1,33 @@
-export default function (count = 10) {
+export default function(count = 10) {
   // @vue/component
   return {
-    data () {
+    data() {
       return {
-        displayPriority: 0
-      }
+        displayPriority: 0,
+      };
     },
 
-    mounted () {
-      this.runDisplayPriority()
+    mounted() {
+      this.runDisplayPriority();
     },
 
     methods: {
-      runDisplayPriority () {
-        this.displayPriority = 0
+      runDisplayPriority() {
+        this.displayPriority = 0;
         const step = () => {
           requestAnimationFrame(() => {
-            this.displayPriority++
+            this.displayPriority++;
             if (this.displayPriority < count) {
-              step()
+              step();
             }
-          })
-        }
-        step()
+          });
+        };
+        step();
       },
 
-      defer (priority) {
-        return this.displayPriority >= priority
-      }
-    }
-  }
+      defer(priority) {
+        return this.displayPriority >= priority;
+      },
+    },
+  };
 }

@@ -1,174 +1,186 @@
-const path = require('path')
-const fs = require('fs-extra')
-const LRU = require('lru-cache')
-const winattr = require('@akryum/winattr')
+const path = require('path');
+const fs = require('fs-extra');
+const LRU = require('lru-cache');
+const winattr = require('@akryum/winattr');
 
-const hiddenPrefix = '.'
-const isPlatformWindows = process.platform.indexOf('win') === 0
+const hiddenPrefix = '.';
+const isPlatformWindows = process.platform.indexOf('win') === 0;
 
 const pkgCache = new LRU({
   max: 500,
-  maxAge: 1000 * 5
-})
+  maxAge: 1000 * 5,
+});
 
-const cwd = require('./cwd')
+const cwd = require('./cwd');
 
-function isDirectory (file) {
-  file = file.replace(/\\/g, path.sep)
+function isDirectory(file) {
+  file = file.replace(/\\/g, path.sep);
   try {
-    return fs.statSync(file).isDirectory()
+    return fs.statSync(file).isDirectory();
   } catch (e) {
-    if (process.env.VUE_APP_CLI_UI_DEBUG) console.warn(e.message)
+    if (process.env.VUE_APP_CLI_UI_DEBUG) console.warn(e.message);
   }
-  return false
+  return false;
 }
 
-async function list (base, context) {
-  let dir = base
+async function list(base, context) {
+  let dir = base;
   if (isPlatformWindows) {
     if (base.match(/^([A-Z]{1}:)$/)) {
-      dir = path.join(base, '\\')
+      dir = path.join(base, '\\');
     }
   }
-  const files = await fs.readdir(dir, 'utf8')
-  return files.map(
-    file => {
-      const folderPath = path.join(base, file)
+  const files = await fs.readdir(dir, 'utf8');
+  return files
+    .map(file => {
+      const folderPath = path.join(base, file);
       return {
         path: folderPath,
         name: file,
-        hidden: isHidden(folderPath)
-      }
-    }
-  ).filter(
-    file => isDirectory(file.path)
-  )
+        hidden: isHidden(folderPath),
+      };
+    })
+    .filter(file => isDirectory(file.path));
 }
 
-function isHidden (file) {
+function isHidden(file) {
   try {
-    const prefixed = path.basename(file).charAt(0) === hiddenPrefix
+    const prefixed = path.basename(file).charAt(0) === hiddenPrefix;
     const result = {
       unix: prefixed,
-      windows: false
-    }
+      windows: false,
+    };
 
     if (isPlatformWindows) {
-      const windowsFile = file.replace(/\\/g, '\\\\')
-      result.windows = winattr.getSync(windowsFile).hidden
+      const windowsFile = file.replace(/\\/g, '\\\\');
+      result.windows = winattr.getSync(windowsFile).hidden;
     }
 
-    return (!isPlatformWindows && result.unix) || (isPlatformWindows && result.windows)
+    return (
+      (!isPlatformWindows && result.unix) ||
+      (isPlatformWindows && result.windows)
+    );
   } catch (e) {
     if (process.env.VUE_APP_CLI_UI_DEBUG) {
-      console.log('file:', file)
-      console.error(e)
+      console.log('file:', file);
+      console.error(e);
     }
   }
 }
 
-function generateFolder (file, context) {
+function generateFolder(file, context) {
   return {
     name: path.basename(file),
-    path: file
-  }
+    path: file,
+  };
 }
 
-function getCurrent (args, context) {
-  const base = cwd.get()
-  return generateFolder(base, context)
+function getCurrent(args, context) {
+  const base = cwd.get();
+  return generateFolder(base, context);
 }
 
-function open (file, context) {
-  cwd.set(file, context)
-  return generateFolder(cwd.get(), context)
+function open(file, context) {
+  cwd.set(file, context);
+  return generateFolder(cwd.get(), context);
 }
 
-function openParent (file, context) {
-  const newFile = path.dirname(file)
-  cwd.set(newFile, context)
-  return generateFolder(cwd.get(), context)
+function openParent(file, context) {
+  const newFile = path.dirname(file);
+  cwd.set(newFile, context);
+  return generateFolder(cwd.get(), context);
 }
 
-function isPackage (file, context) {
+function isPackage(file, context) {
   try {
-    return fs.existsSync(path.join(file, 'package.json'))
+    return fs.existsSync(path.join(file, 'package.json'));
   } catch (e) {
-    console.warn(e.message)
+    console.warn(e.message);
   }
-  return false
+  return false;
 }
 
-function readPackage (file, context, force = false) {
+function readPackage(file, context, force = false) {
   if (!force) {
-    const cachedValue = pkgCache.get(file)
+    const cachedValue = pkgCache.get(file);
     if (cachedValue) {
-      return cachedValue
+      return cachedValue;
     }
   }
-  const pkgFile = path.join(file, 'package.json')
+  const pkgFile = path.join(file, 'package.json');
   if (fs.existsSync(pkgFile)) {
-    const pkg = fs.readJsonSync(pkgFile)
-    pkgCache.set(file, pkg)
-    return pkg
+    const pkg = fs.readJsonSync(pkgFile);
+    pkgCache.set(file, pkg);
+    return pkg;
   }
 }
 
-function writePackage ({ file, data }, context) {
+function writePackage({ file, data }, context) {
   fs.outputJsonSync(path.join(file, 'package.json'), data, {
-    spaces: 2
-  })
-  invalidatePackage(file, context)
-  return true
+    spaces: 2,
+  });
+  invalidatePackage(file, context);
+  return true;
 }
 
-function invalidatePackage (file, context) {
-  pkgCache.del(file)
-  return true
+function invalidatePackage(file, context) {
+  pkgCache.del(file);
+  return true;
 }
 
-function isVueProject (file, context) {
-  if (!isPackage(file)) return false
+const isProject = (file, context, devDependency) => {
+  if (!isPackage(file)) return false;
 
   try {
-    const pkg = readPackage(file, context)
-    return Object.keys(pkg.devDependencies || {}).includes('@vue/cli-service')
+    const pkg = readPackage(file, context);
+    return Object.keys(pkg.devDependencies || {}).includes(devDependency);
   } catch (e) {
     if (process.env.VUE_APP_CLI_UI_DEBUG) {
-      console.log(e)
+      console.log(e);
     }
   }
-  return false
+  return false;
+};
+
+const isVueProject = (file, context) =>
+  isProject(file, context, '@vue/cli-service');
+
+const isBorProject = (file, context) =>
+  isProject(file, context, '@borealisgroup/cli-service');
+
+function listFavorite(context) {
+  return context.db
+    .get('foldersFavorite')
+    .value()
+    .map(file => generateFolder(file.id, context));
 }
 
-function listFavorite (context) {
-  return context.db.get('foldersFavorite').value().map(
-    file => generateFolder(file.id, context)
-  )
+function isFavorite(file, context) {
+  return !!context.db
+    .get('foldersFavorite')
+    .find({ id: file })
+    .size()
+    .value();
 }
 
-function isFavorite (file, context) {
-  return !!context.db.get('foldersFavorite').find({ id: file }).size().value()
-}
-
-function setFavorite ({ file, favorite }, context) {
-  const collection = context.db.get('foldersFavorite')
+function setFavorite({ file, favorite }, context) {
+  const collection = context.db.get('foldersFavorite');
   if (favorite) {
-    collection.push({ id: file }).write()
+    collection.push({ id: file }).write();
   } else {
-    collection.remove({ id: file }).write()
+    collection.remove({ id: file }).write();
   }
-  return generateFolder(file, context)
+  return generateFolder(file, context);
 }
 
-async function deleteFolder (file) {
-  await fs.remove(file)
+async function deleteFolder(file) {
+  await fs.remove(file);
 }
 
-function createFolder (name, context) {
-  const file = path.join(cwd.get(), name)
-  fs.mkdirpSync(file)
-  return generateFolder(file, context)
+function createFolder(name, context) {
+  const file = path.join(cwd.get(), name);
+  fs.mkdirpSync(file);
+  return generateFolder(file, context);
 }
 
 module.exports = {
@@ -181,10 +193,12 @@ module.exports = {
   readPackage,
   writePackage,
   invalidatePackage,
+  isProject,
   isVueProject,
+  isBorProject,
   isFavorite,
   listFavorite,
   setFavorite,
   delete: deleteFolder,
-  create: createFolder
-}
+  create: createFolder,
+};

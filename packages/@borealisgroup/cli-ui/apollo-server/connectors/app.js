@@ -1,9 +1,9 @@
-const channels = require('../channels')
+const channels = require('../channels');
 
-function requestRoute (route, context) {
-  context.pubsub.publish(channels.ROUTE_REQUESTED, { routeRequested: route })
+function requestRoute(route, context) {
+  context.pubsub.publish(channels.ROUTE_REQUESTED, { routeRequested: route });
 }
 
 module.exports = {
-  requestRoute
-}
+  requestRoute,
+};

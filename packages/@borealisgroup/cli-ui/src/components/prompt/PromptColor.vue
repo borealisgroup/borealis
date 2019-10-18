@@ -1,8 +1,5 @@
 <template>
-  <VueDisable
-    :disabled="!prompt.enabled"
-    class="prompt prompt-color"
-  >
+  <VueDisable :disabled="!prompt.enabled" class="prompt prompt-color">
     <div class="prompt-content">
       <ListItemInfo
         :name="$t(prompt.message)"
@@ -10,18 +7,19 @@
         :link="prompt.link"
       />
 
-      <VueDropdown
-        class="prompt-input"
-      >
+      <VueDropdown class="prompt-input">
         <VueInput
           slot="trigger"
           :value="value(prompt.value)"
           @update="value => answer(value)"
         >
           <div slot="right" class="color-preview">
-            <div class="color-swatch" :style="{
-              backgroundColor: value(prompt.value)
-            }" />
+            <div
+              class="color-swatch"
+              :style="{
+                backgroundColor: value(prompt.value),
+              }"
+            />
           </div>
         </VueInput>
 
@@ -33,23 +31,23 @@
       </VueDropdown>
     </div>
 
-    <PromptError :error="prompt.error"/>
+    <PromptError :error="prompt.error" />
   </VueDisable>
 </template>
 
 <script>
-import Prompt from './Prompt'
-import { Sketch } from 'vue-color'
+import Prompt from './Prompt';
+import { Sketch } from 'vue-color';
 
 export default {
   extends: Prompt,
 
   components: {
-    ColorPicker: Sketch
+    ColorPicker: Sketch,
   },
 
-  buffer: true
-}
+  buffer: true,
+};
 </script>
 
 <style lang="stylus" scoped>

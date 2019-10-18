@@ -1,9 +1,7 @@
 <template>
   <div class="widget-add-pane">
     <div class="pane-toolbar">
-      <VueIcon
-        icon="library_add"
-      />
+      <VueIcon icon="library_add" />
       <div class="title">
         {{ $t('org.vue.components.widget-add-pane.title') }}
       </div>
@@ -34,10 +32,7 @@
         />
 
         <template v-else-if="data">
-          <ListFilter
-            :list="data.widgetDefinitions"
-            :filter="filterDefinition"
-          >
+          <ListFilter :list="data.widgetDefinitions" :filter="filterDefinition">
             <template slot-scope="{ list }">
               <WidgetAddItem
                 v-for="definition of list"
@@ -55,27 +50,29 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      search: ''
-    }
+      search: '',
+    };
   },
 
   methods: {
-    close () {
-      this.$emit('close')
+    close() {
+      this.$emit('close');
     },
 
-    filterDefinition (def) {
-      if (!this.search) return true
+    filterDefinition(def) {
+      if (!this.search) return true;
 
-      const reg = new RegExp(this.search.replace(/\s+/g, '|'), 'i')
-      return def.title.match(reg) ||
+      const reg = new RegExp(this.search.replace(/\s+/g, '|'), 'i');
+      return (
+        def.title.match(reg) ||
         (def.description && def.description.match(reg)) ||
         (def.longDescription && def.longDescription.match(reg))
-    }
-  }
-}
+      );
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

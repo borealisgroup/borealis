@@ -15,21 +15,18 @@
             'version',
             'owner',
             'humanDownloadsLast30Days',
-            'keywords'
+            'keywords',
           ],
-          attributesToHighlight: [
-            'name',
-            'description'
-          ],
-          analyticsTags: [
-            'vue-cli-ui'
-          ],
-          filters
+          attributesToHighlight: ['name', 'description'],
+          analyticsTags: ['vue-cli-ui'],
+          filters,
         }"
       >
         <InstantSearchInput
           ref="searchInput"
-          :placeholder="$t('org.vue.views.project-plugins-add.tabs.search.search-input')"
+          :placeholder="
+            $t('org.vue.views.project-plugins-add.tabs.search.search-input')
+          "
         />
         <div ref="resultsBox" class="ais-results-box">
           <ais-results>
@@ -43,34 +40,49 @@
           </ais-results>
           <ais-no-results>
             <div class="vue-ui-empty">
-              <VueIcon icon="search" class="huge"/>
-              <div>{{ $t('org.vue.views.project-plugins-add.tabs.search.not-found') }}</div>
+              <VueIcon icon="search" class="huge" />
+              <div>
+                {{
+                  $t('org.vue.views.project-plugins-add.tabs.search.not-found')
+                }}
+              </div>
             </div>
           </ais-no-results>
-          <InstantSearchPagination @page-change="scrollResultsToTop()"/>
+          <InstantSearchPagination @page-change="scrollResultsToTop()" />
         </div>
       </ais-index>
     </div>
 
     <div class="actions-bar no-padding-x">
       <div class="algolia">
-        <img class="ais-logo" src="~@/assets/search-by-algolia.svg">
+        <img class="ais-logo" src="~@/assets/search-by-algolia.svg" />
       </div>
 
-      <div class="vue-ui-spacer"/>
+      <div class="vue-ui-spacer" />
 
-      <slot name="more-actions"/>
+      <slot name="more-actions" />
 
       <VueButton
         icon-left="close"
-        :label="$t('org.vue.views.project-plugins-add.tabs.search.buttons.cancel')"
+        :label="
+          $t('org.vue.views.project-plugins-add.tabs.search.buttons.cancel')
+        "
         class="big"
         @click="close()"
       />
 
       <VueButton
         icon-left="file_download"
-        :label="selectedIdModel ? $t('org.vue.views.project-plugins-add.tabs.search.buttons.install', { target: selectedIdModel }) : $t('org.vue.views.project-plugins-add.tabs.search.buttons.default-install')"
+        :label="
+          selectedIdModel
+            ? $t(
+                'org.vue.views.project-plugins-add.tabs.search.buttons.install',
+                { target: selectedIdModel }
+              )
+            : $t(
+                'org.vue.views.project-plugins-add.tabs.search.buttons.default-install'
+              )
+        "
         class="big primary"
         :disabled="!selectedIdModel"
         data-testid="download-plugin"
@@ -85,70 +97,72 @@ export default {
   props: {
     selectedId: {
       type: String,
-      default: null
+      default: null,
     },
 
     filters: {
       type: String,
-      default: null
+      default: null,
     },
 
     pageSize: {
       type: Number,
-      default: 20
+      default: 20,
     },
 
     loadMetadata: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
-  data () {
+  data() {
     return {
-      internalSelectedId: this.selectedId
-    }
+      internalSelectedId: this.selectedId,
+    };
   },
 
   computed: {
     selectedIdModel: {
-      get () { return this.internalSelectedId },
-      set (value) {
-        this.internalSelectedId = value
-        this.$emit('update:selectedId', value)
-      }
-    }
+      get() {
+        return this.internalSelectedId;
+      },
+      set(value) {
+        this.internalSelectedId = value;
+        this.$emit('update:selectedId', value);
+      },
+    },
   },
 
   watch: {
-    selectedId (value) {
+    selectedId(value) {
       if (value !== this.internalSelectedId) {
-        this.internalSelectedId = value
+        this.internalSelectedId = value;
       }
-    }
+    },
   },
 
-  mounted () {
+  mounted() {
     requestAnimationFrame(() => {
-      this.$refs.searchInput.focus()
-    })
+      this.$refs.searchInput.focus();
+    });
   },
 
   methods: {
-    close () {
-      this.$emit('close')
+    close() {
+      this.$emit('close');
     },
 
-    install () {
-      this.$emit('install', this.selectedIdModel)
+    install() {
+      this.$emit('install', this.selectedIdModel);
     },
 
-    scrollResultsToTop () {
-      const el = this.$refs.resultsBox
-      if (el) el.scrollTop = 0
-    }
-  }
-}
+    scrollResultsToTop() {
+      const el = this.$refs.resultsBox;
+      if (el) el.scrollTop = 0;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

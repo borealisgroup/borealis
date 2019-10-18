@@ -2,14 +2,10 @@
   <div
     class="package-search-item list-item"
     :class="{
-      selected
+      selected,
     }"
   >
-    <ItemLogo
-      :image="logoUrl"
-      :selected="selected"
-      fallback-icon="extension"
-    />
+    <ItemLogo :image="logoUrl" :selected="selected" fallback-icon="extension" />
 
     <ListItemInfo
       :link="pkg.homepage || (pkg.repository && pkg.repository.url) || ''"
@@ -18,33 +14,26 @@
     >
       <template slot="name">
         <span class="name" data-testid="name">
-          <ais-highlight
-            :result="pkg"
-            attribute-name="name"
-          />
+          <ais-highlight :result="pkg" attribute-name="name" />
         </span>
         <span class="version">{{ pkg.version }}</span>
       </template>
       <template slot="description">
-        <span
-          class="info description"
-          v-tooltip="pkg.description"
-        >
-          <ais-highlight
-            :result="pkg"
-            attribute-name="description"
-          />
+        <span class="info description" v-tooltip="pkg.description">
+          <ais-highlight :result="pkg" attribute-name="description" />
         </span>
         <span v-if="official" class="info">
-          <VueIcon icon="star" class="top medium"/>
-          <span>{{ $t('org.vue.components.project-plugin-item.official') }}</span>
+          <VueIcon icon="star" class="top medium" />
+          <span>{{
+            $t('org.vue.components.project-plugin-item.official')
+          }}</span>
         </span>
         <span class="info downloads">
-          <VueIcon class="medium" icon="file_download"/>
+          <VueIcon class="medium" icon="file_download" />
           <span>{{ pkg.humanDownloadsLast30Days }}</span>
         </span>
         <span class="info owner">
-          <VueIcon class="medium" icon="account_circle"/>
+          <VueIcon class="medium" icon="account_circle" />
           <span>{{ pkg.owner.name }}</span>
         </span>
       </template>
@@ -53,22 +42,20 @@
     <div
       v-if="hasGenerator"
       class="feature"
-      v-tooltip="$t('org.vue.components.project-plugin-item.features.generator')"
+      v-tooltip="
+        $t('org.vue.components.project-plugin-item.features.generator')
+      "
     >
-      <VueIcon
-        icon="note_add"
-        class="big"
-      />
+      <VueIcon icon="note_add" class="big" />
     </div>
     <div
       v-if="hasUiIntegration"
       class="feature"
-      v-tooltip="$t('org.vue.components.project-plugin-item.features.ui-integration')"
+      v-tooltip="
+        $t('org.vue.components.project-plugin-item.features.ui-integration')
+      "
     >
-      <VueIcon
-        icon="brush"
-        class="big"
-      />
+      <VueIcon icon="brush" class="big" />
     </div>
   </div>
 </template>
@@ -78,72 +65,72 @@ export default {
   props: {
     pkg: {
       type: Object,
-      required: true
+      required: true,
     },
 
     selected: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     loadMetadata: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
-  data () {
+  data() {
     return {
       logoUrl: null,
       hasGenerator: false,
-      hasUiIntegration: false
-    }
+      hasUiIntegration: false,
+    };
   },
 
   computed: {
-    official () {
-      return this.pkg.owner.name === 'vuejs'
-    }
+    official() {
+      return this.pkg.owner.name === 'vuejs';
+    },
   },
 
   watch: {
     'pkg.name': {
       handler: 'updateMetadata',
-      immediate: true
-    }
+      immediate: true,
+    },
   },
 
   methods: {
-    updateMetadata () {
-      const name = this.pkg.name
+    updateMetadata() {
+      const name = this.pkg.name;
 
-      this.hasUiIntegration = false
-      this.hasGenerator = false
+      this.hasUiIntegration = false;
+      this.hasGenerator = false;
       // By default, show the npm user avatar
-      this.logoUrl = this.pkg.owner.avatar
+      this.logoUrl = this.pkg.owner.avatar;
 
       // Try to load the logo.png file inside the package
       if (this.loadMetadata) {
-        const img = new Image()
+        const img = new Image();
         img.onload = () => {
-          if (name !== this.pkg.name) return
-          this.logoUrl = img.src
-        }
-        img.src = `https://unpkg.com/${name}/logo.png`
+          if (name !== this.pkg.name) return;
+          this.logoUrl = img.src;
+        };
+        img.src = `https://unpkg.com/${name}/logo.png`;
 
         fetch(`https://unpkg.com/${name}/ui`).then(response => {
-          if (name !== this.pkg.name) return
-          this.hasUiIntegration = response.ok
-        })
+          if (name !== this.pkg.name) return;
+          this.hasUiIntegration = response.ok;
+        });
 
         fetch(`https://unpkg.com/${name}/generator`).then(response => {
-          if (name !== this.pkg.name) return
-          this.hasGenerator = response.ok
-        })
+          if (name !== this.pkg.name) return;
+          this.hasGenerator = response.ok;
+        });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

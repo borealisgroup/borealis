@@ -1,12 +1,11 @@
 <template>
   <div class="project-plugins-add page">
     <div class="content">
-      <portal to="top-title">{{ $t('org.vue.views.project-plugins-add.title') }}</portal>
-      <StepWizard
-        class="frame"
-        :tab-id.sync="tabId"
-      >
-        <template slot-scope="{ next, previous }">
+      <portal to="top-title">{{
+        $t('org.vue.views.project-plugins-add.title')
+      }}</portal>
+      <StepWizard class="frame" :tab-id.sync="tabId">
+        <template slot-scope="{}">
           <VueTab
             id="search"
             :label="$t('org.vue.views.project-plugins-add.tabs.search.label')"
@@ -22,7 +21,9 @@
               <template slot="more-actions">
                 <VueButton
                   icon-left="folder"
-                  :label="$t('org.vue.views.project-plugins-add.buttons.add-local')"
+                  :label="
+                    $t('org.vue.views.project-plugins-add.buttons.add-local')
+                  "
                   class="big flat"
                   @click="showLocalAdd = true"
                 />
@@ -32,30 +33,44 @@
 
           <VueTab
             id="config"
-            :label="$t('org.vue.views.project-plugins-add.tabs.configuration.label')"
+            :label="
+              $t('org.vue.views.project-plugins-add.tabs.configuration.label')
+            "
             icon="settings_applications"
             disabled
             lazy
           >
             <div class="content vue-ui-disable-scroll">
-              <div class="cta-text">{{ $t('org.vue.views.project-plugins-add.tabs.configuration.heading', { target: pluginId }) }}</div>
-              <PromptsList
-                :prompts="visiblePrompts"
-                @answer="answerPrompt"
-              />
+              <div class="cta-text">
+                {{
+                  $t(
+                    'org.vue.views.project-plugins-add.tabs.configuration.heading',
+                    { target: pluginId }
+                  )
+                }}
+              </div>
+              <PromptsList :prompts="visiblePrompts" @answer="answerPrompt" />
             </div>
 
             <div class="actions-bar no-padding-x">
               <VueButton
                 icon-left="arrow_back"
-                :label="$t('org.vue.views.project-plugins-add.tabs.configuration.buttons.cancel')"
+                :label="
+                  $t(
+                    'org.vue.views.project-plugins-add.tabs.configuration.buttons.cancel'
+                  )
+                "
                 class="big"
                 @click="showCancelInstall = true"
               />
 
               <VueButton
                 icon-left="done"
-                :label="$t('org.vue.views.project-plugins-add.tabs.configuration.buttons.finish')"
+                :label="
+                  $t(
+                    'org.vue.views.project-plugins-add.tabs.configuration.buttons.finish'
+                  )
+                "
                 class="big primary"
                 :disabled="!configurationValid"
                 data-testid="finish-install"
@@ -71,9 +86,7 @@
             disabled
             lazy
           >
-            <FileDiffView
-              @continue="finishInstall()"
-            />
+            <FileDiffView @continue="finishInstall()" />
           </VueTab>
         </template>
       </StepWizard>
@@ -81,12 +94,20 @@
 
     <VueModal
       v-if="showCancelInstall"
-      :title="$t('org.vue.views.project-plugins-add.modal.title', { target: pluginId })"
+      :title="
+        $t('org.vue.views.project-plugins-add.modal.title', {
+          target: pluginId,
+        })
+      "
       class="medium"
       @close="showCancelInstall = false"
     >
       <div class="default-body">
-        {{ $t('org.vue.views.project-plugins-add.modal.body', { target: pluginId }) }}
+        {{
+          $t('org.vue.views.project-plugins-add.modal.body', {
+            target: pluginId,
+          })
+        }}
       </div>
 
       <div slot="footer" class="actions end">
@@ -102,7 +123,9 @@
         />
 
         <VueButton
-          :label="$t('org.vue.views.project-plugins-add.modal.buttons.uninstall')"
+          :label="
+            $t('org.vue.views.project-plugins-add.modal.buttons.uninstall')
+          "
           icon-left="delete_forever"
           class="danger"
           @click="uninstallPlugin()"
@@ -116,27 +139,23 @@
       @close="closeLocalAdd()"
     >
       <div class="default-body">
-        <ProjectPluginAddLocal
-          @installed="localPluginInstalled"
-        />
+        <ProjectPluginAddLocal @installed="localPluginInstalled" />
       </div>
     </VueModal>
 
-    <ProgressScreen
-      progress-id="plugin-installation"
-    />
+    <ProgressScreen progress-id="plugin-installation" />
   </div>
 </template>
 
 <script>
-import Prompts from '@/mixins/Prompts'
+import Prompts from '@/mixins/Prompts';
 
-import PLUGIN_INSTALLATION from '@/graphql/plugin/pluginInstallation.gql'
-import PLUGIN_INSTALL from '@/graphql/plugin/pluginInstall.gql'
-import PLUGIN_UNINSTALL from '@/graphql/plugin/pluginUninstall.gql'
-import PLUGIN_INVOKE from '@/graphql/plugin/pluginInvoke.gql'
-import PLUGIN_FINISH_INSTALL from '@/graphql/plugin/pluginFinishInstall.gql'
-import PROJECT_CWD_RESET from '@/graphql/project/projectCwdReset.gql'
+import PLUGIN_INSTALLATION from '@/graphql/plugin/pluginInstallation.gql';
+import PLUGIN_INSTALL from '@/graphql/plugin/pluginInstall.gql';
+import PLUGIN_UNINSTALL from '@/graphql/plugin/pluginUninstall.gql';
+import PLUGIN_INVOKE from '@/graphql/plugin/pluginInvoke.gql';
+import PLUGIN_FINISH_INSTALL from '@/graphql/plugin/pluginFinishInstall.gql';
+import PROJECT_CWD_RESET from '@/graphql/project/projectCwdReset.gql';
 
 export default {
   name: 'ProjectPluginsAdd',
@@ -144,153 +163,153 @@ export default {
   mixins: [
     Prompts({
       field: 'pluginInstallation',
-      query: PLUGIN_INSTALLATION
-    })
+      query: PLUGIN_INSTALLATION,
+    }),
   ],
 
-  metaInfo () {
+  metaInfo() {
     return {
-      title: this.$t('org.vue.views.project-plugins-add.title')
-    }
+      title: this.$t('org.vue.views.project-plugins-add.title'),
+    };
   },
 
-  data () {
+  data() {
     return {
       tabId: 'search',
       showCancelInstall: false,
       pluginInstallation: null,
-      showLocalAdd: false
-    }
+      showLocalAdd: false,
+    };
   },
 
   apollo: {
     pluginInstallation: {
       query: PLUGIN_INSTALLATION,
       fetchPolicy: 'network-only',
-      result () {
-        this.checkTab()
-      }
-    }
+      result() {
+        this.checkTab();
+      },
+    },
   },
 
   computed: {
-    pluginId () {
-      return this.pluginInstallation && this.pluginInstallation.pluginId
-    }
+    pluginId() {
+      return this.pluginInstallation && this.pluginInstallation.pluginId;
+    },
   },
 
-  mounted () {
+  mounted() {
     requestAnimationFrame(() => {
-      this.checkTab()
-    })
+      this.checkTab();
+    });
   },
 
-  destroyed () {
-    this.closeLocalAdd()
+  destroyed() {
+    this.closeLocalAdd();
   },
 
   methods: {
-    close () {
-      this.$router.push({ name: 'project-plugins' })
+    close() {
+      this.$router.push({ name: 'project-plugins' });
     },
 
-    checkTab () {
-      if (!this.pluginInstallation) return
+    checkTab() {
+      if (!this.pluginInstallation) return;
 
       if (this.pluginInstallation.pluginId) {
-        this.tabId = 'config'
+        this.tabId = 'config';
       } else {
-        this.tabId = 'search'
+        this.tabId = 'search';
       }
 
       switch (this.pluginInstallation.step) {
         case 'config':
-          this.tabId = 'config'
-          break
+          this.tabId = 'config';
+          break;
         case 'diff':
-          this.tabId = 'diff'
-          break
+          this.tabId = 'diff';
+          break;
         default:
-          this.tabId = 'search'
+          this.tabId = 'search';
       }
     },
 
-    async installPlugin (id) {
+    async installPlugin(id) {
       try {
         await this.$apollo.mutate({
           mutation: PLUGIN_INSTALL,
           variables: {
-            id
-          }
-        })
-        this.tabId = 'config'
+            id,
+          },
+        });
+        this.tabId = 'config';
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error(e)
+        console.error(e);
       }
     },
 
-    cancelInstall () {
-      this.tabId = 'search'
-      this.showCancelInstall = false
+    cancelInstall() {
+      this.tabId = 'search';
+      this.showCancelInstall = false;
     },
 
-    localPluginInstalled () {
-      this.closeLocalAdd()
-      this.tabId = 'config'
+    localPluginInstalled() {
+      this.closeLocalAdd();
+      this.tabId = 'config';
     },
 
-    async closeLocalAdd () {
-      this.showLocalAdd = false
+    async closeLocalAdd() {
+      this.showLocalAdd = false;
       await this.$apollo.mutate({
-        mutation: PROJECT_CWD_RESET
-      })
+        mutation: PROJECT_CWD_RESET,
+      });
     },
 
-    async uninstallPlugin () {
-      this.showCancelInstall = false
+    async uninstallPlugin() {
+      this.showCancelInstall = false;
       try {
         await this.$apollo.mutate({
           mutation: PLUGIN_UNINSTALL,
           variables: {
-            id: this.pluginId
-          }
-        })
-        this.cancelInstall()
+            id: this.pluginId,
+          },
+        });
+        this.cancelInstall();
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error(e)
+        console.error(e);
       }
     },
 
-    async invokePlugin () {
+    async invokePlugin() {
       try {
         await this.$apollo.mutate({
           mutation: PLUGIN_INVOKE,
           variables: {
-            id: this.pluginId
-          }
-        })
-        this.tabId = 'diff'
+            id: this.pluginId,
+          },
+        });
+        this.tabId = 'diff';
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error(e)
+        console.error(e);
       }
     },
 
-    async finishInstall () {
+    async finishInstall() {
       try {
         await this.$apollo.mutate({
-          mutation: PLUGIN_FINISH_INSTALL
-        })
-        this.close()
+          mutation: PLUGIN_FINISH_INSTALL,
+        });
+        this.close();
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error(e)
+        console.error(e);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

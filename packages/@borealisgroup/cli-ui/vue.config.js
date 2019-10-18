@@ -1,5 +1,5 @@
-const path = require('path');
 const merge = require('deepmerge');
+const path = require('path');
 
 module.exports = {
   pluginOptions: {
@@ -12,6 +12,13 @@ module.exports = {
   configureWebpack: {
     resolve: {
       symlinks: false,
+    },
+    devServer: {
+      watchOptions: {
+        poll: true,
+      },
+      clientLogLevel: 'info',
+      // public: '192.168.56.132' // vagrant machine address
     },
   },
 

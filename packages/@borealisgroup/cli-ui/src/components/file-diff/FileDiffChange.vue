@@ -1,17 +1,12 @@
 <template>
-  <div
-    :class="[
-      `type-${change.type}`
-    ]"
-    class="file-diff-change"
-  >
+  <div :class="[`type-${change.type}`]" class="file-diff-change">
     <div class="lines">
       <div class="ln ln1">
         {{ ln1 }}
       </div>
       <div
         :class="{
-          disabled: !ln2
+          disabled: !ln2,
         }"
         class="ln ln2"
         @click="openInEditor()"
@@ -19,46 +14,46 @@
         {{ ln2 }}
       </div>
     </div>
-    <div class="content" v-html="change.content"/>
+    <div class="content" v-html="change.content" />
   </div>
 </template>
 
 <script>
-import FILE_OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql'
+import FILE_OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql';
 
 export default {
-  inject: [
-    'FileDiffInjection'
-  ],
+  inject: ['FileDiffInjection'],
 
   props: {
     change: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
-    ln1 () {
+    ln1() {
       if (this.change.normal) {
-        return this.change.ln1
+        return this.change.ln1;
       } else if (this.change.type === 'del') {
-        return this.change.ln
+        return this.change.ln;
       }
+      return null;
     },
 
-    ln2 () {
+    ln2() {
       if (this.change.normal) {
-        return this.change.ln2
+        return this.change.ln2;
       } else if (this.change.type === 'add') {
-        return this.change.ln
+        return this.change.ln;
       }
-    }
+      return null;
+    },
   },
 
   methods: {
-    openInEditor () {
-      if (!this.ln2) return
+    openInEditor() {
+      if (!this.ln2) return;
 
       this.$apollo.mutate({
         mutation: FILE_OPEN_IN_EDITOR,
@@ -66,13 +61,13 @@ export default {
           input: {
             file: this.FileDiffInjection.data.to,
             line: this.ln2,
-            gitPath: true
-          }
-        }
-      })
-    }
-  }
-}
+            gitPath: true,
+          },
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -129,5 +124,4 @@ export default {
       background lighten($vue-ui-color-danger, 80%)
       .vue-ui-dark-mode &
         background darken($vue-ui-color-danger, 60%)
-
 </style>

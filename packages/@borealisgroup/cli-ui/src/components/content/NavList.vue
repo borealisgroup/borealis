@@ -1,52 +1,49 @@
 <template>
   <div class="nav-list vue-ui-disable-scroll">
     <div class="content">
-      <slot name="before"/>
+      <slot name="before" />
 
       <div
         v-for="item of items"
         :key="item.id"
         @click="currentRoute = item.route"
       >
-        <slot
-          :item="item"
-          :selected="item.route === currentRoute"
-        />
+        <slot :item="item" :selected="item.route === currentRoute" />
       </div>
 
-      <slot name="after"/>
+      <slot name="after" />
     </div>
   </div>
 </template>
 
 <script>
-import { isSameRoute, isIncludedRoute } from '@/util/route'
+import { isSameRoute, isIncludedRoute } from '@/util/route';
 
 export default {
   props: {
     items: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
     currentRoute: {
-      get () {
-        const currentRoute = this.$route
-        const item = this.items.find(
-          item => isIncludedRoute(currentRoute, this.$router.resolve(item.route).route)
-        )
-        return item && item.route
+      get() {
+        const currentRoute = this.$route;
+        const item = this.items.find(item =>
+          isIncludedRoute(currentRoute, this.$router.resolve(item.route).route)
+        );
+        return item && item.route;
       },
-      set (route) {
+      set(route) {
         if (!isSameRoute(this.$route, route)) {
-          this.$router.push(route)
+          this.$router.push(route);
         }
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

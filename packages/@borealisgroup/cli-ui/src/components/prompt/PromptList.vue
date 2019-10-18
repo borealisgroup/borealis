@@ -1,8 +1,5 @@
 <template>
-  <VueDisable
-    :disabled="!prompt.enabled"
-    class="prompt prompt-list"
-  >
+  <VueDisable :disabled="!prompt.enabled" class="prompt prompt-list">
     <div class="prompt-content">
       <ListItemInfo
         :name="$t(prompt.message)"
@@ -25,24 +22,24 @@
       </div>
     </div>
 
-    <PromptError :error="prompt.error"/>
+    <PromptError :error="prompt.error" />
   </VueDisable>
 </template>
 
 <script>
-import Prompt from './Prompt'
+import Prompt from './Prompt';
 
 export default {
   extends: Prompt,
 
   methods: {
-    generateLabel (choice) {
-      let label = this.$t(choice.name)
+    generateLabel(choice) {
+      let label = this.$t(choice.name);
       if (choice.isDefault) {
-        label += ` (${this.$t('org.vue.components.prompt-list.default')})`
+        label += ` (${this.$t('org.vue.components.prompt-list.default')})`;
       }
-      return label
-    }
-  }
-}
+      return label;
+    },
+  },
+};
 </script>

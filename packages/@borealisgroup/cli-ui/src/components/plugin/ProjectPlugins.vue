@@ -5,11 +5,7 @@
       class="limit-width list"
     >
       <template slot="actions">
-        <VueInput
-          v-model="search"
-          icon-left="search"
-          class="round"
-        />
+        <VueInput v-model="search" icon-left="search" class="round" />
 
         <VueButton
           icon-left="add"
@@ -34,11 +30,11 @@
         </VueDropdown>
       </template>
 
-      <ApolloQuery
-        :query="require('@/graphql/plugin/plugins.gql')"
-      >
+      <ApolloQuery :query="require('@/graphql/plugin/plugins.gql')">
         <template slot-scope="{ result: { data, loading } }">
-          <div class="cta-text">{{ $t('org.vue.views.project-plugins.heading') }}</div>
+          <div class="cta-text">
+            {{ $t('org.vue.views.project-plugins.heading') }}
+          </div>
 
           <VueLoadingIndicator
             v-if="loading && (!data || !data.plugins)"
@@ -63,54 +59,54 @@
       </ApolloQuery>
     </ContentView>
 
-    <ProgressScreen progress-id="plugin-update"/>
-    <ProgressScreen progress-id="plugins-update"/>
+    <ProgressScreen progress-id="plugin-update" />
+    <ProgressScreen progress-id="plugins-update" />
   </div>
 </template>
 
 <script>
-import PLUGINS_UPDATE from '@/graphql/plugin/pluginsUpdate.gql'
-import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql'
-import PLUGINS from '@/graphql/plugin/plugins.gql'
+import PLUGINS_UPDATE from '@/graphql/plugin/pluginsUpdate.gql';
+import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql';
+import PLUGINS from '@/graphql/plugin/plugins.gql';
 
 export default {
   name: 'ProjectPlugins',
 
-  metaInfo () {
+  metaInfo() {
     return {
-      title: this.$t('org.vue.views.project-plugins.title')
-    }
+      title: this.$t('org.vue.views.project-plugins.title'),
+    };
   },
 
-  data () {
+  data() {
     return {
-      search: ''
-    }
+      search: '',
+    };
   },
 
   apollo: {
-    projectCurrent: PROJECT_CURRENT
+    projectCurrent: PROJECT_CURRENT,
   },
 
   bus: {
-    quickOpenProject (project) {
+    quickOpenProject(project) {
       this.$apollo.getClient().writeQuery({
         query: PLUGINS,
         data: {
-          plugins: null
-        }
-      })
-    }
+          plugins: null,
+        },
+      });
+    },
   },
 
   methods: {
-    updateAll () {
+    updateAll() {
       return this.$apollo.mutate({
-        mutation: PLUGINS_UPDATE
-      })
-    }
-  }
-}
+        mutation: PLUGINS_UPDATE,
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

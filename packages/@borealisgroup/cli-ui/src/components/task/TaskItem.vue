@@ -4,8 +4,8 @@
     :class="[
       `status-${task.status}`,
       {
-        selected
-      }
+        selected,
+      },
     ]"
     v-tooltip.right="description"
     @dblclick="runTask()"
@@ -24,65 +24,68 @@
         :selected="selected"
       />
 
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-import TASK_RUN from '@/graphql/task/taskRun.gql'
+import TASK_RUN from '@/graphql/task/taskRun.gql';
 
 const icons = {
   idle: { icon: 'assignment', class: '' },
   running: { icon: 'more_horiz', class: 'info' },
   done: { icon: 'check_circle', class: 'success' },
   error: { icon: 'error', class: 'danger' },
-  terminated: { icon: 'error', class: '' }
-}
+  terminated: { icon: 'error', class: '' },
+};
 
 export default {
   props: {
     task: {
       type: Object,
-      required: true
+      required: true,
     },
 
     selected: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
-    status () {
-      return this.$t(`org.vue.types.task.status.${this.task.status}`)
+    status() {
+      return this.$t(`org.vue.types.task.status.${this.task.status}`);
     },
 
-    iconData () {
-      return icons[this.task.status]
+    iconData() {
+      return icons[this.task.status];
     },
 
-    logo () {
-      return this.task.icon || (this.task.plugin && this.task.plugin.logo)
+    logo() {
+      return this.task.icon || (this.task.plugin && this.task.plugin.logo);
     },
 
-    description () {
-      return (this.task.status === 'idle' && this.$t(this.task.description)) || this.status
-    }
+    description() {
+      return (
+        (this.task.status === 'idle' && this.$t(this.task.description)) ||
+        this.status
+      );
+    },
   },
 
   methods: {
-    runTask () {
-      if (this.task.status === 'running') return
+    runTask() {
+      if (this.task.status === 'running') return;
       this.$apollo.mutate({
         mutation: TASK_RUN,
         variables: {
-          id: this.task.id
-        }
-      })
-    }
-  }
-}
+          id: this.task.id,
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

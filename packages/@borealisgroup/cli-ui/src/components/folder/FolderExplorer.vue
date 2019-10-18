@@ -2,14 +2,18 @@
   <div
     class="folder-explorer"
     :class="{
-      error
+      error,
     }"
   >
     <div class="toolbar">
       <VueButton
         class="icon-button go-up"
         icon-left="keyboard_arrow_up"
-        v-tooltip="$t('org.vue.components.folder-explorer.toolbar.tooltips.parent-folder')"
+        v-tooltip="
+          $t(
+            'org.vue.components.folder-explorer.toolbar.tooltips.parent-folder'
+          )
+        "
         @click="openParentFolder"
       />
 
@@ -18,7 +22,9 @@
           ref="pathInput"
           class="path-input"
           v-model="editedPath"
-          :placeholder="$t('org.vue.components.folder-explorer.toolbar.placeholder')"
+          :placeholder="
+            $t('org.vue.components.folder-explorer.toolbar.placeholder')
+          "
           icon-right="edit"
           v-focus
           @keyup.esc="editingPath = false"
@@ -38,10 +44,7 @@
         />
 
         <template slot-scope="{ result: { data } }">
-          <div
-            v-if="data"
-            class="path-value"
-          >
+          <div v-if="data" class="path-value">
             <div
               v-for="(slice, index) of slicePath(data.cwd)"
               :key="index"
@@ -51,7 +54,7 @@
                 class="path-folder flat"
                 :icon-left="!slice.name ? 'folder' : null"
                 :class="{
-                  'icon-button': !slice.name
+                  'icon-button': !slice.name,
                 }"
                 @click="openFolder(slice.path)"
               >
@@ -62,7 +65,11 @@
           <VueButton
             class="edit-path-button icon-button"
             icon-left="edit"
-            v-tooltip="$t('org.vue.components.folder-explorer.toolbar.tooltips.edit-path')"
+            v-tooltip="
+              $t(
+                'org.vue.components.folder-explorer.toolbar.tooltips.edit-path'
+              )
+            "
             @click="openPathEdit()"
           />
         </template>
@@ -78,25 +85,31 @@
       <VueButton
         class="icon-button"
         icon-left="refresh"
-        v-tooltip="$t('org.vue.components.folder-explorer.toolbar.tooltips.refresh')"
+        v-tooltip="
+          $t('org.vue.components.folder-explorer.toolbar.tooltips.refresh')
+        "
         @click="refreshFolder"
       />
 
       <VueButton
         class="icon-button favorite-button"
         :icon-left="folderCurrent.favorite ? 'star' : 'star_border'"
-        v-tooltip="$t('org.vue.components.folder-explorer.toolbar.tooltips.favorite')"
+        v-tooltip="
+          $t('org.vue.components.folder-explorer.toolbar.tooltips.favorite')
+        "
         @click="toggleFavorite()"
       />
 
-      <VueDropdown
-        placement="bottom-end"
-      >
+      <VueDropdown placement="bottom-end">
         <VueButton
           slot="trigger"
           icon-left="arrow_drop_down"
           class="icon-button"
-          v-tooltip="$t('org.vue.components.folder-explorer.toolbar.tooltips.favorite-folders')"
+          v-tooltip="
+            $t(
+              'org.vue.components.folder-explorer.toolbar.tooltips.favorite-folders'
+            )
+          "
         />
 
         <template v-if="foldersFavorite.length">
@@ -115,11 +128,7 @@
       </VueDropdown>
 
       <VueDropdown placement="bottom-end">
-        <VueButton
-          slot="trigger"
-          icon-left="more_vert"
-          class="icon-button"
-        />
+        <VueButton slot="trigger" icon-left="more_vert" class="icon-button" />
 
         <VueDropdownButton
           :label="$t('org.vue.components.folder-explorer.new-folder.action')"
@@ -127,11 +136,7 @@
           @click="showNewFolder = true"
         />
 
-        <VueSwitch
-          icon="visibility"
-          v-model="showHidden"
-          class="extend-left"
-        >
+        <VueSwitch icon="visibility" v-model="showHidden" class="extend-left">
           {{ $t('org.vue.components.folder-explorer.toolbar.show-hidden') }}
         </VueSwitch>
       </VueDropdown>
@@ -139,11 +144,7 @@
 
     <div ref="folders" class="folders">
       <transition name="vue-ui-fade">
-        <VueLoadingBar
-          v-if="loading"
-          class="ghost primary"
-          unknown
-        />
+        <VueLoadingBar v-if="loading" class="ghost primary" unknown />
       </transition>
       <template v-if="folderCurrent && folderCurrent.children">
         <FolderExplorerItem
@@ -164,8 +165,12 @@
     >
       <div class="default-body">
         <VueFormField
-          :title="$t('org.vue.components.folder-explorer.new-folder.field.title')"
-          :subtitle="$t('org.vue.components.folder-explorer.new-folder.field.subtitle')"
+          :title="
+            $t('org.vue.components.folder-explorer.new-folder.field.title')
+          "
+          :subtitle="
+            $t('org.vue.components.folder-explorer.new-folder.field.subtitle')
+          "
         >
           <VueInput
             v-model="newFolderName"
@@ -196,20 +201,20 @@
 </template>
 
 <script>
-import { isValidMultiName } from '@/util/folders'
+import { isValidMultiName } from '@/util/folders';
 
-import FOLDER_CURRENT from '@/graphql/folder/folderCurrent.gql'
-import FOLDERS_FAVORITE from '@/graphql/folder/foldersFavorite.gql'
-import FOLDER_OPEN from '@/graphql/folder/folderOpen.gql'
-import FOLDER_OPEN_PARENT from '@/graphql/folder/folderOpenParent.gql'
-import FOLDER_SET_FAVORITE from '@/graphql/folder/folderSetFavorite.gql'
-import PROJECT_CWD_RESET from '@/graphql/project/projectCwdReset.gql'
-import FOLDER_CREATE from '@/graphql/folder/folderCreate.gql'
+import FOLDER_CURRENT from '@/graphql/folder/folderCurrent.gql';
+import FOLDERS_FAVORITE from '@/graphql/folder/foldersFavorite.gql';
+import FOLDER_OPEN from '@/graphql/folder/folderOpen.gql';
+import FOLDER_OPEN_PARENT from '@/graphql/folder/folderOpenParent.gql';
+import FOLDER_SET_FAVORITE from '@/graphql/folder/folderSetFavorite.gql';
+import PROJECT_CWD_RESET from '@/graphql/project/projectCwdReset.gql';
+import FOLDER_CREATE from '@/graphql/folder/folderCreate.gql';
 
-const SHOW_HIDDEN = 'vue-ui.show-hidden-folders'
+const SHOW_HIDDEN = 'vue-ui.show-hidden-folders';
 
 export default {
-  data () {
+  data() {
     return {
       loading: 0,
       error: false,
@@ -219,8 +224,8 @@ export default {
       foldersFavorite: [],
       showHidden: localStorage.getItem(SHOW_HIDDEN) === 'true',
       showNewFolder: false,
-      newFolderName: ''
-    }
+      newFolderName: '',
+    };
   },
 
   apollo: {
@@ -228,179 +233,188 @@ export default {
       query: FOLDER_CURRENT,
       fetchPolicy: 'network-only',
       loadingKey: 'loading',
-      async result () {
-        await this.$nextTick()
-        this.$refs.folders.scrollTop = 0
-      }
+      async result() {
+        await this.$nextTick();
+        this.$refs.folders.scrollTop = 0;
+      },
     },
 
-    foldersFavorite: FOLDERS_FAVORITE
+    foldersFavorite: FOLDERS_FAVORITE,
   },
 
   computed: {
-    newFolderValid () {
-      return isValidMultiName(this.newFolderName)
-    }
+    newFolderValid() {
+      return isValidMultiName(this.newFolderName);
+    },
   },
 
   watch: {
-    showHidden (value) {
+    showHidden(value) {
       if (value) {
-        localStorage.setItem(SHOW_HIDDEN, 'true')
+        localStorage.setItem(SHOW_HIDDEN, 'true');
       } else {
-        localStorage.removeItem(SHOW_HIDDEN)
+        localStorage.removeItem(SHOW_HIDDEN);
       }
-    }
+    },
   },
 
-  beforeRouteLeave (to, from, next) {
+  beforeRouteLeave(to, from, next) {
     if (to.matched.some(m => m.meta.needProject)) {
-      this.resetProjectCwd()
+      this.resetProjectCwd();
     }
-    next()
+    next();
   },
 
   methods: {
-    async openFolder (path) {
-      this.editingPath = false
-      this.error = null
-      this.loading++
+    async openFolder(path) {
+      this.editingPath = false;
+      this.error = null;
+      this.loading++;
       try {
         await this.$apollo.mutate({
           mutation: FOLDER_OPEN,
           variables: {
-            path
+            path,
           },
           update: (store, { data: { folderOpen } }) => {
-            store.writeQuery({ query: FOLDER_CURRENT, data: { folderCurrent: folderOpen } })
-          }
-        })
+            store.writeQuery({
+              query: FOLDER_CURRENT,
+              data: { folderCurrent: folderOpen },
+            });
+          },
+        });
       } catch (e) {
-        this.error = e
+        this.error = e;
       }
-      this.loading--
+      this.loading--;
     },
 
-    async openParentFolder (folder) {
-      this.editingPath = false
-      this.error = null
-      this.loading++
+    async openParentFolder(folder) {
+      this.editingPath = false;
+      this.error = null;
+      this.loading++;
       try {
         await this.$apollo.mutate({
           mutation: FOLDER_OPEN_PARENT,
           update: (store, { data: { folderOpenParent } }) => {
-            store.writeQuery({ query: FOLDER_CURRENT, data: { folderCurrent: folderOpenParent } })
-          }
-        })
+            store.writeQuery({
+              query: FOLDER_CURRENT,
+              data: { folderCurrent: folderOpenParent },
+            });
+          },
+        });
       } catch (e) {
-        this.error = e
+        this.error = e;
       }
-      this.loading--
+      this.loading--;
     },
 
-    async toggleFavorite () {
+    async toggleFavorite() {
       await this.$apollo.mutate({
         mutation: FOLDER_SET_FAVORITE,
         variables: {
           path: this.folderCurrent.path,
-          favorite: !this.folderCurrent.favorite
+          favorite: !this.folderCurrent.favorite,
         },
         update: (store, { data: { folderSetFavorite } }) => {
-          store.writeQuery({ query: FOLDER_CURRENT, data: { folderCurrent: folderSetFavorite } })
+          store.writeQuery({
+            query: FOLDER_CURRENT,
+            data: { folderCurrent: folderSetFavorite },
+          });
 
-          let data = store.readQuery({ query: FOLDERS_FAVORITE })
+          let data = store.readQuery({ query: FOLDERS_FAVORITE });
           // TODO this is a workaround
           // See: https://github.com/apollographql/apollo-client/issues/4031#issuecomment-433668473
           data = {
-            foldersFavorite: data.foldersFavorite.slice()
-          }
+            foldersFavorite: data.foldersFavorite.slice(),
+          };
           if (folderSetFavorite.favorite) {
-            data.foldersFavorite.push(folderSetFavorite)
+            data.foldersFavorite.push(folderSetFavorite);
           } else {
             const index = data.foldersFavorite.findIndex(
               f => f.path === folderSetFavorite.path
-            )
-            index !== -1 && data.foldersFavorite.splice(index, 1)
+            );
+            index !== -1 && data.foldersFavorite.splice(index, 1);
           }
-          store.writeQuery({ query: FOLDERS_FAVORITE, data })
-        }
-      })
+          store.writeQuery({ query: FOLDERS_FAVORITE, data });
+        },
+      });
     },
 
-    cwdChangedUpdate (previousResult, { subscriptionData }) {
+    cwdChangedUpdate(previousResult, { subscriptionData }) {
       return {
-        cwd: subscriptionData.data.cwd
-      }
+        cwd: subscriptionData.data.cwd,
+      };
     },
 
-    async openPathEdit () {
-      this.editedPath = this.folderCurrent.path
-      this.editingPath = true
-      await this.$nextTick()
-      this.$refs.pathInput.focus()
+    async openPathEdit() {
+      this.editedPath = this.folderCurrent.path;
+      this.editingPath = true;
+      await this.$nextTick();
+      this.$refs.pathInput.focus();
     },
 
-    submitPathEdit () {
-      this.openFolder(this.editedPath)
+    submitPathEdit() {
+      this.openFolder(this.editedPath);
     },
 
-    refreshFolder () {
-      this.openFolder(this.folderCurrent.path)
+    refreshFolder() {
+      this.openFolder(this.folderCurrent.path);
     },
 
-    resetProjectCwd () {
+    resetProjectCwd() {
       this.$apollo.mutate({
-        mutation: PROJECT_CWD_RESET
-      })
+        mutation: PROJECT_CWD_RESET,
+      });
     },
 
-    slicePath (path) {
-      const parts = []
-      let startIndex = 0
-      let index
+    slicePath(path) {
+      const parts = [];
+      let startIndex = 0;
+      let index;
 
       const findSeparator = () => {
-        index = path.indexOf('/', startIndex)
-        if (index === -1) index = path.indexOf('\\', startIndex)
-        return index !== -1
-      }
+        index = path.indexOf('/', startIndex);
+        if (index === -1) index = path.indexOf('\\', startIndex);
+        return index !== -1;
+      };
 
       const addPart = index => {
-        const folder = path.substring(startIndex, index)
-        const slice = path.substring(0, index + 1)
+        const folder = path.substring(startIndex, index);
+        const slice = path.substring(0, index + 1);
         parts.push({
           name: folder,
-          path: slice
-        })
-      }
+          path: slice,
+        });
+      };
 
       while (findSeparator()) {
-        addPart(index)
-        startIndex = index + 1
+        addPart(index);
+        startIndex = index + 1;
       }
 
-      if (startIndex < path.length) addPart(path.length)
+      if (startIndex < path.length) addPart(path.length);
 
-      return parts
+      return parts;
     },
 
-    async createFolder () {
-      if (!this.newFolderValid) return
+    async createFolder() {
+      if (!this.newFolderValid) return;
 
       const result = await this.$apollo.mutate({
         mutation: FOLDER_CREATE,
         variables: {
-          name: this.newFolderName
-        }
-      })
+          name: this.newFolderName,
+        },
+      });
 
-      this.openFolder(result.data.folderCreate.path)
+      this.openFolder(result.data.folderCreate.path);
 
-      this.newFolderName = ''
-      this.showNewFolder = false
-    }
-  }
-}
+      this.newFolderName = '';
+      this.showNewFolder = false;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -2,14 +2,12 @@
   <div
     class="project-preset-item list-item"
     :class="{
-      selected
+      selected,
     }"
     :data-testid="preset.id"
   >
     <div class="content">
-      <div
-        class="radio-icon"
-      >
+      <div class="radio-icon">
         <VueIcon
           :icon="selected ? 'radio_button_checked' : 'radio_button_unchecked'"
           class="medium"
@@ -31,20 +29,20 @@ export default {
   props: {
     preset: {
       type: Object,
-      required: true
+      required: true,
     },
 
     selected: {
       type: Boolean,
-      required: true
+      required: true,
     },
 
     description: {
       type: String,
-      default: null
-    }
-  }
-}
+      default: null,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -70,5 +68,4 @@ export default {
     .radio-icon
       >>> svg
         fill $vue-ui-color-primary
-
 </style>

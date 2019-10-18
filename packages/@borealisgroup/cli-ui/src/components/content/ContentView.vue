@@ -2,12 +2,12 @@
   <div class="content-view">
     <portal v-if="title" to="top-title">{{ title }}</portal>
     <portal to="top-actions">
-      <slot name="actions"/>
+      <slot name="actions" />
     </portal>
 
     <div class="content">
       <div class="wrapper">
-        <slot/>
+        <slot />
       </div>
     </div>
   </div>
@@ -18,10 +18,10 @@ export default {
   props: {
     title: {
       type: String,
-      default: null
-    }
-  }
-}
+      default: null,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

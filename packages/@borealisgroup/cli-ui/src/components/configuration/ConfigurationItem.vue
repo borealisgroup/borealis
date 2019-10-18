@@ -2,13 +2,16 @@
   <div
     class="configuration-item list-item"
     :class="{
-      selected
+      selected,
     }"
     v-tooltip.right="$t(configuration.description)"
   >
     <div class="content">
       <ItemLogo
-        :image="configuration.icon || (configuration.plugin && configuration.plugin.logo)"
+        :image="
+          configuration.icon ||
+            (configuration.plugin && configuration.plugin.logo)
+        "
         fallback-icon="settings_applications"
       />
 
@@ -26,15 +29,15 @@ export default {
   props: {
     configuration: {
       type: Object,
-      required: true
+      required: true,
     },
 
     selected: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

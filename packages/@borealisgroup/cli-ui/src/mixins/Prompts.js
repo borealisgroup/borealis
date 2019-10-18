@@ -1,78 +1,76 @@
-import PROMPT_ANSWER from '@/graphql/prompt/promptAnswer.gql'
+import PROMPT_ANSWER from '@/graphql/prompt/promptAnswer.gql';
 
-export default function ({
+export default function({
   field,
   query,
   variables = null,
   updateQuery = null,
-  update = null
+  update = null,
 }) {
   // @vue/component
   return {
     computed: {
-      configurationValid () {
-        return this.visiblePrompts.filter(
-          p =>
-            p.error ||
-            p.value === null ||
-            JSON.parse(p.value) === ''
-        ).length === 0
+      configurationValid() {
+        return (
+          this.visiblePrompts.filter(
+            p => p.error || p.value === null || JSON.parse(p.value) === ''
+          ).length === 0
+        );
       },
 
-      hasPromptsChanged () {
-        return !!this.visiblePrompts.find(
-          prompt => prompt.valueChanged
-        )
+      hasPromptsChanged() {
+        return !!this.visiblePrompts.find(prompt => prompt.valueChanged);
       },
 
-      visiblePrompts () {
+      visiblePrompts() {
         if (!this[field]) {
-          return []
+          return [];
         }
-        return this[field].prompts.filter(
-          p => p.visible
-        )
-      }
+        return this[field].prompts.filter(p => p.visible);
+      },
     },
 
     watch: {
       hasPromptsChanged: {
-        handler (value) {
-          this.$emit('has-changes', value)
+        handler(value) {
+          this.$emit('has-changes', value);
         },
-        immediate: true
-      }
+        immediate: true,
+      },
     },
 
     methods: {
-      async answerPrompt ({ prompt, value }) {
+      async answerPrompt({ prompt, value }) {
         await this.$apollo.mutate({
           mutation: PROMPT_ANSWER,
           variables: {
             input: {
               id: prompt.id,
-              value: JSON.stringify(value)
-            }
+              value: JSON.stringify(value),
+            },
           },
           update: (store, { data: { promptAnswer } }) => {
             if (update) {
-              update.call(this, store, promptAnswer)
-              return
+              update.call(this, store, promptAnswer);
+              return;
             }
-            let vars = variables || this.$apollo.queries[field].options.variables || undefined
+            let vars =
+              variables ||
+              this.$apollo.queries[field].options.variables ||
+              undefined;
             if (typeof vars === 'function') {
-              vars = vars.call(this)
+              vars = vars.call(this);
             }
-            const data = store.readQuery({ query, variables: vars })
+            const data = store.readQuery({ query, variables: vars });
             if (updateQuery) {
-              updateQuery.call(this, data, promptAnswer)
+              updateQuery.call(this, data, promptAnswer);
             } else {
-              data[field].prompts = promptAnswer
+              data[field].prompts = promptAnswer;
             }
-            store.writeQuery({ query, variables: vars, data })
-          }
-        })
-      }
-    }
-  }
+            store.writeQuery({ query, variables: vars, data });
+          },
+        });
+      },
+    },
+  };
 }

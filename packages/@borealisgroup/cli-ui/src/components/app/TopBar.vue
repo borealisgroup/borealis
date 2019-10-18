@@ -2,34 +2,39 @@
   <div class="top-bar">
     <portal-target name="top-title" class="title">Vue</portal-target>
 
-    <AppLoading/>
+    <AppLoading />
 
-    <div class="vue-ui-spacer"/>
+    <div class="vue-ui-spacer" />
 
-    <SuggestionBar/>
+    <SuggestionBar />
 
-    <portal-target name="top-actions" class="actions"/>
+    <portal-target name="top-actions" class="actions" />
   </div>
 </template>
 
 <style lang="stylus" scoped>
-.top-bar
-  padding $padding-item
-  h-box()
-  align-items center
-  position relative
-  height 32px
-  z-index 1
-  background $content-bg-secondary-light
-  .vue-ui-dark-mode &
-    background $content-bg-secondary-dark
+.top-bar {
+  padding: $padding-item;
+  h-box();
+  align-items: center;
+  position: relative;
+  height: 32px;
+  z-index: 1;
+  background: $content-bg-secondary-light;
 
-  &,
-  .actions
-    /deep/ > *
-      space-between-x($padding-item)
+  .vue-ui-dark-mode & {
+    background: $content-bg-secondary-dark;
+  }
 
-.title
-  font-size 28px
-  font-weight 300
+  &, .actions {
+    /deep/ > * {
+      space-between-x($padding-item);
+    }
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 300;
+}
 </style>

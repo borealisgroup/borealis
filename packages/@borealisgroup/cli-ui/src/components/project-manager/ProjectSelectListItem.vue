@@ -5,33 +5,31 @@
         <VueButton
           class="icon-button"
           :icon-left="project.favorite ? 'star' : 'star_border'"
-          v-tooltip="$t('org.vue.components.project-select-list-item.tooltips.favorite')"
+          v-tooltip="
+            $t('org.vue.components.project-select-list-item.tooltips.favorite')
+          "
           data-testid="favorite-button"
           @click.stop="$emit('favorite')"
         />
       </div>
 
       <div class="info">
-        <ListItemInfo
-          :description="project.path"
-        >
+        <ListItemInfo :description="project.path">
           <div slot="name" class="name">
             <span>{{ project.name }}</span>
 
-            <ProjectTasksDropdown
-              class="bullet-menu"
-              :tasks="project.tasks"
-            />
+            <ProjectTasksDropdown class="bullet-menu" :tasks="project.tasks" />
           </div>
         </ListItemInfo>
       </div>
 
       <div class="actions">
-        <VueButton
-          icon-left="open_in_browser"
-          @click.stop="openInEditor()"
-        >
-          {{ $t('org.vue.components.project-select-list-item.tooltips.open-in-editor') }}
+        <VueButton icon-left="open_in_browser" @click.stop="openInEditor()">
+          {{
+            $t(
+              'org.vue.components.project-select-list-item.tooltips.open-in-editor'
+            )
+          }}
         </VueButton>
 
         <VueButton
@@ -54,7 +52,9 @@
         <VueButton
           class="icon-button"
           icon-left="close"
-          v-tooltip="$t('org.vue.components.project-select-list-item.tooltips.delete')"
+          v-tooltip="
+            $t('org.vue.components.project-select-list-item.tooltips.delete')
+          "
           data-testid="delete-button"
           @click.stop="$emit('remove')"
         />
@@ -71,41 +71,41 @@
 </template>
 
 <script>
-import OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql'
+import OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql';
 
-import ProjectRename from './ProjectRename.vue'
+import ProjectRename from './ProjectRename.vue';
 
 export default {
   components: {
-    ProjectRename
+    ProjectRename,
   },
 
   props: {
     project: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
-      showRename: false
-    }
+      showRename: false,
+    };
   },
 
   methods: {
-    async openInEditor () {
+    async openInEditor() {
       await this.$apollo.mutate({
         mutation: OPEN_IN_EDITOR,
         variables: {
           input: {
-            file: this.project.path
-          }
-        }
-      })
-    }
-  }
-}
+            file: this.project.path,
+          },
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

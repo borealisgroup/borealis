@@ -2,7 +2,11 @@
   <div class="project-quick-dropdown">
     <VueDropdown
       v-if="$responsive.wide"
-      :label="projectCurrent ? projectCurrent.name : $t('org.vue.components.status-bar.project.empty')"
+      :label="
+        projectCurrent
+          ? projectCurrent.name
+          : $t('org.vue.components.status-bar.project.empty')
+      "
       class="current-project"
       icon-right="arrow_drop_down"
       button-class="round"
@@ -16,11 +20,17 @@
           class="extend-left"
           @update="toggleCurrentFavorite()"
         >
-          {{ $t('org.vue.components.project-select-list-item.tooltips.favorite') }}
+          {{
+            $t('org.vue.components.project-select-list-item.tooltips.favorite')
+          }}
         </VueSwitch>
 
         <VueDropdownButton
-          :label="$t('org.vue.components.project-select-list-item.tooltips.open-in-editor')"
+          :label="
+            $t(
+              'org.vue.components.project-select-list-item.tooltips.open-in-editor'
+            )
+          "
           icon-left="open_in_browser"
           @click="openInEditor(projectCurrent)"
         />
@@ -40,11 +50,13 @@
         />
       </template>
 
-      <div class="dropdown-separator"/>
+      <div class="dropdown-separator" />
 
       <!-- Favorites -->
 
-      <div v-if="!favoriteProjects.length" class="vue-ui-empty">{{ $t('org.vue.components.top-bar.no-favorites') }}</div>
+      <div v-if="!favoriteProjects.length" class="vue-ui-empty">
+        {{ $t('org.vue.components.top-bar.no-favorites') }}
+      </div>
 
       <template v-else>
         <div class="section-title">
@@ -63,7 +75,7 @@
       <!-- Recents -->
 
       <template v-if="recentProjects.length">
-        <div class="dropdown-separator"/>
+        <div class="dropdown-separator" />
 
         <div class="section-title">
           {{ $t('org.vue.components.top-bar.recent-projects') }}
@@ -78,7 +90,7 @@
         />
       </template>
 
-      <div class="dropdown-separator"/>
+      <div class="dropdown-separator" />
 
       <VueDropdownButton
         :to="{ name: 'project-select' }"
@@ -96,86 +108,93 @@
 </template>
 
 <script>
-import { resetApollo } from '@/vue-apollo'
+import { resetApollo } from '@/vue-apollo';
 
-import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql'
-import PROJECTS from '@/graphql/project/projects.gql'
-import PROJECT_OPEN from '@/graphql/project/projectOpen.gql'
-import PROJECT_SET_FAVORITE from '@/graphql/project/projectSetFavorite.gql'
-import OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql'
+import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql';
+import PROJECTS from '@/graphql/project/projects.gql';
+import PROJECT_OPEN from '@/graphql/project/projectOpen.gql';
+import PROJECT_SET_FAVORITE from '@/graphql/project/projectSetFavorite.gql';
+import OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql';
 
-import ProjectRename from '../project-manager/ProjectRename.vue'
+import ProjectRename from '../project-manager/ProjectRename.vue';
 
 export default {
   components: {
-    ProjectRename
+    ProjectRename,
   },
 
   apollo: {
     projectCurrent: PROJECT_CURRENT,
-    projects: PROJECTS
+    projects: PROJECTS,
   },
 
-  data () {
+  data() {
     return {
-      showRename: false
-    }
+      showRename: false,
+    };
   },
 
   computed: {
-    favoriteProjects () {
-      if (!this.projects) return []
+    favoriteProjects() {
+      if (!this.projects) return [];
       return this.projects.filter(
-        p => p.favorite && (!this.projectCurrent || this.projectCurrent.id !== p.id)
-      )
+        p =>
+          p.favorite &&
+          (!this.projectCurrent || this.projectCurrent.id !== p.id)
+      );
     },
 
-    recentProjects () {
-      if (!this.projects) return []
-      return this.projects.filter(
-        p => !p.favorite && (!this.projectCurrent || this.projectCurrent.id !== p.id)
-      ).sort((a, b) => b.openDate - a.openDate).slice(0, 3)
-    }
+    recentProjects() {
+      if (!this.projects) return [];
+      return this.projects
+        .filter(
+          p =>
+            !p.favorite &&
+            (!this.projectCurrent || this.projectCurrent.id !== p.id)
+        )
+        .sort((a, b) => b.openDate - a.openDate)
+        .slice(0, 3);
+    },
   },
 
   methods: {
-    async openProject (project) {
-      this.$bus('quickOpenProject', project)
+    async openProject(project) {
+      this.$bus('quickOpenProject', project);
 
       await this.$apollo.mutate({
         mutation: PROJECT_OPEN,
         variables: {
-          id: project.id
-        }
-      })
+          id: project.id,
+        },
+      });
 
-      await resetApollo()
+      await resetApollo();
     },
 
-    async toggleCurrentFavorite () {
+    async toggleCurrentFavorite() {
       if (this.projectCurrent) {
         await this.$apollo.mutate({
           mutation: PROJECT_SET_FAVORITE,
           variables: {
             id: this.projectCurrent.id,
-            favorite: this.projectCurrent.favorite ? 0 : 1
-          }
-        })
+            favorite: this.projectCurrent.favorite ? 0 : 1,
+          },
+        });
       }
     },
 
-    async openInEditor (project) {
+    async openInEditor(project) {
       await this.$apollo.mutate({
         mutation: OPEN_IN_EDITOR,
         variables: {
           input: {
-            file: project.path
-          }
-        }
-      })
-    }
-  }
-}
+            file: project.path,
+          },
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

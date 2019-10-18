@@ -2,10 +2,10 @@
   <div
     class="suggestion-bar-item"
     :class="{
-      ping
+      ping,
     }"
     :style="{
-      animationDelay: `${index * .5 + 1.5}s`
+      animationDelay: `${index * 0.5 + 1.5}s`,
     }"
     v-set-size="'.wrapper'"
   >
@@ -35,11 +35,8 @@
             v-html="$t(suggestion.message)"
           />
 
-          <div
-            v-if="suggestion.image"
-            class="info image"
-          >
-            <img :src="image" alt="image">
+          <div v-if="suggestion.image" class="info image">
+            <img :src="image" alt="image" />
           </div>
 
           <div class="actions-bar">
@@ -51,7 +48,7 @@
               class="flat"
               icon-right="open_in_new"
             />
-            <div class="vue-ui-spacer"/>
+            <div class="vue-ui-spacer" />
             <VueButton
               :label="$t('org.vue.components.suggestion-bar.modal.cancel')"
               icon-left="close"
@@ -72,61 +69,58 @@
 </template>
 
 <script>
-import { getImageUrl } from '@/util/image'
+import { getImageUrl } from '@/util/image';
 
-import SUGGESTION_ACTIVATE from '@/graphql/suggestion/suggestionActivate.gql'
+import SUGGESTION_ACTIVATE from '@/graphql/suggestion/suggestionActivate.gql';
 
 export default {
   props: {
     suggestion: {
       type: Object,
-      required: true
+      required: true,
     },
 
     index: {
       type: Number,
-      default: -1
+      default: -1,
     },
 
     ping: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
-    image () {
-      return getImageUrl(this.suggestion.image)
-    }
+    image() {
+      return getImageUrl(this.suggestion.image);
+    },
   },
 
   methods: {
-    onTriggerClick () {
+    onTriggerClick() {
       if (!this.suggestion.message && !this.suggestion.link) {
-        this.activate(this.suggestion)
+        this.activate(this.suggestion);
       }
     },
 
-    async activate (suggestion) {
+    async activate(suggestion) {
       if (suggestion.actionLink) {
-        const win = window.open(
-          suggestion.actionLink,
-          '_blank'
-        )
-        win.focus()
+        const win = window.open(suggestion.actionLink, '_blank');
+        win.focus();
       } else {
         await this.$apollo.mutate({
           mutation: SUGGESTION_ACTIVATE,
           variables: {
             input: {
-              id: suggestion.id
-            }
-          }
-        })
+              id: suggestion.id,
+            },
+          },
+        });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

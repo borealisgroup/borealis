@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="view-badge"
-    :class="[
-      `type-${badge.type}`
-    ]"
-  >
+  <div class="view-badge" :class="[`type-${badge.type}`]">
     <div class="content">
       <div class="counter">{{ badge.count }}</div>
       <div class="label">{{ $t(badge.label) }}</div>
@@ -17,10 +12,10 @@ export default {
   props: {
     badge: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -1,36 +1,37 @@
 <script>
-import ListItemInfo from '@/components/content/ListItemInfo.vue'
+import ListItemInfo from '@/components/content/ListItemInfo.vue';
 
 export default {
   components: {
-    ListItemInfo
+    ListItemInfo,
   },
 
   props: {
     prompt: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
-      modifiedValue: undefined
-    }
+      modifiedValue: undefined,
+    };
   },
 
   methods: {
-    value (value) {
-      if (this.$options.buffer && typeof this.modifiedValue !== 'undefined') return this.modifiedValue
-      return JSON.parse(value)
+    value(value) {
+      if (this.$options.buffer && typeof this.modifiedValue !== 'undefined')
+        return this.modifiedValue;
+      return JSON.parse(value);
     },
 
-    answer (value) {
-      this.modifiedValue = value
-      this.$emit('answer', value)
-    }
-  }
-}
+    answer(value) {
+      this.modifiedValue = value;
+      this.$emit('answer', value);
+    },
+  },
+};
 </script>
 
 <style lang="stylus">

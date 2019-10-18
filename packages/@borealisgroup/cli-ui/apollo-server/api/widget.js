@@ -1,4 +1,4 @@
-const { createSchema, validateSync } = require('@vue/cli-shared-utils')
+const { createSchema, validateSync } = require('@vue/cli-shared-utils');
 
 const schema = createSchema(joi => ({
   id: joi.string().required(),
@@ -30,9 +30,9 @@ const schema = createSchema(joi => ({
   onAdded: joi.func(),
   onRemoved: joi.func(),
   onConfigOpen: joi.func(),
-  onConfigChanged: joi.func()
-}))
+  onConfigChanged: joi.func(),
+}));
 
-exports.validateWidget = (options) => {
-  validateSync(options, schema)
-}
+exports.validateWidget = options => {
+  validateSync(options, schema);
+};

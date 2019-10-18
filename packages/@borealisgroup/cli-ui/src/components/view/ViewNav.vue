@@ -2,11 +2,11 @@
   <div
     class="project-nav"
     :class="{
-      wide: $responsive.wide
+      wide: $responsive.wide,
     }"
   >
     <div class="header">
-      <ProjectQuickDropdown/>
+      <ProjectQuickDropdown />
     </div>
 
     <div class="content">
@@ -23,26 +23,26 @@
         />
       </VueGroup>
 
-      <ViewNavMore/>
+      <ViewNavMore />
     </div>
   </div>
 </template>
 
 <script>
-import { isSameRoute, isIncludedRoute } from '@/util/route'
+import { isSameRoute, isIncludedRoute } from '@/util/route';
 
-import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql'
-import VIEWS from '@/graphql/view/views.gql'
-import VIEW_ADDED from '@/graphql/view/viewAdded.gql'
-import VIEW_REMOVED from '@/graphql/view/viewRemoved.gql'
-import VIEW_CHANGED from '@/graphql/view/viewChanged.gql'
-import VIEW_OPEN from '@/graphql/view/viewOpen.gql'
+import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql';
+import VIEWS from '@/graphql/view/views.gql';
+import VIEW_ADDED from '@/graphql/view/viewAdded.gql';
+import VIEW_REMOVED from '@/graphql/view/viewRemoved.gql';
+import VIEW_CHANGED from '@/graphql/view/viewChanged.gql';
+import VIEW_OPEN from '@/graphql/view/viewOpen.gql';
 
 export default {
-  data () {
+  data() {
     return {
-      views: []
-    }
+      views: [],
+    };
   },
 
   apollo: {
@@ -54,118 +54,124 @@ export default {
         {
           document: VIEW_ADDED,
           updateQuery: (previousResult, { subscriptionData }) => {
-            const view = subscriptionData.data.viewAdded
+            const view = subscriptionData.data.viewAdded;
             if (!previousResult.views) {
               return {
-                views: [ view ]
-              }
+                views: [view],
+              };
             }
-            if (previousResult.views.find(r => r.id === view.id)) return previousResult
+            if (previousResult.views.find(r => r.id === view.id))
+              return previousResult;
             return {
-              views: [
-                ...previousResult.views,
-                view
-              ]
-            }
-          }
+              views: [...previousResult.views, view],
+            };
+          },
         },
         {
           document: VIEW_REMOVED,
           updateQuery: (previousResult, { subscriptionData }) => {
-            if (!previousResult.views) return { views: [] }
-            const index = previousResult.views.findIndex(r => r.id === subscriptionData.data.viewRemoved.id)
-            if (index === -1) return previousResult
-            const views = previousResult.views.slice()
-            views.splice(index, 1)
+            if (!previousResult.views) return { views: [] };
+            const index = previousResult.views.findIndex(
+              r => r.id === subscriptionData.data.viewRemoved.id
+            );
+            if (index === -1) return previousResult;
+            const views = previousResult.views.slice();
+            views.splice(index, 1);
             return {
-              views
-            }
-          }
+              views,
+            };
+          },
         },
         {
           document: VIEW_CHANGED,
           updateQuery: (previousResult, { subscriptionData }) => {
-            const view = subscriptionData.data.viewChanged
+            const view = subscriptionData.data.viewChanged;
             if (!previousResult.views) {
               return {
-                views: [view]
-              }
+                views: [view],
+              };
             }
-            const index = previousResult.views.findIndex(r => r.id === view.id)
-            if (index === -1) return previousResult
-            const views = previousResult.views.slice()
-            views.splice(index, 1, view)
+            const index = previousResult.views.findIndex(r => r.id === view.id);
+            if (index === -1) return previousResult;
+            const views = previousResult.views.slice();
+            views.splice(index, 1, view);
             return {
-              views
-            }
-          }
-        }
-      ]
-    }
+              views,
+            };
+          },
+        },
+      ],
+    },
   },
 
   computed: {
-    currentView () {
-      const currentRoute = this.$route
-      return this.views.find(
-        item => isIncludedRoute(currentRoute, this.$router.resolve({ name: item.name }).route)
-      )
+    currentView() {
+      const currentRoute = this.$route;
+      return this.views.find(item =>
+        isIncludedRoute(
+          currentRoute,
+          this.$router.resolve({ name: item.name }).route
+        )
+      );
     },
 
     currentViewName: {
-      get () {
-        const view = this.currentView
-        return view && view.name
+      get() {
+        const view = this.currentView;
+        return view && view.name;
       },
-      set (name) {
+      set(name) {
         if (!isSameRoute(this.$route, this.$router.resolve({ name }).route)) {
-          this.$router.push({ name })
+          this.$router.push({ name });
         }
-      }
-    }
+      },
+    },
   },
 
   watch: {
     currentView: {
-      handler (value, oldValue) {
-        if (!value) return
-        if (oldValue && value.id === oldValue.id) return
+      handler(value, oldValue) {
+        if (!value) return;
+        if (oldValue && value.id === oldValue.id) return;
 
-        this.checkProjectType()
+        this.checkProjectType();
         this.$apollo.mutate({
           mutation: VIEW_OPEN,
           variables: {
-            id: value.id
-          }
-        })
+            id: value.id,
+          },
+        });
       },
-      immediate: true
+      immediate: true,
     },
 
     projectCurrent: {
       handler: 'checkProjectType',
-      immediate: true
-    }
+      immediate: true,
+    },
   },
 
   methods: {
-    hasProjectType (view) {
-      return (!view.projectTypes && this.projectCurrent.type === 'vue') ||
-        (view.projectTypes && view.projectTypes.includes(this.projectCurrent.type))
+    hasProjectType(view) {
+      return (
+        (!view.projectTypes && this.projectCurrent.type === 'vue') ||
+        (view.projectTypes &&
+          view.projectTypes.includes(this.projectCurrent.type))
+      );
     },
 
-    checkProjectType () {
-      if (!this.currentView) return
+    checkProjectType() {
+      if (!this.currentView) return;
 
       if (!this.hasProjectType(this.currentView)) {
-        const view = this.views.find(v => this.hasProjectType(v))
+        const view = this.views.find(v => this.hasProjectType(v));
         if (view) {
-          this.currentViewName = view.name
+          this.currentViewName = view.name;
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

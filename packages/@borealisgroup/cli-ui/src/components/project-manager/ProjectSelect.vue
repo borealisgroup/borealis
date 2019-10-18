@@ -2,7 +2,11 @@
   <div class="project-select page">
     <StepWizard
       :tab-id.sync="tab"
-      :title="$route.query.hideTabs ? $t('org.vue.views.project-create.title') : $t('org.vue.views.project-select.title')"
+      :title="
+        $route.query.hideTabs
+          ? $t('org.vue.views.project-create.title')
+          : $t('org.vue.views.project-select.title')
+      "
       :hide-tabs="hideTabs"
       class="frame"
     >
@@ -12,7 +16,7 @@
         icon="storage"
         class="select"
       >
-        <ProjectSelectList/>
+        <ProjectSelectList />
       </VueTab>
 
       <VueTab
@@ -22,13 +26,19 @@
         class="create"
       >
         <div class="content">
-          <FolderExplorer/>
+          <FolderExplorer />
         </div>
 
         <div class="actions-bar center">
           <VueButton
             icon-left="add"
-            :label="$route.query.hideTabs ? $t('org.vue.views.project-create.tabs.details.form.folder.action') : $t('org.vue.views.project-select.buttons.create')"
+            :label="
+              $route.query.hideTabs
+                ? $t(
+                    'org.vue.views.project-create.tabs.details.form.folder.action'
+                  )
+                : $t('org.vue.views.project-select.buttons.create')
+            "
             class="big primary create-project"
             @click="createProject()"
           />
@@ -42,13 +52,16 @@
         class="import"
       >
         <div class="content">
-          <FolderExplorer/>
+          <FolderExplorer />
         </div>
 
         <div class="actions-bar center">
           <VueButton
             icon-left="unarchive"
-            :label="$route.query.action || $t('org.vue.views.project-select.buttons.import')"
+            :label="
+              $route.query.action ||
+                $t('org.vue.views.project-select.buttons.import')
+            "
             class="big primary import-project"
             :disabled="folderCurrent && !folderCurrent.isPackage"
             :loading="busy"
@@ -104,76 +117,79 @@
 </template>
 
 <script>
-import FOLDER_CURRENT from '@/graphql/folder/folderCurrent.gql'
-import PROJECT_INIT_CREATION from '@/graphql/project/projectInitCreation.gql'
-import PROJECT_IMPORT from '@/graphql/project/projectImport.gql'
-import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql'
+import FOLDER_CURRENT from '@/graphql/folder/folderCurrent.gql';
+import PROJECT_INIT_CREATION from '@/graphql/project/projectInitCreation.gql';
+import PROJECT_IMPORT from '@/graphql/project/projectImport.gql';
+import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql';
 
 export default {
   name: 'ProjectSelect',
 
-  metaInfo () {
+  metaInfo() {
     return {
-      title: this.$t('org.vue.views.project-select.title')
-    }
+      title: this.$t('org.vue.views.project-select.title'),
+    };
   },
 
-  data () {
+  data() {
     return {
       folderCurrent: {},
       tab: undefined,
       hideTabs: !!this.$route.query.hideTabs,
       showNoModulesModal: false,
-      busy: false
-    }
+      busy: false,
+    };
   },
 
   apollo: {
     folderCurrent: FOLDER_CURRENT,
-    projectCurrent: PROJECT_CURRENT
+    projectCurrent: PROJECT_CURRENT,
   },
 
-  mounted () {
+  mounted() {
     // Fix issue with Firefox
     setTimeout(() => {
-      this.tab = this.$route.query.tab || 'existing'
-    })
+      this.tab = this.$route.query.tab || 'existing';
+    });
   },
 
   methods: {
-    async createProject () {
+    async createProject() {
       await this.$apollo.mutate({
-        mutation: PROJECT_INIT_CREATION
-      })
+        mutation: PROJECT_INIT_CREATION,
+      });
 
-      this.$router.push({ name: 'project-create' })
+      this.$router.push({ name: 'project-create' });
     },
 
-    async importProject (force = false) {
-      this.showNoModulesModal = false
-      this.busy = true
-      await this.$nextTick()
+    async importProject(force = false) {
+      this.showNoModulesModal = false;
+      this.busy = true;
+      await this.$nextTick();
       try {
         await this.$apollo.mutate({
           mutation: PROJECT_IMPORT,
           variables: {
             input: {
               path: this.folderCurrent.path,
-              force
-            }
-          }
-        })
+              force,
+            },
+          },
+        });
 
-        this.$router.push({ name: 'project-home' })
+        this.$router.push({ name: 'project-home' });
       } catch (e) {
-        if (e.graphQLErrors && e.graphQLErrors.some(e => e.message === 'NO_MODULES')) {
-          this.showNoModulesModal = true
+        if (
+          e.graphQLErrors &&
+          e.graphQLErrors.some(e => e.message === 'NO_MODULES')
+        ) {
+          this.showNoModulesModal = true;
         }
-        this.busy = false
+        this.busy = false;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

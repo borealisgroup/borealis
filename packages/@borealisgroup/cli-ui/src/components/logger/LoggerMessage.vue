@@ -6,13 +6,13 @@
       {
         'has-type': message.type !== 'log',
         'has-tag': message.tag,
-        pre
-      }
+        pre,
+      },
     ]"
   >
     <div v-if="message.type !== 'log'" class="type">{{ message.type }}</div>
     <div v-if="message.tag" class="tag">{{ message.tag }}</div>
-    <div class="message" v-html="ansiColors(message.message)"/>
+    <div class="message" v-html="ansiColors(message.message)" />
     <div class="date">{{ message.date | date }}</div>
   </div>
 </template>
@@ -22,15 +22,15 @@ export default {
   props: {
     message: {
       type: Object,
-      required: true
+      required: true,
     },
 
     pre: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

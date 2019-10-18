@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-show="totalResults > 0"
-    class="instant-search-pagination"
-  >
+  <div v-show="totalResults > 0" class="instant-search-pagination">
     <div class="content">
       <VueButton
         class="icon-button"
@@ -23,7 +20,7 @@
         :key="item"
         class="icon-button"
         :class="{
-          primary: page === item
+          primary: page === item,
         }"
         :label="item.toString()"
         @click="goToPage(item)"
@@ -47,11 +44,11 @@
 </template>
 
 <script>
-import { Pagination } from 'vue-instantsearch'
+import { Pagination } from 'vue-instantsearch';
 
 export default {
-  extends: Pagination
-}
+  extends: Pagination,
+};
 </script>
 
 <style lang="stylus" scoped>

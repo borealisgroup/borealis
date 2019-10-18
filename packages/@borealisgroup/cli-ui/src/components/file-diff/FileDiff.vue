@@ -2,23 +2,23 @@
   <div
     :class="{
       new: fileDiff.new,
-      deleted: fileDiff.deleted
+      deleted: fileDiff.deleted,
     }"
     class="file-diff"
   >
     <div class="toolbar" @click="$emit('update:collapsed', !collapsed)">
-      <VueIcon class="file-icon" :icon="icon"/>
+      <VueIcon class="file-icon" :icon="icon" />
       <template v-if="fileDiff.from !== fileDiff.to && !fileDiff.new">
         <div class="name from-file">
           <span v-tooltip="fileDiff.from">{{ fileDiff.from }}</span>
         </div>
-        <VueIcon v-if="!fileDiff.deleted" icon="arrow_forward"/>
+        <VueIcon v-if="!fileDiff.deleted" icon="arrow_forward" />
       </template>
       <div v-if="!fileDiff.deleted" class="name to-file">
         <span v-tooltip="fileDiff.to">{{ fileDiff.to }}</span>
       </div>
 
-      <div class="vue-ui-spacer"/>
+      <div class="vue-ui-spacer" />
 
       <VueButton
         v-if="!fileDiff.deleted"
@@ -36,7 +36,7 @@
 
     <div v-if="!collapsed" class="content">
       <div v-if="fileDiff.binary" class="is-binary">
-        <VueIcon icon="memory" class="icon"/>
+        <VueIcon icon="memory" class="icon" />
         <span>{{ $t('org.vue.components.file-diff.binary') }}</span>
       </div>
       <template v-else>
@@ -51,55 +51,57 @@
 </template>
 
 <script>
-import FILE_OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql'
+import FILE_OPEN_IN_EDITOR from '@/graphql/file/fileOpenInEditor.gql';
 
 export default {
-  provide () {
-    const vm = this
+  provide() {
+    const vm = this;
     return {
       FileDiffInjection: {
-        get data () { return vm.fileDiff }
-      }
-    }
+        get data() {
+          return vm.fileDiff;
+        },
+      },
+    };
   },
 
   props: {
     fileDiff: {
       type: Object,
-      required: true
+      required: true,
     },
 
     collapsed: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
-    icon () {
+    icon() {
       if (this.fileDiff.new) {
-        return 'note_add'
+        return 'note_add';
       } else if (this.fileDiff.deleted) {
-        return 'delete'
+        return 'delete';
       }
-      return 'insert_drive_file'
-    }
+      return 'insert_drive_file';
+    },
   },
 
   methods: {
-    openInEditor () {
+    openInEditor() {
       this.$apollo.mutate({
         mutation: FILE_OPEN_IN_EDITOR,
         variables: {
           input: {
             file: this.fileDiff.to,
-            gitPath: true
-          }
-        }
-      })
-    }
-  }
-}
+            gitPath: true,
+          },
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -1,13 +1,7 @@
 <template>
   <div class="widget-add-item list-item">
-    <div
-      class="info"
-      @click="showDetails = true"
-    >
-      <ItemLogo
-        :image="definition.icon"
-        fallback-icon="widgets"
-      />
+    <div class="info" @click="showDetails = true">
+      <ItemLogo :image="definition.icon" fallback-icon="widgets" />
       <ListItemInfo
         :name="$t(definition.title)"
         :description="$t(definition.description)"
@@ -32,10 +26,7 @@
     >
       <div class="custom-body">
         <div class="details">
-          <ItemLogo
-            :image="definition.icon"
-            fallback-icon="widgets"
-          />
+          <ItemLogo :image="definition.icon" fallback-icon="widgets" />
           <ListItemInfo
             :name="$t(definition.title)"
             :description="$t(definition.description)"
@@ -43,17 +34,19 @@
         </div>
 
         <div v-if="definition.longDescription" class="details">
-          <div
-            class="description"
-            v-html="$t(definition.longDescription)"
-          />
+          <div class="description" v-html="$t(definition.longDescription)" />
         </div>
 
         <div class="instances">
-          {{ $t('org.vue.components.widget-add-item.details.max-instances', {
-            count: definition.count,
-            total: definition.maxCount == null ? $t('org.vue.components.widget-add-item.details.unlimited') : definition.maxCount
-          }) }}
+          {{
+            $t('org.vue.components.widget-add-item.details.max-instances', {
+              count: definition.count,
+              total:
+                definition.maxCount == null
+                  ? $t('org.vue.components.widget-add-item.details.unlimited')
+                  : definition.maxCount,
+            })
+          }}
         </div>
       </div>
 
@@ -79,52 +72,52 @@
 </template>
 
 <script>
-import WIDGET_ADD from '@/graphql/widget/widgetAdd.gql'
-import WIDGETS from '@/graphql/widget/widgets.gql'
-import WIDGET_DEFINITION_FRAGMENT from '@/graphql/widget/widgetDefinitionFragment.gql'
+import WIDGET_ADD from '@/graphql/widget/widgetAdd.gql';
+import WIDGETS from '@/graphql/widget/widgets.gql';
+import WIDGET_DEFINITION_FRAGMENT from '@/graphql/widget/widgetDefinitionFragment.gql';
 
 export default {
   props: {
     definition: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
-      showDetails: false
-    }
+      showDetails: false,
+    };
   },
 
   methods: {
-    add () {
-      this.showDetails = false
+    add() {
+      this.showDetails = false;
       this.$apollo.mutate({
         mutation: WIDGET_ADD,
         variables: {
           input: {
-            definitionId: this.definition.id
-          }
+            definitionId: this.definition.id,
+          },
         },
         update: (store, { data: { widgetAdd } }) => {
-          let data = store.readQuery({ query: WIDGETS })
+          let data = store.readQuery({ query: WIDGETS });
           // TODO this is a workaround
           // See: https://github.com/apollographql/apollo-client/issues/4031#issuecomment-433668473
           data = {
-            widgets: [...data.widgets, widgetAdd]
-          }
-          store.writeQuery({ query: WIDGETS, data })
+            widgets: [...data.widgets, widgetAdd],
+          };
+          store.writeQuery({ query: WIDGETS, data });
           store.writeFragment({
             fragment: WIDGET_DEFINITION_FRAGMENT,
             id: widgetAdd.definition.id,
-            data: widgetAdd.definition
-          })
-        }
-      })
-    }
-  }
-}
+            data: widgetAdd.definition,
+          });
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

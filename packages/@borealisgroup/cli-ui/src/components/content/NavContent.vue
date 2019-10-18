@@ -1,19 +1,17 @@
 <template>
   <div class="nav-content">
-    <NavList
-      :items="items"
-    >
-      <slot name="before" slot="before"/>
+    <NavList :items="items">
+      <slot name="before" slot="before" />
 
       <template slot-scope="props">
-        <slot v-bind="props"/>
+        <slot v-bind="props" />
       </template>
 
-      <slot name="after" slot="after"/>
+      <slot name="after" slot="after" />
     </NavList>
 
     <div class="content vue-ui-disable-scroll">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
@@ -23,10 +21,10 @@ export default {
   props: {
     items: {
       type: Array,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

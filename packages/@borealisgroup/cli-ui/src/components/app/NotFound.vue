@@ -1,18 +1,16 @@
 <template>
   <div class="not-found page">
     <template v-if="addonRouteTimout">
-      <VueIcon icon="cake" class="huge"/>
+      <VueIcon icon="cake" class="huge" />
       <h1 class="title">Addon route taking too long to load</h1>
       <h2 class="subtitle">The route may not exist</h2>
       <VueButton :to="{ name: 'home' }">Go home</VueButton>
     </template>
     <template v-else-if="isAddonRoute">
-      <VueLoadingIndicator
-        class="accent big"
-      />
+      <VueLoadingIndicator class="accent big" />
     </template>
     <template v-else>
-      <VueIcon icon="pets" class="huge"/>
+      <VueIcon icon="pets" class="huge" />
       <h1 class="title">View not found</h1>
       <VueButton :to="{ name: 'home' }">Go home</VueButton>
     </template>
@@ -23,26 +21,26 @@
 export default {
   name: 'NotFound',
 
-  data () {
+  data() {
     return {
-      addonRouteTimout: false
-    }
+      addonRouteTimout: false,
+    };
   },
 
   computed: {
-    isAddonRoute () {
-      return this.$route.path.includes('/addon/')
-    }
+    isAddonRoute() {
+      return this.$route.path.includes('/addon/');
+    },
   },
 
-  mounted () {
+  mounted() {
     if (this.isAddonRoute) {
       setTimeout(() => {
-        this.addonRouteTimout = true
-      }, 5000)
+        this.addonRouteTimout = true;
+      }, 5000);
     }
-  }
-}
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

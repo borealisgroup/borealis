@@ -1,20 +1,18 @@
 <template>
   <div class="terminal-view card">
     <div v-if="toolbar" class="pane-toolbar">
-      <VueIcon
-        icon="dvr"
-      />
+      <VueIcon icon="dvr" />
       <div class="title">{{ title }}</div>
       <VueButton
         class="icon-button flat"
         icon-left="delete_forever"
         v-tooltip="$t('org.vue.components.terminal-view.buttons.clear')"
-        @click="clear(); $emit('clear')"
+        @click="
+          clear();
+          $emit('clear');
+        "
       />
-      <VueIcon
-        icon="lens"
-        class="separator"
-      />
+      <VueIcon icon="lens" class="separator" />
       <VueButton
         class="icon-button flat"
         icon-left="content_copy"
@@ -30,20 +28,20 @@
     </div>
 
     <div class="view">
-      <div ref="render" class="xterm-render"/>
+      <div ref="render" class="xterm-render" />
     </div>
 
-    <resize-observer v-if="autoSize" @notify="fit"/>
+    <resize-observer v-if="autoSize" @notify="fit" />
   </div>
 </template>
 
 <script>
-import { Terminal } from 'xterm'
-import * as fit from 'xterm/dist/addons/fit/fit'
-import * as webLinks from 'xterm/dist/addons/webLinks/webLinks'
+import { Terminal } from 'xterm';
+import * as fit from 'xterm/dist/addons/fit/fit';
+import * as webLinks from 'xterm/dist/addons/webLinks/webLinks';
 
-Terminal.applyAddon(fit)
-Terminal.applyAddon(webLinks)
+Terminal.applyAddon(fit);
+Terminal.applyAddon(webLinks);
 
 const defaultTheme = {
   foreground: '#2c3e50',
@@ -65,8 +63,8 @@ const defaultTheme = {
   blue: '#03c2e6',
   white: '#d0d0d0',
   brightBlack: '#808080',
-  brightWhite: '#ffffff'
-}
+  brightWhite: '#ffffff',
+};
 
 const darkTheme = {
   ...defaultTheme,
@@ -75,8 +73,8 @@ const darkTheme = {
   cursor: 'rgba(255, 255, 255, .4)',
   selection: 'rgba(255, 255, 255, 0.3)',
   magenta: '#e83030',
-  brightMagenta: '#e83030'
-}
+  brightMagenta: '#e83030',
+};
 
 export default {
   clientState: true,
@@ -84,174 +82,172 @@ export default {
   props: {
     cols: {
       type: Number,
-      required: true
+      required: true,
     },
 
     rows: {
       type: Number,
-      required: true
+      required: true,
     },
 
     content: {
       type: String,
-      default: undefined
+      default: undefined,
     },
 
     autoSize: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     options: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
 
     toolbar: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     title: {
       type: String,
-      default: null
+      default: null,
     },
 
     openLinks: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
-    theme () {
+    theme() {
       if (this.darkMode) {
-        return darkTheme
+        return darkTheme;
       } else {
-        return defaultTheme
+        return defaultTheme;
       }
-    }
+    },
   },
 
   watch: {
-    cols (c) {
-      this.$_terminal.resize(c, this.rows)
+    cols(c) {
+      this.$_terminal.resize(c, this.rows);
     },
 
-    rows (r) {
-      this.$_terminal.resize(this.cols, r)
+    rows(r) {
+      this.$_terminal.resize(this.cols, r);
     },
 
     content: 'setContent',
 
-    darkMode (value, oldValue) {
+    darkMode(value, oldValue) {
       if (typeof oldValue === 'undefined') {
-        this.initTerminal()
+        this.initTerminal();
       } else if (this.$_terminal) {
-        this.$_terminal.setOption('theme', this.theme)
+        this.$_terminal.setOption('theme', this.theme);
       }
-    }
+    },
   },
 
-  beforeDestroy () {
-    this.$_terminal.destroy()
+  beforeDestroy() {
+    this.$_terminal.destroy();
   },
 
   methods: {
-    initTerminal () {
-      let term = this.$_terminal = new Terminal({
+    initTerminal() {
+      let term = (this.$_terminal = new Terminal({
         cols: this.cols,
         rows: this.rows,
         theme: this.theme,
-        ...this.options
-      })
-      webLinks.webLinksInit(term, this.handleLink)
-      term.open(this.$refs.render)
+        ...this.options,
+      }));
+      webLinks.webLinksInit(term, this.handleLink);
+      term.open(this.$refs.render);
 
-      term.on('blur', () => this.$emit('blur'))
-      term.on('focus', () => this.$emit('focus'))
+      term.on('blur', () => this.$emit('blur'));
+      term.on('focus', () => this.$emit('focus'));
 
       if (this.autoSize) {
-        this.$nextTick(this.fit)
+        this.$nextTick(this.fit);
       }
     },
 
-    setContent (value, ln = true) {
+    setContent(value, ln = true) {
       if (value.indexOf('\n') !== -1) {
-        value.split('\n').forEach(
-          t => this.setContent(t)
-        )
-        return
+        value.split('\n').forEach(t => this.setContent(t));
+        return;
       }
       if (typeof value === 'string') {
-        this.$_terminal[ln ? 'writeln' : 'write'](value)
+        this.$_terminal[ln ? 'writeln' : 'write'](value);
       } else {
-        this.$_terminal.writeln('')
+        this.$_terminal.writeln('');
       }
     },
 
-    addLog (log) {
-      this.setContent(log.text, log.type === 'stdout')
+    addLog(log) {
+      this.setContent(log.text, log.type === 'stdout');
     },
 
-    clear () {
-      this.$_terminal.clear()
+    clear() {
+      this.$_terminal.clear();
     },
 
-    scrollToBottom () {
-      this.$_terminal.scrollToBottom()
+    scrollToBottom() {
+      this.$_terminal.scrollToBottom();
     },
 
-    copyContent () {
-      const textarea = this.$_terminal.textarea
+    copyContent() {
+      const textarea = this.$_terminal.textarea;
       if (!textarea) {
-        return
+        return;
       }
-      const textValue = textarea.value
-      const emptySelection = !this.$_terminal.hasSelection()
+      const textValue = textarea.value;
+      const emptySelection = !this.$_terminal.hasSelection();
       try {
         if (emptySelection) {
-          this.$_terminal.selectAll()
+          this.$_terminal.selectAll();
         }
-        var selection = this.$_terminal.getSelection()
-        textarea.value = selection
-        textarea.select()
-        document.execCommand('copy')
+        var selection = this.$_terminal.getSelection();
+        textarea.value = selection;
+        textarea.select();
+        document.execCommand('copy');
       } finally {
-        textarea.value = textValue
+        textarea.value = textValue;
         if (emptySelection) {
-          this.$_terminal.clearSelection()
+          this.$_terminal.clearSelection();
         }
       }
     },
 
-    handleLink (event, uri) {
+    handleLink(event, uri) {
       if (this.openLinks) {
-        window.open(uri, '_blank')
+        window.open(uri, '_blank');
       }
-      this.$emit('link', uri)
+      this.$emit('link', uri);
     },
 
-    async fit () {
-      let term = this.$_terminal
-      term.element.style.display = 'none'
+    async fit() {
+      let term = this.$_terminal;
+      term.element.style.display = 'none';
 
-      await this.$nextTick()
+      await this.$nextTick();
 
-      term.fit()
-      term.element.style.display = ''
-      term.refresh(0, term.rows - 1)
+      term.fit();
+      term.element.style.display = '';
+      term.refresh(0, term.rows - 1);
     },
 
-    focus () {
-      this.$_terminal.focus()
+    focus() {
+      this.$_terminal.focus();
     },
 
-    blur () {
-      this.$_terminal.blur()
-    }
-  }
-}
+    blur() {
+      this.$_terminal.blur();
+    },
+  },
+};
 </script>
 
 <style lang="stylus">

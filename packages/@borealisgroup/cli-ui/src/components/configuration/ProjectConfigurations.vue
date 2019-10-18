@@ -19,10 +19,7 @@
             :items="generateItems(data.configurations)"
             class="configurations"
           >
-            <div
-              slot="before"
-              class="list-header"
-            >
+            <div slot="before" class="list-header">
               <VueInput
                 v-model="search"
                 icon-left="search"
@@ -43,62 +40,62 @@
 </template>
 
 <script>
-import RestoreRoute from '@/mixins/RestoreRoute'
-import { generateSearchRegex } from '@/util/search'
+import RestoreRoute from '@/mixins/RestoreRoute';
+import { generateSearchRegex } from '@/util/search';
 
-import CONFIGS from '@/graphql/configuration/configurations.gql'
+import CONFIGS from '@/graphql/configuration/configurations.gql';
 
 export default {
   mixins: [
     RestoreRoute({
-      baseRoute: { name: 'project-configurations' }
-    })
+      baseRoute: { name: 'project-configurations' },
+    }),
   ],
 
-  metaInfo () {
+  metaInfo() {
     return {
-      title: this.$t('org.vue.views.project-configurations.title')
-    }
+      title: this.$t('org.vue.views.project-configurations.title'),
+    };
   },
 
-  data () {
+  data() {
     return {
-      search: ''
-    }
+      search: '',
+    };
   },
 
   bus: {
-    quickOpenProject (project) {
+    quickOpenProject(project) {
       this.$apollo.getClient().writeQuery({
         query: CONFIGS,
         data: {
-          configurations: null
-        }
-      })
-    }
+          configurations: null,
+        },
+      });
+    },
   },
 
   methods: {
-    generateItems (configurations) {
-      if (!configurations) return []
+    generateItems(configurations) {
+      if (!configurations) return [];
 
-      const reg = generateSearchRegex(this.search)
-      return configurations.filter(
-        item => !reg || item.name.match(reg) || item.description.match(reg)
-      ).map(
-        configuration => ({
+      const reg = generateSearchRegex(this.search);
+      return configurations
+        .filter(
+          item => !reg || item.name.match(reg) || item.description.match(reg)
+        )
+        .map(configuration => ({
           route: {
             name: 'project-configuration-details',
             params: {
-              id: configuration.id
-            }
+              id: configuration.id,
+            },
           },
-          configuration
-        })
-      )
-    }
-  }
-}
+          configuration,
+        }));
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

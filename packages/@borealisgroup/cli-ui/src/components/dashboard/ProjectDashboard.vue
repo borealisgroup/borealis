@@ -3,12 +3,10 @@
     class="project-dashboard page"
     :class="{
       customizing: customizeMode,
-      'widget-details-shown': injected.isWidgetDetailsShown
+      'widget-details-shown': injected.isWidgetDetailsShown,
     }"
   >
-    <ContentView
-      :title="$t('org.vue.views.project-dashboard.title')"
-    >
+    <ContentView :title="$t('org.vue.views.project-dashboard.title')">
       <template slot="actions">
         <VueButton
           v-if="!customizeMode"
@@ -53,10 +51,7 @@
         </ApolloQuery>
 
         <transition name="sidepane">
-          <WidgetAddPane
-            v-if="customizeMode"
-            @close="customizeMode = false"
-          />
+          <WidgetAddPane v-if="customizeMode" @close="customizeMode = false" />
         </transition>
       </div>
     </ContentView>
@@ -64,28 +59,26 @@
 </template>
 
 <script>
-import OnWindowResize from '@/mixins/OnWindowResize'
+import OnWindowResize from '@/mixins/OnWindowResize';
 
-const PADDING = 8
+const PADDING = 8;
 
 export default {
-  provide () {
+  provide() {
     return {
-      dashboard: this.injected
-    }
+      dashboard: this.injected,
+    };
   },
 
-  mixins: [
-    OnWindowResize()
-  ],
+  mixins: [OnWindowResize()],
 
-  metaInfo () {
+  metaInfo() {
     return {
-      title: this.$t('org.vue.views.project-dashboard.title')
-    }
+      title: this.$t('org.vue.views.project-dashboard.title'),
+    };
   },
 
-  data () {
+  data() {
     return {
       customizeMode: false,
       injected: {
@@ -93,23 +86,23 @@ export default {
         height: 0,
         left: 0,
         top: 0,
-        isWidgetDetailsShown: false
-      }
-    }
+        isWidgetDetailsShown: false,
+      },
+    };
   },
 
   methods: {
-    onWindowResize () {
-      const el = this.$refs.widgets.$el
-      if (!el) return
-      const bounds = el.getBoundingClientRect()
-      this.injected.width = bounds.width - PADDING * 2
-      this.injected.height = bounds.height - PADDING * 2
-      this.injected.left = bounds.left
-      this.injected.top = bounds.top
-    }
-  }
-}
+    onWindowResize() {
+      const el = this.$refs.widgets.$el;
+      if (!el) return;
+      const bounds = el.getBoundingClientRect();
+      this.injected.width = bounds.width - PADDING * 2;
+      this.injected.height = bounds.height - PADDING * 2;
+      this.injected.left = bounds.left;
+      this.injected.top = bounds.top;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

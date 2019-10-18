@@ -19,57 +19,55 @@
 </template>
 
 <script>
-import { Component } from 'vue-instantsearch'
+import { Component } from 'vue-instantsearch';
 
 export default {
-  mixins: [
-    Component
-  ],
+  mixins: [Component],
 
   props: {
     placeholder: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
 
   computed: {
     query: {
-      get () {
-        return this.searchStore.query
+      get() {
+        return this.searchStore.query;
       },
-      set (value) {
-        this.searchStore.stop()
-        this.searchStore.query = value
-        this.$emit('query', value)
+      set(value) {
+        this.searchStore.stop();
+        this.searchStore.query = value;
+        this.$emit('query', value);
         // We here ensure we give the time to listeners to alter the store's state
         // without triggering in between ghost queries.
         this.$nextTick(() => {
-          this.searchStore.start()
-          this.searchStore.refresh()
-        })
-      }
-    }
+          this.searchStore.start();
+          this.searchStore.refresh();
+        });
+      },
+    },
   },
 
   methods: {
-    clear () {
-      this.searchStore.stop()
+    clear() {
+      this.searchStore.stop();
       if (this.searchStore.query.length > 0) {
-        this.searchStore.query = ''
+        this.searchStore.query = '';
       }
       if (this.searchStore.activeRefinements.length > 0) {
-        this.searchStore.clearRefinements()
+        this.searchStore.clearRefinements();
       }
-      this.searchStore.start()
-      this.searchStore.refresh()
+      this.searchStore.start();
+      this.searchStore.refresh();
     },
 
-    focus () {
-      this.$refs.input.focus()
-    }
-  }
-}
+    focus() {
+      this.$refs.input.focus();
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

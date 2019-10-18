@@ -1,6 +1,6 @@
 <template>
   <div class="project-plugin-add-local">
-    <FolderExplorer/>
+    <FolderExplorer />
 
     <div class="actions-bar center">
       <VueButton
@@ -14,18 +14,18 @@
 </template>
 
 <script>
-import PLUGIN_INSTALL_LOCAL from '@/graphql/plugin/pluginInstallLocal.gql'
+import PLUGIN_INSTALL_LOCAL from '@/graphql/plugin/pluginInstallLocal.gql';
 
 export default {
   methods: {
-    async addPlugin () {
+    async addPlugin() {
       await this.$apollo.mutate({
-        mutation: PLUGIN_INSTALL_LOCAL
-      })
-      this.$emit('installed')
-    }
-  }
-}
+        mutation: PLUGIN_INSTALL_LOCAL,
+      });
+      this.$emit('installed');
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

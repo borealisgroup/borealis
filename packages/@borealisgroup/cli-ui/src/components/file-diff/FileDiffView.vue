@@ -1,8 +1,10 @@
 <template>
   <div class="file-diff-view">
     <div class="toolbar">
-      <VueIcon icon="cached"/>
-      <div class="title">{{ $t('org.vue.components.file-diff-view.files-changed') }}</div>
+      <VueIcon icon="cached" />
+      <div class="title">
+        {{ $t('org.vue.components.file-diff-view.files-changed') }}
+      </div>
       <div class="file-count">{{ fileDiffs && fileDiffs.length }}</div>
       <transition name="vue-ui-fade">
         <VueLoadingIndicator
@@ -10,7 +12,7 @@
           class="small accent"
         />
       </transition>
-      <div class="vue-ui-spacer"/>
+      <div class="vue-ui-spacer" />
       <VueInput
         v-model="search"
         icon-left="search"
@@ -18,23 +20,25 @@
       />
       <VueButton
         :icon-left="allCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up'"
-        :label="$t(`org.vue.components.file-diff-view.actions.${allCollapsed ? 'expand-all' : 'collapse-all'}`)"
+        :label="
+          $t(
+            `org.vue.components.file-diff-view.actions.${
+              allCollapsed ? 'expand-all' : 'collapse-all'
+            }`
+          )
+        "
         @click="setCollapsedToAll(!allCollapsed)"
       />
-      <VueButton
-        icon-left="refresh"
-        class="icon-button"
-        @click="refresh()"
-      />
+      <VueButton icon-left="refresh" class="icon-button" @click="refresh()" />
     </div>
     <div class="list">
       <div v-if="error || !fileDiffs" class="vue-ui-empty">
-        <VueIcon icon="error" class="empty-icon"/>
+        <VueIcon icon="error" class="empty-icon" />
         <span>{{ $t('org.vue.components.file-diff-view.error') }}</span>
       </div>
 
       <div v-else-if="!filteredList.length" class="vue-ui-empty">
-        <VueIcon icon="check_circle" class="empty-icon"/>
+        <VueIcon icon="check_circle" class="empty-icon" />
         <span>{{ $t('org.vue.components.file-diff-view.empty') }}</span>
       </div>
 
@@ -96,7 +100,9 @@
       <div class="default-body">
         <VueFormField
           :title="$t('org.vue.components.file-diff-view.modals.commit.input')"
-          :subtitle="$t('org.vue.components.file-diff-view.modals.commit.subtitle')"
+          :subtitle="
+            $t('org.vue.components.file-diff-view.modals.commit.subtitle')
+          "
         >
           <VueInput
             v-model="commitMessage"
@@ -109,12 +115,16 @@
 
       <div slot="footer" class="actions center">
         <VueButton
-          :label="$t('org.vue.components.file-diff-view.modals.commit.actions.cancel')"
+          :label="
+            $t('org.vue.components.file-diff-view.modals.commit.actions.cancel')
+          "
           class="flat"
           @click="showCommitModal = false"
         />
         <VueButton
-          :label="$t('org.vue.components.file-diff-view.modals.commit.actions.commit')"
+          :label="
+            $t('org.vue.components.file-diff-view.modals.commit.actions.commit')
+          "
           class="primary"
           icon-left="vertical_align_bottom"
           :disabled="!commitMessage"
@@ -126,23 +136,17 @@
 </template>
 
 <script>
-import PageVisibility from '@/mixins/PageVisibility'
+import PageVisibility from '@/mixins/PageVisibility';
 
-import FILE_DIFFS from '@/graphql/git/fileDiffs.gql'
-import GIT_COMMIT from '@/graphql/git/gitCommit.gql'
+import FILE_DIFFS from '@/graphql/git/fileDiffs.gql';
+import GIT_COMMIT from '@/graphql/git/gitCommit.gql';
 
-const defaultCollapsed = [
-  'yarn.lock',
-  'pnpm-lock.yaml',
-  'package-lock.json'
-]
+const defaultCollapsed = ['yarn.lock', 'pnpm-lock.yaml', 'package-lock.json'];
 
 export default {
-  mixins: [
-    PageVisibility
-  ],
+  mixins: [PageVisibility],
 
-  data () {
+  data() {
     return {
       fileDiffs: [],
       collapsed: {},
@@ -150,8 +154,8 @@ export default {
       loading: 0,
       commitMessage: '',
       showCommitModal: false,
-      error: null
-    }
+      error: null,
+    };
   },
 
   apollo: {
@@ -159,98 +163,98 @@ export default {
       query: FILE_DIFFS,
       loadingKey: 'loading',
       fetchPolicy: 'network-only',
-      error (error) {
-        this.error = error
+      error(error) {
+        this.error = error;
       },
-      result (result) {
+      result(result) {
         if (result.errors && result.errors.length) {
-          this.error = result.errors[0]
-          return
+          this.error = result.errors[0];
+          return;
         }
 
-        this.error = null
+        this.error = null;
         this.fileDiffs.forEach(fileDiff => {
-          if (typeof this.collapsed[fileDiff.id] === 'undefined' && (
-            fileDiff.binary ||
-            defaultCollapsed.includes(fileDiff.from) ||
-            defaultCollapsed.includes(fileDiff.to)
-          )) {
-            this.$set(this.collapsed, fileDiff.id, true)
+          if (
+            typeof this.collapsed[fileDiff.id] === 'undefined' &&
+            (fileDiff.binary ||
+              defaultCollapsed.includes(fileDiff.from) ||
+              defaultCollapsed.includes(fileDiff.to))
+          ) {
+            this.$set(this.collapsed, fileDiff.id, true);
           }
-        })
-      }
-    }
+        });
+      },
+    },
   },
 
   computed: {
-    allCollapsed () {
-      if (!this.fileDiffs) return false
-      return !this.fileDiffs.find(
-        fileDiff => !this.collapsed[fileDiff.id]
-      )
+    allCollapsed() {
+      if (!this.fileDiffs) return false;
+      return !this.fileDiffs.find(fileDiff => !this.collapsed[fileDiff.id]);
     },
 
-    filteredList () {
-      if (!this.fileDiffs) return []
-      const search = this.search.trim()
+    filteredList() {
+      if (!this.fileDiffs) return [];
+      const search = this.search.trim();
       if (search) {
-        const reg = new RegExp(search.replace(/\s+/g, '.*'), 'i')
+        const reg = new RegExp(search.replace(/\s+/g, '.*'), 'i');
         return this.fileDiffs.filter(
           fileDiff => reg.test(fileDiff.from) || reg.test(fileDiff.to)
-        )
+        );
       } else {
-        return this.fileDiffs
+        return this.fileDiffs;
       }
-    }
+    },
   },
 
   watch: {
-    documentFocus (value) {
+    documentFocus(value) {
       if (value) {
-        this.refresh()
+        this.refresh();
       }
-    }
+    },
   },
 
   methods: {
-    setCollapsedToAll (value) {
-      const map = {}
+    setCollapsedToAll(value) {
+      const map = {};
       this.fileDiffs.forEach(fileDiff => {
-        map[fileDiff.id] = value ||
+        map[fileDiff.id] =
+          value ||
           defaultCollapsed.includes(fileDiff.from) ||
-          defaultCollapsed.includes(fileDiff.to)
-      })
-      this.collapsed = map
+          defaultCollapsed.includes(fileDiff.to);
+      });
+      this.collapsed = map;
     },
 
-    refresh () {
-      this.$apollo.queries.fileDiffs.refetch()
+    refresh() {
+      this.$apollo.queries.fileDiffs.refetch();
     },
 
-    async commit () {
-      this.showCommitModal = false
-      this.loading++
+    async commit() {
+      this.showCommitModal = false;
+      this.loading++;
       try {
         await this.$apollo.mutate({
           mutation: GIT_COMMIT,
           variables: {
-            message: this.commitMessage
-          }
-        })
-        this.refresh()
-        this.$emit('continue')
+            message: this.commitMessage,
+          },
+        });
+        this.refresh();
+        this.$emit('continue');
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.error(e)
+        console.error(e);
       }
-      this.loading--
+      this.loading--;
     },
 
-    skip () {
-      this.$emit('continue')
-    }
-  }
-}
+    skip() {
+      this.$emit('continue');
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -1,8 +1,8 @@
-const invoke = require('@borealisgroup/cli/lib/invoke')
+const invoke = require('@borealisgroup/cli/lib/invoke');
 
-const ROUTER = 'org.vue.vue-router-add'
-const VUEX = 'org.vue.vuex-add'
-const VUE_CONFIG_OPEN = 'org.vue.vue-config-open'
+const ROUTER = 'org.vue.vue-router-add';
+const VUEX = 'org.vue.vuex-add';
+const VUE_CONFIG_OPEN = 'org.vue.vue-config-open';
 
 module.exports = api => {
   api.onViewOpen(({ view }) => {
@@ -14,10 +14,10 @@ module.exports = api => {
           label: 'org.vue.cli-service.suggestions.vue-router-add.label',
           message: 'org.vue.cli-service.suggestions.vue-router-add.message',
           link: 'https://router.vuejs.org/',
-          async handler () {
-            await install(api, 'router')
-          }
-        })
+          async handler() {
+            await install(api, 'router');
+          },
+        });
       }
 
       if (!api.hasPlugin('vuex')) {
@@ -27,19 +27,19 @@ module.exports = api => {
           label: 'org.vue.cli-service.suggestions.vuex-add.label',
           message: 'org.vue.cli-service.suggestions.vuex-add.message',
           link: 'https://vuex.vuejs.org/',
-          async handler () {
-            await install(api, 'vuex')
-          }
-        })
+          async handler() {
+            await install(api, 'vuex');
+          },
+        });
       }
     } else {
-      [ROUTER, VUEX].forEach(id => api.removeSuggestion(id))
+      [ROUTER, VUEX].forEach(id => api.removeSuggestion(id));
     }
 
     if (view.id !== 'vue-project-configurations') {
-      api.removeSuggestion(VUE_CONFIG_OPEN)
+      api.removeSuggestion(VUE_CONFIG_OPEN);
     }
-  })
+  });
 
   api.onConfigRead(({ config }) => {
     if (config.id === 'org.vue.vue-cli') {
@@ -48,41 +48,41 @@ module.exports = api => {
           id: VUE_CONFIG_OPEN,
           type: 'action',
           label: 'org.vue.vue-webpack.suggestions.vue-config-open',
-          handler () {
-            const file = config.foundFiles.vue.path
-            console.log('open', file)
-            const { launch } = require('@vue/cli-shared-utils')
-            launch(file)
+          handler() {
+            const file = config.foundFiles.vue.path;
+            console.log('open', file);
+            const { launch } = require('@vue/cli-shared-utils');
+            launch(file);
             return {
-              keep: true
-            }
-          }
-        })
-        return
+              keep: true,
+            };
+          },
+        });
+        return;
       }
     }
-    api.removeSuggestion(VUE_CONFIG_OPEN)
-  })
-}
+    api.removeSuggestion(VUE_CONFIG_OPEN);
+  });
+};
 
-async function install (api, id) {
+async function install(api, id) {
   api.setProgress({
     status: 'org.vue.cli-service.suggestions.progress',
     args: [id],
-    progress: -1
-  })
+    progress: -1,
+  });
 
-  const context = api.getCwd()
+  const context = api.getCwd();
 
-  let error
+  let error;
 
   try {
-    await invoke(id, {}, context)
+    await invoke(id, {}, context);
   } catch (e) {
-    error = e
+    error = e;
   }
 
-  api.removeProgress()
+  api.removeProgress();
 
-  if (error) throw error
+  if (error) throw error;
 }

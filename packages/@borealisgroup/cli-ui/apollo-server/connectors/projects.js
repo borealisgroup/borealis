@@ -8,13 +8,9 @@ const { defaults } = require('@borealisgroup/cli/lib/options');
 const { toShortPluginId, execa } = require('@vue/cli-shared-utils');
 const {
   progress: installProgress,
-} = require('@borealisgroup/cli/lib/util/executeCommand');
+} = require('@vue/cli/lib/util/executeCommand');
 const parseGitConfig = require('parse-git-config');
 // Connectors
-const getContext = require('../context');
-const { log } = require('../util/logger');
-const { notify } = require('../util/notification');
-const { getHttpsGitURL } = require('../util/strings');
 const progress = require('./progress');
 const cwd = require('./cwd');
 const prompts = require('./prompts');
@@ -23,7 +19,11 @@ const plugins = require('./plugins');
 const locales = require('./locales');
 const logs = require('./logs');
 // Context
+const getContext = require('../context');
 // Utils
+const { log } = require('../util/logger');
+const { notify } = require('../util/notification');
+const { getHttpsGitURL } = require('../util/strings');
 
 const PROGRESS_ID = 'project-create';
 
@@ -57,7 +57,7 @@ function findByPath(file, context) {
 }
 
 function autoClean(projects, context) {
-  const result = [];
+  let result = [];
   for (const project of projects) {
     if (fs.existsSync(project.path)) {
       result.push(project);
@@ -379,16 +379,23 @@ async function create(input, context) {
   });
 }
 
-async function importProject(input, context) {
+const importProject = async (input, context) => {
   if (!input.force && !fs.existsSync(path.join(input.path, 'node_modules'))) {
     throw new Error('NO_MODULES');
+  }
+
+  let type = 'unknown';
+  if (folders.isBorProject(input.path)) {
+    type = 'bor';
+  } else if (folders.isVueProject(input.path)) {
+    type = 'vue';
   }
 
   const project = {
     id: shortId.generate(),
     path: input.path,
     favorite: 0,
-    type: folders.isVueProject(input.path) ? 'vue' : 'unknown',
+    type,
   };
   const packageData = folders.readPackage(project.path, context);
   project.name = packageData.name;
@@ -397,9 +404,9 @@ async function importProject(input, context) {
     .push(project)
     .write();
   return open(project.id, context);
-}
+};
 
-async function open(id, context) {
+const open = async (id, context) => {
   const project = findOne(id, context);
 
   if (!project) {
@@ -435,7 +442,7 @@ async function open(id, context) {
   log('Project open', id, project.path);
 
   return project;
-}
+};
 
 async function remove(id, context) {
   if (currentProject && currentProject.id === id) {

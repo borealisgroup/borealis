@@ -1,11 +1,7 @@
 <template>
   <div class="prompts-list">
     <div class="content">
-      <div
-        v-for="group of groups"
-        :key="group.id"
-        class="group"
-      >
+      <div v-for="group of groups" :key="group.id" class="group">
         <div v-if="group.id" class="group-name">{{ $t(group.id) }}</div>
 
         <component
@@ -19,7 +15,7 @@
       </div>
 
       <div v-if="!prompts.length" class="vue-ui-empty">
-        <VueIcon icon="check_circle" class="empty-icon"/>
+        <VueIcon icon="check_circle" class="empty-icon" />
         <span>{{ $t('org.vue.components.prompts-list.empty') }}</span>
       </div>
     </div>
@@ -29,47 +25,47 @@
 <script>
 const types = {
   rawlist: 'list',
-  password: 'input'
-}
+  password: 'input',
+};
 
 export default {
   props: {
     prompts: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
-    groups () {
-      const groupMap = {}
-      const groups = []
+    groups() {
+      const groupMap = {};
+      const groups = [];
       this.prompts.forEach(prompt => {
-        let group = groupMap[prompt.group]
+        let group = groupMap[prompt.group];
         if (!group) {
           group = groupMap[prompt.group] = {
             id: prompt.group,
-            prompts: []
-          }
-          groups.push(group)
+            prompts: [],
+          };
+          groups.push(group);
         }
-        group.prompts.push(prompt)
-      })
-      return groups
-    }
+        group.prompts.push(prompt);
+      });
+      return groups;
+    },
   },
 
   methods: {
-    getModule (prompt) {
-      let type = prompt.type
+    getModule(prompt) {
+      let type = prompt.type;
       if (types[type]) {
-        type = types[type]
+        type = types[type];
       }
-      type = type.charAt(0).toUpperCase() + type.substr(1)
-      return require(`./Prompt${type}.vue`).default
-    }
-  }
-}
+      type = type.charAt(0).toUpperCase() + type.substr(1);
+      return require(`./Prompt${type}.vue`).default;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

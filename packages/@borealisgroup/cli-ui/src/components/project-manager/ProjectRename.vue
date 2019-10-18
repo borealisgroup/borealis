@@ -36,31 +36,31 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export default {
   props: {
     project: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
       newName: this.project.name,
-      loading: false
-    }
+      loading: false,
+    };
   },
 
   methods: {
-    async rename () {
-      this.loading = true
+    async rename() {
+      this.loading = true;
 
       await this.$apollo.mutate({
         mutation: gql`
-          mutation renameProject ($id: ID!, $name: String!) {
-            projectRename (id: $id, name: $name) {
+          mutation renameProject($id: ID!, $name: String!) {
+            projectRename(id: $id, name: $name) {
               id
               name
             }
@@ -68,12 +68,12 @@ export default {
         `,
         variables: {
           id: this.project.id,
-          name: this.newName
-        }
-      })
+          name: this.newName,
+        },
+      });
 
-      this.$emit('close')
-    }
-  }
-}
+      this.$emit('close');
+    },
+  },
+};
 </script>

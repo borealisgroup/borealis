@@ -6,7 +6,7 @@
       top: `${this.dashboard.top + 8}px`,
       width: `${this.dashboard.width}px`,
       height: `${this.dashboard.height}px`,
-      transformOrigin: `${this.shellOrigin.x}px ${this.shellOrigin.y}px`
+      transformOrigin: `${this.shellOrigin.x}px ${this.shellOrigin.y}px`,
     }"
     class="widget-details-view"
     details
@@ -16,28 +16,26 @@
 
 <script>
 export default {
-  inject: [
-    'dashboard'
-  ],
+  inject: ['dashboard'],
 
   props: {
     widget: {
       type: Object,
-      required: true
+      required: true,
     },
 
     shellOrigin: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
   methods: {
-    close () {
-      this.$emit('close')
-    }
-  }
-}
+    close() {
+      this.$emit('close');
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

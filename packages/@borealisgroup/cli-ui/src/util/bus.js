@@ -1,61 +1,61 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
-const bus = new Vue()
+const bus = new Vue();
 
 export default {
-  install (Vue) {
+  install(Vue) {
     Vue.prototype.$bus = (type, ...args) => {
-      bus.$emit(type, ...args)
-    }
+      bus.$emit(type, ...args);
+    };
 
     Vue.mixin({
-      beforeCreate () {
-        const busOptions = this.$options.bus
+      beforeCreate() {
+        const busOptions = this.$options.bus;
         if (busOptions) {
-          this.$_bus = []
+          this.$_bus = [];
 
           const addListeners = map => {
             for (const event in map) {
-              const handler = map[event].bind(this)
-              bus.$on(event, handler)
-              this.$_bus.push({ event, handler })
+              const handler = map[event].bind(this);
+              bus.$on(event, handler);
+              this.$_bus.push({ event, handler });
             }
-          }
+          };
 
           if (Array.isArray(busOptions)) {
-            busOptions.forEach(addListeners)
+            busOptions.forEach(addListeners);
           } else {
-            addListeners(busOptions)
+            addListeners(busOptions);
           }
         }
       },
 
-      beforeDestroy () {
+      beforeDestroy() {
         if (this.$_bus) {
           for (const listener of this.$_bus) {
-            bus.$off(listener.event, listener.handler)
+            bus.$off(listener.event, listener.handler);
           }
         }
-      }
-    })
+      },
+    });
 
     Vue.config.optionMergeStrategies.bus = (parent, child, vm) => {
       if (Array.isArray(parent)) {
         if (Array.isArray(child)) {
-          return parent.concat(child)
+          return parent.concat(child);
         } else {
-          parent.push(child)
-          return parent
+          parent.push(child);
+          return parent;
         }
       } else if (Array.isArray(child)) {
-        child.push(parent)
-        return child
+        child.push(parent);
+        return child;
       } else if (parent && child) {
-        return [parent, child]
+        return [parent, child];
       } else if (parent) {
-        return parent
+        return parent;
       }
-      return child
-    }
-  }
-}
+      return child;
+    };
+  },
+};

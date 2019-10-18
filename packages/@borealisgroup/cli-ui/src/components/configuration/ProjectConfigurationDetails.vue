@@ -2,10 +2,7 @@
   <div class="project-configuration-details">
     <template v-if="configuration">
       <div v-if="configuration.tabs.length > 1" class="tabs">
-        <VueGroup
-          v-model="currentTab"
-          class="tabs-selector"
-        >
+        <VueGroup v-model="currentTab" class="tabs-selector">
           <VueGroupButton
             v-for="tab of configuration.tabs"
             :key="tab.id"
@@ -23,33 +20,34 @@
           :key="tab.id"
           :configuration="configuration"
           :tab="tab"
-          @has-changes="value => tabsHaveChanges[tab.id] = value"
+          @has-changes="value => (tabsHaveChanges[tab.id] = value)"
         />
       </div>
     </template>
 
-    <VueLoadingIndicator
-      v-else
-      class="loading"
-    />
+    <VueLoadingIndicator v-else class="loading" />
 
     <div class="actions-bar">
       <VueButton
         v-if="configuration && configuration.link"
         icon-right="open_in_new"
         class="big flat success"
-        :label="$t('org.vue.views.project-configuration-details.actions.more-info')"
+        :label="
+          $t('org.vue.views.project-configuration-details.actions.more-info')
+        "
         :href="configuration.link"
         target="_blank"
       />
 
-      <div class="vue-ui-spacer"/>
+      <div class="vue-ui-spacer" />
 
       <VueButton
         :disabled="!hasPromptsChanged"
         icon-left="cancel"
         class="big"
-        :label="$t('org.vue.views.project-configuration-details.actions.cancel')"
+        :label="
+          $t('org.vue.views.project-configuration-details.actions.cancel')
+        "
         @click="cancel()"
       />
 
@@ -57,7 +55,9 @@
         v-if="configuration && !hasPromptsChanged"
         icon-left="refresh"
         class="big primary"
-        :label="$t('org.vue.views.project-configuration-details.actions.refresh')"
+        :label="
+          $t('org.vue.views.project-configuration-details.actions.refresh')
+        "
         @click="refetch()"
       />
 
@@ -73,105 +73,109 @@
 </template>
 
 <script>
-import CONFIGURATION from '@/graphql/configuration/configuration.gql'
-import CONFIGURATION_SAVE from '@/graphql/configuration/configurationSave.gql'
-import CONFIGURATION_CANCEL from '@/graphql/configuration/configurationCancel.gql'
+import CONFIGURATION from '@/graphql/configuration/configuration.gql';
+import CONFIGURATION_SAVE from '@/graphql/configuration/configurationSave.gql';
+import CONFIGURATION_CANCEL from '@/graphql/configuration/configurationCancel.gql';
 
 export default {
-  metaInfo () {
+  metaInfo() {
     return {
-      title: this.configuration && `${this.configuration.name} - ${this.$t('org.vue.views.project-configurations.title')}`
-    }
+      title:
+        this.configuration &&
+        `${this.configuration.name} - ${this.$t(
+          'org.vue.views.project-configurations.title'
+        )}`,
+    };
   },
 
   props: {
     id: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
-  data () {
+  data() {
     return {
       configuration: null,
       currentTab: '__default',
-      tabsHaveChanges: {}
-    }
+      tabsHaveChanges: {},
+    };
   },
 
   apollo: {
     configuration: {
       query: CONFIGURATION,
-      variables () {
+      variables() {
         return {
-          id: this.id
+          id: this.id,
+        };
+      },
+      async result({ data, loading }) {
+        if (!this.$_init && !loading && data && data.configuration) {
+          this.$_init = true;
+          this.tabsHaveChanges = data.configuration.tabs.reduce((obj, tab) => {
+            obj[tab.id] = false;
+            return obj;
+          }, {});
+          await this.$nextTick();
+          this.currentTab = data.configuration.tabs[0].id;
         }
       },
-      async result ({ data, loading }) {
-        if (!this.$_init && !loading && data && data.configuration) {
-          this.$_init = true
-          this.tabsHaveChanges = data.configuration.tabs.reduce((obj, tab) => {
-            obj[tab.id] = false
-            return obj
-          }, {})
-          await this.$nextTick()
-          this.currentTab = data.configuration.tabs[0].id
-        }
-      }
-    }
+    },
   },
 
   computed: {
-    hasPromptsChanged () {
+    hasPromptsChanged() {
       for (const key in this.tabsHaveChanges) {
-        if (this.tabsHaveChanges[key]) return true
+        if (this.tabsHaveChanges[key]) return true;
       }
-      return false
-    }
+      return false;
+    },
   },
 
   watch: {
-    id: 'init'
+    id: 'init',
   },
 
-  created () {
-    this.init()
+  created() {
+    this.init();
   },
 
   methods: {
-    init (tab) {
-      this.currentTab = '__default'
-      this.configuration = null
-      this.$_init = false
+    init(tab) {
+      this.currentTab = '__default';
+      this.configuration = null;
+      this.$_init = false;
     },
 
-    async cancel () {
+    async cancel() {
       await this.$apollo.mutate({
         mutation: CONFIGURATION_CANCEL,
         variables: {
-          id: this.id
-        }
-      })
+          id: this.id,
+        },
+      });
 
-      this.refetch()
+      this.refetch();
     },
 
-    async save () {
+    async save() {
       await this.$apollo.mutate({
         mutation: CONFIGURATION_SAVE,
         variables: {
-          id: this.id
-        }
-      })
+          id: this.id,
+        },
+      });
 
-      this.refetch()
+      this.refetch();
     },
 
-    refetch () {
-      this.$apollo.queries.configuration.refetch()
-    }
-  }
-}
+    refetch() {
+      this.$apollo.queries.configuration.refetch();
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

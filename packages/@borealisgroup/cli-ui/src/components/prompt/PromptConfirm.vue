@@ -1,8 +1,5 @@
 <template>
-  <VueDisable
-    :disabled="!prompt.enabled"
-    class="prompt prompt-confirm"
-  >
+  <VueDisable :disabled="!prompt.enabled" class="prompt prompt-confirm">
     <VueSwitch
       :value="value(prompt.value)"
       class="extend-left"
@@ -15,16 +12,16 @@
       />
     </VueSwitch>
 
-    <PromptError :error="prompt.error"/>
+    <PromptError :error="prompt.error" />
   </VueDisable>
 </template>
 
 <script>
-import Prompt from './Prompt'
+import Prompt from './Prompt';
 
 export default {
-  extends: Prompt
-}
+  extends: Prompt,
+};
 </script>
 
 <style lang="stylus" scoped>

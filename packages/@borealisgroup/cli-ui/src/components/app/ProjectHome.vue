@@ -2,41 +2,41 @@
   <div
     class="project-home page"
     :class="{
-      wide: $responsive.wide
+      wide: $responsive.wide,
     }"
   >
     <div class="panes">
-      <ViewNav/>
+      <ViewNav />
 
       <div v-if="ready" class="content vue-ui-disable-scroll">
         <TopBar />
-        <router-view class="router-view"/>
+        <router-view class="router-view" />
       </div>
     </div>
 
-    <ProgressScreen progress-id="__plugins__"/>
+    <ProgressScreen progress-id="__plugins__" />
   </div>
 </template>
 
 <script>
-import PROJECT_CWD_RESET from '@/graphql/project/projectCwdReset.gql'
+import PROJECT_CWD_RESET from '@/graphql/project/projectCwdReset.gql';
 
 export default {
   name: 'ProjectHome',
 
-  data () {
+  data() {
     return {
-      ready: false
-    }
+      ready: false,
+    };
   },
 
-  async created () {
+  async created() {
     await this.$apollo.mutate({
-      mutation: PROJECT_CWD_RESET
-    })
-    this.ready = true
-  }
-}
+      mutation: PROJECT_CWD_RESET,
+    });
+    this.ready = true;
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

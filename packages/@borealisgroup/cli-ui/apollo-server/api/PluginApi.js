@@ -1,25 +1,25 @@
-const path = require('path')
+const path = require('path');
 // Connectors
-const logs = require('../connectors/logs')
-const sharedData = require('../connectors/shared-data')
-const views = require('../connectors/views')
-const suggestions = require('../connectors/suggestions')
-const progress = require('../connectors/progress')
-const app = require('../connectors/app')
+const logs = require('../connectors/logs');
+const sharedData = require('../connectors/shared-data');
+const views = require('../connectors/views');
+const suggestions = require('../connectors/suggestions');
+const progress = require('../connectors/progress');
+const app = require('../connectors/app');
 // Utils
-const ipc = require('../util/ipc')
-const { notify } = require('../util/notification')
-const { matchesPluginId } = require('@vue/cli-shared-utils')
-const { log } = require('../util/logger')
+const ipc = require('../util/ipc');
+const { notify } = require('../util/notification');
+const { matchesPluginId } = require('@vue/cli-shared-utils');
+const { log } = require('../util/logger');
 // Validators
-const { validateConfiguration } = require('./configuration')
-const { validateDescribeTask, validateAddTask } = require('./task')
-const { validateClientAddon } = require('./client-addon')
-const { validateView, validateBadge } = require('./view')
-const { validateNotify } = require('./notify')
-const { validateSuggestion } = require('./suggestion')
-const { validateProgress } = require('./progress')
-const { validateWidget } = require('./widget')
+const { validateConfiguration } = require('./configuration');
+const { validateDescribeTask, validateAddTask } = require('./task');
+const { validateClientAddon } = require('./client-addon');
+const { validateView, validateBadge } = require('./view');
+const { validateNotify } = require('./notify');
+const { validateSuggestion } = require('./suggestion');
+const { validateProgress } = require('./progress');
+const { validateWidget } = require('./widget');
 
 /**
  * @typedef SetSharedDataOptions
@@ -29,14 +29,14 @@ const { validateWidget } = require('./widget')
 /** @typedef {import('../connectors/shared-data').SharedData} SharedData */
 
 class PluginApi {
-  constructor ({ plugins, file, project, lightMode = false }, context) {
+  constructor({ plugins, file, project, lightMode = false }, context) {
     // Context
-    this.context = context
-    this.pluginId = null
-    this.project = project
-    this.plugins = plugins
-    this.cwd = file
-    this.lightMode = lightMode
+    this.context = context;
+    this.pluginId = null;
+    this.project = project;
+    this.plugins = plugins;
+    this.cwd = file;
+    this.lightMode = lightMode;
     // Hooks
     this.hooks = {
       projectOpen: [],
@@ -46,17 +46,17 @@ class PluginApi {
       taskRun: [],
       taskExit: [],
       taskOpen: [],
-      viewOpen: []
-    }
+      viewOpen: [],
+    };
     // Data
-    this.configurations = []
-    this.describedTasks = []
-    this.addedTasks = []
-    this.clientAddons = []
-    this.views = []
-    this.actions = new Map()
-    this.ipcHandlers = []
-    this.widgetDefs = []
+    this.configurations = [];
+    this.describedTasks = [];
+    this.addedTasks = [];
+    this.clientAddons = [];
+    this.views = [];
+    this.actions = new Map();
+    this.ipcHandlers = [];
+    this.widgetDefs = [];
   }
 
   /**
@@ -64,13 +64,13 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onProjectOpen (cb) {
-    if (this.lightMode) return
+  onProjectOpen(cb) {
+    if (this.lightMode) return;
     if (this.project) {
-      cb(this.project)
-      return
+      cb(this.project);
+      return;
     }
-    this.hooks.projectOpen.push(cb)
+    this.hooks.projectOpen.push(cb);
   }
 
   /**
@@ -78,9 +78,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onPluginReload (cb) {
-    if (this.lightMode) return
-    this.hooks.pluginReload.push(cb)
+  onPluginReload(cb) {
+    if (this.lightMode) return;
+    this.hooks.pluginReload.push(cb);
   }
 
   /**
@@ -88,9 +88,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onConfigRead (cb) {
-    if (this.lightMode) return
-    this.hooks.configRead.push(cb)
+  onConfigRead(cb) {
+    if (this.lightMode) return;
+    this.hooks.configRead.push(cb);
   }
 
   /**
@@ -98,9 +98,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onConfigWrite (cb) {
-    if (this.lightMode) return
-    this.hooks.configWrite.push(cb)
+  onConfigWrite(cb) {
+    if (this.lightMode) return;
+    this.hooks.configWrite.push(cb);
   }
 
   /**
@@ -108,9 +108,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onTaskRun (cb) {
-    if (this.lightMode) return
-    this.hooks.taskRun.push(cb)
+  onTaskRun(cb) {
+    if (this.lightMode) return;
+    this.hooks.taskRun.push(cb);
   }
 
   /**
@@ -118,9 +118,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onTaskExit (cb) {
-    if (this.lightMode) return
-    this.hooks.taskExit.push(cb)
+  onTaskExit(cb) {
+    if (this.lightMode) return;
+    this.hooks.taskExit.push(cb);
   }
 
   /**
@@ -128,9 +128,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onTaskOpen (cb) {
-    if (this.lightMode) return
-    this.hooks.taskOpen.push(cb)
+  onTaskOpen(cb) {
+    if (this.lightMode) return;
+    this.hooks.taskOpen.push(cb);
   }
 
   /**
@@ -138,9 +138,9 @@ class PluginApi {
    *
    * @param {function} cb Handler
    */
-  onViewOpen (cb) {
-    if (this.lightMode) return
-    this.hooks.viewOpen.push(cb)
+  onViewOpen(cb) {
+    if (this.lightMode) return;
+    this.hooks.viewOpen.push(cb);
   }
 
   /**
@@ -148,21 +148,27 @@ class PluginApi {
    *
    * @param {object} options Configuration description
    */
-  describeConfig (options) {
-    if (this.lightMode) return
+  describeConfig(options) {
+    if (this.lightMode) return;
     try {
-      validateConfiguration(options)
+      validateConfiguration(options);
       this.configurations.push({
         ...options,
-        pluginId: this.pluginId
-      })
+        pluginId: this.pluginId,
+      });
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'describeConfig' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'describeConfig' options are invalid\n${
+            e.message
+          }`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -172,20 +178,26 @@ class PluginApi {
    *
    * @param {object} options Task description
    */
-  describeTask (options) {
+  describeTask(options) {
     try {
-      validateDescribeTask(options)
+      validateDescribeTask(options);
       this.describedTasks.push({
         ...options,
-        pluginId: this.pluginId
-      })
+        pluginId: this.pluginId,
+      });
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'describeTask' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'describeTask' options are invalid\n${
+            e.message
+          }`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -195,10 +207,12 @@ class PluginApi {
    * @param {string} command Npm script command from `package.json`
    * @returns {object} Task description
    */
-  getDescribedTask (command) {
-    return this.describedTasks.find(
-      options => typeof options.match === 'function' ? options.match(command) : options.match.test(command)
-    )
+  getDescribedTask(command) {
+    return this.describedTasks.find(options =>
+      typeof options.match === 'function'
+        ? options.match(command)
+        : options.match.test(command)
+    );
   }
 
   /**
@@ -207,20 +221,24 @@ class PluginApi {
    *
    * @param {object} options Task description
    */
-  addTask (options) {
+  addTask(options) {
     try {
-      validateAddTask(options)
+      validateAddTask(options);
       this.addedTasks.push({
         ...options,
-        pluginId: this.pluginId
-      })
+        pluginId: this.pluginId,
+      });
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'addTask' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'addTask' options are invalid\n${e.message}`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -239,24 +257,30 @@ class PluginApi {
    *     path: string
    *   }
    */
-  addClientAddon (options) {
-    if (this.lightMode) return
+  addClientAddon(options) {
+    if (this.lightMode) return;
     try {
-      validateClientAddon(options)
+      validateClientAddon(options);
       if (options.url && options.path) {
-        throw new Error(`'url' and 'path' can't be defined at the same time.`)
+        throw new Error(`'url' and 'path' can't be defined at the same time.`);
       }
       this.clientAddons.push({
         ...options,
-        pluginId: this.pluginId
-      })
+        pluginId: this.pluginId,
+      });
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'addClientAddon' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'addClientAddon' options are invalid\n${
+            e.message
+          }`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -267,21 +291,25 @@ class PluginApi {
    *
    * @param {object} options ProjectView options
    */
-  addView (options) {
-    if (this.lightMode) return
+  addView(options) {
+    if (this.lightMode) return;
     try {
-      validateView(options)
+      validateView(options);
       this.views.push({
         ...options,
-        pluginId: this.pluginId
-      })
+        pluginId: this.pluginId,
+      });
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'addView' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'addView' options are invalid\n${e.message}`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -292,18 +320,24 @@ class PluginApi {
    * @param {string} viewId Project view id
    * @param {object} options Badge options
    */
-  addViewBadge (viewId, options) {
-    if (this.lightMode) return
+  addViewBadge(viewId, options) {
+    if (this.lightMode) return;
     try {
-      validateBadge(options)
-      views.addBadge({ viewId, badge: options }, this.context)
+      validateBadge(options);
+      views.addBadge({ viewId, badge: options }, this.context);
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'addViewBadge' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'addViewBadge' options are invalid\n${
+            e.message
+          }`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -315,8 +349,8 @@ class PluginApi {
    * @param {any} badgeId
    * @memberof PluginApi
    */
-  removeViewBadge (viewId, badgeId) {
-    views.removeBadge({ viewId, badgeId }, this.context)
+  removeViewBadge(viewId, badgeId) {
+    views.removeBadge({ viewId, badgeId }, this.context);
   }
 
   /* IPC */
@@ -326,20 +360,20 @@ class PluginApi {
    *
    * @param {function} cb Callback with 'data' param
    */
-  ipcOn (cb) {
-    const handler = cb._handler = ({ data, emit }) => {
+  ipcOn(cb) {
+    const handler = (cb._handler = ({ data, emit }) => {
       if (data._projectId) {
         if (data._projectId === this.project.id) {
-          data = data._data
+          data = data._data;
         } else {
-          return
+          return;
         }
       }
       // eslint-disable-next-line standard/no-callback-literal
-      cb({ data, emit })
-    }
-    this.ipcHandlers.push(handler)
-    return ipc.on(handler)
+      cb({ data, emit });
+    });
+    this.ipcHandlers.push(handler);
+    return ipc.on(handler);
   }
 
   /**
@@ -347,12 +381,12 @@ class PluginApi {
    *
    * @param {any} cb Callback to be removed
    */
-  ipcOff (cb) {
-    const handler = cb._handler
-    if (!handler) return
-    const index = this.ipcHandlers.indexOf(handler)
-    if (index !== -1) this.ipcHandlers.splice(index, 1)
-    ipc.off(handler)
+  ipcOff(cb) {
+    const handler = cb._handler;
+    if (!handler) return;
+    const index = this.ipcHandlers.indexOf(handler);
+    if (index !== -1) this.ipcHandlers.splice(index, 1);
+    ipc.off(handler);
   }
 
   /**
@@ -360,8 +394,8 @@ class PluginApi {
    *
    * @param {any} data Message data
    */
-  ipcSend (data) {
-    ipc.send(data)
+  ipcSend(data) {
+    ipc.send(data);
   }
 
   /**
@@ -369,25 +403,29 @@ class PluginApi {
    *
    * @readonly
    */
-  get db () {
-    return this.context.db
+  get db() {
+    return this.context.db;
   }
 
   /**
    * Display a notification in the user OS
    * @param {object} options Notification options
    */
-  notify (options) {
+  notify(options) {
     try {
-      validateNotify(options)
-      notify(options)
+      validateNotify(options);
+      notify(options);
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'notify' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'notify' options are invalid\n${e.message}`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -395,8 +433,8 @@ class PluginApi {
    * Indicates if a specific plugin is used by the project
    * @param {string} id Plugin id or short id
    */
-  hasPlugin (id) {
-    return this.plugins.some(p => matchesPluginId(id, p.id))
+  hasPlugin(id) {
+    return this.plugins.some(p => matchesPluginId(id, p.id));
   }
 
   /**
@@ -404,51 +442,58 @@ class PluginApi {
    *
    * @param {object} options Progress options
    */
-  setProgress (options) {
-    if (this.lightMode) return
+  setProgress(options) {
+    if (this.lightMode) return;
     try {
-      validateProgress(options)
-      progress.set({
-        ...options,
-        id: '__plugins__'
-      }, this.context)
+      validateProgress(options);
+      progress.set(
+        {
+          ...options,
+          id: '__plugins__',
+        },
+        this.context
+      );
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'setProgress' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'setProgress' options are invalid\n${e.message}`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
   /**
    * Remove the progress screen.
    */
-  removeProgress () {
-    progress.remove('__plugins__', this.context)
+  removeProgress() {
+    progress.remove('__plugins__', this.context);
   }
 
   /**
    * Get current working directory.
    */
-  getCwd () {
-    return this.cwd
+  getCwd() {
+    return this.cwd;
   }
 
   /**
    * Resolves a file relative to current working directory
    * @param {string} file Path to file relative to project
    */
-  resolve (file) {
-    return path.resolve(this.cwd, file)
+  resolve(file) {
+    return path.resolve(this.cwd, file);
   }
 
   /**
    * Get currently open project
    */
-  getProject () {
-    return this.project
+  getProject() {
+    return this.project;
   }
 
   /* Namespaced */
@@ -459,8 +504,8 @@ class PluginApi {
    * @param {string} id Id of the Shared data
    * @returns {SharedData} Shared data instance
    */
-  getSharedData (id) {
-    return sharedData.get({ id, projectId: this.project.id }, this.context)
+  getSharedData(id) {
+    return sharedData.get({ id, projectId: this.project.id }, this.context);
   }
 
   /**
@@ -470,8 +515,11 @@ class PluginApi {
    * @param {any} value Value of the Shared data
    * @param {SetSharedDataOptions} options
    */
-  async setSharedData (id, value, { disk = false } = {}) {
-    return sharedData.set({ id, projectId: this.project.id, value, disk }, this.context)
+  async setSharedData(id, value, { disk = false } = {}) {
+    return sharedData.set(
+      { id, projectId: this.project.id, value, disk },
+      this.context
+    );
   }
 
   /**
@@ -479,8 +527,8 @@ class PluginApi {
    *
    * @param {string} id Id of the Shared data
    */
-  async removeSharedData (id) {
-    return sharedData.remove({ id, projectId: this.project.id }, this.context)
+  async removeSharedData(id) {
+    return sharedData.remove({ id, projectId: this.project.id }, this.context);
   }
 
   /**
@@ -489,8 +537,8 @@ class PluginApi {
    * @param {string} id Id of the Shared data
    * @param {function} handler Callback
    */
-  watchSharedData (id, handler) {
-    sharedData.watch({ id, projectId: this.project.id }, handler)
+  watchSharedData(id, handler) {
+    sharedData.watch({ id, projectId: this.project.id }, handler);
   }
 
   /**
@@ -499,8 +547,8 @@ class PluginApi {
    * @param {string} id Id of the Shared data
    * @param {function} handler Callback
    */
-  unwatchSharedData (id, handler) {
-    sharedData.unwatch({ id, projectId: this.project.id }, handler)
+  unwatchSharedData(id, handler) {
+    sharedData.unwatch({ id, projectId: this.project.id }, handler);
   }
 
   /**
@@ -509,13 +557,13 @@ class PluginApi {
    * @param {string} id Id of the action to listen
    * @param {any} cb Callback (ex: (params) => {} )
    */
-  onAction (id, cb) {
-    let list = this.actions.get(id)
+  onAction(id, cb) {
+    let list = this.actions.get(id);
     if (!list) {
-      list = []
-      this.actions.set(id, list)
+      list = [];
+      this.actions.set(id, list);
     }
-    list.push(cb)
+    list.push(cb);
   }
 
   /**
@@ -525,9 +573,9 @@ class PluginApi {
    * @param {object} params Params object passed as 1st argument to callbacks
    * @returns {Promise}
    */
-  callAction (id, params) {
-    const plugins = require('../connectors/plugins')
-    return plugins.callAction({ id, params }, this.context)
+  callAction(id, params) {
+    const plugins = require('../connectors/plugins');
+    return plugins.callAction({ id, params }, this.context);
   }
 
   /**
@@ -536,8 +584,8 @@ class PluginApi {
    * @param {string} id Path to the item
    * @returns Item value
    */
-  storageGet (id) {
-    return this.db.get(id).value()
+  storageGet(id) {
+    return this.db.get(id).value();
   }
 
   /**
@@ -546,9 +594,9 @@ class PluginApi {
    * @param {string} id Path to the item
    * @param {any} value Value to be stored (must be serializable in JSON)
    */
-  storageSet (id, value) {
-    log('Storage set', id, value)
-    this.db.set(id, value).write()
+  storageSet(id, value) {
+    log('Storage set', id, value);
+    this.db.set(id, value).write();
   }
 
   /**
@@ -556,18 +604,24 @@ class PluginApi {
    *
    * @param {object} options Suggestion
    */
-  addSuggestion (options) {
-    if (this.lightMode) return
+  addSuggestion(options) {
+    if (this.lightMode) return;
     try {
-      validateSuggestion(options)
-      suggestions.add(options, this.context)
+      validateSuggestion(options);
+      suggestions.add(options, this.context);
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'addSuggestion' options are invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid options: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'addSuggestion' options are invalid\n${
+            e.message
+          }`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid options: ${e.message}`));
     }
   }
 
@@ -576,8 +630,8 @@ class PluginApi {
    *
    * @param {string} id Id of the suggestion
    */
-  removeSuggestion (id) {
-    suggestions.remove(id, this.context)
+  removeSuggestion(id) {
+    suggestions.remove(id, this.context);
   }
 
   /**
@@ -585,29 +639,35 @@ class PluginApi {
    *
    * @param {object} def Widget definition
    */
-  registerWidget (def) {
-    if (this.lightMode) return
+  registerWidget(def) {
+    if (this.lightMode) return;
     try {
-      validateWidget(def)
+      validateWidget(def);
       this.widgetDefs.push({
         ...def,
-        pluginId: this.pluginId
-      })
+        pluginId: this.pluginId,
+      });
     } catch (e) {
-      logs.add({
-        type: 'error',
-        tag: 'PluginApi',
-        message: `(${this.pluginId || 'unknown plugin'}) 'registerWidget' widget definition is invalid\n${e.message}`
-      }, this.context)
-      console.error(new Error(`Invalid definition: ${e.message}`))
+      logs.add(
+        {
+          type: 'error',
+          tag: 'PluginApi',
+          message: `(${this.pluginId ||
+            'unknown plugin'}) 'registerWidget' widget definition is invalid\n${
+            e.message
+          }`,
+        },
+        this.context
+      );
+      console.error(new Error(`Invalid definition: ${e.message}`));
     }
   }
 
   /**
    * Request a route to be displayed in the client
    */
-  requestRoute (route) {
-    app.requestRoute(route, this.context)
+  requestRoute(route) {
+    app.requestRoute(route, this.context);
   }
 
   /**
@@ -619,7 +679,7 @@ class PluginApi {
    *
    * @param {string} namespace Prefix to add to the id params
    */
-  namespace (namespace) {
+  namespace(namespace) {
     return {
       /**
        * Retrieve a Shared data instance.
@@ -627,7 +687,7 @@ class PluginApi {
        * @param {string} id Id of the Shared data
        * @returns {SharedData} Shared data instance
        */
-      getSharedData: (id) => this.getSharedData(namespace + id),
+      getSharedData: id => this.getSharedData(namespace + id),
       /**
        * Set or update the value of a Shared data
        *
@@ -635,27 +695,30 @@ class PluginApi {
        * @param {any} value Value of the Shared data
        * @param {SetSharedDataOptions} options
        */
-      setSharedData: (id, value, options) => this.setSharedData(namespace + id, value, options),
+      setSharedData: (id, value, options) =>
+        this.setSharedData(namespace + id, value, options),
       /**
        * Delete a shared data.
        *
        * @param {string} id Id of the Shared data
        */
-      removeSharedData: (id) => this.removeSharedData(namespace + id),
+      removeSharedData: id => this.removeSharedData(namespace + id),
       /**
        * Watch for a value change of a shared data
        *
        * @param {string} id Id of the Shared data
        * @param {function} handler Callback
        */
-      watchSharedData: (id, handler) => this.watchSharedData(namespace + id, handler),
+      watchSharedData: (id, handler) =>
+        this.watchSharedData(namespace + id, handler),
       /**
        * Delete the watcher of a shared data.
        *
        * @param {string} id Id of the Shared data
        * @param {function} handler Callback
        */
-      unwatchSharedData: (id, handler) => this.unwatchSharedData(namespace + id, handler),
+      unwatchSharedData: (id, handler) =>
+        this.unwatchSharedData(namespace + id, handler),
       /**
        * Listener triggered when a Plugin action is called from a client addon component.
        *
@@ -677,7 +740,7 @@ class PluginApi {
        * @param {string} id Path to the item
        * @returns Item value
        */
-      storageGet: (id) => this.storageGet(namespace + id),
+      storageGet: id => this.storageGet(namespace + id),
       /**
        * Store a value into the local DB
        *
@@ -690,27 +753,27 @@ class PluginApi {
        *
        * @param {object} options Suggestion
        */
-      addSuggestion: (options) => {
-        options.id = namespace + options.id
-        return this.addSuggestion(options)
+      addSuggestion: options => {
+        options.id = namespace + options.id;
+        return this.addSuggestion(options);
       },
       /**
        * Remove a suggestion
        *
        * @param {string} id Id of the suggestion
        */
-      removeSuggestion: (id) => this.removeSuggestion(namespace + id),
+      removeSuggestion: id => this.removeSuggestion(namespace + id),
       /**
        * Register a widget for project dashboard
        *
        * @param {object} def Widget definition
        */
-      registerWidget: (def) => {
-        def.id = namespace + def.id
-        return this.registerWidget(def)
-      }
-    }
+      registerWidget: def => {
+        def.id = namespace + def.id;
+        return this.registerWidget(def);
+      },
+    };
   }
 }
 
-module.exports = PluginApi
+module.exports = PluginApi;

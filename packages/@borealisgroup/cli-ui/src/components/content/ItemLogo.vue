@@ -5,14 +5,11 @@
       selected,
       loaded,
       error,
-      vuejs: image && image.includes('vuejs')
+      vuejs: image && image.includes('vuejs'),
     }"
   >
     <div class="wrapper">
-      <VueIcon
-        v-if="selected"
-        icon="done"
-      />
+      <VueIcon v-if="selected" icon="done" />
       <img
         v-else-if="displayImage"
         class="image"
@@ -20,79 +17,73 @@
         :key="imageUrl"
         @load="loaded = true"
         @error="error = true"
-      >
-      <VueIcon
-        v-else
-        :icon="error || !image ? fallbackIcon : image"
       />
+      <VueIcon v-else :icon="error || !image ? fallbackIcon : image" />
     </div>
 
-    <div
-      v-if="displayImage && colorBullet"
-      class="color-bullet"
-    />
+    <div v-if="displayImage && colorBullet" class="color-bullet" />
   </div>
 </template>
 
 <script>
-import { getImageUrl } from '@/util/image'
+import { getImageUrl } from '@/util/image';
 
 export default {
   props: {
     image: {
       type: String,
-      default: 'widgets'
+      default: 'widgets',
     },
 
     fallbackIcon: {
       type: String,
-      default: 'image'
+      default: 'image',
     },
 
     selected: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     colorBullet: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
-  data () {
+  data() {
     return {
       loaded: false,
-      error: false
-    }
+      error: false,
+    };
   },
 
   computed: {
-    isMaterialIcon () {
-      return /^[a-z0-9_]+$/.test(this.image)
+    isMaterialIcon() {
+      return /^[a-z0-9_]+$/.test(this.image);
     },
 
-    displayImage () {
-      return !this.isMaterialIcon && !this.error
+    displayImage() {
+      return !this.isMaterialIcon && !this.error;
     },
 
-    imageUrl () {
-      return getImageUrl(this.image)
-    }
+    imageUrl() {
+      return getImageUrl(this.image);
+    },
   },
 
   watch: {
     image: 'reset',
-    selected: 'reset'
+    selected: 'reset',
   },
 
   methods: {
-    reset () {
-      this.loaded = false
-      this.error = false
-    }
-  }
-}
+    reset() {
+      this.loaded = false;
+      this.error = false;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

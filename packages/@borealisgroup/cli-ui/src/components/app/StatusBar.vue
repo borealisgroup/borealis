@@ -1,9 +1,6 @@
 <template>
   <div class="status-bar">
-    <LoggerView
-      v-if="showLogs"
-      @close="showLogs = false"
-    />
+    <LoggerView v-if="showLogs" @close="showLogs = false" />
 
     <div class="content">
       <div
@@ -11,8 +8,10 @@
         v-tooltip="$t('org.vue.components.status-bar.project.tooltip')"
         @click="onProjectClick()"
       >
-        <VueIcon icon="home"/>
-        <span v-if="!projectCurrent" class="label">{{ $t('org.vue.components.status-bar.project.empty') }}</span>
+        <VueIcon icon="home" />
+        <span v-if="!projectCurrent" class="label">{{
+          $t('org.vue.components.status-bar.project.empty')
+        }}</span>
       </div>
 
       <ApolloQuery
@@ -23,13 +22,15 @@
       >
         <ApolloSubscribeToMore
           :document="require('@/graphql/cwd/cwdChanged.gql')"
-          :update-query="(previousResult, { subscriptionData }) => ({
-            cwd: subscriptionData.data.cwd
-          })"
+          :update-query="
+            (previousResult, { subscriptionData }) => ({
+              cwd: subscriptionData.data.cwd,
+            })
+          "
         />
 
         <template slot-scope="{ result: { data } }">
-          <VueIcon icon="folder"/>
+          <VueIcon icon="folder" />
           <span v-if="data">{{ data.cwd }}</span>
         </template>
       </ApolloQuery>
@@ -39,23 +40,20 @@
         v-tooltip="$t('org.vue.components.status-bar.log.tooltip')"
         @click="onConsoleClick()"
       >
-        <VueIcon icon="dvr"/>
+        <VueIcon icon="dvr" />
         <transition-group
           name="slide-up"
           duration="600"
           tag="div"
           class="last-message-container"
         >
-          <LoggerMessage class="last-message"
+          <LoggerMessage
+            class="last-message"
             v-if="consoleLogLast"
             :key="consoleLogLast.id"
             :message="consoleLogLast"
           />
-          <div
-            v-else
-            key="__empty"
-            class="last-message no-log"
-          >
+          <div v-else key="__empty" class="last-message no-log">
             {{ $t('org.vue.components.status-bar.log.empty') }}
           </div>
         </transition-group>
@@ -67,7 +65,7 @@
         v-tooltip="$t('org.vue.components.status-bar.dark-mode')"
         @click="toggleDarkMode()"
       >
-        <VueIcon icon="invert_colors"/>
+        <VueIcon icon="invert_colors" />
       </div>
 
       <div
@@ -75,46 +73,46 @@
         v-tooltip="$t('org.vue.components.status-bar.report-bug')"
         @click="onBugReportClick()"
       >
-        <VueIcon icon="bug_report"/>
+        <VueIcon icon="bug_report" />
       </div>
       <div
         class="section action translate"
         v-tooltip="$t('org.vue.components.status-bar.translate')"
         @click="onTranslateClick()"
       >
-        <VueIcon icon="g_translate"/>
+        <VueIcon icon="g_translate" />
       </div>
       <div
         class="section action reset-plugin-api"
         v-tooltip="$t('org.vue.components.status-bar.reset-plugin-api')"
         @click="resetPluginApi()"
       >
-        <VueIcon icon="cached"/>
+        <VueIcon icon="cached" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql'
-import CONSOLE_LOG_LAST from '@/graphql/console-log/consoleLogLast.gql'
-import CONSOLE_LOG_ADDED from '@/graphql/console-log/consoleLogAdded.gql'
-import DARK_MODE_SET from '@/graphql/dark-mode/darkModeSet.gql'
-import PLUGIN_RESET_API from '@/graphql/plugin/pluginResetApi.gql'
-import { resetApollo } from '@/vue-apollo'
-import { getForcedTheme } from '@/util/theme'
+import PROJECT_CURRENT from '@/graphql/project/projectCurrent.gql';
+import CONSOLE_LOG_LAST from '@/graphql/console-log/consoleLogLast.gql';
+import CONSOLE_LOG_ADDED from '@/graphql/console-log/consoleLogAdded.gql';
+import DARK_MODE_SET from '@/graphql/dark-mode/darkModeSet.gql';
+import PLUGIN_RESET_API from '@/graphql/plugin/pluginResetApi.gql';
+import { resetApollo } from '@/vue-apollo';
+import { getForcedTheme } from '@/util/theme';
 
-let lastRoute
+let lastRoute;
 
 export default {
   clientState: true,
 
-  data () {
+  data() {
     return {
       showLogs: false,
       consoleLogLast: null,
-      enableDarkModeButton: getForcedTheme() == null
-    }
+      enableDarkModeButton: getForcedTheme() == null,
+    };
   },
 
   apollo: {
@@ -124,77 +122,77 @@ export default {
     $subscribe: {
       consoleLogAdded: {
         query: CONSOLE_LOG_ADDED,
-        result ({ data }) {
-          this.consoleLogLast = data.consoleLogAdded
-        }
-      }
-    }
+        result({ data }) {
+          this.consoleLogLast = data.consoleLogAdded;
+        },
+      },
+    },
   },
 
   methods: {
-    onProjectClick () {
-      this.$emit('project')
+    onProjectClick() {
+      this.$emit('project');
       if (this.$route.name === 'project-select') {
-        this.$router.push(lastRoute || { name: 'project-home' })
+        this.$router.push(lastRoute || { name: 'project-home' });
       } else {
         if (this.$route.name === 'project-create') {
-          lastRoute = null
+          lastRoute = null;
         } else {
-          const { name, params, query } = this.$route
-          lastRoute = { name, params, query }
+          const { name, params, query } = this.$route;
+          lastRoute = { name, params, query };
         }
-        this.$router.push({ name: 'project-select' })
+        this.$router.push({ name: 'project-select' });
       }
     },
 
-    onCwdClick () {
-      this.$emit('cwd')
+    onCwdClick() {
+      this.$emit('cwd');
     },
 
-    onConsoleClick () {
-      this.$emit('console')
-      this.showLogs = !this.showLogs
+    onConsoleClick() {
+      this.$emit('console');
+      this.showLogs = !this.showLogs;
     },
 
-    onBugReportClick () {
+    onBugReportClick() {
       const win = window.open(
         'https://new-issue.vuejs.org/?repo=vuejs/vue-cli',
         '_blank'
-      )
-      win.focus()
+      );
+      win.focus();
     },
 
-    onTranslateClick () {
+    onTranslateClick() {
       const win = window.open(
         'https://cli.vuejs.org/dev-guide/ui-localization.html',
         '_blank'
-      )
-      win.focus()
+      );
+      win.focus();
     },
 
-    async applyDarkMode (enabled) {
-      localStorage.setItem('vue-ui-dark-mode', enabled.toString())
+    async applyDarkMode(enabled) {
+      localStorage.setItem('vue-ui-dark-mode', enabled.toString());
       await this.$apollo.mutate({
         mutation: DARK_MODE_SET,
         variables: {
-          enabled
-        }
-      })
+          enabled,
+        },
+      });
     },
 
-    toggleDarkMode () {
-      this.applyDarkMode(!this.darkMode)
+    toggleDarkMode() {
+      this.applyDarkMode(!this.darkMode);
     },
 
-    async resetPluginApi () {
+    async resetPluginApi() {
       await this.$apollo.mutate({
-        mutation: PLUGIN_RESET_API
-      })
+        mutation: PLUGIN_RESET_API,
+      });
 
-      await resetApollo()
-    }
-  }
-}
+      await resetApollo();
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

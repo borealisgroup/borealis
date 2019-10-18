@@ -8,7 +8,7 @@
         resizing: resizeState,
         selected: isSelected,
         'details-shown': showDetails,
-        details
+        details,
       }"
     >
       <div
@@ -19,7 +19,9 @@
         <div class="wrapper card">
           <div class="content-wrapper">
             <div class="header">
-              <div class="title">{{ injected.customTitle || $t(widget.definition.title) }}</div>
+              <div class="title">
+                {{ injected.customTitle || $t(widget.definition.title) }}
+              </div>
 
               <!-- Custom actions -->
               <template v-if="widget.configured">
@@ -63,17 +65,11 @@
             </div>
 
             <div v-if="widget.configured" class="content">
-              <ClientAddonComponent
-                :name="component"
-                class="view"
-              />
+              <ClientAddonComponent :name="component" class="view" />
             </div>
 
             <div v-else class="content not-configured">
-              <VueIcon
-                icon="settings"
-                class="icon huge"
-              />
+              <VueIcon icon="settings" class="icon huge" />
               <VueButton
                 :label="$t('org.vue.components.widget.configure')"
                 @click="openConfig()"
@@ -93,7 +89,9 @@
                 fallback-icon="widgets"
                 class="icon"
               />
-              <div class="title">{{ injected.customTitle || $t(widget.definition.title) }}</div>
+              <div class="title">
+                {{ injected.customTitle || $t(widget.definition.title) }}
+              </div>
             </div>
             <VueButton
               class="remove-button primary flat icon-button"
@@ -108,9 +106,7 @@
                 v-for="handle of resizeHandles"
                 :key="handle"
                 class="resize-handle"
-                :class="[
-                  handle
-                ]"
+                :class="[handle]"
                 @mousedown.stop="onResizeStart($event, handle)"
               />
             </template>
@@ -118,20 +114,12 @@
         </div>
       </div>
 
-      <div
-        v-if="moveState"
-        class="move-ghost"
-        :style="moveGhostStyle"
-      >
-        <div class="backdrop"/>
+      <div v-if="moveState" class="move-ghost" :style="moveGhostStyle">
+        <div class="backdrop" />
       </div>
 
-      <div
-        v-if="resizeState"
-        class="resize-ghost"
-        :style="resizeGhostStyle"
-      >
-        <div class="backdrop"/>
+      <div v-if="resizeState" class="resize-ghost" :style="resizeGhostStyle">
+        <div class="backdrop" />
       </div>
 
       <VueModal
@@ -141,10 +129,7 @@
         @close="showConfig = false"
       >
         <div class="default-body">
-          <VueLoadingIndicator
-            v-if="loadingConfig"
-            class="big accent"
-          />
+          <VueLoadingIndicator v-if="loadingConfig" class="big accent" />
           <PromptsList
             v-else
             :prompts="visiblePrompts"
@@ -173,96 +158,94 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import Prompts from '@/mixins/Prompts'
-import OnGrid from '@/mixins/OnGrid'
-import Movable from '@/mixins/Movable'
-import Resizable from '@/mixins/Resizable'
+import Vue from 'vue';
+import Prompts from '@/mixins/Prompts';
+import OnGrid from '@/mixins/OnGrid';
+import Movable from '@/mixins/Movable';
+import Resizable from '@/mixins/Resizable';
 
-import WIDGET_REMOVE from '@/graphql/widget/widgetRemove.gql'
-import WIDGET_MOVE from '@/graphql/widget/widgetMove.gql'
-import WIDGETS from '@/graphql/widget/widgets.gql'
-import WIDGET_FRAGMENT from '@/graphql/widget/widgetFragment.gql'
-import WIDGET_DEFINITION_FRAGMENT from '@/graphql/widget/widgetDefinitionFragment.gql'
-import WIDGET_CONFIG_OPEN from '@/graphql/widget/widgetConfigOpen.gql'
-import WIDGET_CONFIG_SAVE from '@/graphql/widget/widgetConfigSave.gql'
+import WIDGET_REMOVE from '@/graphql/widget/widgetRemove.gql';
+import WIDGET_MOVE from '@/graphql/widget/widgetMove.gql';
+import WIDGETS from '@/graphql/widget/widgets.gql';
+import WIDGET_FRAGMENT from '@/graphql/widget/widgetFragment.gql';
+import WIDGET_DEFINITION_FRAGMENT from '@/graphql/widget/widgetDefinitionFragment.gql';
+import WIDGET_CONFIG_OPEN from '@/graphql/widget/widgetConfigOpen.gql';
+import WIDGET_CONFIG_SAVE from '@/graphql/widget/widgetConfigSave.gql';
 
-const GRID_SIZE = 200
-const ZOOM = 0.7
+const GRID_SIZE = 200;
+const ZOOM = 0.7;
 
 const state = new Vue({
   data: {
-    selectedWidgetId: null
-  }
-})
+    selectedWidgetId: null,
+  },
+});
 
 export default {
-  provide () {
+  provide() {
     return {
-      widget: this.injected
-    }
+      widget: this.injected,
+    };
   },
 
-  inject: [
-    'dashboard'
-  ],
+  inject: ['dashboard'],
 
   mixins: [
     Prompts({
       field: 'widget',
-      update (store, prompts) {
+      update(store, prompts) {
         store.writeFragment({
           fragment: WIDGET_FRAGMENT,
           fragmentName: 'widget',
           id: this.widget.id,
           data: {
-            prompts
-          }
-        })
-      }
+            prompts,
+          },
+        });
+      },
     }),
 
     OnGrid({
       field: 'widget',
-      gridSize: GRID_SIZE
+      gridSize: GRID_SIZE,
     }),
 
     Movable({
       field: 'widget',
       gridSize: GRID_SIZE,
-      zoom: ZOOM
+      zoom: ZOOM,
     }),
 
     Resizable({
       field: 'widget',
       gridSize: GRID_SIZE,
-      zoom: ZOOM
-    })
+      zoom: ZOOM,
+    }),
   ],
 
   props: {
     widget: {
       type: Object,
-      required: true
+      required: true,
     },
 
     customizeMode: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     details: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     shellStyle: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
 
-  data () {
+  data() {
     return {
       showConfig: false,
       loadingConfig: false,
@@ -279,38 +262,38 @@ export default {
         removeHeaderAction: this.removeHeaderAction,
         remove: this.remove,
         // Custom
-        customTitle: null
+        customTitle: null,
       },
       shellOrigin: null,
-      headerActions: []
-    }
+      headerActions: [],
+    };
   },
 
   computed: {
-    isSelected () {
-      return this.widget.id === state.selectedWidgetId
+    isSelected() {
+      return this.widget.id === state.selectedWidgetId;
     },
 
-    component () {
+    component() {
       if (this.details) {
-        return this.widget.definition.detailsComponent
+        return this.widget.definition.detailsComponent;
       }
-      return this.widget.definition.component
-    }
+      return this.widget.definition.component;
+    },
   },
 
   watch: {
     widget: {
-      handler (value) {
-        this.injected.data = value
-      }
+      handler(value) {
+        this.injected.data = value;
+      },
     },
 
-    customizeMode (value) {
+    customizeMode(value) {
       if (value) {
-        if (this.showDetails) this.closeDetails()
+        if (this.showDetails) this.closeDetails();
       } else if (this.isSelected) {
-        state.selectedWidgetId = null
+        state.selectedWidgetId = null;
       }
     },
 
@@ -319,80 +302,80 @@ export default {
     'widget.x': 'updateShellOrigin',
     'widget.y': 'updateShellOrigin',
     'widget.width': 'updateShellOrigin',
-    'widget.height': 'updateShellOrigin'
+    'widget.height': 'updateShellOrigin',
   },
 
-  mounted () {
+  mounted() {
     // Wait for animation
     setTimeout(() => {
-      this.updateShellOrigin()
-    }, 150)
+      this.updateShellOrigin();
+    }, 150);
   },
 
   methods: {
-    async openConfig () {
-      this.loadingConfig = true
-      this.showConfig = true
+    async openConfig() {
+      this.loadingConfig = true;
+      this.showConfig = true;
       await this.$apollo.mutate({
         mutation: WIDGET_CONFIG_OPEN,
         variables: {
-          id: this.widget.id
-        }
-      })
-      this.loadingConfig = false
+          id: this.widget.id,
+        },
+      });
+      this.loadingConfig = false;
     },
 
-    async saveConfig () {
-      this.showConfig = false
-      this.loadingConfig = false
+    async saveConfig() {
+      this.showConfig = false;
+      this.loadingConfig = false;
       await this.$apollo.mutate({
         mutation: WIDGET_CONFIG_SAVE,
         variables: {
-          id: this.widget.id
-        }
-      })
+          id: this.widget.id,
+        },
+      });
     },
 
-    openDetails () {
+    openDetails() {
       if (this.widget.definition.detailsComponent) {
-        this.showDetails = true
-        this.dashboard.isWidgetDetailsShown = true
+        this.showDetails = true;
+        this.dashboard.isWidgetDetailsShown = true;
       }
     },
 
-    closeDetails () {
-      this.showDetails = false
-      this.dashboard.isWidgetDetailsShown = false
+    closeDetails() {
+      this.showDetails = false;
+      this.dashboard.isWidgetDetailsShown = false;
     },
 
-    remove () {
+    remove() {
       this.$apollo.mutate({
         mutation: WIDGET_REMOVE,
         variables: {
-          id: this.widget.id
+          id: this.widget.id,
         },
         update: (store, { data: { widgetRemove } }) => {
-          let data = store.readQuery({ query: WIDGETS })
+          let data = store.readQuery({ query: WIDGETS });
           // TODO this is a workaround
           // See: https://github.com/apollographql/apollo-client/issues/4031#issuecomment-433668473
           data = {
-            widgets: data.widgets.filter(w => w.id !== this.widget.id)
-          }
-          store.writeQuery({ query: WIDGETS, data })
+            widgets: data.widgets.filter(w => w.id !== this.widget.id),
+          };
+          store.writeQuery({ query: WIDGETS, data });
           store.writeFragment({
             fragment: WIDGET_DEFINITION_FRAGMENT,
             id: widgetRemove.definition.id,
-            data: widgetRemove.definition
-          })
-        }
-      })
+            data: widgetRemove.definition,
+          });
+        },
+      });
     },
 
-    select () {
-      state.selectedWidgetId = this.widget.id
+    select() {
+      state.selectedWidgetId = this.widget.id;
     },
 
-    async onMoved () {
+    async onMoved() {
       await this.$apollo.mutate({
         mutation: WIDGET_MOVE,
         variables: {
@@ -401,13 +384,13 @@ export default {
             x: this.moveState.x,
             y: this.moveState.y,
             width: this.widget.width,
-            height: this.widget.height
-          }
-        }
-      })
+            height: this.widget.height,
+          },
+        },
+      });
     },
 
-    async onResized () {
+    async onResized() {
       await this.$apollo.mutate({
         mutation: WIDGET_MOVE,
         variables: {
@@ -416,51 +399,51 @@ export default {
             x: this.resizeState.x,
             y: this.resizeState.y,
             width: this.resizeState.width,
-            height: this.resizeState.height
-          }
-        }
-      })
+            height: this.resizeState.height,
+          },
+        },
+      });
     },
 
-    updateShellOrigin () {
-      const el = this.$refs.shell
-      if (!el) return
-      const bounds = el.getBoundingClientRect()
+    updateShellOrigin() {
+      const el = this.$refs.shell;
+      if (!el) return;
+      const bounds = el.getBoundingClientRect();
       this.shellOrigin = {
         x: bounds.left + bounds.width / 2 - this.dashboard.left,
-        y: bounds.top + bounds.height / 2 - this.dashboard.top
-      }
+        y: bounds.top + bounds.height / 2 - this.dashboard.top,
+      };
     },
 
-    addHeaderAction (action) {
-      this.removeHeaderAction(action.id)
+    addHeaderAction(action) {
+      this.removeHeaderAction(action.id);
       // Optional props should still be reactive
-      if (!action.tooltip) action.tooltip = null
-      if (!action.disabled) action.disabled = false
-      if (!action.hidden) action.hidden = false
+      if (!action.tooltip) action.tooltip = null;
+      if (!action.disabled) action.disabled = false;
+      if (!action.hidden) action.hidden = false;
       // Transform the function props into getters
-      transformToGetter(action, 'tooltip')
-      transformToGetter(action, 'disabled')
-      transformToGetter(action, 'hidden')
-      this.headerActions.push(action)
+      transformToGetter(action, 'tooltip');
+      transformToGetter(action, 'disabled');
+      transformToGetter(action, 'hidden');
+      this.headerActions.push(action);
     },
 
-    removeHeaderAction (id) {
-      const index = this.headerActions.findIndex(a => a.id === id)
-      if (index !== -1) this.headerActions.splice(index, 1)
-    }
-  }
-}
+    removeHeaderAction(id) {
+      const index = this.headerActions.findIndex(a => a.id === id);
+      if (index !== -1) this.headerActions.splice(index, 1);
+    },
+  },
+};
 
-function transformToGetter (obj, field) {
-  const value = obj[field]
+function transformToGetter(obj, field) {
+  const value = obj[field];
   if (typeof value === 'function') {
-    delete obj[field]
+    delete obj[field];
     Object.defineProperty(obj, field, {
       get: value,
       enumerable: true,
-      configurable: true
-    })
+      configurable: true,
+    });
   }
 }
 </script>

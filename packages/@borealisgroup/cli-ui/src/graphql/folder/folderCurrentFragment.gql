@@ -4,11 +4,13 @@ fragment folderCurrent on Folder {
   favorite
   isPackage
   isVueProject
+  isBorProject
   children {
     name
     path
     isPackage
     isVueProject
+    isBorProject
     hidden
     favorite
   }

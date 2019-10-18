@@ -15,10 +15,10 @@ export default {
   props: {
     chunk: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -40,5 +40,4 @@ export default {
       .vue-ui-dark-mode &
         background lighten($vue-ui-color-darker, 1%)
         color $vue-ui-color-dark-neutral
-
 </style>

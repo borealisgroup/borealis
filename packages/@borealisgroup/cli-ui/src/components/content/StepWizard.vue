@@ -2,7 +2,7 @@
   <div
     class="step-wizard"
     :class="{
-      'hide-tabs': hideTabs
+      'hide-tabs': hideTabs,
     }"
   >
     <div class="shell">
@@ -19,10 +19,7 @@
         v-bind="$attrs"
         v-on="$listeners"
       >
-        <slot
-          :next="next"
-          :previous="previous"
-        />
+        <slot :next="next" :previous="previous" />
       </VueTabs>
     </div>
   </div>
@@ -35,26 +32,26 @@ export default {
   props: {
     hideTabs: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     title: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
 
   methods: {
-    next () {
-      const tabs = this.$refs.tabs
-      tabs.activateChild(tabs.activeChildIndex + 1)
+    next() {
+      const tabs = this.$refs.tabs;
+      tabs.activateChild(tabs.activeChildIndex + 1);
     },
-    previous () {
-      const tabs = this.$refs.tabs
-      tabs.activateChild(tabs.activeChildIndex - 1)
-    }
-  }
-}
+    previous() {
+      const tabs = this.$refs.tabs;
+      tabs.activateChild(tabs.activeChildIndex - 1);
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -128,5 +125,4 @@ export default {
     .header .content,
     >>> .vue-ui-tab
       max-width $max-width
-
 </style>

@@ -2,7 +2,7 @@
   <div
     class="folder-explorer-item"
     :class="{
-      hidden: props.folder.hidden
+      hidden: props.folder.hidden,
     }"
     @click="listeners.select()"
   >
@@ -11,18 +11,21 @@
       class="folder-icon big"
     />
     <div class="folder-name">
-      {{ props.folder.name }}
+      <div>
+        {{ props.folder.name }}
+      </div>
       <img
         v-if="props.folder.isVueProject"
         class="vue-ui-project-icon"
-        src="~@/assets/logo.png"
-      >
+        src="~@/assets/logo-vue.png"
+      />
+      <img
+        v-else-if="props.folder.isBorProject"
+        class="vue-ui-project-icon"
+        src="~@/assets/logo-react.png"
+      />
     </div>
-    <VueIcon
-      v-if="props.folder.favorite"
-      icon="star"
-      class="favorite-icon"
-    />
+    <VueIcon v-if="props.folder.favorite" icon="star" class="favorite-icon" />
   </div>
 </template>
 
@@ -31,10 +34,10 @@ export default {
   props: {
     folder: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -58,19 +61,19 @@ export default {
       fill $vue-ui-color-primary
 
   .folder-name
+    display flex
     flex 100% 1 1
+    align-items center
     margin-left $padding-item
     ellipsis()
 
   .vue-ui-project-icon
+    display block
     width 14px
     height @width
-    vertical-align top
-    position relative
-    top 5px
+    margin-left 4px
 
   .favorite-icon
     >>> svg
       fill $vue-ui-color-primary
-
 </style>

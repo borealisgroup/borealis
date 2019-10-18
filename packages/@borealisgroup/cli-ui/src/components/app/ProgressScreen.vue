@@ -4,18 +4,13 @@
       v-if="progress"
       class="loading-screen"
       :class="{
-        loading
+        loading,
       }"
     >
-      <VueLoadingIndicator
-        class="primary big overlay fixed"
-      >
+      <VueLoadingIndicator class="primary big overlay fixed">
         <div class="content">
           <div v-if="progress.error" class="error">
-            <VueIcon
-              icon="error"
-              class="huge"
-            />
+            <VueIcon icon="error" class="huge" />
             <div>{{ progress.error }}</div>
             <div class="actions">
               <VueButton
@@ -43,7 +38,9 @@
                 :value="progress.progress"
               />
 
-              <div v-if="debug" class="debug"><pre>{{ debug }}</pre></div>
+              <div v-if="debug" class="debug">
+                <pre>{{ debug }}</pre>
+              </div>
             </div>
           </template>
         </div>
@@ -53,25 +50,22 @@
 </template>
 
 <script>
-import { DisableScroll } from '@vue/ui'
-import Progress from '@/mixins/Progress'
+import { DisableScroll } from '@vue/ui';
+import Progress from '@/mixins/Progress';
 
 export default {
-  mixins: [
-    DisableScroll,
-    Progress
-  ],
+  mixins: [DisableScroll, Progress],
 
   props: {
-    debug: String
+    debug: String,
   },
 
   methods: {
-    close () {
-      this.progress = null
-    }
-  }
-}
+    close() {
+      this.progress = null;
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

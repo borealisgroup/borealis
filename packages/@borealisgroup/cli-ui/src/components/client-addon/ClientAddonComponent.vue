@@ -1,13 +1,7 @@
 <template>
-  <component
-    v-if="component"
-    :is="component"
-  />
+  <component v-if="component" :is="component" />
   <div v-else-if="timeout" class="vue-ui-empty">
-    <VueIcon
-      icon="cake"
-      class="big"
-    />
+    <VueIcon icon="cake" class="big" />
     <div class="timeout-title">
       {{ $t('org.vue.components.client-addon-component.timeout') }}
     </div>
@@ -25,35 +19,35 @@ export default {
   props: {
     name: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
 
-  data () {
+  data() {
     return {
       component: null,
-      timeout: false
-    }
+      timeout: false,
+    };
   },
 
   watch: {
     name: {
       handler: 'updateComponent',
-      immediate: true
-    }
+      immediate: true,
+    },
   },
 
   methods: {
-    async updateComponent () {
+    async updateComponent() {
       setTimeout(() => {
         if (!this.component) {
-          this.timeout = true
+          this.timeout = true;
         }
-      }, 5000)
-      this.component = await ClientAddonApi.awaitComponent(this.name)
-    }
-  }
-}
+      }, 50000);
+      this.component = await ClientAddonApi.awaitComponent(this.name);
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
