@@ -43,7 +43,7 @@ export default {
         if (!this.component) {
           this.timeout = true;
         }
-      }, 50000);
+      }, 5000);
       this.component = await ClientAddonApi.awaitComponent(this.name);
     },
   },
