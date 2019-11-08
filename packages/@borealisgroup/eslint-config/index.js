@@ -22,7 +22,7 @@ module.exports = {
     jest: true,
     webextensions: false,
   },
-  plugins: ['react', 'react-hooks', 'promise', 'jest', 'graphql', 'prettier'],
+  plugins: ['react', 'react-hooks', 'promise', 'jest', 'prettier'],
   settings: {
     'import/resolver': {
       node: {
