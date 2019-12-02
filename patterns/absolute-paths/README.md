@@ -12,7 +12,7 @@ Absolute paths for imports
 
 Install `cross-env` as a dev dependency
 
-```
+```bash
 yarn -D cross-env
 ```
 

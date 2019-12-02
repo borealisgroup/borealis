@@ -11,7 +11,7 @@ With this package we share React and Styled Components between projects.
 
 Using npm:
 
-```
+```bash
 yarn add @borealisgroup/components
 ```
 

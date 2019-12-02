@@ -12,7 +12,7 @@ Utility to dynamically export all files matching a regular expression.
 
 Using npm:
 
-```
+```bash
 yarn add @borealisgroup/dynamic-export
 ```
 
@@ -120,7 +120,6 @@ The reason is that in these cases, we can't use these development features, whic
 ### ❌ Webpack: [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
 
 > Tree shaking is a term commonly used in the JavaScript context for dead-code elimination
-
 > Sometimes you can be tempted to export one huge object with many properties as default export. This is an anti-pattern and prohibits proper tree shaking.
 >
 > Using named exports can reduce your bundle size when you don’t use all exported values (especially useful while building libs).

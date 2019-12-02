@@ -11,7 +11,7 @@ Stylelint config for CSS linting.
 
 Using npm:
 
-```
+```bash
 yarn -D @borealisgroup/stylelint-config
 ```
 
