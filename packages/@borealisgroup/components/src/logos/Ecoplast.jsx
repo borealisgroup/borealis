@@ -7,7 +7,7 @@ const SvgComponent = props => (
       fontSize={144.029}
       fontFamily="ArialMT"
     >
-      {'ecoplast'}
+      ecoplast
     </text>
     <path fill="#d52b1e" d="M0 0h69L0 133z" />
     <path fill="#00af3f" d="M82 0v133H13" />

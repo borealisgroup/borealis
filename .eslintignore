@@ -6,6 +6,7 @@
 /tmp/**
 /lib/util/unicode/is-combining-character.js
 __testfixtures__
+template
 # test.js
 # examples/
 # lib/

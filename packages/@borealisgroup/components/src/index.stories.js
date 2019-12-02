@@ -1,8 +1,7 @@
 import React from 'react';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-
 import { Borealis, Ecoplast, LAT, MtmPlastics, Rosier } from './logos';
 
 const stories = storiesOf('components/logos', module);

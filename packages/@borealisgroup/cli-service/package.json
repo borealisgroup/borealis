@@ -28,7 +28,6 @@
     "@vue/cli-shared-utils": "^4.0.0",
     "@vue/component-compiler-utils": "^3.0.0",
     "@vue/preload-webpack-plugin": "^1.1.0",
-    "@vue/web-component-wrapper": "^1.2.0",
     "acorn": "^6.1.1",
     "acorn-walk": "^6.1.1",
     "address": "^1.1.0",

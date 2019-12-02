@@ -1,19 +1,18 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-bitwise */
+import 'react-notifications/lib/notifications.css';
 import React from 'react';
-import { storiesOf, addDecorator } from '@storybook/react';
-import styled, { ThemeProvider } from 'styled-components';
-import Color from 'color';
-import copy from 'copy-text-to-clipboard';
 import {
   NotificationContainer,
   NotificationManager,
 } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-
+import { addDecorator, storiesOf } from '@storybook/react';
+import Color from 'color';
+import copy from 'copy-text-to-clipboard';
+import styled, { ThemeProvider } from 'styled-components';
 import borealis from './brands/borealis.json';
-import lat from './brands/lat.json';
 import ecoplast from './brands/ecoplast.json';
+import lat from './brands/lat.json';
 import mtmPlastics from './brands/mtmPlastics.json';
 import rosier from './brands/rosier.json';
 

@@ -34,7 +34,7 @@ const MtmPlastics = props => (
         letterSpacing={5}
         fontFamily="Calibri-Light"
       >
-        {'plastics'}
+        plastics
       </tspan>
     </text>
     <text
@@ -44,7 +44,7 @@ const MtmPlastics = props => (
       fontFamily="Calibri"
       fill="#666"
     >
-      {'die Aufwerter - the Upcyclers'}
+      die Aufwerter - the Upcyclers
     </text>
   </svg>
 );

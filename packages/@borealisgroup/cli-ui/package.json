@@ -95,8 +95,6 @@
     "apollo-client": "^2.6.4",
     "apollo-link": "^1.0.0",
     "core-js": "^3.1.2",
-    "cross-env": "^5.1.5",
-    "eslint": "^5.16.0",
     "eslint-plugin-graphql": "^3.0.3",
     "lint-staged": "^8.1.5",
     "lodash.debounce": "^4.0.8",

@@ -1,17 +1,17 @@
-const { addSideEffect } = require('@babel/helper-module-imports')
+const { addSideEffect } = require('@babel/helper-module-imports');
 
 // slightly modifiled from @babel/preset-env/src/utils
 // use an absolute path for core-js modules, to fix conflicts of different core-js versions
-function getModulePath (mod, useAbsolutePath) {
+function getModulePath(mod, useAbsolutePath) {
   const modPath =
     mod === 'regenerator-runtime'
       ? 'regenerator-runtime/runtime'
-      : `core-js/modules/${mod}`
-  return useAbsolutePath ? require.resolve(modPath) : modPath
+      : `core-js/modules/${mod}`;
+  return useAbsolutePath ? require.resolve(modPath) : modPath;
 }
 
-function createImport (path, mod, useAbsolutePath) {
-  return addSideEffect(path, getModulePath(mod, useAbsolutePath))
+function createImport(path, mod, useAbsolutePath) {
+  return addSideEffect(path, getModulePath(mod, useAbsolutePath));
 }
 
 // add polyfill imports to the first file encountered.
@@ -22,9 +22,9 @@ module.exports = (
   return {
     name: 'vue-cli-inject-polyfills',
     visitor: {
-      Program (path, state) {
+      Program(path, state) {
         if (!entryFiles.includes(state.filename)) {
-          return
+          return;
         }
 
         // imports are injected in reverse order
@@ -32,9 +32,9 @@ module.exports = (
           .slice()
           .reverse()
           .forEach(p => {
-            createImport(path, p, useAbsolutePath)
-          })
-      }
-    }
-  }
-}
+            createImport(path, p, useAbsolutePath);
+          });
+      },
+    },
+  };
+};

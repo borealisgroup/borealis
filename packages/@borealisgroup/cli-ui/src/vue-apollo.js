@@ -6,7 +6,7 @@ import clientStateResolvers from './state/resolvers';
 import clientStateTypeDefs from './state/typeDefs';
 // GraphQL documents
 import PROJECT_CURRENT from './graphql/project/projectCurrent.gql';
-import CURRENT_PROJECT_ID_SET from './graphql/project/currentProjectIdSet.gql';
+// import CURRENT_PROJECT_ID_SET from './graphql/project/currentProjectIdSet.gql';
 import CONNECTED_SET from '@/graphql/connected/connectedSet.gql';
 import LOADING_CHANGE from '@/graphql/loading/loadingChange.gql';
 import DARK_MODE_SET from '@/graphql/dark-mode/darkModeSet.gql';
