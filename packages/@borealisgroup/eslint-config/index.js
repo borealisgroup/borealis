@@ -1,6 +1,7 @@
 module.exports = {
   extends: [
     'airbnb',
+    'plugin:cypress/recommended',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'plugin:prettier/recommended',
@@ -15,12 +16,15 @@ module.exports = {
   },
   env: {
     browser: true,
+    'cypress/globals': true,
     es6: true,
-    node: true,
     jest: true,
+    node: true,
     webextensions: false,
   },
   plugins: [
+    'chai-friendly',
+    'cypress',
     'react',
     'react-hooks',
     'promise',
@@ -97,7 +101,7 @@ module.exports = {
 
     'import/no-dynamic-require': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'import/prefer-default-export': 'off',
+    'import/prefer-default-export': 'off', // Allow single Named-export
     'import/order': ['off', { 'newlines-between': 'always' }],
     'simple-import-sort/sort': [
       'error',
@@ -150,11 +154,12 @@ module.exports = {
     'react/jsx-filename-extension': [
       'error',
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-    ],
+    ], // also want to use with ".tsx"
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
+
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
   },
