@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn build:lerna && yarn build:rollup",
     "build:lerna": "lerna run build --since",
-    "build:rollup": "lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
+    "build:rollup": "lerna exec --parallel --since --ignore \"**/@(cli*|eslint*|i18n*|theme|babel*)\" -- rollup -c=../../../rollup.config.js",
     "build:storybook": "build-storybook",
     "clean": "rimraf packages/test/* packages/**/temp/*",
     "generate": "plop --plopfile ./scripts/generators/index.js",
