@@ -20,7 +20,7 @@
   "author": "zbeyens <ziad.beyens@borealisgroup.com>",
   "main": "index.js",
   "dependencies": {
-    "@borealisgroup/eslint-config": "^1.12.1",
+    "@borealisgroup/eslint-config": "^1.12.3",
     "eslint-plugin-vue": "6.0.1"
   },
   "publishConfig": {
