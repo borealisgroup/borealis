@@ -1,4 +1,4 @@
-# @borealisgroup/eslint-config
+# @borealisgroup/eslint-config-vue
 
 ESLint config for JS linting.
 
@@ -17,7 +17,7 @@ Note: you can still overwrite the `env`, `globals` and `parser` in your local `.
 Using npm:
 
 ```bash
-yarn -D @borealisgroup/eslint-config
+yarn -D @borealisgroup/eslint-config-vue
 ```
 
 ## Usage

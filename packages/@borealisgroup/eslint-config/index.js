@@ -3,10 +3,8 @@ module.exports = {
     'airbnb',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
-    'plugin:vue/recommended',
     'plugin:prettier/recommended',
     'prettier/react',
-    'prettier/vue',
   ],
   parserOptions: {
     ecmaVersion: 2018,
@@ -22,7 +20,14 @@ module.exports = {
     jest: true,
     webextensions: false,
   },
-  plugins: ['react', 'react-hooks', 'promise', 'jest', 'prettier'],
+  plugins: [
+    'react',
+    'react-hooks',
+    'promise',
+    'jest',
+    'simple-import-sort',
+    'prettier',
+  ],
   settings: {
     'import/resolver': {
       node: {
@@ -93,19 +98,37 @@ module.exports = {
     'import/no-dynamic-require': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
-    'import/order': [
+    'import/order': ['off', { 'newlines-between': 'always' }],
+    'simple-import-sort/sort': [
       'error',
       {
         groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
+          [
+            // import "./setup": Side effect imports.
+            '^\\u0000',
+            // Node.js builtins.`
+            '^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)',
+            // import react from "react": Packages.
+            '^react',
+            // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+            '^@?\\w',
+            // import a from "/a": Absolute imports and other imports.
+            // Anything that does not start with a dot.
+            '^(assets|components|config|hooks|plugins|store|styled|themes|utils|contexts)(/.*|$)',
+            // import a from "./a": Relative imports.
+            // Parent imports. Put `..` last.
+            '^\\.\\.(?!/?$)',
+            '^\\.\\./?$',
+            // Other relative imports. Put same-folder imports and `.` last.
+            '^\\./(?=.*/)(?!/?$)',
+            '^\\.(?!/?$)',
+            '^\\./?$',
+          ],
         ],
       },
     ],
+
+    'jest/expect-expect': 'off',
 
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
@@ -116,6 +139,7 @@ module.exports = {
 
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
+    'promise/no-callback-in-promise': 'off',
 
     'react/button-has-type': [
       'error',
@@ -123,7 +147,10 @@ module.exports = {
         reset: true,
       },
     ],
-    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
@@ -131,4 +158,14 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
   },
+  overrides: [
+    {
+      files: 'server/**/*.js',
+      env: { node: true },
+      rules: {
+        'simple-import-sort/sort': 'off',
+        'import/order': ['error', { 'newlines-between': 'never' }],
+      },
+    },
+  ],
 };
