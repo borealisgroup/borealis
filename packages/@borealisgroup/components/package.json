@@ -4,20 +4,20 @@
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/components#readme",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
-  "files": [
-    "lib"
-  ],
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/components"
   },
-  "bugs": {
-    "url": "https://github.com/borealisgroup/borealis/issues"
-  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "publishConfig": {
     "access": "public"
   }

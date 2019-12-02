@@ -4,20 +4,20 @@
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/i18n-prod#readme",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
-  "files": [
-    "lib"
-  ],
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/i18n-prod"
   },
-  "bugs": {
-    "url": "https://github.com/borealisgroup/borealis/issues"
-  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "dependencies": {
     "i18next": "^15.1.0",
     "i18next-browser-languagedetector": "^3.0.1",

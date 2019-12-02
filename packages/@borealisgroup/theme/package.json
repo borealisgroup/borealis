@@ -4,23 +4,23 @@
   "description": "A default theme for every Borealis brand to use within styled components",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/theme#readme",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
-  "files": [
-    "lib"
-  ],
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/theme"
   },
-  "bugs": {
-    "url": "https://github.com/borealisgroup/borealis/issues"
-  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "scripts": {
-    "generate": "node src/generate.js",
-    "build": "yarn generate && rollup -c=../../rollup.config.js"
+    "build": "yarn generate && rollup -c=../../../rollup.config.js",
+    "generate": "node src/generate.js"
   },
   "publishConfig": {
     "access": "public"

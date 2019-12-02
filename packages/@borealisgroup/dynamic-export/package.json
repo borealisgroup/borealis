@@ -4,19 +4,19 @@
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/dynamic-export#readme",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
-  "files": [
-    "lib"
-  ],
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/dynamic-export"
   },
-  "bugs": {
-    "url": "https://github.com/borealisgroup/borealis/issues"
-  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "jsnext:main": "lib/index.es.js",
   "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
 }
