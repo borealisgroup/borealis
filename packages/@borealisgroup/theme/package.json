@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/theme",
-  "version": "1.7.8-alpha.0",
+  "version": "1.8.0-alpha.0",
   "description": "A default theme for every Borealis brand to use within styled components",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/theme#readme",

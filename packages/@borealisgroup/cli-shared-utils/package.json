@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-shared-utils",
-  "version": "0.1.0",
+  "version": "0.2.0-alpha.0",
   "description": "shared utilities for bor-cli packages",
   "keywords": [
     "bor",
@@ -17,7 +17,6 @@
   },
   "license": "MIT",
   "main": "index.js",
-  "dependencies": {},
   "publishConfig": {
     "access": "public"
   }
