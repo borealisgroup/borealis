@@ -13,7 +13,7 @@ Utility to dynamically export all files matching a regular expression.
 Using npm:
 
 ```
-npm install --save @borealisgroup/dynamic-export
+yarn add @borealisgroup/dynamic-export
 ```
 
 ## Usage
@@ -26,11 +26,12 @@ const { getModules } = require('@borealisgroup/dynamic-export');
 Object.assign(module.exports, getModules(require.context('.', true, /\.jsx$/)));
 ```
 
-For example, in a React app, it's useful to have this `index.js` in the `components` and `containers` directories, by taking all the `.jsx` files. 
+For example, in a React app, it's useful to have this `index.js` in the `components` and `containers` directories, by taking all the `.jsx` files.
 
 Then, you can import the modules:
 
 <!-- TODO - in example -->
+
 ```js
 import {
   Header,
@@ -71,6 +72,7 @@ Advised for large and very active directories. See [Why](#Why).
 ### re-export default import as named import (static)
 
 Advised.
+
 ```js
 export { default as App } from './App';
 export { default as Header } from './Header';
@@ -78,7 +80,7 @@ export { default as Header } from './Header';
 
 ### re-export all named imports (static)
 
-Advised. This is quite good if you want to centralize (in `index.js`) the (unique) named exports from multiple files. 
+Advised. This is quite good if you want to centralize (in `index.js`) the (unique) named exports from multiple files.
 
 ```js
 export * from './A';
@@ -86,7 +88,8 @@ export * from './B';
 ```
 
 ### re-export default import as default export (static)
-Discouraged. See [Conclusion](#Conclusion). Default export should be mostly used for classes (i.e. React component). 
+
+Discouraged. See [Conclusion](#Conclusion). Default export should be mostly used for classes (i.e. React component).
 
 ```js
 export { default } from './config';
@@ -96,7 +99,7 @@ export { default } from './config';
 
 Although **dynamic re-export** has a productivity boost, it has counterparts showing that it should not be used in every `index.js` files.
 
-Also, we discourage using **default export of non-class objects** when possible. 
+Also, we discourage using **default export of non-class objects** when possible.
 
 The reason is that in these cases, we can't use these development features, which are also a huge productivity boost:
 
@@ -114,15 +117,10 @@ The reason is that in these cases, we can't use these development features, whic
 >
 > For export, verifies that all named exports exist in the referenced module.
 
-
 ### ❌ Webpack: [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
 
 > Tree shaking is a term commonly used in the JavaScript context for dead-code elimination
 
 > Sometimes you can be tempted to export one huge object with many properties as default export. This is an anti-pattern and prohibits proper tree shaking.
-> 
+>
 > Using named exports can reduce your bundle size when you don’t use all exported values (especially useful while building libs).
-
-
-
-

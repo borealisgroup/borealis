@@ -1,6 +1,6 @@
 # @borealisgroup/theme
 
-A default theme configuration complying with the borealis style guides. Multiple brands are supported.  
+A default theme configuration complying with the borealis style guides. Multiple brands are supported.
 
 ## Prerequisites
 
@@ -11,14 +11,13 @@ A default theme configuration complying with the borealis style guides. Multiple
 
 Using npm:
 
-```
-npm install @borealisgroup/theme
+```bash
+yarn add @borealisgroup/theme
 ```
 
 ## Usage
 
 Import a borealis brand from this package and pass it to the theme provider of styled components.
-
 
 ```JS
 // App.jsx
@@ -32,6 +31,7 @@ import { borealis } from '@borealisgroup/theme'; //following imports also work: 
 ```
 
 Any child styled component of the theme provider now has access to the theme properties.
+
 ```JS
 import styled from 'styled-components';
 const Link = styled.a`
@@ -43,7 +43,8 @@ const Link = styled.a`
 
 ### Properties
 
-This package exports a JSON with all the css properties for every Borealis brand. Read them by following these links: 
+This package exports a JSON with all the css properties for every Borealis brand. Read them by following these links:
+
 - [borealis](src/brands/borealis.json)
 - [lat](src/brands/lat.json)
 - [mtmPlastics](src/brands/mtmPlastics.json)

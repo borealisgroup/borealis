@@ -9,8 +9,8 @@ This package is related to [i18n-dev](https://github.com/borealisgroup/borealis/
 ## Setup
 
 - Use [i18n-dev](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/i18n-dev) for development purposes, this setup assumes that you already did the setup steps of i18n-dev.
-- Install this package: `npm install @borealisgroup/i18n-prod`
-- Install locize-cli as a dev dependency `npm install locize-cli -D`
+- Install this package: `yarn add @borealisgroup/i18n-prod`
+- Install locize-cli as a dev dependency `yarn add locize-cli -D`
 - Add the following command to the script tag in your `package.json`
 
 ```json
@@ -21,7 +21,7 @@ This package is related to [i18n-dev](https://github.com/borealisgroup/borealis/
 }
 ```
 
-- Run `npm run locize:download`. This should fetch all the language files and save it in the `public/locales` folder.
+- Run `yarn locize:download`. This should fetch all the language files and save it in the `public/locales` folder.
 - Go to the `src/i18n` folder and create a new component named `I18nProd.jsx` with the following code
 
 ```jsx
@@ -40,9 +40,9 @@ export default I18n;
 
 ```json
 "scripts": {
-	"build": "npm run i18n:switch-to-prod && rescripts build",
-	"start": "npm run i18n:switch-to-dev && rescripts start",
+	"build": "yarn i18n:switch-to-prod && rescripts build",
+	"start": "yarn i18n:switch-to-dev && rescripts start",
 	"i18n:switch-to-dev": "rm \"src/i18n/index.js\" && echo \"export { default as I18n } from './I18nDev';\r\" > \"src/i18n/index.js\"",
-    "i18n:switch-to-prod": "rm \"src/i18n/index.js\" && echo \"export { default as I18n } from './I18nProd';\r\" > \"src/i18n/index.js\" && npm run locize:download",
+    "i18n:switch-to-prod": "rm \"src/i18n/index.js\" && echo \"export { default as I18n } from './I18nProd';\r\" > \"src/i18n/index.js\" && yarn locize:download",
 }
 ```

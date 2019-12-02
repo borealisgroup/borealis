@@ -81,7 +81,7 @@ yarn generate package
 ### Create a new pattern
 
 ```bash
-npm run generate pattern
+yarn generate pattern
 ```
 
 ## Pull Requests

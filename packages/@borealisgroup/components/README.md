@@ -12,11 +12,10 @@ With this package we share React and Styled Components between projects.
 Using npm:
 
 ```
-npm install --save @borealisgroup/components
+yarn add @borealisgroup/components
 ```
 
 ## Usage
 
 In the Storybook (TODO: add deployment link here) all the components are presented. Toggle the 'show info' button at the right-top to see the documentation of that component, the 'show info' section will also present documentation in accordance with the selected props from the knobs addon panel.
-![Storybook demo](storybook-demo.gif "Storybook demo")
-
+![Storybook demo](storybook-demo.gif 'Storybook demo')

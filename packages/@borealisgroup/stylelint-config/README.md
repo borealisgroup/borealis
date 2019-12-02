@@ -12,7 +12,7 @@ Stylelint config for CSS linting.
 Using npm:
 
 ```
-npm install --save-dev @borealisgroup/stylelint-config
+yarn -D @borealisgroup/stylelint-config
 ```
 
 ## Usage

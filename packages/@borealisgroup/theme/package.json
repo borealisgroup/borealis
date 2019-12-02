@@ -20,7 +20,7 @@
   },
   "scripts": {
     "generate": "node src/generate.js",
-    "build": "npm run generate && rollup -c=../../rollup.config.js"
+    "build": "yarn generate && rollup -c=../../rollup.config.js"
   },
   "publishConfig": {
     "access": "public"

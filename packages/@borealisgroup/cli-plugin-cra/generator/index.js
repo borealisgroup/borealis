@@ -7,7 +7,7 @@ module.exports = api => {
     scripts: {
       'analyze:ci':
         'source-map-explorer --html build/static/js/*.js > source-map-result.html',
-      analyze: 'npm run build && source-map-explorer build/static/js/*.js',
+      analyze: 'yarn build && source-map-explorer build/static/js/*.js',
       build: 'rescripts build',
       clean: 'rm -rf node_modules',
       eject: 'react-scripts eject',
@@ -15,8 +15,8 @@ module.exports = api => {
       'lint-css': 'stylelint "src/**/*.{js,jsx}"',
       'lint-js': 'eslint --ext .js --ext .jsx src',
       lint: 'npm-run-all lint-js lint-css',
-      rebuild: 'npm run clean && npm install && npm run build',
-      reinstall: 'npm run clean && npm install',
+      rebuild: 'yarn clean && yarn && yarn build',
+      reinstall: 'yarn clean && yarn',
       start: 'rescripts start',
       'test:CI':
         'cross-env CI=true react-scripts test --env=jsdom --modulePaths=src',

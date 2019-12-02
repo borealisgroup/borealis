@@ -1,5 +1,3 @@
-# @borealisgroup/i18n
-
 # @borealisgroup/i18n-dev
 
 The purpose of this package is an attempt to make the implementation of localization as easy as possible. It exports a config that connects [react-i18next](https://github.com/i18next/react-i18next) with [locize](https://www.locize.io/). The big benefit is that your language keys are automatically uploaded to locize whenever you add or change them in your code editor.
@@ -16,8 +14,8 @@ This package is just a config file so read the [i18next react](https://react.i18
 ## Setup
 
 - Register a new project at [locize](https://www.locize.io/), see confluence (ADD LINK) for the credentials.
-- Install this package `npm install --save @borealisgroup/i18n-dev`
-- Install react-i18next `npm install react-i18next`
+- Install this package `yarn add @borealisgroup/i18n-dev`
+- Install react-i18next `yarn add react-i18next`
 - Create the following folder at your root `src/i18n`
 - Create a new class in the `src/i18n` folder with the following name: `I18ndev.jsx`. Paste in this file the following code:
 
