@@ -7,8 +7,9 @@ This is a polyglot monorepo containing reusable packages, apps and patterns.
 - 🐈 Yarn Workspaces — Sane multi-package management
 - 🐉 Lerna 3 — The Monorepo manager
 - 🐠 Babel — Compiles next-gen JavaScript
-- 🛠 Rollup — Next-generation ES module bundler
+- 📦 Rollup — Next-generation ES module bundler
 - 📖 Storybook 5
+- 🛠️ cli — WIP
 
 <!--
 - ⚛️ Create React App 3
@@ -31,17 +32,17 @@ In order to improve our development practices and standards we released various 
 
 We provide a list of patterns including examples. There is a clear separation of concerns to make multiple patterns usable altogether.
 
-- ⚛️ React — JavaScript library for user interfaces
+<!-- - ⚛️ React — JavaScript library for user interfaces
 - 💅 styled-components — CSS in JS elegance
 - 📖 Storybook — UI Component Environment
-- 🃏 Jest — Unit/Snapshot Testing
+- 🃏 Jest — Unit/Snapshot Testing -->
 
 ## 👏 Contributing
 
 We welcome contributions to this repository!
 
 - 📥 Pull requests and 🌟 Stars are always welcome.
-- Read our [contributing guide](CONTRIBUTING) to get started.
+- Read our [contributing guide](CONTRIBUTING.md) to get started.
 
 ### Development scripts
 

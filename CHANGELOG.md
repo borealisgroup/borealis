@@ -2,7 +2,7 @@
 
 ### Features
 
-- **eslint-config:** update ecmaVersion ([a96af01](https://github.com/borealisgroup/borealis-js/commit/a96af01))
+- **eslint-config:** update ecmaVersion ([a96af01](https://github.com/borealisgroup/borealis/commit/a96af01))
 
 ## 1.7.5 (2019-05-09)
 
@@ -10,13 +10,13 @@
 
 ### Bug Fixes
 
-- import ([ea900c4](https://github.com/borealisgroup/borealis-js/commit/ea900c4))
+- import ([ea900c4](https://github.com/borealisgroup/borealis/commit/ea900c4))
 
 ## 1.7.3 (2019-05-03)
 
 ### Bug Fixes
 
-- prettier ([b5eab09](https://github.com/borealisgroup/borealis-js/commit/b5eab09))
+- prettier ([b5eab09](https://github.com/borealisgroup/borealis/commit/b5eab09))
 
 ## 1.7.2 (2019-04-30)
 
@@ -24,11 +24,11 @@
 
 ### Bug Fixes
 
-- naming convention, no px ([d4b0eb3](https://github.com/borealisgroup/borealis-js/commit/d4b0eb3))
+- naming convention, no px ([d4b0eb3](https://github.com/borealisgroup/borealis/commit/d4b0eb3))
 
 ### Features
 
-- borealis colors ([e94c9ce](https://github.com/borealisgroup/borealis-js/commit/e94c9ce))
+- borealis colors ([e94c9ce](https://github.com/borealisgroup/borealis/commit/e94c9ce))
 
 ## 1.6.3 (2019-04-26)
 
@@ -38,7 +38,7 @@
 
 ### Features
 
-- adding brand fonts ([2b7f493](https://github.com/borealisgroup/borealis-js/commit/2b7f493))
+- adding brand fonts ([2b7f493](https://github.com/borealisgroup/borealis/commit/2b7f493))
 
 # 1.6.0 (2019-04-25)
 
@@ -48,20 +48,20 @@
 
 ### Features
 
-- enable unused-vars for args ([3394bca](https://github.com/borealisgroup/borealis-js/commit/3394bca))
-- new rules ([329801f](https://github.com/borealisgroup/borealis-js/commit/329801f))
+- enable unused-vars for args ([3394bca](https://github.com/borealisgroup/borealis/commit/3394bca))
+- new rules ([329801f](https://github.com/borealisgroup/borealis/commit/329801f))
 
 ## 1.3.1 (2019-03-15)
 
 ### Features
 
-- enable react/destructing-assignment ([8b417b3](https://github.com/borealisgroup/borealis-js/commit/8b417b3))
+- enable react/destructing-assignment ([8b417b3](https://github.com/borealisgroup/borealis/commit/8b417b3))
 
 # 1.3.0 (2019-03-15)
 
 ### Features
 
-- react hooks eslint rule ([047786f](https://github.com/borealisgroup/borealis-js/commit/047786f))
+- react hooks eslint rule ([047786f](https://github.com/borealisgroup/borealis/commit/047786f))
 
 ## 1.2.6 (2019-03-11)
 
@@ -69,13 +69,13 @@
 
 ### Bug Fixes
 
-- no lib ([f4570df](https://github.com/borealisgroup/borealis-js/commit/f4570df))
+- no lib ([f4570df](https://github.com/borealisgroup/borealis/commit/f4570df))
 
 ## 1.2.4 (2019-03-11)
 
 ### Bug Fixes
 
-- gitignore ([008b47e](https://github.com/borealisgroup/borealis-js/commit/008b47e))
+- gitignore ([008b47e](https://github.com/borealisgroup/borealis/commit/008b47e))
 
 ## 1.2.3 (2019-03-11)
 
@@ -83,7 +83,7 @@
 
 ### Bug Fixes
 
-- dynamic-export not transpiled ([35c4bce](https://github.com/borealisgroup/borealis-js/commit/35c4bce))
+- dynamic-export not transpiled ([35c4bce](https://github.com/borealisgroup/borealis/commit/35c4bce))
 
 ## 1.2.1 (2019-03-11)
 
@@ -93,6 +93,6 @@
 
 ### Features
 
-- getModules ([d9e4490](https://github.com/borealisgroup/borealis-js/commit/d9e4490))
+- getModules ([d9e4490](https://github.com/borealisgroup/borealis/commit/d9e4490))
 
 ## 1.1.1 (2019-03-05)
