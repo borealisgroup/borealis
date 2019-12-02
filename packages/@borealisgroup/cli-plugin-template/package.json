@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-plugin-template",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "template plugin for bor-cli projects",
   "keywords": [
     "babel",
@@ -19,5 +19,6 @@
   "main": "index.js",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }

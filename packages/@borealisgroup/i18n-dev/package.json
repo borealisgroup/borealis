@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/i18n-dev",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/i18n-dev#readme",
@@ -27,5 +27,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-ui-addon-widgets",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-ui-addon-widgets#readme",
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis/issues"
@@ -32,5 +32,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }

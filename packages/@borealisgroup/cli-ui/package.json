@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-ui#readme",
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis/issues"
@@ -23,19 +23,19 @@
   "main": "index.js",
   "scripts": {
     "apollo": "cross-env VUE_APP_CLI_UI_DEV=true VUE_APP_CLI_UI_DEBUG=true VUE_APP_GRAPHQL_PORT=4030 vue-cli-service apollo:dev",
-    "apollo:debug": "cross-env VUE_CLI_DEBUG=true yarn run apollo",
+    "apollo:debug": "cross-env VUE_CLI_DEBUG=true yarn apollo",
     "apollo:start": "cross-env VUE_CLI_PLUGIN_DEV=true VUE_CLI_IPC=vue-cli-dev vue-cli-service apollo:start",
     "apollo:start:test": "cross-env VUE_CLI_DEBUG=true VUE_CLI_UI_TEST=true VUE_APP_GRAPHQL_PORT=4040 VUE_APP_CLI_UI_URL=ws://localhost:4040/graphql VUE_CLI_IPC=vue-cli-test vue-cli-service apollo:dev --mode production",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint src apollo-server",
-    "prepublishOnly": "yarn run lint --no-fix && yarn run build",
+    "prepublishOnly": "yarn lint --no-fix && yarn build",
     "serve": "cross-env VUE_APP_CLI_UI_URL=ws://localhost:4030/graphql VUE_APP_GRAPHQL_PORT=4030 vue-cli-service serve",
-    "test": "yarn run build && cd ../cli-ui-addon-webpack && yarn run build && cd ../cli-ui-addon-widgets && yarn run build && cd ../cli-ui && yarn run test:start",
+    "test": "yarn build && cd ../cli-ui-addon-webpack && yarn build && cd ../cli-ui-addon-widgets && yarn build && cd ../cli-ui && yarn test:start",
     "test:clear": "rimraf ../../test/cli-ui-test && rimraf ./live-test",
-    "test:e2e": "yarn run test:clear && start-server-and-test apollo:start:test http://localhost:4040/.well-known/apollo/server-health test:e2e:dev",
+    "test:e2e": "yarn test:clear && start-server-and-test apollo:start:test http://localhost:4040/.well-known/apollo/server-health test:e2e:dev",
     "test:e2e:dev": "cross-env VUE_APP_CLI_UI_URL=ws://localhost:4040/graphql vue-cli-service test:e2e --mode development",
     "test:e2e:start": "vue-cli-service test:e2e --mode production --headless --url=http://localhost:4040",
-    "test:start": "yarn run test:clear && start-server-and-test apollo:start:test http://localhost:4040/.well-known/apollo/server-health test:e2e:start"
+    "test:start": "yarn test:clear && start-server-and-test apollo:start:test http://localhost:4040/.well-known/apollo/server-health test:e2e:start"
   },
   "lint-staged": {
     "*.js": [
@@ -123,7 +123,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "0dc793497281718762a5477a3de4a7ee439cdda6",
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },

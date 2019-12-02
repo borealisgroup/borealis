@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/dynamic-export",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/dynamic-export#readme",
@@ -18,5 +18,5 @@
   "main": "lib/index.js",
   "module": "lib/index.es.js",
   "jsnext:main": "lib/index.es.js",
-  "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }

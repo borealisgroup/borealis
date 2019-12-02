@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "keywords": [
     "borealisgroup"
@@ -24,8 +24,8 @@
     "bor": "bin/cli.js"
   },
   "dependencies": {
-    "@borealisgroup/cli-config": "^0.2.0",
-    "@borealisgroup/cli-shared-utils": "^0.2.0",
+    "@borealisgroup/cli-config": "^0.2.1",
+    "@borealisgroup/cli-shared-utils": "^0.2.1",
     "@vue/cli": "4.0.4",
     "@vue/cli-shared-utils": "^4.0.0",
     "boxen": "^4.1.0",
@@ -66,5 +66,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }

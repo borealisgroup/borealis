@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/eslint-config",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "ESLint config for JS linting.",
   "keywords": [
     "eslint",
@@ -38,5 +38,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "92568f30c390e9009fd2f54369d6b3a4e0c5c74a"
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }

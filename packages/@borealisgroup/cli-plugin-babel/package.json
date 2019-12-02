@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-plugin-babel",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "babel plugin for vue-cli",
   "keywords": [
     "babel",
@@ -34,5 +34,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
 }
