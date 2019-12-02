@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/compare/@borealisgroup/eslint-config@1.12.0-alpha.0...@borealisgroup/eslint-config@1.12.0) (2019-12-02)
+
+
+### Features
+
+* eslint ([42a18d8](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/commit/42a18d8956051605d5fde414d0fa1533e264798d))
+
+
+
+
+
 # [1.12.0-alpha.0](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/compare/@borealisgroup/eslint-config@1.10.0-alpha.1...@borealisgroup/eslint-config@1.12.0-alpha.0) (2019-12-02)
 
 

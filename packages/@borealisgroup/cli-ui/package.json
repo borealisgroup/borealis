@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-ui",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-ui#readme",
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis/issues"

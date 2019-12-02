@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-ui-addon-webpack",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vue-cli.git",

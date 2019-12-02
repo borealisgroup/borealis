@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-shared-utils",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "description": "shared utilities for bor-cli packages",
   "keywords": [
     "bor",

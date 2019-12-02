@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-config",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "description": "config for bor-cli",
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/cli-config#readme",
   "bugs": {

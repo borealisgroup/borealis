@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-vue/compare/@borealisgroup/eslint-config-vue@1.1.0-alpha.0...@borealisgroup/eslint-config-vue@1.1.0) (2019-12-02)
+
+**Note:** Version bump only for package @borealisgroup/eslint-config-vue
+
+
+
+
+
 # 1.1.0-alpha.0 (2019-12-02)
 
 

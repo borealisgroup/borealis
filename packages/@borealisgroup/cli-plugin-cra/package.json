@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-plugin-cra",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "description": "cra plugin for bor-cli projects",
   "keywords": [
     "babel",

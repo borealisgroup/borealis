@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-plugin-babel",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "description": "babel plugin for vue-cli",
   "keywords": [
     "babel",

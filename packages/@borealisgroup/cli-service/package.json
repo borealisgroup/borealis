@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/cli-service",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0",
   "description": "local service for bor-cli projects",
   "keywords": [
     "bor",
@@ -21,7 +21,7 @@
     "bor-cli-service": "bin/bor-cli-service.js"
   },
   "dependencies": {
-    "@borealisgroup/cli-shared-utils": "^0.2.0-alpha.0",
+    "@borealisgroup/cli-shared-utils": "^0.2.0",
     "@intervolga/optimize-cssnano-plugin": "^1.0.5",
     "@soda/friendly-errors-webpack-plugin": "^1.7.1",
     "@vue/cli-overlay": "^4.0.0",
