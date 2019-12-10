@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-ts/compare/@borealisgroup/eslint-config-ts@1.1.2...@borealisgroup/eslint-config-ts@1.1.3) (2019-12-10)
+
+**Note:** Version bump only for package @borealisgroup/eslint-config-ts
+
+
+
+
+
 ## [1.1.2](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-ts/compare/@borealisgroup/eslint-config-ts@1.1.1...@borealisgroup/eslint-config-ts@1.1.2) (2019-12-02)
 
 

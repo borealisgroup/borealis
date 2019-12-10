@@ -1,3 +1,3 @@
 module.exports = {
-  extends: '@borealisgroup/eslint-config',
+  extends: '@borealisgroup/eslint-config-ts',
 };

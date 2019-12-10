@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/theme",
-  "version": "1.8.1",
+  "version": "1.9.1",
   "description": "A default theme for every Borealis brand to use within styled components",
   "keywords": [],
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/theme#readme",
@@ -13,14 +13,15 @@
   },
   "license": "MIT",
   "files": [
-    "lib"
+    "dist"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn generate && rollup -c=../../../rollup.config.js",
-    "generate": "node src/generate.js"
+    "prebuild": "yarn clean",
+    "build": "rollup -c=../../../rollup.config.js",
+    "clean": "rimraf dist"
   },
   "publishConfig": {
     "access": "public"

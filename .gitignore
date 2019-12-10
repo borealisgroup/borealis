@@ -8,6 +8,7 @@ jspm_packages/
 /packages/*/node_modules
 /packages/*/LICENSE
 **/lib
+**/dist
 !**/cli*/lib
 /packages/test
 
@@ -96,7 +97,6 @@ Thumbs.db
 # misc
 .sass-cache
 connect.lock
-typings
 
 #storybook
 storybook-static/

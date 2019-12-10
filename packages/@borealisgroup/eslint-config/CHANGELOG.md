@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.4](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/compare/@borealisgroup/eslint-config@1.12.1...@borealisgroup/eslint-config@1.12.4) (2019-12-10)
+
+
+### Bug Fixes
+
+* import/extensions ([aefe76c](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/commit/aefe76c57434c6a4be79a0048e7f4d76c9d17878))
+
+
+
+## 1.12.3 (2019-12-02)
+
+
+### Bug Fixes
+
+* airbnb ([8d20d27](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/commit/8d20d275f2abca87920f552f81116e22181df52e))
+
+
+
+
+
 ## [1.12.1](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/compare/@borealisgroup/eslint-config@1.12.0...@borealisgroup/eslint-config@1.12.1) (2019-12-02)
 
 **Note:** Version bump only for package @borealisgroup/eslint-config

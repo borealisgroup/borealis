@@ -7,6 +7,7 @@
 /lib/util/unicode/is-combining-character.js
 __testfixtures__
 template
+node_modules
 # test.js
 # examples/
 # lib/
