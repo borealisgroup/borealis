@@ -4,9 +4,7 @@
     "packages/@borealisgroup/*"
   ],
   "scripts": {
-    "build": "yarn build:lerna && yarn build:rollup",
-    "build:lerna": "lerna run build --parallel --since",
-    "build:rollup": "lerna exec --parallel --since --ignore \"**/@(cli*|eslint*|i18n*|babel*)\" -- rollup -c=../../../rollup.config.js",
+    "build": "lerna run build --parallel --since",
     "build:storybook": "build-storybook",
     "clean": "rimraf packages/test/* packages/**/temp/*",
     "generate": "plop --plopfile ./scripts/generators/index.js",
@@ -62,6 +60,8 @@
     "@storybook/addon-links": "^5.2.8",
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
+    "@types/color": "^3.0.0",
+    "@types/styled-components": "^4.4.1",
     "babel-jest": "^24.9.0",
     "babel-plugin-add-react-displayname": "0.0.5",
     "babel-plugin-inline-json-import": "^0.3.2",

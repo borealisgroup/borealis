@@ -10,11 +10,13 @@ import { addDecorator, storiesOf } from '@storybook/react';
 import Color from 'color';
 import copy from 'copy-text-to-clipboard';
 import styled, { ThemeProvider } from 'styled-components';
-import borealis from './brands/borealis.json';
-import ecoplast from './brands/ecoplast.json';
-import lat from './brands/lat.json';
-import mtmPlastics from './brands/mtmPlastics.json';
-import rosier from './brands/rosier.json';
+import {
+  borealisTheme,
+  ecoplastTheme,
+  latTheme,
+  mtmPlasticsTheme,
+  rosierTheme,
+} from './themes';
 
 addDecorator(story => {
   const content = story();
@@ -24,7 +26,7 @@ addDecorator(story => {
   `;
 
   return (
-    <ThemeProvider theme={borealis}>
+    <ThemeProvider theme={borealisTheme}>
       <>
         <NotificationContainer />
         <SuperWrapper>{content}</SuperWrapper>
@@ -357,10 +359,14 @@ const displayValuesBrand = brand => (
 
 const themeStories = storiesOf('Theme', module);
 
-const brands = { borealis, lat, ecoplast, mtmPlastics, rosier };
+const brands = {
+  borealisTheme,
+  latTheme,
+  ecoplastTheme,
+  mtmPlasticsTheme,
+  rosierTheme,
+};
 Object.keys(brands).forEach(key => {
   const brand = brands[key];
   themeStories.add(key, () => displayValuesBrand(brand));
 });
-
-// themeStories.add('borealis', () => displayValuesBrand(borealis));

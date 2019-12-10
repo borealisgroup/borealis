@@ -97,7 +97,6 @@ Thumbs.db
 # misc
 .sass-cache
 connect.lock
-typings
 
 #storybook
 storybook-static/
