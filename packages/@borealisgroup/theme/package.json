@@ -15,12 +15,13 @@
   "files": [
     "lib"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn generate && rollup -c=../../../rollup.config.js",
-    "generate": "node src/generate.js"
+    "prebuild": "yarn clean",
+    "build": "rollup -c=../../../rollup.config.js",
+    "clean": "rimraf dist"
   },
   "publishConfig": {
     "access": "public"

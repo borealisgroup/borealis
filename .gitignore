@@ -8,6 +8,7 @@ jspm_packages/
 /packages/*/node_modules
 /packages/*/LICENSE
 **/lib
+**/dist
 !**/cli*/lib
 /packages/test
 
