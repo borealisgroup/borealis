@@ -99,6 +99,17 @@ module.exports = {
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
 
+    // https://github.com/benmosher/eslint-plugin-import/issues/1558
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        ts: 'never',
+        tsx: 'never',
+        js: 'never',
+        jsx: 'never',
+      },
+    ],
     'import/no-dynamic-require': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off', // Allow single Named-export
