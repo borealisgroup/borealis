@@ -1106,14 +1106,14 @@
   integrity sha512-4Th98KlMHr5+JkxfcoDT//6vY8vM+iSPrLNpHhRyLx2CFYi8e2RfqPLdpbnpo0Q5lQC5hNB79yes07zb02fvCw==
 
 "@borealisgroup/eslint-config-ts@file:packages/@borealisgroup/eslint-config-ts":
-  version "1.1.2"
+  version "1.1.3"
   dependencies:
-    "@borealisgroup/eslint-config" "^1.12.3"
+    "@borealisgroup/eslint-config" "^1.12.4"
     "@typescript-eslint/eslint-plugin" "^2.9.0"
     "@typescript-eslint/parser" "^2.9.0"
 
 "@borealisgroup/eslint-config@file:packages/@borealisgroup/eslint-config":
-  version "1.12.3"
+  version "1.12.4"
   dependencies:
     babel-eslint "^10.0.3"
     eslint-config-airbnb "^18.0.1"
@@ -13519,10 +13519,12 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-locize-editor@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-1.7.0.tgz#3c14abb93f6d7c4e197511221f8c4a3954e63502"
-  integrity sha512-KdxAlwViz3KjGDEH3WIgaaUDw8XS8GNPpUDNAXM/vnRUryJgkA3n6DrDAeKJ99nixlx7G7+SZ9FZx2ZV9mIv8w==
+locize-editor@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-2.2.2.tgz#f3529382535b3a680b7be51eaa86adb6a2e76651"
+  integrity sha512-geVXaA89vhfGTqzysA/EeLWRJEWBtdL/OoksiWmBFX2rUCmVrRN0Yb2sQhTvM84ZmQzxpGWTJvf1gzV3IpSGEg==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 locize-lastused@^1.1.0:
   version "1.1.1"
