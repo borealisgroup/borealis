@@ -1,48 +1,97 @@
 {
-  "name": "borealis-js",
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
-  "jsnext:main": "lib/index.es.js",
+  "private": true,
+  "workspaces": [
+    "packages/@borealisgroup/*"
+  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
-    "build-storybook": "build-storybook",
-    "build": "lerna run build --since && lerna exec --parallel --since --ignore \"**/theme\" --ignore \"**/eslint-config\" -- rollup -c=../../rollup.config.js",
-    "clean": "rm -rf node_modules",
+    "build": "lerna run build --parallel --since",
+    "build:storybook": "build-storybook",
+    "clean": "rimraf packages/test/* packages/**/temp/*",
     "generate": "plop --plopfile ./scripts/generators/index.js",
-    "lint": "lerna exec --parallel --since -- eslint . --ignore-pattern examples --ignore-pattern lib --ext .js,.jsx",
-    "release": "npm run lint && npm run build && lerna publish",
-    "storybook": "start-storybook -p 6007"
+    "graduate": "yarn release --conventional-graduate",
+    "lint": "yarn lint:js",
+    "lint:js": "eslint \"packages/@borealisgroup/**/src/**/*.{js,jsx,ts,tsx}\"",
+    "pre-release": "yarn release --conventional-prerelease",
+    "release": "yarn lint && yarn build && lerna publish --conventional-commits",
+    "start:cli": "node ./packages/@borealisgroup/cli/bin/cli.js create pok",
+    "storybook": "start-storybook -p 6007",
+    "test": "node scripts/test.js",
+    "test:pre": "yarn clean"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint",
+      "git add"
+    ]
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "invoke",
+      "Upgrader"
+    ],
+    "setupFiles": [
+      "<rootDir>/scripts/testSetup.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.js"
+    ]
   },
   "devDependencies": {
-    "@ant-design/colors": "^3.0.1",
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "@borealisgroup/eslint-config": "file:packages/eslint-config",
-    "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-info": "^5.1.9",
-    "@storybook/addon-knobs": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11",
-    "@storybook/addons": "^5.0.11",
-    "@storybook/react": "^5.0.11",
+    "@ant-design/colors": "^3.2.2",
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "7.7.4",
+    "@borealisgroup/eslint-config": "file:packages/@borealisgroup/eslint-config",
+    "@borealisgroup/eslint-config-ts": "file:packages/@borealisgroup/eslint-config-ts",
+    "@rollup/plugin-typescript": "^2.0.1",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-info": "^5.2.8",
+    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "@types/color": "^3.0.0",
+    "@types/styled-components": "^4.4.1",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-add-react-displayname": "0.0.5",
     "babel-plugin-inline-json-import": "^0.3.2",
-    "color": "^3.1.1",
-    "copy-text-to-clipboard": "^2.1.0",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.16.0",
-    "lerna": "^3.15.0",
-    "lerna-update-wizard": "^0.14.0",
+    "babel-plugin-styled-components": "1.10.6",
+    "color": "^3.1.2",
+    "conventional-changelog-cli": "^2.0.28",
+    "copy-text-to-clipboard": "^2.1.1",
+    "cross-env": "^6.0.3",
+    "env-cmd": "^10.0.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue-libs": "^4.0.0",
+    "jest": "^24.9.0",
+    "lerna": "^3.19.0",
+    "lerna-changelog": "^0.8.3",
+    "memfs": "^3.0.1",
     "npm-run-all": "^4.1.5",
-    "plop": "^2.3.0",
+    "plop": "^2.5.3",
     "prop-types": "^15.7.2",
     "react-notifications": "^1.4.3",
-    "rollup": "^1.11.0",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-includepaths": "^0.2.3",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "styled-components": "^4.2.0"
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.9",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "4.0.0",
+    "rollup-plugin-node-builtins": "2.1.2",
+    "rollup-plugin-node-globals": "1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "5.1.2",
+    "rollup-plugin-typescript2": "0.25.3",
+    "styled-components": "^4.4.1",
+    "typescript": "^3.7.3"
   }
 }

@@ -1,0 +1,43 @@
+{
+  "name": "@borealisgroup/eslint-config",
+  "version": "1.12.4",
+  "description": "ESLint config for JS linting.",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "prettier",
+    "prettier-config"
+  ],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config"
+  },
+  "license": "MIT",
+  "author": "zbeyens <ziad.beyens@borealisgroup.com>",
+  "main": "index.js",
+  "dependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-chai-friendly": "0.5.0",
+    "eslint-plugin-cypress": "2.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "eslint-plugin-simple-import-sort": "^5.0.0",
+    "prettier": "^1.19.1",
+    "prettier-eslint-cli": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
+}

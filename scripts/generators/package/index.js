@@ -46,11 +46,6 @@ module.exports = {
         ...add,
         path: '../../packages/{{name}}/__tests__/index.js',
       },
-      {
-        ...add,
-        path: '../../packages/{{name}}/package.json',
-        templateFile: './package/package.json.hbs',
-      },
     ];
 
     return actions;

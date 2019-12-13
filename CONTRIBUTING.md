@@ -1,111 +1,115 @@
 # Contributing
 
+- [Contributing](#contributing)
+  - [Development Guide](#development-guide)
+    - [Prerequisites](#prerequisites)
+    - [Initial Setup](#initial-setup)
+    - [Installing Dependencies](#installing-dependencies)
+    - [Remove Dependencies](#remove-dependencies)
+    - [Linking Sibling Packages](#linking-sibling-packages)
+    - [Create a new package](#create-a-new-package)
+  - [Patterns](#patterns)
+    - [Create a new pattern](#create-a-new-pattern)
+  - [Pull Requests](#pull-requests)
+    - [Commits](#commits)
+    - [PRs](#prs)
+  - [Release Guide](#release-guide)
+  - [Lerna](#lerna)
+
 Contributions are always welcome, no matter how large or small. Before contributing, please read the please read the
-[code of conduct](https://github.com/borealisgroup/borealis-js/master/CODE_OF_CONDUCT.md).
+[code of conduct](https://github.com/borealisgroup/borealis/master/CODE_OF_CONDUCT.md).
 
-## Packages
+## Development Guide
 
-Make sure that [lerna](https://github.com/lerna/lerna) is installed globally:
+### Prerequisites
 
-```bash
-npm install lerna -g
-```
+Please have the latest stable versions of the following on your machine:
 
-### Setup
+- node
+- yarn
 
-Clone the repository.
-
-```bash
-git clone https://github.com/borealisgroup/borealis-js
-cd borealis-js
-```
-
-Bootstrap the packages: it installs the dependencies of the packages and links any cross-dependencies
+### Initial Setup
 
 ```bash
-npm run bootstrap
+git clone https://github.com/borealisgroup/borealis.git
+cd borealis
+yarn
 ```
 
-[Hoisting](https://github.com/lerna/lerna/blob/master/doc/hoist.md) is basically doing that:
-> Common dependencies will be installed only to the top-level node_modules, and omitted from individual package node_modules.
+### Installing Dependencies
 
-### Add a new package
+```bash
+yarn workspace package1 add package2
+```
+
+Use `-W` to install for the **entire workspace**:
+
+```bash
+yarn add -D -W package1 package2
+```
+
+NOTE: devDependencies can always be pulled up to the root of a Lerna repo with
+
+```bash
+npx lerna link convert
+```
+
+### Remove Dependencies
+
+```bash
+yarn workspace package1 remove package2
+```
+
+### Linking Sibling Packages
+
+By specifying the version here, Yarn will install the local dependency that hasn’t been published to npm yet.
+
+```bash
+yarn workspace package1 add package2@0.1.0
+```
+
+### Create a new package
 
 Use our plop generator:
 
 ```bash
-npm run generate package
-```
-
-Once ready to be published for the first time:
-
-```bash
-cd /packages/<name>
-npm publish --access public
-```
-
-### devDependencies
-
-devDependencies should be added to the root `package.json`
-
-devDependencies can always be pulled up to the root of a Lerna repo with
-
-```bash
-lerna link convert
-```
-
-### Testing locally
-
-In the project you want to test the package, run:
-
-```bash
-npm install /absolute/path/to/package
-```
-
-and that yields this in your `package.json`:
-
-```json
-"dependencies": {
-  "viking": "file:../borealis-js/packages/<name>",
-},
-```
-
-### Publish existing packages
-
-Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, this command will lint, build and publish packages that have changed since the last release:
-
-```bash
-npm run release
+yarn generate package
 ```
 
 ## Patterns
 
-### Add a new pattern
-
-Using plop:
+### Create a new pattern
 
 ```bash
-npm run generate pattern
+yarn generate pattern
 ```
 
-## Commits
+## Pull Requests
 
-[Semantic commit messages](https://electronjs.org/docs/development/pull-requests#commit-message-guidelines)
+### Commits
 
-Common prefixes:
+[Semantic commit messages](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
 
-- `fix:` A bug fix
-- `feat:` A new feature
-- `docs:` Documentation changes
-- `test:` Adding missing tests or correcting existing tests
-- `build:` Changes that affect the build system
-- `ci:` Changes to our CI configuration files and scripts
-- `perf:` A code change that improves performance
-- `refactor:` A code change that neither fixes a bug nor adds a feature
-- `style:` Changes that do not affect the meaning of the code (linting)
-- `vendor:` Bumping a dependency like libchromiumcontent or node
+The following commits will automatically generate CHANGELOGs, to communicate intent to the consumers of your library:
 
-## Pull Request Process
+- `fix:` patches a bug
+- `feat:` introduces a new feature
+- `BREAKING CHANGE:` introduces a breaking API change
+
+Other commit types not mandated by the conventional commits specification, and have no implicit effect in semantic versioning, unless they include a BREAKING CHANGE:
+
+- `improvement:` improve a current implementation without adding a new feature or fixing a bug
+- `perf:` improves performance
+- `refactor:` refactoring
+- `style:` linting
+- `docs:` documentation changes
+- `vendor:` bumping a dependency
+- `test:` adding missing tests or correcting existing tests
+- `build:` changes that affect the build system
+- `ci:` changes to our CI configuration files and scripts
+- `chore:` for all the remaining cases: e.g. updating configuration; no production code change
+
+### PRs
 
 1. The prefix of the branch should be the name of the package or pattern to update.
 2. Ensure any install or build dependencies are removed before the end of the layer when doing a
@@ -117,6 +121,40 @@ Common prefixes:
 5. You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
-## More
+## Release Guide
 
-[Lerna commands](https://github.com/lerna/lerna)
+NOTE: The very first time you publish a scoped package you need to make sure that it's package.json contains the following:
+
+```json
+"publishConfig": {
+  "access": "public"
+}
+```
+
+Using eslint, babel and [lerna](https://github.com/lerna/lerna/tree/master/commands/publish) CLI, each release will lint, build and publish packages that have changed since the last release:
+
+**Prerelease**:
+
+```bash
+yarn pre-release
+```
+
+**Release**:
+
+```bash
+yarn release
+```
+
+**Graduate**:
+
+"Graduating" a package means bumping to the non-prerelease variant of a prerelease version
+eg. package-1@1.0.0-alpha.0 => package-1@0.1.0
+
+```bash
+yarn graduate
+```
+
+## Lerna
+
+- `lerna changed` - Show which packages have changed.
+- `lerna diff` - Show specifically what files have cause the packages to change.

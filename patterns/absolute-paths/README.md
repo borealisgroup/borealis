@@ -9,10 +9,11 @@ Absolute paths for imports
 ## Usage
 
 ### cross-env
+
 Install `cross-env` as a dev dependency
 
-```
-npm install --save-dev cross-env
+```bash
+yarn -D cross-env
 ```
 
 Add `cross-env NODE_PATH=src` in your `package.json`.
@@ -30,6 +31,7 @@ Add `--modulePaths=src` to the end of the test script in your `package.json`.
 ```
 
 ### VSCode path autocopmlete
+
 At the project root, create `jsconfig.json`:
 
 ```json
@@ -43,6 +45,7 @@ At the project root, create `jsconfig.json`:
 ```
 
 ### ESLint import resolver
+
 It is already implemented if you're using [@borealisgroup/eslint-config](https://www.npmjs.com/package/@borealisgroup/eslint-config). Otherwise, add this in `.eslintrc.js`:
 
 ```js

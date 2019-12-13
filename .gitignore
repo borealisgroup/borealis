@@ -1,5 +1,6 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+.history
 node_modules/
 
 # Dependency directories
@@ -7,6 +8,9 @@ jspm_packages/
 /packages/*/node_modules
 /packages/*/LICENSE
 **/lib
+**/dist
+!**/cli*/lib
+/packages/test
 
 # compiled output
 /dist
@@ -93,7 +97,6 @@ Thumbs.db
 # misc
 .sass-cache
 connect.lock
-typings
 
 #storybook
 storybook-static/
