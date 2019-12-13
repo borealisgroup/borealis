@@ -29,7 +29,7 @@
     "@vue/component-compiler-utils": "^3.0.0",
     "@vue/preload-webpack-plugin": "^1.1.0",
     "acorn": "^6.1.1",
-    "acorn-walk": "^6.1.1",
+    "acorn-walk": "^7.0.0",
     "address": "^1.1.0",
     "autoprefixer": "^9.5.1",
     "browserslist": "^4.6.0",
