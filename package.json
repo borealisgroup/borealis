@@ -1,7 +1,14 @@
 {
   "private": true,
   "workspaces": [
-    "packages/@borealisgroup/*"
+    "packages/@borealisgroup/components",
+    "packages/@borealisgroup/eslint-config",
+    "packages/@borealisgroup/eslint-config-ts",
+    "packages/@borealisgroup/eslint-config-vue",
+    "packages/@borealisgroup/i18n-dev",
+    "packages/@borealisgroup/i18n-prod",
+    "packages/@borealisgroup/stylelint-config",
+    "packages/@borealisgroup/theme"
   ],
   "scripts": {
     "build": "lerna run build --parallel --since",
