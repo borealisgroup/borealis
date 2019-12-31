@@ -57,7 +57,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.7.5",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@babel/preset-typescript": "7.7.4",
+    "@babel/preset-typescript": "7.7.7",
     "@borealisgroup/eslint-config": "file:packages/@borealisgroup/eslint-config",
     "@borealisgroup/eslint-config-ts": "file:packages/@borealisgroup/eslint-config-ts",
     "@rollup/plugin-typescript": "^2.0.1",
