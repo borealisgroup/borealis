@@ -9733,10 +9733,12 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-locize-editor@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-1.7.0.tgz#3c14abb93f6d7c4e197511221f8c4a3954e63502"
-  integrity sha512-KdxAlwViz3KjGDEH3WIgaaUDw8XS8GNPpUDNAXM/vnRUryJgkA3n6DrDAeKJ99nixlx7G7+SZ9FZx2ZV9mIv8w==
+locize-editor@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-3.0.0.tgz#38ea9f322b3db6396a0a859a5649a5284195c567"
+  integrity sha512-lerqELIq6cpq5WwFHPNkdxNO320NYu6LnpecMmVRcLkNxi3I+fUFmuN+sZ0cVDrB8QnujePZ2GWUjJTvuVagSQ==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 locize-lastused@^1.1.0:
   version "1.1.1"
