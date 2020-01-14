@@ -23,6 +23,10 @@
   "bin": {
     "bor": "bin/cli.js"
   },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "test:pre": "yarn clean"
+  },
   "dependencies": {
     "@borealisgroup/cli-config": "^0.2.1",
     "@borealisgroup/cli-shared-utils": "^0.2.1",

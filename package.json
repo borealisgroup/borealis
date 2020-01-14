@@ -21,9 +21,7 @@
     "pre-release": "yarn release --conventional-prerelease",
     "release": "yarn lint && yarn build && lerna publish --conventional-commits",
     "start:cli": "node ./packages/@borealisgroup/cli/bin/cli.js create pok",
-    "storybook": "start-storybook -p 6007",
-    "test": "node scripts/test.js",
-    "test:pre": "yarn clean"
+    "storybook": "start-storybook -p 6007"
   },
   "husky": {
     "hooks": {

@@ -1,0 +1,33 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
+    },
+    {
+      "name": "components",
+      "path": "./packages/@borealisgroup/components"
+    },
+    {
+      "name": "eslint-config",
+      "path": "./packages/@borealisgroup/eslint-config"
+    },
+    {
+      "name": "eslint-config-ts",
+      "path": "./packages/@borealisgroup/eslint-config-ts"
+    },
+    {
+      "name": "theme",
+      "path": "./packages/@borealisgroup/theme"
+    }
+  ],
+  "settings": {
+    "jest.disabledWorkspaceFolders": [
+      "root",
+      "components",
+      "eslint-config",
+      "eslint-config-ts",
+      "theme"
+    ]
+  }
+}
