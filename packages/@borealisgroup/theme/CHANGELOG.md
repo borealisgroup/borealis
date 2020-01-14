@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/theme/compare/@borealisgroup/theme@1.9.1...@borealisgroup/theme@1.9.2) (2020-01-14)
+
+**Note:** Version bump only for package @borealisgroup/theme
+
+
+
+
+
+
 ## [1.9.1](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/theme/compare/@borealisgroup/theme@1.9.0...@borealisgroup/theme@1.9.1) (2019-12-10)
 
 
