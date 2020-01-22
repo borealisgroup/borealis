@@ -67,7 +67,7 @@
     "@storybook/react": "^5.2.8",
     "@types/color": "^3.0.1",
     "@types/styled-components": "^4.4.2",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^25.1.0",
     "babel-plugin-add-react-displayname": "0.0.5",
     "babel-plugin-inline-json-import": "^0.3.2",
     "babel-plugin-styled-components": "1.10.6",
