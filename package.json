@@ -74,7 +74,7 @@
     "color": "^3.1.2",
     "conventional-changelog-cli": "^2.0.31",
     "copy-text-to-clipboard": "^2.1.1",
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "env-cmd": "^10.0.1",
     "eslint": "^6.8.0",
     "eslint-plugin-vue-libs": "^4.0.0",
