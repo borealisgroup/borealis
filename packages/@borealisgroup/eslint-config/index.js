@@ -183,5 +183,11 @@ module.exports = {
         'import/order': ['error', { 'newlines-between': 'never' }],
       },
     },
+    {
+      files: ['**/*.test.*', '**/*.spec.*'],
+      env: {
+        jest: true,
+      },
+    },
   ],
 };
