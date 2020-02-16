@@ -21,7 +21,7 @@
   "main": "index.js",
   "dependencies": {
     "@borealisgroup/eslint-config": "^1.12.6",
-    "eslint-plugin-vue": "6.1.2"
+    "eslint-plugin-vue": "6.2.0"
   },
   "publishConfig": {
     "access": "public"
