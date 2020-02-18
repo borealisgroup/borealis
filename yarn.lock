@@ -922,7 +922,7 @@
     eslint-config-airbnb "^18.0.1"
     eslint-config-prettier "^6.10.0"
     eslint-plugin-chai-friendly "0.5.0"
-    eslint-plugin-cypress "2.8.1"
+    eslint-plugin-cypress "2.10.2"
     eslint-plugin-import "^2.20.1"
     eslint-plugin-jest "^23.6.0"
     eslint-plugin-jsx-a11y "^6.2.3"
@@ -6362,10 +6362,10 @@ eslint-plugin-chai-friendly@0.5.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-chai-friendly/-/eslint-plugin-chai-friendly-0.5.0.tgz#42418c35c4a83584f3b98449b7b8f4f56205a0a3"
   integrity sha512-Pxe6z8C9fP0pn2X2nGFU/b3GBOCM/5FVus1hsMwJsXP3R7RiXFl7g0ksJbsc0GxiLyidTW4mEFk77qsNn7Tk7g==
 
-eslint-plugin-cypress@2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-cypress/-/eslint-plugin-cypress-2.8.1.tgz#981a0f3658b40de430bcf05cabc96b396487c91f"
-  integrity sha512-jDpcP+MmjmqQO/x3bwIXgp4cl7Q66RYS5/IsuOQP4Qo2sEqE3DI8tTxBQ1EhnV5qEDd2Z2TYHR+5vYI6oCN4uw==
+eslint-plugin-cypress@2.10.2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-cypress/-/eslint-plugin-cypress-2.10.2.tgz#f856de3130e67d1bd5efc200cacb908031a6393a"
+  integrity sha512-5rmgvbIoPhE6NUuRPeTTpxSCWkV0XYLzvfXFZIy3u5TJaf6g9ov55GM42DbONi0a6VpXNuzkluedWz5sxPYUNg==
   dependencies:
     globals "^11.12.0"
 
