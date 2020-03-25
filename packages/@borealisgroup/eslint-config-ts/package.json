@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/eslint-config-ts",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "ESLint config for TS linting.",
   "keywords": [
     "eslint",
@@ -20,7 +20,7 @@
   "author": "zbeyens <ziad.beyens@borealisgroup.com>",
   "main": "index.js",
   "dependencies": {
-    "@borealisgroup/eslint-config": "^1.13.0",
+    "@borealisgroup/eslint-config": "^1.13.1",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0"
   },
