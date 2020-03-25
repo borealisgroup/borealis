@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/stylelint-config/compare/@borealisgroup/stylelint-config@1.8.2...@borealisgroup/stylelint-config@1.8.3) (2020-03-25)
+
+**Note:** Version bump only for package @borealisgroup/stylelint-config
+
+
+
+
+
+
 ## [1.8.2](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/stylelint-config/compare/@borealisgroup/stylelint-config@1.8.1...@borealisgroup/stylelint-config@1.8.2) (2020-01-14)
 
 **Note:** Version bump only for package @borealisgroup/stylelint-config

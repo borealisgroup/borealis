@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/compare/@borealisgroup/eslint-config@1.12.6...@borealisgroup/eslint-config@1.13.0) (2020-03-25)
+
+
+### Features
+
+* **eslint:** no-unused-expression with optional chaining ([526a547](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/commit/526a5476c5a58c4477d460cc2871661d91704ce1))
+
+
+
+
+
+
 ## [1.12.6](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config/compare/@borealisgroup/eslint-config@1.12.5...@borealisgroup/eslint-config@1.12.6) (2020-02-04)
 
 **Note:** Version bump only for package @borealisgroup/eslint-config

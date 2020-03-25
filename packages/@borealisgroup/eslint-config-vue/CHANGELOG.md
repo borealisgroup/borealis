@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-vue/compare/@borealisgroup/eslint-config-vue@1.1.5...@borealisgroup/eslint-config-vue@1.1.6) (2020-03-25)
+
+**Note:** Version bump only for package @borealisgroup/eslint-config-vue
+
+
+
+
+
+
 ## [1.1.5](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-vue/compare/@borealisgroup/eslint-config-vue@1.1.4...@borealisgroup/eslint-config-vue@1.1.5) (2020-02-04)
 
 **Note:** Version bump only for package @borealisgroup/eslint-config-vue
