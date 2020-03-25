@@ -1,10 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "./dist",
-    "outDir": "./dist",
+    "outDir": "./dist"
   },
   "exclude": ["**/*.stories.*", "**/*.test.*", "dist"]
 }
