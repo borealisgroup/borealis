@@ -12,7 +12,10 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off', // annoying to force return type
     '@typescript-eslint/no-useless-constructor': 'error',
-    '@typescript-eslint/no-unused-expressions': ['error'],
+    '@typescript-eslint/no-unused-expressions': [
+      2,
+      { allowTernary: true, allowShortCircuit: true },
+    ],
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
