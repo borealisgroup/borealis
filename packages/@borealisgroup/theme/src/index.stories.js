@@ -18,7 +18,7 @@ import {
   rosierTheme,
 } from './themes';
 
-addDecorator(story => {
+addDecorator((story) => {
   const content = story();
 
   const SuperWrapper = styled.div`
@@ -88,8 +88,10 @@ const copyToClipBoard = (toCopy, event) => {
 const VisualDocumentation = (demoProperty, css, value) => (
   <Card>
     <DemoPropertyWrapper>{demoProperty}</DemoPropertyWrapper>
-    <Paragraph onClick={event => copyToClipBoard(css, event)}>{css}</Paragraph>
-    <Paragraph onClick={event => copyToClipBoard(value, event)}>
+    <Paragraph onClick={(event) => copyToClipBoard(css, event)}>
+      {css}
+    </Paragraph>
+    <Paragraph onClick={(event) => copyToClipBoard(value, event)}>
       {value}
     </Paragraph>
   </Card>
@@ -131,10 +133,13 @@ const ColorDocumentation = (value, name, index) => {
     <Background backgroundColor={value}>
       <div>
         <p>{fullName}</p>
-        <Form display="block" onSubmit={event => copyToClipBoard(css, event)}>
+        <Form display="block" onSubmit={(event) => copyToClipBoard(css, event)}>
           <Button>Copy code</Button>
         </Form>
-        <Form display="block" onSubmit={event => copyToClipBoard(value, event)}>
+        <Form
+          display="block"
+          onSubmit={(event) => copyToClipBoard(value, event)}
+        >
           <Button>Copy value</Button>
         </Form>
       </div>
@@ -142,9 +147,9 @@ const ColorDocumentation = (value, name, index) => {
   );
 };
 
-const getColors = colors => {
+const getColors = (colors) => {
   const rearangedColors = {};
-  Object.keys(colors).forEach(key => {
+  Object.keys(colors).forEach((key) => {
     const color = colors[key];
     if (typeof color === 'string') {
       if (!rearangedColors.SINGLE) rearangedColors.SINGLE = {};
@@ -153,11 +158,11 @@ const getColors = colors => {
       rearangedColors[key] = color;
     }
   });
-  const singleColors = Object.keys(rearangedColors.SINGLE).map(key => {
+  const singleColors = Object.keys(rearangedColors.SINGLE).map((key) => {
     const value = rearangedColors.SINGLE[key];
     return ColorDocumentation(value, key, '');
   });
-  const listColors = Object.keys(rearangedColors).map(key => {
+  const listColors = Object.keys(rearangedColors).map((key) => {
     if (key !== 'SINGLE') {
       const colorCategory = rearangedColors[key];
       if (Array.isArray(colorCategory)) {
@@ -204,7 +209,7 @@ const boxDefaultProps = {
   marginBottom: '10px',
 };
 
-const getBorders = borders => {
+const getBorders = (borders) => {
   const documentation = borders.map((border, index) =>
     VisualDocumentation(
       <Box {...boxDefaultProps} border={border} />,
@@ -215,7 +220,7 @@ const getBorders = borders => {
   return WrappingDocumentation('borders', documentation);
 };
 
-const getBorderRadiuses = borderRadiuses => {
+const getBorderRadiuses = (borderRadiuses) => {
   const documentation = borderRadiuses.map((borderRadius, index) =>
     VisualDocumentation(
       <Box
@@ -230,9 +235,9 @@ const getBorderRadiuses = borderRadiuses => {
   return WrappingDocumentation('borderRadiuses', documentation);
 };
 
-const getGradients = gradients => {
+const getGradients = (gradients) => {
   if (gradients) {
-    const documentation = Object.keys(gradients).map(key => {
+    const documentation = Object.keys(gradients).map((key) => {
       const gradient = gradients[key];
       return VisualDocumentation(
         <Box {...boxDefaultProps} backgroundImage={gradient} />,
@@ -245,7 +250,7 @@ const getGradients = gradients => {
   return null;
 };
 
-const getShadows = shadows => {
+const getShadows = (shadows) => {
   const documentation = shadows.map((shadow, index) =>
     VisualDocumentation(
       <Box {...boxDefaultProps} width="70%" boxShadow={shadow} />,
@@ -256,7 +261,7 @@ const getShadows = shadows => {
   return WrappingDocumentation('shadows', documentation);
 };
 
-const getSpace = spaces => {
+const getSpace = (spaces) => {
   const documentation = spaces.map((space, index) =>
     VisualDocumentation(
       <Box {...boxDefaultProps} height="400px" border={`${space}px solid`} />,
@@ -304,7 +309,7 @@ const getTypographicObject = (data, property, name, extra, cssName) => {
   return WrappingDocumentation(name, documentation);
 };
 
-const displayValuesBrand = brand => (
+const displayValuesBrand = (brand) => (
   <>
     {getColors(brand.colors)}
     {getGradients(brand.gradients)}
@@ -366,7 +371,7 @@ const brands = {
   mtmPlasticsTheme,
   rosierTheme,
 };
-Object.keys(brands).forEach(key => {
+Object.keys(brands).forEach((key) => {
   const brand = brands[key];
   themeStories.add(key, () => displayValuesBrand(brand));
 });

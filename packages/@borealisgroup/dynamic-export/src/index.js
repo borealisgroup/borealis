@@ -6,9 +6,9 @@
  * 	- name = remove the extension part (everything after the first '.')
  * 	- export the file with this name
  */
-export const getModules = req => {
+export const getModules = (req) => {
   const modules = {};
-  req.keys().forEach(key => {
+  req.keys().forEach((key) => {
     let name = key.replace(/.*\//, '');
     name = name.replace(/\.(.*)$/, '');
     modules[name] = req(key).default;

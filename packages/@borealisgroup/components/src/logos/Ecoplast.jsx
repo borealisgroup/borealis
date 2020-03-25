@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SvgComponent = props => (
+const SvgComponent = (props) => (
   <svg viewBox="0 0 676 137" {...props}>
     <text
       transform="translate(139.547 108.512)"

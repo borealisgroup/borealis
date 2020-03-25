@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rosier = props => (
+const Rosier = (props) => (
   <svg
     id="prefix__Layer_1"
     x={0}

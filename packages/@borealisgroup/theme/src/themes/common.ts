@@ -27,17 +27,17 @@ const borders = [
   '32px solid',
 ] as const;
 
-const fontSizesFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+const fontSizesFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map((minFactor) =>
   getResponsiveSize(breakPoints, minFactor, 16)
 );
 
-const lineHeightsFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map(minFactor =>
+const lineHeightsFluid = [0.8, 1, 1.25, 1.6, 2.4, 3, 6].map((minFactor) =>
   getResponsiveSize(breakPoints, minFactor, 19)
 );
 
 const fontSizes = [12, 14, 16, 20, 24, 32, 40, 48] as const;
 
-const lineHeights = fontSizes.map(fontSize => fontSize * 1.5);
+const lineHeights = fontSizes.map((fontSize) => fontSize * 1.5);
 
 export const commonTheme = {
   borders,
