@@ -936,17 +936,10 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
-  version "7.8.3"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.3.tgz#0811944f73a6c926bb2ad35e918dcc1bfab279f1"
-  integrity sha512-fVHx1rzEmwB130VTkLnxR+HmxcTjGzH12LYQcFFoBwakMd3aOMD4OsRN7tGG/UOYE2ektgFrS8uACAoRk1CY0w==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.8.4":
-  version "7.8.7"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.7.tgz#8fefce9802db54881ba59f90bb28719b4996324d"
-  integrity sha512-+AATMUFppJDw6aiR5NVPHqIQBlV/Pj8wY/EZH+lmvRdUo9xBaz/rF3alAwFJQavvKfeOlPE7oaaDHVbcySbCsg==
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4":
+  version "7.9.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
+  integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -3038,15 +3031,6 @@
     "@typescript-eslint/typescript-estree" "1.13.0"
     eslint-scope "^4.0.0"
 
-"@typescript-eslint/experimental-utils@2.19.2":
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-2.19.2.tgz#4611d44cf0f0cb460c26aa7676fc0a787281e233"
-  integrity sha512-B88QuwT1wMJR750YvTJBNjMZwmiPpbmKYLm1yI7PCc3x0NariqPwqaPsoJRwU9DmUi0cd9dkhz1IqEnwfD+P1A==
-  dependencies:
-    "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/typescript-estree" "2.19.2"
-    eslint-scope "^5.0.0"
-
 "@typescript-eslint/experimental-utils@2.25.0", "@typescript-eslint/experimental-utils@^2.5.0":
   version "2.25.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-2.25.0.tgz#13691c4fe368bd377b1e5b1e4ad660b220bf7714"
@@ -3084,19 +3068,6 @@
   dependencies:
     lodash.unescape "4.0.1"
     semver "5.5.0"
-
-"@typescript-eslint/typescript-estree@2.19.2":
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.19.2.tgz#67485b00172f400474d243c6c0be27581a579350"
-  integrity sha512-Xu/qa0MDk6upQWqE4Qy2X16Xg8Vi32tQS2PR0AvnT/ZYS4YGDvtn2MStOh5y8Zy2mg4NuL06KUHlvCh95j9C6Q==
-  dependencies:
-    debug "^4.1.1"
-    eslint-visitor-keys "^1.1.0"
-    glob "^7.1.6"
-    is-glob "^4.0.1"
-    lodash "^4.17.15"
-    semver "^6.3.0"
-    tsutils "^3.17.1"
 
 "@typescript-eslint/typescript-estree@2.25.0":
   version "2.25.0"
@@ -10062,10 +10033,12 @@ locize-editor@^1.7.0:
   resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-1.7.0.tgz#3c14abb93f6d7c4e197511221f8c4a3954e63502"
   integrity sha512-KdxAlwViz3KjGDEH3WIgaaUDw8XS8GNPpUDNAXM/vnRUryJgkA3n6DrDAeKJ99nixlx7G7+SZ9FZx2ZV9mIv8w==
 
-locize-lastused@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/locize-lastused/-/locize-lastused-1.1.1.tgz#ca83a7386dcd74ee0cae07c8ef579cb24f345b9b"
-  integrity sha512-zq310En1BWRRjWaYdTScUwCWUcvLJuOUqFpN5LBQoCccWg9CQB5gDg/D+b8YjR2GkofRGy08C+4LGpqcGqfkHA==
+locize-lastused@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/locize-lastused/-/locize-lastused-2.0.0.tgz#0aa7f0d534f2cb06d6ffe006ebca5c86e8104489"
+  integrity sha512-6DTL7BjaO4sf9TqIxPAEAv3G+DgOoZ5DSbS8nlzAfOH4ERntHkYFvsgQHOeDLmRo1QlrsBIyy3AaEuTDVYi5OQ==
+  dependencies:
+    "@babel/runtime" "^7.7.7"
 
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
