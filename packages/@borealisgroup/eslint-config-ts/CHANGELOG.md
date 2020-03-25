@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-ts/compare/@borealisgroup/eslint-config-ts@1.2.3...@borealisgroup/eslint-config-ts@1.3.0) (2020-03-25)
+
+
+### Features
+
+* @typescript-eslint/no-unused-expressions allowTernary and allowShortCircuit ([31d4f65](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-ts/commit/31d4f65095d13f00a8010bf7072af06717724a18))
+
+
+
+
+
 # [1.2.0](https://github.com/borealisgroup/borealis/tree/master/packages/@borealisgroup/eslint-config-ts/compare/@borealisgroup/eslint-config-ts@1.1.5...@borealisgroup/eslint-config-ts@1.2.0) (2020-03-25)
 
 
