@@ -23,6 +23,7 @@ module.exports = {
     webextensions: false,
   },
   plugins: [
+    'babel',
     'chai-friendly',
     'cypress',
     'react',
@@ -90,6 +91,8 @@ module.exports = {
       'error',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
     ],
+    'no-unused-expressions': 'off',
+    'babel/no-unused-expressions': 'error',
     'prefer-promise-reject-errors': 'off',
     'lines-between-class-members': [
       'error',
