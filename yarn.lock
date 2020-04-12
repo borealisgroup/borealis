@@ -2214,9 +2214,9 @@
     warning "^3.0.0"
 
 "@rollup/plugin-typescript@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-typescript/-/plugin-typescript-4.1.0.tgz#34de6838f6e056e4253a20aaad4d30e01e91fbb1"
-  integrity sha512-Lbjwn7Ue2s7VMSlQp6lGw5cTWlDzWpNfyQs2SIBDKaqoypOsXa1e45O2onFS5G6K73SoQqONkr0/6yupNpe4Vw==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-typescript/-/plugin-typescript-4.1.1.tgz#bcb38ca4d89a35da2238a6f1136af460a1b2cb09"
+  integrity sha512-KYZCn1Iw9hZWkeEPqPs5YjlmvSjR7UdezVca8z0e8rm/29wU24UD9Y4IZHhnc9tm749hzsgBTiOUxA85gfShEQ==
   dependencies:
     "@rollup/pluginutils" "^3.0.1"
     resolve "^1.14.1"
