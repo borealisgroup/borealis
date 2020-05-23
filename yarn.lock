@@ -13911,10 +13911,10 @@ rollup-plugin-node-resolve@^5.2.0:
     resolve "^1.11.1"
     rollup-pluginutils "^2.8.1"
 
-rollup-plugin-terser@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-6.0.0.tgz#011e0bd6bd80eaa087d62bb29a3620366ed13983"
-  integrity sha512-kuag2AY1irhO7l32orp5kS6KKdLZaI9J+HeWHA6cVanlx+m3QrEykyQqqsl5D4tLBFGkw364xvL3Ytl0stdySg==
+rollup-plugin-terser@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-6.0.1.tgz#aebdcc83a3b61e307944861ad2e8e2362b89b992"
+  integrity sha512-XUPB2wwtgQV0A1eq4HXavfkOYL8MqX2ghU3uxvjRQYbUo0QEE3Tjupk7d7hNd1Yfm91xrpQHlbnVI01sf2s3bA==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     jest-worker "^26.0.0"
