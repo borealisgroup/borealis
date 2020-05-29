@@ -57,9 +57,9 @@ export const commonTheme = {
     '0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)',
   ] as const,
   colors: {
-    black: '#000' as '#000',
-    white: '#fff' as '#fff',
-    transparent: 'transparent' as 'transparent',
+    black: '#000' as const,
+    white: '#fff' as const,
+    transparent: 'transparent' as const,
     blacks: [
       'rgba(0, 0, 0, 0.80)',
       'rgba(0, 0, 0, 0.65)',

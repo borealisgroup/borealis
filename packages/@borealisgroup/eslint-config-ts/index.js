@@ -10,7 +10,8 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off', // annoying to force return type
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-unused-expressions': [
       2,
