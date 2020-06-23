@@ -58,7 +58,7 @@
     "@babel/preset-typescript": "7.10.1",
     "@borealisgroup/eslint-config": "file:packages/@borealisgroup/eslint-config",
     "@borealisgroup/eslint-config-ts": "file:packages/@borealisgroup/eslint-config-ts",
-    "@rollup/plugin-typescript": "^4.1.2",
+    "@rollup/plugin-typescript": "^5.0.0",
     "@storybook/addon-actions": "^5.3.10",
     "@storybook/addon-info": "^5.3.10",
     "@storybook/addon-knobs": "^5.3.10",
