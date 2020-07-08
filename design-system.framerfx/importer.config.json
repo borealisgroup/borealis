@@ -1,0 +1,26 @@
+{
+    "mode": "typescript",
+    "packageName": "../packages/components",
+    "rootFiles": [
+        "../packages/components/dist/index.d.ts"
+    ],
+    "additionalImports": [],
+    "out": "code/",
+    "components": {
+        "BorealisLogo": {
+            "ignore": false
+        },
+        "EcoplastLogo": {
+            "ignore": true
+        },
+        "LATLogo": {
+            "ignore": true
+        },
+        "MtmPlasticsLogo": {
+            "ignore": true
+        },
+        "RosierLogo": {
+            "ignore": true
+        }
+    }
+}

@@ -38,6 +38,10 @@ From here, you can continue modifying the existing
 any of the components in the [`production code`](/packages/components),
 they will automatically get updated in Framer too.
 
+#### Component Importer
+
+See [component-importer](https://github.com/framer/component-importer).
+
 #### Publishing
 
 1. From the terminal, run:

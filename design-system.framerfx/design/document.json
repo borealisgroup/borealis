@@ -455,19 +455,19 @@
             "aspectRatio" : null,
             "bottom" : null,
             "centerAnchorX" : 0.5,
-            "centerAnchorY" : 0.14285714285714285,
+            "centerAnchorY" : 0.50183150183150182,
             "clip" : true,
-            "codeComponentIdentifier" : ".\/BorealisLogoCode.tsx_BorealisLogoCode",
+            "codeComponentIdentifier" : ".\/BorealisLogo.tsx_BorealisLogo",
             "codeComponentPackageVersion" : "1.71.0",
             "codeComponentProps" : {
               "showBrand" : true,
               "showLogo" : true,
-              "showSlogan" : true
+              "showSlogan" : false
             },
             "codeOverrideEnabled" : false,
             "constraintsLocked" : false,
             "duplicatedFrom" : [
-              "fEXRxgPj1"
+              "UwEviqnN3"
             ],
             "exportOptions" : [
 
@@ -480,11 +480,11 @@
             "fillImagePixelWidth" : null,
             "fillImageResize" : "fill",
             "fillType" : "color",
-            "height" : 200,
+            "height" : 50,
             "heightType" : 0,
-            "id" : "zHPjLNXjz",
-            "intrinsicHeight" : null,
-            "intrinsicWidth" : null,
+            "id" : "mHYO3ADzr",
+            "intrinsicHeight" : 50,
+            "intrinsicWidth" : 150,
             "left" : null,
             "locked" : false,
             "name" : null,
@@ -501,9 +501,9 @@
             "radiusTopRight" : 0,
             "right" : null,
             "rotation" : 0,
-            "top" : 28,
+            "top" : null,
             "visible" : true,
-            "width" : 200,
+            "width" : 150,
             "widthType" : 0
           }
         ],
@@ -8126,6 +8126,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:64px;letter-spacing:-1px;line-height:1.2;font-weight:700\"><span data-text=\"true\">Display<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 76,
+                      "width" : 218
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8216,6 +8225,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:40px;letter-spacing:-1px;line-height:1.2;font-weight:700\"><span data-text=\"true\">Heading 1<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 48,
+                      "width" : 184
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8306,6 +8324,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:24px;letter-spacing:0px;line-height:1.2;font-weight:700\"><span data-text=\"true\">Heading 2<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 28,
+                      "width" : 117
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8396,6 +8423,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:16px;letter-spacing:0px;line-height:1.2;font-weight:700\"><span data-text=\"true\">Heading 3<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 19,
+                      "width" : 78
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8486,6 +8522,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:20px;letter-spacing:0px;line-height:1.2;font-weight:400\"><span data-text=\"true\">Lead<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 24,
+                      "width" : 46
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8576,6 +8621,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-f69732ff-3858-4d7e-a918-e92879e5d6bf, rgb(0, 92, 254)) \/* {&quot;name&quot;:&quot;Primary&quot;} *\/;font-size:16px;letter-spacing:0px;line-height:1.3;font-weight:700\"><span data-text=\"true\">Link<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 20,
+                      "width" : 34
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8666,6 +8720,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-30f9a7fa-de7c-4aee-a7b8-79cdd74c6221, rgb(19, 19, 22)) \/* {&quot;name&quot;:&quot;Darker&quot;} *\/;font-size:16px;letter-spacing:0px;line-height:1.3;font-weight:400\"><span data-text=\"true\">Body<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 20,
+                      "width" : 39
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8756,6 +8819,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:13px;letter-spacing:0.5px;line-height:1.2;font-weight:700\"><span data-text=\"true\">LABEL<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 15,
+                      "width" : 46
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -8846,6 +8918,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div class='DraftEditor-alignLeft'><div data-offset-key=\"773l0-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"773l0-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Medium&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-655be689-744d-4b94-af37-d052b01faead, rgb(59, 59, 104)) \/* {&quot;name&quot;:&quot;Dark&quot;} *\/;font-size:12px;letter-spacing:0px;line-height:1.2;font-weight:500\"><span data-text=\"true\">Caption<\/span><\/span><\/div><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 14,
+                      "width" : 45
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
@@ -9031,6 +9112,15 @@
                   "type" : "unstyled"
                 }
               ],
+              "cached" : {
+                "html" : "<div data-offset-key=\"739fl-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"739fl-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-f69732ff-3858-4d7e-a918-e92879e5d6bf, rgb(0, 92, 254)) \/* {&quot;name&quot;:&quot;Primary&quot;} *\/;font-size:29px;letter-spacing:0px;line-height:1.2;font-weight:700\"><span data-text=\"true\">Text<\/span><\/span><\/div>",
+                "os" : "macos 10_15 framerx",
+                "size" : {
+                  "height" : 34,
+                  "width" : 58
+                },
+                "width" : 0
+              },
               "entityMap" : {
 
               }
@@ -9223,6 +9313,15 @@
                       "type" : "unstyled"
                     }
                   ],
+                  "cached" : {
+                    "html" : "<div data-offset-key=\"739fl-0-0\" class=\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\"><span data-offset-key=\"739fl-0-0\" style=\"tab-size:4;user-select:none;font-family:&quot;HelveticaNeue-Bold&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:var(--token-f69732ff-3858-4d7e-a918-e92879e5d6bf, rgb(0, 92, 254)) \/* {&quot;name&quot;:&quot;Primary&quot;} *\/;font-size:24px;letter-spacing:0px;line-height:1.2;font-weight:700\"><span data-text=\"true\">Colors<\/span><\/span><\/div>",
+                    "os" : "macos 10_15 framerx",
+                    "size" : {
+                      "height" : 28,
+                      "width" : 77
+                    },
+                    "width" : 0
+                  },
                   "entityMap" : {
 
                   }
