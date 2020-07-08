@@ -1,0 +1,30 @@
+{
+  "name": "@borealisgroup/eslint-config-vue",
+  "version": "1.1.11",
+  "description": "ESLint config for Vue JS linting.",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "prettier",
+    "prettier-config"
+  ],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/eslint-config-vue#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/eslint-config-vue"
+  },
+  "license": "MIT",
+  "author": "zbeyens <ziad.beyens@borealisgroup.com>",
+  "main": "index.js",
+  "dependencies": {
+    "@borealisgroup/eslint-config": "^1.13.5",
+    "eslint-plugin-vue": "6.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
+}

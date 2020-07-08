@@ -1,0 +1,35 @@
+{
+  "name": "@borealisgroup/components",
+  "version": "1.8.6",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/components#readme",
+  "bugs": {
+    "url": "https://github.com/borealisgroup/borealis/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borealisgroup/borealis/tree/master/packages/components"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "rollup -c=../../rollup.config.js",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "styled-components": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
+}

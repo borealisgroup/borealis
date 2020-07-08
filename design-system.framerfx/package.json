@@ -1,0 +1,32 @@
+{
+	"license": "MIT",
+	"main": "dist/index.js",
+	"devDependencies": {
+		"@types/react": "^16.8",
+		"framer": "1.2.5"
+	},
+	"peerDependencies": {
+		"framer": "^1",
+		"react": "^16.8"
+	},
+	"framer": {
+		"displayName": "Borealis UI"
+	},
+	"author": "Ziad Beyens",
+	"dependencies": {
+		"@borealisgroup/components": "*",
+		"@framer/benjamin.icon-generator": "^1.21.0",
+		"@framer/benjamin.input": "^1.5.0",
+		"@framer/fhur.office-ui-fabric": "^1.5.0",
+		"@framer/framer.base": "^1.1.0",
+		"@framer/framer.default": "^1.71.0",
+		"@framer/ismael.google-maps": "^2.2.0",
+		"@framer/jordanframer.font-files": "^1.17.0",
+		"@framer/krijn.loading-indicators": "^1.5.0",
+		"@framer/mikejohnson.material-icons": "^1.3.0",
+		"@framer/steveruizok.education": "^1.207.0",
+		"@framer/suleiman.ant-design-components-v4": "^1.7.0"
+	},
+	"name": "borealis-ui",
+	"version": "1.0.0"
+}

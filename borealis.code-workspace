@@ -6,19 +6,19 @@
     },
     {
       "name": "components",
-      "path": "./packages/@borealisgroup/components"
+      "path": "./packages/components"
     },
     {
       "name": "eslint-config",
-      "path": "./packages/@borealisgroup/eslint-config"
+      "path": "./packages/eslint-config"
     },
     {
       "name": "eslint-config-ts",
-      "path": "./packages/@borealisgroup/eslint-config-ts"
+      "path": "./packages/eslint-config-ts"
     },
     {
       "name": "theme",
-      "path": "./packages/@borealisgroup/theme"
+      "path": "./packages/theme"
     }
   ],
   "settings": {

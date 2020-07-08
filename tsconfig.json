@@ -1,17 +1,14 @@
 {
+  "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "jsx": "react",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "target": "esnext",
-    "noEmit": true,
-    "noImplicitAny": true,
-    "removeComments": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "strict": true,
-    "suppressImplicitAnyIndexErrors": true
+    "baseUrl": "."
   },
-  "exclude": ["node_modules", "**/dist/**/*"]
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/dist",
+    "**/*.stories.*",
+    "**/*template*"
+  ],
+  "include": ["typings"]
 }

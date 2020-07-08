@@ -5,9 +5,9 @@
     - [Prerequisites](#prerequisites)
     - [Initial Setup](#initial-setup)
     - [Installing Dependencies](#installing-dependencies)
-    - [Remove Dependencies](#remove-dependencies)
     - [Linking Sibling Packages](#linking-sibling-packages)
     - [Create a new package](#create-a-new-package)
+    - [Framer X](#framer-x)
   - [Patterns](#patterns)
     - [Create a new pattern](#create-a-new-pattern)
   - [Pull Requests](#pull-requests)
@@ -39,25 +39,13 @@ yarn
 ### Installing Dependencies
 
 ```bash
-yarn workspace package1 add package2
+yarn workspace <package1> add <package2>
 ```
 
 Use `-W` to install for the **entire workspace**:
 
 ```bash
-yarn add -D -W package1 package2
-```
-
-NOTE: devDependencies can always be pulled up to the root of a Lerna repo with
-
-```bash
-npx lerna link convert
-```
-
-### Remove Dependencies
-
-```bash
-yarn workspace package1 remove package2
+yarn add -D -W <package>
 ```
 
 ### Linking Sibling Packages
@@ -65,7 +53,7 @@ yarn workspace package1 remove package2
 By specifying the version here, Yarn will install the local dependency that hasn’t been published to npm yet.
 
 ```bash
-yarn workspace package1 add package2@0.1.0
+yarn workspace <package1> add <package2@0.1.0>
 ```
 
 ### Create a new package
@@ -75,6 +63,10 @@ Use our plop generator:
 ```bash
 yarn generate package
 ```
+
+### Framer X
+
+See [framer-cli](https://www.npmjs.com/package/framer-cli).
 
 ## Patterns
 
@@ -125,7 +117,7 @@ Other commit types not mandated by the conventional commits specification, and h
 
 NOTE: The very first time you publish a scoped package you need to make sure that it's package.json contains the following:
 
-```json
+```
 "publishConfig": {
   "access": "public"
 }

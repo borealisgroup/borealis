@@ -9,7 +9,7 @@ This is a polyglot monorepo containing reusable packages, apps and patterns.
 - 🐠 Babel — Compiles next-gen JavaScript
 - 📦 Rollup — Next-generation ES module bundler
 - 📖 Storybook 5
-- 🛠️ cli — WIP
+- 🌈 Framer X — The prototyping tool for teams
 
 <!--
 - ⚛️ Create React App 3
@@ -27,6 +27,10 @@ Lerna also provides high-level commands to optimize the management of multiple p
 ## 📦 Packages
 
 In order to improve our development practices and standards we released various packages. If you find any of the packages useful you can easily import them via Node Package Manager (npm).
+
+## 🌈 Framer X
+
+
 
 ## 📚 Patterns
 

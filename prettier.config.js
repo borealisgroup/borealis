@@ -1,1 +1,1 @@
-module.exports = require('./packages/@borealisgroup/eslint-config/prettier.config');
+module.exports = require('./packages/eslint-config/prettier.config');
