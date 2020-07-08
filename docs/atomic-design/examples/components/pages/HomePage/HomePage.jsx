@@ -1,6 +1,6 @@
-import React from 'react';
-import { MainTemplate } from 'components/templates/MainTemplate';
+import * as React from 'react';
 import { Header } from 'components/organisms/home/Header';
+import { MainTemplate } from 'components/templates/MainTemplate';
 
 const HomePage = () => <MainTemplate header={<Header />} />;
 

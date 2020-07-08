@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export const LATLogo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 273.9 91" {...props}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 export const EcoplastLogo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 676 137" {...props}>

@@ -783,14 +783,14 @@
         "fillImagePixelWidth" : null,
         "fillImageResize" : "fill",
         "fillType" : "color",
-        "framePreset" : "iPhone_414_896",
+        "framePreset" : null,
         "guidesX" : [
 
         ],
         "guidesY" : [
 
         ],
-        "height" : 896,
+        "height" : 273,
         "heightType" : 0,
         "id" : "KNSEAqZ9Y",
         "intrinsicHeight" : null,
@@ -798,7 +798,7 @@
         "isExternalMaster" : null,
         "isMaster" : false,
         "isTarget" : false,
-        "left" : 1090,
+        "left" : 1116,
         "locked" : false,
         "name" : "Logo",
         "opacity" : 1,
@@ -815,7 +815,7 @@
         "replicaInfo" : null,
         "right" : null,
         "rotation" : 0,
-        "top" : 370,
+        "top" : 356,
         "visible" : true,
         "width" : 414,
         "widthType" : 0

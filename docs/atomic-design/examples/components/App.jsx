@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import * as React from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from 'theme/defaultTheme';
 import GlobalStyle from 'theme/globalStyle';

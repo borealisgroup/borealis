@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-bitwise */
 import 'react-notifications/lib/notifications.css';
-import React from 'react';
+import * as React from 'react';
 import {
   NotificationContainer,
   NotificationManager,

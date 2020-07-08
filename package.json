@@ -10,12 +10,10 @@
     "commit-version": "git add . && git commit -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "framer:build": "framer build ./design-system.framerfx",
     "framer:install": "cd ./design-system.framerfx && yarn install",
-    "framer:link": "yarn link-all && cd design-system.framerfx && yarn link --link-folder ~/.links @borealisgroup/components",
     "framer:list-teams": "framer list-teams",
     "framer:publish": "framer publish ./design-system.framerfx",
     "generate": "plop --plopfile ./scripts/generators/index.js",
     "graduate": "yarn release --conventional-graduate",
-    "link-all": "cd packages/components && yarn link --link-folder ~/.links",
     "lint": "eslint \"packages/*/src/**/*.{js,jsx,ts,tsx}\"",
     "postversionup": "yarn commit-version && git push",
     "pre-release": "yarn release --conventional-prerelease",
@@ -29,7 +27,6 @@
     "test:covwa": "yarn test:cov --watchAll",
     "test:w": "yarn test --watch",
     "test:wa": "yarn test --watchAll",
-    "unlink-all": "lerna exec --parallel --bail=false yarn unlink",
     "versionup": "lerna version --no-git-tag-version"
   },
   "devDependencies": {

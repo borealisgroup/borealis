@@ -15,7 +15,6 @@
 	},
 	"author": "Ziad Beyens",
 	"dependencies": {
-		"@borealisgroup/components": "*",
 		"@framer/benjamin.icon-generator": "^1.21.0",
 		"@framer/benjamin.input": "^1.5.0",
 		"@framer/edoardo.web-ui-kit": "^1.1.0",

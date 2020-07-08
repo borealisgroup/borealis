@@ -25,7 +25,7 @@ This package is related to [i18n-dev](https://github.com/borealisgroup/borealis/
 - Go to the `src/i18n` folder and create a new component named `I18nProd.jsx` with the following code
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import i18nConfig from '@borealisgroup/i18n-prod';
 import { I18nextProvider } from 'react-i18next';
 

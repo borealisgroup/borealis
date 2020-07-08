@@ -21,7 +21,7 @@ This package is just a config file so read the [i18next react](https://react.i18
 
 ```jsx
 /* src/i18n/I18ndev.jsx */
-import React from 'react';
+import * as React from 'react';
 import i18nConfig from '@borealisgroup/i18n-dev';
 import { I18nextProvider } from 'react-i18next';
 
@@ -71,7 +71,7 @@ export default App;
 ```jsx
 /* code snippet from the example app */
 /* ANY React COMPONENT WHICH IS A CHILD OF i18n */
-import React from 'react';
+import * as React from 'react';
 ...
 import { useTranslation } from 'react-i18next';
 
