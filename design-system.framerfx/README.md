@@ -1,3 +1,3 @@
-# Borealis UI
+# Test UI
 
-Borealis UI design system for building interactive prototypes.
+Test UI design system for building interactive prototypes.

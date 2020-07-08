@@ -9,13 +9,7 @@
     "declaration": false,
     "resolveJsonModule": true,
     "noImplicitAny": false,
-    "isolatedModules": false,
-    "baseUrl": ".",
-    "paths": {
-      "@borealisgroup/components": [
-        "../packages/components/src"
-      ]
-    }
+    "isolatedModules": false
   },
   "exclude": ["node_modules", "build"]
 }

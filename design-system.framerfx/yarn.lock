@@ -169,11 +169,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@borealisgroup/components@*":
-  version "1.13.6"
-  resolved "https://registry.yarnpkg.com/@borealisgroup/components/-/components-1.13.6.tgz#f237b2e6dc07bcc45fbd485a0d9d9683cffcb7f5"
-  integrity sha512-8aIAAFoAL+ZBa/4TU2t/2rOmvpVkmY/k0j81R6QJmvDaMKVK01s+h3JKqI8G2izvn/r2yxrMbkv2zvDRxDlHFA==
-
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
@@ -361,6 +356,11 @@
   version "1.1.0"
   resolved "https://registry.framer.com/@framer/edoardo.web-ui-kit/-/@framer/edoardo.web-ui-kit-1.1.0.tgz#56fa16a49df31db8a53ad8b2469b0c27d64cd2ed"
   integrity sha512-jycIinG+0OLIGcu2uxB3HRNDh6DrQ4h6fsArkPFF6L32H++AyBE60Yxh2H95TA8IYdTisc9ZZ9AqfAmxeSq9kg==
+
+"@framer/fhur.data-stack@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.framer.com/@framer/fhur.data-stack/-/@framer/fhur.data-stack-1.12.0.tgz#74592df5974e363c9b6fdbabd38b2bec86deaf7d"
+  integrity sha512-2+MBRtokym2R+tGsUrWqyV1e04RfeqIc45FdjBjxBimhJ/np9EKJGrM+7P06NWr3wmtbZNNlsicplfGDizYvxg==
 
 "@framer/fhur.office-ui-fabric@^1.5.0":
   version "1.5.0"

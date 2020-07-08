@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { BorealisLogo, BorealisLogoProps } from '@borealisgroup/components';
 import { addPropertyControls, ControlType } from 'framer';
+import {
+  BorealisLogo,
+  BorealisLogoProps,
+} from '../../packages/components/src/logos/BorealisLogo';
 
 export const BorealisLogoCode = (props: BorealisLogoProps) => (
   <BorealisLogo {...props} />
