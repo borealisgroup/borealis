@@ -21,7 +21,6 @@
     "pre-release": "yarn release --conventional-prerelease",
     "prebuild": "yarn clean",
     "release": "yarn lint && yarn build && lerna publish",
-    "release:ci": "lerna publish from-package",
     "release:open": "open https://github.com/udecode/slate-plugins/releases",
     "storybook": "start-storybook -p 6007",
     "test": "jest",
