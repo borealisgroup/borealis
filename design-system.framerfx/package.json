@@ -10,13 +10,15 @@
 		"react": "^16.8"
 	},
 	"framer": {
-		"displayName": "Borealis UI"
+		"displayName": "Borealis UI",
+		"id": "aea39b1c-32cd-4bd9-8d2b-2acc99788621"
 	},
 	"author": "Ziad Beyens",
 	"dependencies": {
 		"@borealisgroup/components": "*",
 		"@framer/benjamin.icon-generator": "^1.21.0",
 		"@framer/benjamin.input": "^1.5.0",
+		"@framer/edoardo.web-ui-kit": "^1.1.0",
 		"@framer/fhur.office-ui-fabric": "^1.5.0",
 		"@framer/framer.base": "^1.1.0",
 		"@framer/framer.default": "^1.71.0",
@@ -24,6 +26,7 @@
 		"@framer/jordanframer.font-files": "^1.17.0",
 		"@framer/krijn.loading-indicators": "^1.5.0",
 		"@framer/mikejohnson.material-icons": "^1.3.0",
+		"@framer/panr.button": "^1.6.0",
 		"@framer/steveruizok.education": "^1.207.0",
 		"@framer/suleiman.ant-design-components-v4": "^1.7.0"
 	},

@@ -169,6 +169,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@borealisgroup/components@*":
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/@borealisgroup/components/-/components-1.13.6.tgz#f237b2e6dc07bcc45fbd485a0d9d9683cffcb7f5"
+  integrity sha512-8aIAAFoAL+ZBa/4TU2t/2rOmvpVkmY/k0j81R6QJmvDaMKVK01s+h3JKqI8G2izvn/r2yxrMbkv2zvDRxDlHFA==
+
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
@@ -352,6 +357,11 @@
   dependencies:
     styled-components "^4.0.3"
 
+"@framer/edoardo.web-ui-kit@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.framer.com/@framer/edoardo.web-ui-kit/-/@framer/edoardo.web-ui-kit-1.1.0.tgz#56fa16a49df31db8a53ad8b2469b0c27d64cd2ed"
+  integrity sha512-jycIinG+0OLIGcu2uxB3HRNDh6DrQ4h6fsArkPFF6L32H++AyBE60Yxh2H95TA8IYdTisc9ZZ9AqfAmxeSq9kg==
+
 "@framer/fhur.office-ui-fabric@^1.5.0":
   version "1.5.0"
   resolved "https://registry.framer.com/@framer/fhur.office-ui-fabric/-/@framer/fhur.office-ui-fabric-1.5.0.tgz#df09cc3c8c28050eb40e0d620e3af2dd59e20f8b"
@@ -402,6 +412,13 @@
   integrity sha1-hEC4tzGRh3MCi35tFZUcxRml/Sg=
   dependencies:
     styled-components "^3.4.2"
+
+"@framer/panr.button@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.framer.com/@framer/panr.button/-/@framer/panr.button-1.6.0.tgz#3a01112c6b0d94ed3f1545c98a2164b144d48953"
+  integrity sha1-OgERLGsNlO0/FUXJiiFksUTUiVM=
+  dependencies:
+    styled-components "^3.4.5"
 
 "@framer/steveruizok.education@^1.207.0":
   version "1.207.0"
@@ -2210,7 +2227,7 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-styled-components@^3.4.2:
+styled-components@^3.4.2, styled-components@^3.4.5:
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.4.10.tgz#9a654c50ea2b516c36ade57ddcfa296bf85c96e1"
   integrity sha512-TA8ip8LoILgmSAFd3r326pKtXytUUGu5YWuqZcOQVwVVwB6XqUMn4MHW2IuYJ/HAD81jLrdQed8YWfLSG1LX4Q==
