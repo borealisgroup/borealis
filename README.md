@@ -1,6 +1,6 @@
 # borealis
 
-This is a polyglot monorepo containing reusable packages, apps and patterns.
+This is a monorepo containing reusable packages, apps and patterns.
 
 ## 🚀 Included
 
@@ -8,7 +8,7 @@ This is a polyglot monorepo containing reusable packages, apps and patterns.
 - 🐉 Lerna 3 — The Monorepo manager
 - 🐠 Babel — Compiles next-gen JavaScript
 - 📦 Rollup — Next-generation ES module bundler
-- 📖 Storybook 5
+- 📖 Storybook 5 – The developer playground
 - 🌈 Framer X — The prototyping tool for teams
 
 <!--
@@ -20,21 +20,32 @@ This is a polyglot monorepo containing reusable packages, apps and patterns.
 
 ## 🚄 Monorepo
 
-[Lerna](https://lerna.js.org) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) give us the ability to build libraries and apps in a single repo (a.k.a. Monorepo) without forcing us to publish to NPM until we are ready. This makes it faster to iterate locally when building components that depend on each other.
+[Lerna](https://lerna.js.org) and
+[Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) give us
+the ability to build libraries and apps in a single repo (a.k.a.
+Monorepo) without forcing us to publish to NPM until we are ready. This
+makes it faster to iterate locally when building components that depend
+on each other.
 
-Lerna also provides high-level commands to optimize the management of multiple packages. For example, with one Lerna command, you can iterate through all the packages, running a series of operations (such as linting, testing, and building) on each package.
+Lerna also provides high-level commands to optimize the management of
+multiple packages. For example, with one Lerna command, you can iterate
+through all the packages, running a series of operations (such as
+linting, testing, and building) on each package.
+[Read our monorepo guide](/docs/monorepo.md).
 
-## 📦 Packages
-
-In order to improve our development practices and standards we released various packages. If you find any of the packages useful you can easily import them via Node Package Manager (npm).
+In order to improve our development practices and standards we released
+various packages. If you find any of the packages useful you can easily
+import them via npm.
 
 ## 🌈 Framer X
 
-
+Framer X is suite of tools that connects our design system to production
+code. [Read our Framer guide](/docs/framer.md).
 
 ## 📚 Patterns
 
-We provide a list of patterns including examples. There is a clear separation of concerns to make multiple patterns usable altogether.
+We provide a list of patterns including examples. There is a clear
+separation of concerns to make multiple patterns usable altogether.
 
 <!-- - ⚛️ React — JavaScript library for user interfaces
 - 💅 styled-components — CSS in JS elegance
@@ -43,29 +54,19 @@ We provide a list of patterns including examples. There is a clear separation of
 
 ## 👏 Contributing
 
-We welcome contributions to this repository!
+We welcome contributions to this repository! Read our
+[pull request guide](/docs/pull_request.md) and
+[our release guide](docs/release.md).
 
-- 📥 Pull requests and 🌟 Stars are always welcome.
-- Read our [contributing guide](CONTRIBUTING.md) to get started.
+### Install
 
-### Development scripts
+Get started by cloning and installing the packages:
 
-Useful scripts include:
-
-#### `yarn install`
-
-> Installs package dependencies and links packages together - using lerna
-
-#### `yarn lint`
-
-> boolean check if code conforms to linting rules - uses remark & eslint
-
-- `yarn lint:js` - will check js
-- `yarn lint:js --fix` - will automatically fix js
-
-#### `yarn release`
-
-> Push a release to git and npm will ask for version in interactive mode - using lerna.
+```bash
+git clone https://github.com/borealisgroup/borealis.git
+cd borealis
+yarn
+```
 
 ## License
 
