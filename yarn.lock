@@ -11527,10 +11527,12 @@ locize-editor@^1.7.0:
   resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-1.7.0.tgz#3c14abb93f6d7c4e197511221f8c4a3954e63502"
   integrity sha512-KdxAlwViz3KjGDEH3WIgaaUDw8XS8GNPpUDNAXM/vnRUryJgkA3n6DrDAeKJ99nixlx7G7+SZ9FZx2ZV9mIv8w==
 
-locize-lastused@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/locize-lastused/-/locize-lastused-1.1.1.tgz#ca83a7386dcd74ee0cae07c8ef579cb24f345b9b"
-  integrity sha512-zq310En1BWRRjWaYdTScUwCWUcvLJuOUqFpN5LBQoCccWg9CQB5gDg/D+b8YjR2GkofRGy08C+4LGpqcGqfkHA==
+locize-lastused@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/locize-lastused/-/locize-lastused-3.0.9.tgz#8081b268305cf1f2583ce6a22024fa8018e95967"
+  integrity sha512-t7pOIQ6QuqqYi9iSSSyMKf8+v6KtNB+ApnqAgY6cFCM8CvggFHrkN3IZlO3BCh1cgC40n1W7MyCD54ftrYhRmw==
+  dependencies:
+    node-fetch "2.6.0"
 
 lock-verify@^2.0.2:
   version "2.2.0"
@@ -12454,7 +12456,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@^2.3.0, node-fetch@^2.5.0, node-fetch@^2.6.0:
+node-fetch@2.6.0, node-fetch@^2.3.0, node-fetch@^2.5.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
