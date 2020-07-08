@@ -11,7 +11,7 @@
 	},
 	"framer": {
 		"displayName": "Borealis UI",
-		"id": "aea39b1c-32cd-4bd9-8d2b-2acc99788621"
+		"id": "c43d27a1-666a-4125-9325-88dcb844b279"
 	},
 	"author": "Ziad Beyens",
 	"dependencies": {
@@ -26,7 +26,6 @@
 		"@framer/jordanframer.font-files": "^1.17.0",
 		"@framer/krijn.loading-indicators": "^1.5.0",
 		"@framer/mikejohnson.material-icons": "^1.3.0",
-		"@framer/panr.button": "^1.6.0",
 		"@framer/steveruizok.education": "^1.207.0",
 		"@framer/suleiman.ant-design-components-v4": "^1.7.0"
 	},
