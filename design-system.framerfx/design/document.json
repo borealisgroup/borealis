@@ -222,6 +222,9 @@
               "name" : "Template\/Colors",
               "right" : null,
               "top" : 1347
+            },
+            "@framer\/steveruizok.education-vK6xsDKRe-L1s7IOvp6" : {
+              "fillColor" : "var(--token-361e655c-60d0-4446-8bed-9496c8b3c6c8, rgb(209, 0, 0)) \/* {\"name\":\"red\",\"packageIdentifier\":\"borealis-ui\"} *\/"
             }
           }
         },
@@ -454,7 +457,7 @@
             "__class" : "CodeComponentNode",
             "aspectRatio" : null,
             "bottom" : null,
-            "centerAnchorX" : 0.5,
+            "centerAnchorX" : 0.49516908212560384,
             "centerAnchorY" : 0.50183150183150182,
             "clip" : true,
             "codeComponentIdentifier" : ".\/BorealisLogo.tsx_BorealisLogo",
@@ -485,7 +488,7 @@
             "id" : "mHYO3ADzr",
             "intrinsicHeight" : 50,
             "intrinsicWidth" : 150,
-            "left" : null,
+            "left" : 130,
             "locked" : false,
             "name" : null,
             "opacity" : 1,
