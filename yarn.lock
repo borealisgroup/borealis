@@ -1003,10 +1003,10 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  version "7.10.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.4.tgz#a6724f1a6b8d2f6ea5236dbfe58c7d7ea9c5eb99"
-  integrity sha512-UpTN5yUJr9b4EX2CnGNWIvER7Ab83ibv0pcvvHc4UOdrBI5jb8bj+32cCwPX6xu0mt2daFNjYhoi+X7beH0RSw==
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+  version "7.10.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.5.tgz#303d8bd440ecd5a491eae6117fd3367698674c5c"
+  integrity sha512-otddXKhdNn7d0ptoFRHtMLa8LqDxLYwTjB4nYgM1yy5N6gU/MUf8zqyyLltCH3yAVitBzmwK4us+DD0l/MauAg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -11564,10 +11564,12 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-locize-editor@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-1.7.0.tgz#3c14abb93f6d7c4e197511221f8c4a3954e63502"
-  integrity sha512-KdxAlwViz3KjGDEH3WIgaaUDw8XS8GNPpUDNAXM/vnRUryJgkA3n6DrDAeKJ99nixlx7G7+SZ9FZx2ZV9mIv8w==
+locize-editor@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/locize-editor/-/locize-editor-3.0.2.tgz#c3f7a91b2c17a2d7f74cf39a47bbd5a27663ef64"
+  integrity sha512-UJA1aonOE3kvInmC1DFSajxNEJkRib7RSlPMdpurln/JzA4WPhmMrcUXyVccqM+yoPz6o2XDRX7AnorZskZZrw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 locize-lastused@^1.1.0:
   version "1.1.1"
