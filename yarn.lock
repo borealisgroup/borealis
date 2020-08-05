@@ -9396,10 +9396,12 @@ husky@4.0.10:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
-i18next-browser-languagedetector@^3.0.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-3.1.1.tgz#1a0c236d4339476cc3632da60ff947bbc2e3ba3c"
-  integrity sha512-JBgFWijjI1t6as4WgGvDdX4GLJPZwC/SMHzLQQ3ef7XaJsEkomlXFqXifKvOVJg09Hj2BVWe6strDdIF4J/0ng==
+i18next-browser-languagedetector@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/i18next-browser-languagedetector/-/i18next-browser-languagedetector-5.0.1.tgz#02a18f57f79b5de06279feb9a84c80ea4dde7da9"
+  integrity sha512-7K4A6DJ2rNz3Yd835Y493UgkzUxgpGsCeIMKLGkt6Ps0cbgSaJ+LdATFNFA+ujp2brmsUM9BeDThXKhabXUbUw==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
 
 i18next-locize-backend@^1.9.0:
   version "1.9.0"
