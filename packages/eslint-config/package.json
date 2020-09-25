@@ -1,6 +1,6 @@
 {
   "name": "@borealisgroup/eslint-config",
-  "version": "1.13.6",
+  "version": "1.13.7",
   "description": "ESLint config for JS linting.",
   "keywords": [
     "eslint",
