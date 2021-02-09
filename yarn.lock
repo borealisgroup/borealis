@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@ant-design/colors@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-4.0.1.tgz#6edab85c6d1ba51accaed4ae64fa934dd5ebb498"
-  integrity sha512-7+kmbxCHw0l7JAKCxtUdaR7WxdeGX5i51EAds1eYfSPHi5f+RbIl45tglnCnjPlrFY5o0sekda6BrTDphjajUQ==
+"@ant-design/colors@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-5.1.0.tgz#7bd7096c2d34c401a4473c8344f275f3a11db161"
+  integrity sha512-aESiQccf57mO/+td+RlFy3OGhv72Z49AvwmqJK3nfuH8NdVjfpxBSAamnAMp/7yYBZkdQTUvpCI4qfG9eLsJmw==
   dependencies:
-    tinycolor2 "^1.4.1"
+    "@ctrl/tinycolor" "^3.3.1"
 
 "@babel/cli@^7.10.4":
   version "7.10.4"
@@ -1143,15 +1143,15 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@borealisgroup/eslint-config-ts@file:packages/eslint-config-ts":
-  version "1.13.6"
+  version "1.13.7"
   dependencies:
-    "@borealisgroup/eslint-config" "^1.13.6"
+    "@borealisgroup/eslint-config" "^1.13.7"
     "@typescript-eslint/eslint-plugin" "^3.10.1"
     "@typescript-eslint/parser" "^3.10.1"
     eslint-import-resolver-typescript "^2.0.0"
 
 "@borealisgroup/eslint-config@file:packages/eslint-config":
-  version "1.13.6"
+  version "1.13.7"
   dependencies:
     babel-eslint "^10.1.0"
     eslint-config-airbnb "18.2.0"
@@ -1177,6 +1177,11 @@
   dependencies:
     exec-sh "^0.3.2"
     minimist "^1.2.0"
+
+"@ctrl/tinycolor@^3.3.1":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.3.4.tgz#59691edd031eedc431bda1bdf601257c06289a40"
+  integrity sha512-8vmPV/nIULFDWsnJalQJDqFLC2uTPx6A/ASA2t27QGp+7oXnbWWXCe0uV8xasIH2rGbI/XoB2vmkdP/94WvMrw==
 
 "@egoist/vue-to-react@^1.1.0":
   version "1.1.0"
