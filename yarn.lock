@@ -1143,15 +1143,15 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@borealisgroup/eslint-config-ts@file:packages/eslint-config-ts":
-  version "1.13.6"
+  version "1.13.7"
   dependencies:
-    "@borealisgroup/eslint-config" "^1.13.6"
+    "@borealisgroup/eslint-config" "^1.13.7"
     "@typescript-eslint/eslint-plugin" "^3.10.1"
     "@typescript-eslint/parser" "^3.10.1"
     eslint-import-resolver-typescript "^2.0.0"
 
 "@borealisgroup/eslint-config@file:packages/eslint-config":
-  version "1.13.6"
+  version "1.13.7"
   dependencies:
     babel-eslint "^10.1.0"
     eslint-config-airbnb "18.2.0"
@@ -12155,9 +12155,9 @@ mem@^1.1.0:
     mimic-fn "^1.0.0"
 
 memfs@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/memfs/-/memfs-3.2.0.tgz#f9438e622b5acd1daa8a4ae160c496fdd1325b26"
-  integrity sha512-f/xxz2TpdKv6uDn6GtHee8ivFyxwxmPuXatBb1FBwxYNuVpbM3k/Y1Z+vC0mH/dIXXrukYfe3qe5J32Dfjg93A==
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/memfs/-/memfs-3.2.1.tgz#12301801a14eb3daa9f7491aa0ff09ffec519dd0"
+  integrity sha512-Y5vcpQzWTime4fBTr/fEnxXUxEYUgKbDlty1WX0gaa4ae14I6KmvK1S8HtXOX0elKAE6ENZJctkGtbTFYcRIUw==
   dependencies:
     fs-monkey "1.0.1"
 
