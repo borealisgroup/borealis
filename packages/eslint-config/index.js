@@ -5,14 +5,14 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:mdx/recommended',
     'plugin:promise/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2018,
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   env: {
     browser: true,
@@ -20,7 +20,7 @@ module.exports = {
     es6: true,
     jest: true,
     node: true,
-    webextensions: false,
+    webextensions: false
   },
   plugins: [
     'babel',
@@ -31,23 +31,23 @@ module.exports = {
     'promise',
     'jest',
     'simple-import-sort',
-    'prettier',
+    'prettier'
   ],
   settings: {
     'import/resolver': {
       node: {
-        moduleDirectory: ['node_modules', 'src'],
-      },
+        moduleDirectory: ['node_modules', 'src']
+      }
     },
-    react: { version: 'detect' },
+    react: { version: 'detect' }
   },
   rules: {
     'prettier/prettier': [
       1,
       {
         trailingComma: 'es5',
-        singleQuote: true,
-      },
+        singleQuote: true
+      }
     ],
 
     'babel/no-unused-expressions': 'error',
@@ -62,8 +62,8 @@ module.exports = {
         ts: 'never',
         tsx: 'never',
         js: 'never',
-        jsx: 'never',
-      },
+        jsx: 'never'
+      }
     ],
     'import/no-cycle': 'off',
     'import/no-dynamic-require': 'off',
@@ -72,34 +72,8 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/prefer-default-export': 'off', // Allow single Named-export
     'import/order': ['off', { 'newlines-between': 'always' }],
-    'simple-import-sort/sort': [
-      'error',
-      {
-        groups: [
-          [
-            // import "./setup": Side effect imports.
-            '^\\u0000',
-            // Node.js builtins.`
-            '^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)',
-            // import react from "react": Packages.
-            '^react',
-            // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
-            '^@?\\w',
-            // import a from "/a": Absolute imports and other imports.
-            // Anything that does not start with a dot.
-            '^(assets|components|config|hooks|plugins|store|styled|themes|utils|contexts)(/.*|$)',
-            // import a from "./a": Relative imports.
-            // Parent imports. Put `..` last.
-            '^\\.\\.(?!/?$)',
-            '^\\.\\./?$',
-            // Other relative imports. Put same-folder imports and `.` last.
-            '^\\./(?=.*/)(?!/?$)',
-            '^\\.(?!/?$)',
-            '^\\./?$',
-          ],
-        ],
-      },
-    ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
 
     'global-require': 'off',
 
@@ -118,7 +92,7 @@ module.exports = {
     'lines-between-class-members': [
       'error',
       'always',
-      { exceptAfterSingleLine: true },
+      { exceptAfterSingleLine: true }
     ],
 
     'mdx/no-unescaped-entities': 'off',
@@ -132,8 +106,8 @@ module.exports = {
     'no-console': [
       'error',
       {
-        allow: ['info', 'warn', 'error'],
-      },
+        allow: ['info', 'warn', 'error']
+      }
     ],
     'no-nested-ternary': 'off', // short
     'no-new': 'off', // exceptions
@@ -145,24 +119,24 @@ module.exports = {
       {
         selector: 'ForInStatement',
         message:
-          'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+          'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.'
       },
       {
         selector: 'LabeledStatement',
         message:
-          'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+          'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.'
       },
       {
         selector: 'WithStatement',
         message:
-          '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
-      },
+          '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.'
+      }
     ], // for..of OK (break)
     'no-return-assign': 'off', // short
     'no-underscore-dangle': 'off',
     'no-unused-vars': [
       'error',
-      { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: true }
     ],
     'no-unused-expressions': 'off',
 
@@ -175,12 +149,12 @@ module.exports = {
     'react/button-has-type': [
       'error',
       {
-        reset: true,
-      },
+        reset: true
+      }
     ],
     'react/jsx-filename-extension': [
       'error',
-      { extensions: ['.js', '.jsx', '.ts', '.tsx', 'mdx'] },
+      { extensions: ['.js', '.jsx', '.ts', '.tsx', 'mdx'] }
     ],
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
@@ -188,37 +162,39 @@ module.exports = {
     'react/require-default-props': 'off',
 
     'react-hooks/exhaustive-deps': 'warn',
-    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/rules-of-hooks': 'error'
   },
   overrides: [
     {
       files: 'server/**/*.js',
       env: { node: true },
       rules: {
-        'simple-import-sort/sort': 'off',
-        'import/order': ['error', { 'newlines-between': 'never' }],
-      },
+        'simple-import-sort/import': 'off',
+        'simple-import-sort/export': 'off',
+        'import/order': ['error', { 'newlines-between': 'never' }]
+      }
     },
     {
       files: ['**/*.test.*', '**/*.spec.*'],
       env: {
-        jest: true,
-      },
+        jest: true
+      }
     },
     {
       files: '**/*.stories.tsx',
       rules: {
         // just for showing the code in addon-docs
-        'react-hooks/rules-of-hooks': 'off',
-      },
+        'react-hooks/rules-of-hooks': 'off'
+      }
     },
     {
       files: '**/*.mdx',
       rules: {
         'prettier/prettier': 'off',
-        'simple-import-sort/sort': 'off',
-        'import/order': ['error', { 'newlines-between': 'never' }],
-      },
-    },
-  ],
+        'simple-import-sort/import': 'off',
+        'simple-import-sort/export': 'off',
+        'import/order': ['error', { 'newlines-between': 'never' }]
+      }
+    }
+  ]
 };
