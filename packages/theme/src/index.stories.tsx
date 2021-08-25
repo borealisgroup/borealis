@@ -86,8 +86,10 @@ const VisualDocumentation = (
 ) => (
   <Card>
     <DemoPropertyWrapper>{demoProperty}</DemoPropertyWrapper>
-    <Paragraph onClick={event => copyToClipBoard(css, event)}>{css}</Paragraph>
-    <Paragraph onClick={event => copyToClipBoard(value, event)}>
+    <Paragraph onClick={(event) => copyToClipBoard(css, event)}>
+      {css}
+    </Paragraph>
+    <Paragraph onClick={(event) => copyToClipBoard(value, event)}>
       {value}
     </Paragraph>
   </Card>
@@ -132,10 +134,13 @@ const ColorDocumentation = (value: string, name: string, index: React.Key) => {
     <Background backgroundColor={value}>
       <div>
         <p>{fullName}</p>
-        <Form display="block" onSubmit={event => copyToClipBoard(css, event)}>
+        <Form display="block" onSubmit={(event) => copyToClipBoard(css, event)}>
           <Button>Copy code</Button>
         </Form>
-        <Form display="block" onSubmit={event => copyToClipBoard(value, event)}>
+        <Form
+          display="block"
+          onSubmit={(event) => copyToClipBoard(value, event)}
+        >
           <Button>Copy value</Button>
         </Form>
       </div>
@@ -145,7 +150,7 @@ const ColorDocumentation = (value: string, name: string, index: React.Key) => {
 
 const getColors = (colors: { [x: string]: any }) => {
   const rearangedColors: any = {};
-  Object.keys(colors).forEach(key => {
+  Object.keys(colors).forEach((key) => {
     const color = colors[key];
     if (typeof color === 'string') {
       if (!rearangedColors.SINGLE) rearangedColors.SINGLE = {};
@@ -154,11 +159,11 @@ const getColors = (colors: { [x: string]: any }) => {
       rearangedColors[key] = color;
     }
   });
-  const singleColors = Object.keys(rearangedColors.SINGLE).map(key => {
+  const singleColors = Object.keys(rearangedColors.SINGLE).map((key) => {
     const value = rearangedColors.SINGLE[key];
     return ColorDocumentation(value, key, '');
   });
-  const listColors = Object.keys(rearangedColors).map(key => {
+  const listColors = Object.keys(rearangedColors).map((key) => {
     if (key !== 'SINGLE') {
       const colorCategory = rearangedColors[key];
       if (Array.isArray(colorCategory)) {
@@ -233,7 +238,7 @@ const getBorderRadiuses = (borderRadiuses: any[]) => {
 
 const getGradients = (gradients: { [x: string]: any }) => {
   if (gradients) {
-    const documentation = Object.keys(gradients).map(key => {
+    const documentation = Object.keys(gradients).map((key) => {
       const gradient = gradients[key];
       return VisualDocumentation(
         <Box {...boxDefaultProps} backgroundImage={gradient} />,
