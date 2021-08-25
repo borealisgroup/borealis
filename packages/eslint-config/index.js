@@ -50,7 +50,9 @@ module.exports = {
       }
     ],
 
+    'no-use-before-define': 'off',
     'babel/no-unused-expressions': 'error',
+    '@typescript-eslint/no-use-before-define': ['error'],
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
 
