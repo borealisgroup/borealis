@@ -72,8 +72,8 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/prefer-default-export': 'off', // Allow single Named-export
     'import/order': ['off', { 'newlines-between': 'always' }],
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
+    'simple-import-sort/imports': 'off',
+    'simple-import-sort/exports': 'off',
 
     'global-require': 'off',
 
