@@ -33,11 +33,13 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-shadow': 'error',
 
     'babel/no-unused-expressions': 'off',
     'no-undef': 'off',
     'no-unexpected-multiline': 'off',
     'no-unused-vars': 'off',
     'no-useless-constructor': 'off',
+    'no-shadow': 'off',
   },
 };
