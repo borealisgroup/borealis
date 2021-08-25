@@ -1,13 +1,7 @@
 {
   "name": "@borealisgroup/eslint-config-ts",
   "version": "1.13.7",
-  "description": "ESLint config for TS linting.",
-  "keywords": [
-    "eslint",
-    "eslint-config-ts",
-    "prettier",
-    "prettier-config"
-  ],
+  "description": "ESLint config for TS linting.",  
   "homepage": "https://github.com/borealisgroup/borealis/tree/master/packages/eslint-config-ts#readme",
   "bugs": {
     "url": "https://github.com/borealisgroup/borealis/issues"
@@ -16,17 +10,27 @@
     "type": "git",
     "url": "https://github.com/borealisgroup/borealis/tree/master/packages/eslint-config-ts"
   },
+  "keywords": [
+    "eslint",
+    "eslint-config-ts",
+    "prettier",
+    "prettier-config"
+  ],
   "license": "MIT",
   "author": "zbeyens <ziad.beyens@borealisgroup.com>",
   "main": "index.js",
   "dependencies": {
     "@borealisgroup/eslint-config": "^1.13.7",
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
-    "eslint-import-resolver-typescript": "^2.0.0"
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint-import-resolver-typescript": "^2.4.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf"
+  "gitHead": "32d739daf620547ebf3087a0f342a823095a1baf",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "typescript": "^4.3.5"
+  }
 }

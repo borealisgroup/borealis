@@ -1,0 +1,60 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-BROWSERSLIST-1090194:
+    - react-scripts > *:
+        reason: Ignore react-scripts dev dependency warnings...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-CSSWHAT-1298035:
+    - react-scripts > *:
+        reason: Ignore react-scripts dev dependency warnings...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-EJS-1049328:
+    - react-scripts > *:
+        reason: Ignore react-scripts dev dependency warnings...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-MINIMIST-559764:
+    - react-scripts > *:
+        reason: Ignore react-scripts dev dependency warnings...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-URLPARSE-1533425:
+    - react-scripts > *:
+        reason: Ignore react-scripts dev dependency warnings...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-LODASHTEMPLATE-1088054:
+    - react-scripts > *:
+        reason: Ignore dev dependency with no fix...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-TRIM-1017038:
+    - '*':
+        reason: Ignore dev dependency with no fix...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-GLOBPARENT-1016905:
+    - '*':
+        reason: Ignore dev dependency with no fix...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-HOSTEDGITINFO-1088355:
+    - '*':
+        reason: Ignore dev dependency with no fix...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-POSTCSS-1090595:
+    - '*':
+        reason: Ignore dev dependency with no fix...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+  SNYK-JS-POSTCSS-1255640:
+    - '*':
+        reason: Ignore dev dependency with no fix...
+        expires: 2022-01-10T00:00:00.000Z
+        created: 2021-07-20T11:26:35.862Z
+patch: {}
