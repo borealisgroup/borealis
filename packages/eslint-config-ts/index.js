@@ -3,7 +3,6 @@ module.exports = {
     '@borealisgroup/eslint-config',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
-    'prettier/@typescript-eslint',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',

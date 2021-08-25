@@ -36,7 +36,6 @@ See also [@borealisgroup/eslint-config](https://www.npmjs.com/package/@borealisg
 
 - `plugin:import/typescript`
 - `plugin:@typescript-eslint/recommended`
-- `prettier/@typescript-eslint` - Prettier support
 
 ## Contributing
 

@@ -6,7 +6,6 @@ module.exports = {
     'plugin:mdx/recommended',
     'plugin:promise/recommended',
     'plugin:prettier/recommended',
-    'prettier/react',
   ],
   parserOptions: {
     ecmaVersion: 2018,
